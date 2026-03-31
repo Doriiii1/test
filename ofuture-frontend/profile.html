@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - OFuture</title>
+    <link rel="stylesheet" href="profile.css">
+    <style>
+        :root{box-sizing:border-box}
+        *,*::before,*::after{box-sizing:inherit}
+    </style>
+</head>
+<body>
+    <iframe class="header-embed" src="header.html" title="Site Header" loading="eager"></iframe>
+
+    <main class="main-container">
+        <section class="logo-panel" aria-label="Logo O'Future">
+            <img src="loginbd.html/Logo.png" alt="O'Future logo" class="logo-image">
+        </section>
+
+        <section class="profile-box" aria-label="Profile">
+            <div class="profile-title">PROFILE</div>
+            <div id="profile-container">
+                <div id="personal-info">
+                    <h3>Personal Information</h3>
+                    <form id="update-form">
+                        <div class="input-group">
+                            <input type="text" id="fullName" name="fullName" placeholder="Full Name" required>
+                        </div>
+                        <div class="input-group">
+                            <input type="tel" id="phone" name="phone" placeholder="Phone Number">
+                        </div>
+                        <div class="input-group">
+                            <input type="url" id="avatar" name="avatar" placeholder="Avatar URL">
+                        </div>
+                        <button type="submit" class="submit-btn">Update Profile</button>
+                    </form>
+                    <p><strong>Username:</strong> <span id="username"></span></p>
+                    <p><strong>Email:</strong> <span id="email"></span></p>
+                    <p><strong>Joined:</strong> <span id="joined"></span></p>
+                    <p><strong>Last Login:</strong> <span id="lastLogin"></span></p>
+                </div>
+
+                <div id="security">
+                    <h3>Security</h3>
+                    <button id="logout-all" class="submit-btn">Logout from All Devices</button>
+
+                    <h4>Two-Factor Authentication (MFA)</h4>
+                    <p id="mfa-status">Status: Disabled</p>
+                    <button id="toggle-mfa" class="submit-btn">Enable MFA</button>
+                    <div id="qr-code" style="display: none;">
+                        <p>Scan this QR code with Google Authenticator:</p>
+                        <img id="qr-img" src="" alt="QR Code">
+                    </div>
+                    <div id="backup-codes" style="display: none;">
+                        <p>Backup Codes:</p>
+                        <ul id="codes-list"></ul>
+                        <button id="regenerate-codes" class="submit-btn">Regenerate Backup Codes</button>
+                    </div>
+
+                    <h4>Danger Zone</h4>
+                    <button id="delete-account" class="delete-btn">Delete Account Permanently</button>
+                    <div id="delete-confirm" style="display: none;">
+                        <p>Enter your current password to confirm:</p>
+                        <div class="input-group">
+                            <input type="password" id="delete-password" placeholder="Password">
+                        </div>
+                        <button id="confirm-delete" class="delete-btn">Confirm Delete</button>
+                        <button id="cancel-delete" class="submit-btn">Cancel</button>
+                    </div>
+                </div>
+
+                <div id="admin-panel" style="display: none;">
+                    <h3>User Management</h3>
+                    <div id="user-list">
+                        <div class="input-group">
+                            <input type="text" id="search-user" placeholder="Search by username or email">
+                        </div>
+                        <div class="input-group">
+                            <select id="filter-role">
+                                <option value="">All Roles</option>
+                                <option value="buyer">Buyer</option>
+                                <option value="seller">Seller</option>
+                            </select>
+                        </div>
+                        <button id="search-btn" class="submit-btn">Search</button>
+                        <table id="users-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Username</th>
+                                    <th>Email</th>
+                                    <th>Role</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="users-tbody">
+                            </tbody>
+                        </table>
+                        <div id="pagination">
+                            <button id="prev-page" class="submit-btn">Previous</button>
+                            <span id="page-info">Page 1</span>
+                            <button id="next-page" class="submit-btn">Next</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <iframe class="footer-embed" src="footer.html" title="Site Footer" loading="eager"></iframe>
+    <script src="profile.js"></script>
+</body>
+</html>
