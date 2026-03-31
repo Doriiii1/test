@@ -19,13 +19,8 @@ import { Request } from 'express';
  * Payload contains only what middleware needs — no sensitive data.
  */
 const signAccessToken = (payload: string | object | Buffer): string => {
-  const secret = process.env.JWT_SECRET;
-  if (!secret) {
-    throw new Error('JWT_SECRET is not configured. Please set JWT_SECRET in your .env file.');
-  }
-
-  return jwt.sign(payload, secret, {
-    expiresIn : (process.env.JWT_EXPIRES_IN || '15m') as any,
+  return jwt.sign(payload, process.env.JWT_SECRET as string, {
+    expiresIn : (process.env.JWT_EXPIRES_IN || '15m') as any, // <--- Thêm as any ở đây
     issuer    : 'ofuture-api',
     audience  : 'ofuture-client',
   });
@@ -36,13 +31,8 @@ const signAccessToken = (payload: string | object | Buffer): string => {
  * Stored as a hash in DB — actual token sent to client only.
  */
 const signRefreshToken = (payload: string | object | Buffer): string => {
-  const secret = process.env.JWT_REFRESH_SECRET || process.env.JWT_SECRET;
-  if (!secret) {
-    throw new Error('JWT_SECRET or JWT_REFRESH_SECRET is not configured. Please set JWT_SECRET in your .env file.');
-  }
-
-  return jwt.sign(payload, secret, {
-    expiresIn : (process.env.JWT_REFRESH_EXPIRES_IN || '7d') as any,
+  return jwt.sign(payload, process.env.JWT_REFRESH_SECRET as string, {
+    expiresIn : (process.env.JWT_REFRESH_EXPIRES_IN || '7d') as any, // <--- Thêm as any ở đây
     issuer    : 'ofuture-api',
     audience  : 'ofuture-client',
   });
@@ -50,12 +40,7 @@ const signRefreshToken = (payload: string | object | Buffer): string => {
 
 /** Verify an access token. Throws if invalid or expired. */
 const verifyAccessToken = (token: string): any => {
-  const secret = process.env.JWT_SECRET;
-  if (!secret) {
-    throw new Error('JWT_SECRET is not configured. Please set JWT_SECRET in your .env file.');
-  }
-
-  return jwt.verify(token, secret, {
+  return jwt.verify(token, process.env.JWT_SECRET as string, {
     issuer   : 'ofuture-api',
     audience : 'ofuture-client',
   });
@@ -63,12 +48,7 @@ const verifyAccessToken = (token: string): any => {
 
 /** Verify a refresh token. Throws if invalid or expired. */
 const verifyRefreshToken = (token: string): any => {
-  const secret = process.env.JWT_REFRESH_SECRET || process.env.JWT_SECRET;
-  if (!secret) {
-    throw new Error('JWT_SECRET or JWT_REFRESH_SECRET is not configured. Please set JWT_SECRET in your .env file.');
-  }
-
-  return jwt.verify(token, secret, {
+  return jwt.verify(token, process.env.JWT_REFRESH_SECRET as string, {
     issuer   : 'ofuture-api',
     audience : 'ofuture-client',
   });

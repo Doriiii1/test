@@ -4,17 +4,7 @@
 // ─────────────────────────────────────────────
 
 import dotenv from 'dotenv';
-import path from 'path';
-
-// Load environment variables from .env file
-const envPath = path.resolve(__dirname, '.env');
-const result = dotenv.config({ path: envPath });
-if (result.error) {
-  console.error('❌ Error loading .env file from:', envPath);
-  console.error('Error details:', result.error);
-  process.exit(1);
-}
-console.log('✅ Environment variables loaded successfully from:', envPath);
+dotenv.config();
 
 import express, { Request, Response, NextFunction } from 'express';
 import helmet from 'helmet';
@@ -57,6 +47,8 @@ const adminRoutes    = require('./routes/adminRoutes');     // Phase 9
 const mfaRoutes      = require('./routes/mfaRoutes');       // Phase 11 
 const chatRoutes     = require('./routes/chatRoutes');      // Phase 12
 const paymentRoutes  = require('./routes/paymentRoutes');
+const sampleRoutes   = require('./routes/sampleRoutes');
+const disputeRoutes  = require('./routes/disputeRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -141,12 +133,6 @@ app.use(sanitizeInputs);             // sanitize body/query strings
 app.use(detectSuspiciousPayload);    // block injection patterns
 
 // ────────────────────────────────────────────
-// 3c. SERVE STATIC FRONTEND FILES
-// ────────────────────────────────────────────
-const frontendPath = path.join(__dirname, '../ofuture-frontend');
-app.use(express.static(frontendPath));
-
-// ────────────────────────────────────────────
 // 4. HTTP REQUEST LOGGING (Morgan → Winston)
 // ────────────────────────────────────────────
 app.use(
@@ -224,6 +210,8 @@ app.use('/api/admin',    adminRoutes);    // Phase 9
 app.use('/api/mfa',      mfaRoutes);      // Phase 11
 app.use('/api/chat',     chatRoutes);     // Phase 12
 app.use('/api/payments', paymentRoutes);
+app.use('/api/samples',  sampleRoutes);
+app.use('/api/disputes', disputeRoutes);
 
 // ────────────────────────────────────────────
 // 7. 404 HANDLER

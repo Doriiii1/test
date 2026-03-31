@@ -14,11 +14,6 @@ const {
   suspendUser,
   changeUserRole,
   deleteUser,
-  toggleUserStatus,
-  updateWithdrawalStatus,
-  resolveDispute,
-  manageEscrow,
-  getSystemLogs,
   listAllProducts,
   listAllOrders,
   getRevenueReport,
@@ -28,11 +23,11 @@ const {
 } = require('../controllers/adminController');
 
 const { authenticate } = require('../middleware/auth');
-const { adminOnly } = require('../middleware/role');
 const { riskScore } = require('../middleware/security');
 const { adminLimiter } = require('../middleware/rateLimiter');
 const { mfaForAdmin } = require('../middleware/requireMfa');
 const ipBlocklist = require('../utils/ipBlocklist');
+const { adminOnly } = require('../middleware/role');
 
 const router = express.Router();
 
@@ -146,80 +141,6 @@ router.get(
     validate,
   ],
   getRevenueReport
-);
-
-// ─────────────────────────────────────────────
-// USER STATUS MANAGEMENT
-// ─────────────────────────────────────────────
-router.put(
-  '/users/:id/status',
-  [
-    param('id').isUUID().withMessage('Invalid user ID format.'),
-    body('action').isIn(['lock', 'unlock']).withMessage('Action must be "lock" or "unlock".'),
-    body('reason').optional().trim().isLength({ min: 1, max: 500 }).withMessage('Reason must be 1-500 characters.'),
-    validate,
-  ],
-  toggleUserStatus
-);
-
-// ─────────────────────────────────────────────
-// WITHDRAWAL MANAGEMENT
-// ─────────────────────────────────────────────
-router.put(
-  '/withdrawals/:id/status',
-  [
-    param('id').isUUID().withMessage('Invalid withdrawal ID format.'),
-    body('action').isIn(['approve', 'reject']).withMessage('Action must be "approve" or "reject".'),
-    body('reason').optional().trim().isLength({ min: 1, max: 500 }).withMessage('Reason must be 1-500 characters.'),
-    validate,
-  ],
-  updateWithdrawalStatus
-);
-
-// ─────────────────────────────────────────────
-// DISPUTE RESOLUTION
-// ─────────────────────────────────────────────
-router.put(
-  '/disputes/:id/resolve',
-  [
-    param('id').isUUID().withMessage('Invalid dispute ID format.'),
-    body('decision').isIn(['buyer', 'seller']).withMessage('Decision must be "buyer" or "seller".'),
-    body('reason').trim().isLength({ min: 1, max: 1000 }).withMessage('Reason must be 1-1000 characters.'),
-    validate,
-  ],
-  resolveDispute
-);
-
-// ─────────────────────────────────────────────
-// ESCROW MANAGEMENT
-// ─────────────────────────────────────────────
-router.put(
-  '/escrow/:id/manage',
-  [
-    param('id').isUUID().withMessage('Invalid escrow ID format.'),
-    body('action').isIn(['release', 'refund', 'hold']).withMessage('Action must be "release", "refund", or "hold".'),
-    body('reason').trim().isLength({ min: 1, max: 1000 }).withMessage('Reason must be 1-1000 characters.'),
-    validate,
-  ],
-  manageEscrow
-);
-
-// ─────────────────────────────────────────────
-// SYSTEM LOGS
-// ─────────────────────────────────────────────
-router.get(
-  '/system-logs',
-  [
-    query('page').optional().isInt({ min: 1 }).toInt(),
-    query('limit').optional().isInt({ min: 1, max: 100 }).toInt(),
-    query('level').optional().isIn(['info', 'warn', 'error', 'critical']),
-    query('eventType').optional().trim().isLength({ min: 1, max: 100 }),
-    query('userId').optional().isUUID(),
-    query('from').optional().isISO8601(),
-    query('to').optional().isISO8601(),
-    validate,
-  ],
-  getSystemLogs
 );
 
 // ─────────────────────────────────────────────

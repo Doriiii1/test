@@ -59,7 +59,7 @@ const createLimiter = ({
   message = 'Too many requests. Please try again later.',
   skipPaths = ['/health'],
   keyPrefix = '',
-}: LimiterOptions) => { 
+}: LimiterOptions) => {
   
   if (process.env.NODE_ENV === 'test') {
     return rateLimit({
