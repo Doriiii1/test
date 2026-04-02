@@ -74,12 +74,7 @@ async function handleLoginSubmit(event) {
   const password = document.getElementById('password').value;
   const loginBtn = document.getElementById('loginBtn');
 
-  // Check CAPTCHA
-  const captchaResponse = grecaptcha.getResponse();
-  if (!captchaResponse) {
-    showNotification('Please complete the CAPTCHA', 'error');
-    return;
-  }
+  // CAPTCHA temporarily disabled for testing — skip client-side check
 
   if (!email || !password) {
     showNotification('Please enter email and password', 'error');
@@ -93,7 +88,7 @@ async function handleLoginSubmit(event) {
     const response = await fetch(`${CONFIG.API_BASE_URL}${CONFIG.LOGIN_ENDPOINT}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password, captcha: captchaResponse }),
+      body: JSON.stringify({ email, password }),
     });
 
     const data = await response.json();

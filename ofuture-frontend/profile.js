@@ -3,31 +3,35 @@
 document.addEventListener('DOMContentLoaded', function() {
     loadProfile();
     checkRole();
+    // Safe event wiring: only attach listeners if elements exist
+    const elUpdate = document.getElementById('update-form');
+    if (elUpdate) elUpdate.addEventListener('submit', updateProfile);
 
-    // Update profile form
-    document.getElementById('update-form').addEventListener('submit', updateProfile);
+    const elLogoutAll = document.getElementById('logout-all');
+    if (elLogoutAll) elLogoutAll.addEventListener('click', logoutAllDevices);
 
-    // Logout all devices
-    document.getElementById('logout-all').addEventListener('click', logoutAllDevices);
+    const elToggleMfa = document.getElementById('toggle-mfa');
+    if (elToggleMfa) elToggleMfa.addEventListener('click', toggleMFA);
 
-    // MFA toggle
-    document.getElementById('toggle-mfa').addEventListener('click', toggleMFA);
+    const elRegCodes = document.getElementById('regenerate-codes');
+    if (elRegCodes) elRegCodes.addEventListener('click', regenerateBackupCodes);
 
-    // Regenerate backup codes
-    document.getElementById('regenerate-codes').addEventListener('click', regenerateBackupCodes);
+    const elDelete = document.getElementById('delete-account');
+    if (elDelete) elDelete.addEventListener('click', showDeleteConfirm);
+    const elConfirmDelete = document.getElementById('confirm-delete');
+    if (elConfirmDelete) elConfirmDelete.addEventListener('click', deleteAccount);
+    const elCancelDelete = document.getElementById('cancel-delete');
+    if (elCancelDelete) elCancelDelete.addEventListener('click', hideDeleteConfirm);
 
-    // Delete account
-    document.getElementById('delete-account').addEventListener('click', showDeleteConfirm);
-    document.getElementById('confirm-delete').addEventListener('click', deleteAccount);
-    document.getElementById('cancel-delete').addEventListener('click', hideDeleteConfirm);
+    const elSearchBtn = document.getElementById('search-btn');
+    if (elSearchBtn) elSearchBtn.addEventListener('click', loadUsers);
+    const elPrev = document.getElementById('prev-page');
+    if (elPrev) elPrev.addEventListener('click', () => changePage(-1));
+    const elNext = document.getElementById('next-page');
+    if (elNext) elNext.addEventListener('click', () => changePage(1));
 
-    // Admin panel
-    document.getElementById('search-btn').addEventListener('click', loadUsers);
-    document.getElementById('prev-page').addEventListener('click', () => changePage(-1));
-    document.getElementById('next-page').addEventListener('click', () => changePage(1));
-
-    // Logout
-    document.getElementById('logout').addEventListener('click', logout);
+    const elLogout = document.getElementById('logout');
+    if (elLogout) elLogout.addEventListener('click', logout);
 });
 
 let currentPage = 1;
@@ -38,14 +42,14 @@ async function loadProfile() {
         const response = await fetch('/api/auth/me');
         if (!response.ok) throw new Error('Failed to load profile');
         const user = await response.json();
-        document.getElementById('fullName').value = user.fullName || '';
-        document.getElementById('phone').value = user.phone || '';
-        document.getElementById('avatar').value = user.avatar || '';
-        document.getElementById('username').textContent = user.username;
-        document.getElementById('email').textContent = user.email;
-        document.getElementById('joined').textContent = new Date(user.createdAt).toLocaleDateString();
-        document.getElementById('lastLogin').textContent = new Date(user.lastLogin).toLocaleDateString();
-        updateMFAStatus(user.mfaEnabled);
+        const fn = document.getElementById('fullName'); if (fn) fn.value = user.fullName || '';
+        const ph = document.getElementById('phone'); if (ph) ph.value = user.phone || '';
+        const av = document.getElementById('avatar'); if (av) av.value = user.avatar || '';
+        const uname = document.getElementById('username'); if (uname) uname.textContent = user.username || '';
+        const emailInput = document.getElementById('emailInput'); if (emailInput) emailInput.value = user.email || '';
+        const joined = document.getElementById('joined'); if (joined && user.createdAt) joined.textContent = new Date(user.createdAt).toLocaleDateString();
+        const last = document.getElementById('lastLogin'); if (last && user.lastLogin) last.textContent = new Date(user.lastLogin).toLocaleDateString();
+        if (typeof updateMFAStatus === 'function') updateMFAStatus(user.mfaEnabled);
     } catch (error) {
         alert('Error loading profile: ' + error.message);
     }

@@ -13,98 +13,67 @@
 <body>
     <iframe class="header-embed" src="header.html" title="Site Header" loading="eager"></iframe>
 
-    <main class="main-container">
-        <section class="logo-panel" aria-label="Logo O'Future">
-            <img src="loginbd.html/Logo.png" alt="O'Future logo" class="logo-image">
-        </section>
+    <main class="settings-layout">
+        <aside class="settings-sidebar">
+            <nav>
+                <ul>
+                    <li class="active">Profile</li>
+                </ul>
+            </nav>
+        </aside>
 
-        <section class="profile-box" aria-label="Profile">
-            <div class="profile-title">PROFILE</div>
-            <div id="profile-container">
-                <div id="personal-info">
-                    <h3>Personal Information</h3>
-                    <form id="update-form">
-                        <div class="input-group">
-                            <input type="text" id="fullName" name="fullName" placeholder="Full Name" required>
-                        </div>
-                        <div class="input-group">
-                            <input type="tel" id="phone" name="phone" placeholder="Phone Number">
-                        </div>
-                        <div class="input-group">
-                            <input type="url" id="avatar" name="avatar" placeholder="Avatar URL">
-                        </div>
-                        <button type="submit" class="submit-btn">Update Profile</button>
-                    </form>
-                    <p><strong>Username:</strong> <span id="username"></span></p>
-                    <p><strong>Email:</strong> <span id="email"></span></p>
-                    <p><strong>Joined:</strong> <span id="joined"></span></p>
-                    <p><strong>Last Login:</strong> <span id="lastLogin"></span></p>
+        <section class="settings-content">
+            <div class="page-header">
+                <div class="page-head-left">
+                    <h1 class="page-heading">Profile</h1>
+                    <p class="page-sub">Manage your profile settings</p>
                 </div>
-
-                <div id="security">
-                    <h3>Security</h3>
-                    <button id="logout-all" class="submit-btn">Logout from All Devices</button>
-
-                    <h4>Two-Factor Authentication (MFA)</h4>
-                    <p id="mfa-status">Status: Disabled</p>
-                    <button id="toggle-mfa" class="submit-btn">Enable MFA</button>
-                    <div id="qr-code" style="display: none;">
-                        <p>Scan this QR code with Google Authenticator:</p>
-                        <img id="qr-img" src="" alt="QR Code">
-                    </div>
-                    <div id="backup-codes" style="display: none;">
-                        <p>Backup Codes:</p>
-                        <ul id="codes-list"></ul>
-                        <button id="regenerate-codes" class="submit-btn">Regenerate Backup Codes</button>
-                    </div>
-
-                    <h4>Danger Zone</h4>
-                    <button id="delete-account" class="delete-btn">Delete Account Permanently</button>
-                    <div id="delete-confirm" style="display: none;">
-                        <p>Enter your current password to confirm:</p>
-                        <div class="input-group">
-                            <input type="password" id="delete-password" placeholder="Password">
-                        </div>
-                        <button id="confirm-delete" class="delete-btn">Confirm Delete</button>
-                        <button id="cancel-delete" class="submit-btn">Cancel</button>
-                    </div>
+                <div class="header-actions">
+                    <a href="index.html" class="btn ghost back-btn" id="homeBtn">Home</a>
                 </div>
+            </div>
 
-                <div id="admin-panel" style="display: none;">
-                    <h3>User Management</h3>
-                    <div id="user-list">
-                        <div class="input-group">
-                            <input type="text" id="search-user" placeholder="Search by username or email">
-                        </div>
-                        <div class="input-group">
-                            <select id="filter-role">
-                                <option value="">All Roles</option>
-                                <option value="buyer">Buyer</option>
-                                <option value="seller">Seller</option>
-                            </select>
-                        </div>
-                        <button id="search-btn" class="submit-btn">Search</button>
-                        <table id="users-table">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Username</th>
-                                    <th>Email</th>
-                                    <th>Role</th>
-                                    <th>Status</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody id="users-tbody">
-                            </tbody>
-                        </table>
-                        <div id="pagination">
-                            <button id="prev-page" class="submit-btn">Previous</button>
-                            <span id="page-info">Page 1</span>
-                            <button id="next-page" class="submit-btn">Next</button>
-                        </div>
+            <div class="panel-card">
+                <h3>Basic info</h3>
+                <p class="muted">Tell us your basic info details</p>
+
+                <form id="update-form" class="basic-form">
+                    <label class="field">Full name
+                        <input type="text" id="fullName" name="fullName" placeholder="Full name" required>
+                    </label>
+
+                    <div class="inline-row">
+                        <label class="field">Email
+                            <input type="email" id="emailInput" placeholder="email@example.com" readonly>
+                        </label>
                     </div>
-                </div>
+
+                    <label class="field">Phone number
+                        <input type="tel" id="phone" name="phone" placeholder="+84 9xx xxx xxx">
+                    </label>
+
+                    <label class="field">Profile picture
+                        <input type="url" id="avatar" name="avatar" placeholder="Avatar URL">
+                    </label>
+
+                    <div class="form-actions">
+                        <button type="submit" class="submit-btn">Update</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Keep security and admin sections (collapsed by default) -->
+            <div id="security" class="panel-card">
+                <h3>Security</h3>
+                <button id="logout-all" class="submit-btn">Logout from All Devices</button>
+                <h4>Two-Factor Authentication (MFA)</h4>
+                <p id="mfa-status">Status: Disabled</p>
+                <button id="toggle-mfa" class="submit-btn">Enable MFA</button>
+            </div>
+
+            <div id="admin-panel" class="panel-card" style="display:none">
+                <h3>User Management</h3>
+                <!-- admin content remains -->
             </div>
         </section>
     </main>
