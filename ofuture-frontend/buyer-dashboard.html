@@ -174,20 +174,7 @@
               </div>
             </div>
 
-            <div class="escrow-item success">
-              <h4>Đơn #OF1025</h4>
-              <p>Đã giữ tiền ký quỹ • Chờ người bán giao hàng</p>
-            </div>
-
-            <div class="escrow-item pending">
-              <h4>Đơn #OF1032</h4>
-              <p>Đang xác nhận thanh toán</p>
-            </div>
-
-            <div class="escrow-item info">
-              <h4>Đơn #OF1018</h4>
-              <p>Đã hoàn tất và giải ngân thành công</p>
-            </div>
+            <div id="escrow-container"></div>
           </div>
 
           <div class="panel small-panel">
@@ -218,9 +205,90 @@
     </main>
   </div>
 
+  <script src="api.js"></script>
+  
   <script>
-    const userName = localStorage.getItem('userFullname') || 'Name';
-    document.querySelector('.topbar h1').textContent = `Xin chào, ${userName}`;
+    document.addEventListener('DOMContentLoaded', async () => {
+      // Lấy data user từ localStorage 
+      const user = JSON.parse(localStorage.getItem('user') || '{}');
+      document.querySelectorAll('.profile-name, .welcome-text span').forEach(el => {el.textContent = user.username || user.full_name || 'Khách hàng';});
+
+      try {
+        // 1. Fetch danh sách đơn hàng của Buyer
+        const ordersRes = await fetchAPI('/orders');
+        const orders = ordersRes.data || [];
+
+        // 2. Render Widget "Lịch sử đơn hàng"
+        const orderListEl = document.querySelector('.order-list');
+        orderListEl.innerHTML = orders.map(o => `
+          <li>
+            <strong>#${o.id.substring(0,8)}</strong>
+            <span>${o.status.toUpperCase()}</span>
+          </li>
+        `).join('');
+
+        // 3. Render Widget "Tiền Ký Quỹ" (Tương tác Escrow)
+        const escrowContainer = document.getElementById('escrow-container');
+        escrowContainer.innerHTML = orders.map(o => {
+          let actionBtn = '';
+          let statusClass = 'pending';
+          let statusText = 'Chờ xử lý';
+
+          if (o.status === 'pending') {
+            actionBtn = `<button onclick="payEscrow('${o.id}')" style="margin-top:10px; padding:5px 10px; background:#0062ff; color:#fff; border:none; border-radius:4px; cursor:pointer;">Thanh toán Ký quỹ</button>`;
+            statusText = 'Đang chờ nạp quỹ';
+          } else if (o.status === 'shipped') {
+            actionBtn = `<button onclick="releaseEscrow('${o.id}')" style="margin-top:10px; padding:5px 10px; background:#10b981; color:#fff; border:none; border-radius:4px; cursor:pointer;">Đã nhận hàng (Giải ngân)</button>`;
+            statusClass = 'success';
+            statusText = 'Chờ bạn xác nhận nhận hàng';
+          } else if (o.status === 'completed') {
+            statusClass = 'info';
+            statusText = 'Giao dịch thành công';
+          }
+
+          return `
+            <div class="escrow-item ${statusClass}">
+              <h4>Đơn #${o.id.substring(0,8)}</h4>
+              <p>${statusText} - Tổng: $${o.total_amount}</p>
+              ${actionBtn}
+            </div>
+          `;
+        }).join('');
+
+      } catch (err) {
+        console.error("Lỗi khi tải dữ liệu dashboard:", err);
+      }
+    });
+
+    // Hàm kích hoạt lệnh Ký quỹ (Gọi xuống DB)
+    async function payEscrow(orderId) {
+      if(!confirm("Xác nhận thanh toán đưa tiền vào Escrow?")) return;
+      try {
+        await fetchAPI('/escrow/pay-and-hold', {
+          method: 'POST',
+          body: JSON.stringify({ orderId })
+        });
+        alert("Nạp tiền ký quỹ thành công!");
+        window.location.reload();
+      } catch (error) {
+        alert("Lỗi: " + error.message);
+      }
+    }
+
+    // Hàm kích hoạt lệnh Giải ngân cho Seller
+    async function releaseEscrow(orderId) {
+      if(!confirm("Bạn đã nhận được hàng và đồng ý giải ngân cho người bán?")) return;
+      try {
+        await fetchAPI('/escrow/release', {
+          method: 'POST',
+          body: JSON.stringify({ orderId })
+        });
+        alert("Đã giải ngân cho người bán!");
+        window.location.reload();
+      } catch (error) {
+        alert("Lỗi: " + error.message);
+      }
+    }
   </script>
 </body>
 </html>

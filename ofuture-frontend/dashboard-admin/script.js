@@ -3,8 +3,6 @@
 // API Base URL
 // ============================================================
 
-const API_BASE_URL = 'http://localhost:5000/api';
-
 // Store data
 let currentAdmin = null;
 let allUsers = [];
@@ -51,46 +49,6 @@ async function initializeDashboard() {
     }
 }
 
-// ============================================================
-// API Calls with Auth
-// ============================================================
-
-async function apiCall(endpoint, options = {}) {
-    const token = localStorage.getItem('accessToken');
-
-    if (!token) {
-        throw new Error('No authentication token found');
-    }
-
-    const headers = {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`,
-        ...options.headers,
-    };
-
-    try {
-        const response = await fetch(`${API_BASE_URL}${endpoint}`, {
-            ...options,
-            headers,
-        });
-
-        if (response.status === 401) {
-            localStorage.clear();
-            window.location.href = '../loginbd.html/login.html';
-            throw new Error('Unauthorized');
-        }
-
-        if (!response.ok) {
-            const errorData = await response.json();
-            throw new Error(errorData.message || `HTTP ${response.status}`);
-        }
-
-        return await response.json();
-    } catch (error) {
-        console.error('API Error:', error);
-        throw error;
-    }
-}
 
 // ============================================================
 // Data Loading Functions
@@ -115,7 +73,7 @@ async function loadDashboardData() {
 
 async function loadUsers() {
     try {
-        const response = await apiCall('/admin/users');
+        const response = await fetchAPI('/admin/users');
         allUsers = response.data || [];
         renderUsersTable();
     } catch (error) {
@@ -126,7 +84,7 @@ async function loadUsers() {
 
 async function loadEscrow() {
     try {
-        const response = await apiCall('/admin/escrow');
+        const response = await fetchAPI('/admin/escrow');
         allEscrow = response.data || [];
         renderEscrowTable();
     } catch (error) {
@@ -137,7 +95,7 @@ async function loadEscrow() {
 
 async function loadPayments() {
     try {
-        const response = await apiCall('/admin/payments');
+        const response = await fetchAPI('/admin/payments');
         allPayments = response.data || [];
         renderPaymentsTable();
     } catch (error) {
@@ -148,7 +106,7 @@ async function loadPayments() {
 
 async function loadLogs() {
     try {
-        const response = await apiCall('/admin/logs');
+        const response = await fetchAPI('/admin/logs');
         allLogs = response.data || [];
         renderLogs();
     } catch (error) {
@@ -316,7 +274,7 @@ async function blockUser(userId) {
     if (!confirm('Are you sure you want to block this user?')) return;
 
     try {
-        await apiCall(`/admin/users/${userId}/block`, {
+        await fetchAPI(`/admin/users/${userId}/block`, {
             method: 'PATCH',
         });
 
@@ -331,7 +289,7 @@ async function unblockUser(userId) {
     if (!confirm('Are you sure you want to unblock this user?')) return;
 
     try {
-        await apiCall(`/admin/users/${userId}/unblock`, {
+        await fetchAPI(`/admin/users/${userId}/unblock`, {
             method: 'PATCH',
         });
 
@@ -346,7 +304,7 @@ async function releaseEscrow(escrowId) {
     if (!confirm('Release funds for this escrow transaction?')) return;
 
     try {
-        await apiCall('/admin/escrow/release', {
+        await fetchAPI('/admin/escrow/release', {
             method: 'POST',
             body: JSON.stringify({
                 escrow_id: escrowId,
@@ -364,7 +322,7 @@ async function approvePayment(paymentId) {
     if (!confirm('Approve this payment?')) return;
 
     try {
-        await apiCall(`/admin/payments/${paymentId}/approve`, {
+        await fetchAPI(`/admin/payments/${paymentId}/approve`, {
             method: 'PATCH',
         });
 
@@ -380,7 +338,7 @@ async function rejectPayment(paymentId) {
     if (!reason) return;
 
     try {
-        await apiCall(`/admin/payments/${paymentId}/reject`, {
+        await fetchAPI(`/admin/payments/${paymentId}/reject`, {
             method: 'PATCH',
             body: JSON.stringify({
                 reason,
@@ -400,7 +358,7 @@ async function rejectPayment(paymentId) {
 
 async function loadAllUsers() {
     try {
-        const response = await apiCall('/admin/users');
+        const response = await fetchAPI('/admin/users');
         allUsers = response.data || [];
         renderUsersTable();
     } catch (error) {
@@ -415,7 +373,7 @@ async function toggleUserStatus(userId, action) {
     if (!reason) return;
 
     try {
-        await apiCall(`/admin/users/${userId}/status`, {
+        await fetchAPI(`/admin/users/${userId}/status`, {
             method: 'PUT',
             body: JSON.stringify({
                 action,
@@ -436,7 +394,7 @@ async function toggleUserStatus(userId, action) {
 
 async function loadDisputedEscrow() {
     try {
-        const response = await apiCall('/admin/escrow?status=disputed');
+        const response = await fetchAPI('/admin/escrow?status=disputed');
         allEscrow = response.data || [];
         renderEscrowTable();
     } catch (error) {
@@ -451,7 +409,7 @@ async function loadDisputedEscrow() {
 
 async function loadSystemLogs() {
     try {
-        const response = await apiCall('/admin/system-logs');
+        const response = await fetchAPI('/admin/system-logs');
         allLogs = response.data || [];
         renderSystemLogsTable();
     } catch (error) {
@@ -515,7 +473,7 @@ async function resolveDispute(escrowId) {
     if (!reason) return;
 
     try {
-        await apiCall(`/admin/escrow/${escrowId}/resolve`, {
+        await fetchAPI(`/admin/escrow/${escrowId}/resolve`, {
             method: 'PUT',
             body: JSON.stringify({
                 decision,

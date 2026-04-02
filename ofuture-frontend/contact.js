@@ -3,11 +3,6 @@
 // Sends contact messages to API on port 5000
 // ============================================================
 
-const CONFIG = {
-	API_BASE_URL: 'http://localhost:5000/api',
-	CONTACT_ENDPOINT: '/contact',
-};
-
 document.addEventListener('DOMContentLoaded', function () {
 	const form = document.getElementById('contactForm');
 	const submitBtn = document.getElementById('submitBtn');
@@ -69,16 +64,10 @@ document.addEventListener('DOMContentLoaded', function () {
 	}
 
 	function sendContactMessage(payload) {
-		return fetch(`${CONFIG.API_BASE_URL}${CONFIG.CONTACT_ENDPOINT}`, {
+        // Dùng wrapper chung của hệ thống
+		return fetchAPI('/contact', {
 			method: 'POST',
-			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify(payload)
-		})
-		.then(response => {
-			if (!response.ok) {
-				throw new Error(`HTTP error! status: ${response.status}`);
-			}
-			return response.json();
 		});
 	}
 

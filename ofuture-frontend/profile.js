@@ -39,17 +39,17 @@ const pageSize = 10;
 
 async function loadProfile() {
     try {
-        const response = await fetch('/api/auth/me');
-        if (!response.ok) throw new Error('Failed to load profile');
-        const user = await response.json();
-        const fn = document.getElementById('fullName'); if (fn) fn.value = user.fullName || '';
+        const response = await fetchAPI('/auth/me'); // Tự động lấy token
+        // BE của bạn thường trả về { success: true, data: { user } } hoặc trả thẳng object
+        const user = response.data || response; 
+
+        const fn = document.getElementById('fullName'); if (fn) fn.value = user.fullName || user.full_name || '';
         const ph = document.getElementById('phone'); if (ph) ph.value = user.phone || '';
         const av = document.getElementById('avatar'); if (av) av.value = user.avatar || '';
         const uname = document.getElementById('username'); if (uname) uname.textContent = user.username || '';
         const emailInput = document.getElementById('emailInput'); if (emailInput) emailInput.value = user.email || '';
-        const joined = document.getElementById('joined'); if (joined && user.createdAt) joined.textContent = new Date(user.createdAt).toLocaleDateString();
-        const last = document.getElementById('lastLogin'); if (last && user.lastLogin) last.textContent = new Date(user.lastLogin).toLocaleDateString();
-        if (typeof updateMFAStatus === 'function') updateMFAStatus(user.mfaEnabled);
+        
+        if (typeof updateMFAStatus === 'function') updateMFAStatus(user.mfaEnabled || user.mfa_enabled);
     } catch (error) {
         alert('Error loading profile: ' + error.message);
     }
@@ -58,17 +58,15 @@ async function loadProfile() {
 async function updateProfile(event) {
     event.preventDefault();
     const data = {
-        fullName: document.getElementById('fullName').value,
+        full_name: document.getElementById('fullName').value, // Sửa thành full_name
         phone: document.getElementById('phone').value,
         avatar: document.getElementById('avatar').value
     };
     try {
-        const response = await fetch('/api/auth/me', {
+        await fetchAPI('/auth/me', {
             method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data)
+            body: JSON.stringify(data) // fetchAPI đã tự có Content-Type
         });
-        if (!response.ok) throw new Error('Failed to update profile');
         alert('Profile updated successfully');
     } catch (error) {
         alert('Error updating profile: ' + error.message);
@@ -77,9 +75,8 @@ async function updateProfile(event) {
 
 async function logoutAllDevices() {
     try {
-        const response = await fetch('/api/auth/logout', {
+        const response = await fetchAPI('/auth/logout', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ allDevices: true })
         });
         if (!response.ok) throw new Error('Failed to logout');
@@ -95,7 +92,7 @@ async function toggleMFA() {
     if (isEnabled) {
         // Disable MFA
         try {
-            const response = await fetch('/api/mfa/disable', { method: 'POST' });
+            const response = await fetchAPI('/mfa/disable', { method: 'POST' });
             if (!response.ok) throw new Error('Failed to disable MFA');
             updateMFAStatus(false);
             alert('MFA disabled');
@@ -105,7 +102,7 @@ async function toggleMFA() {
     } else {
         // Enable MFA - show QR
         try {
-            const response = await fetch('/api/mfa/setup');
+            const response = await fetchAPI('/mfa/setup');
             if (!response.ok) throw new Error('Failed to setup MFA');
             const data = await response.json();
             document.getElementById('qr-img').src = data.qrCodeUrl;
@@ -121,7 +118,7 @@ async function toggleMFA() {
 
 async function confirmEnableMFA() {
     try {
-        const response = await fetch('/api/mfa/enable', { method: 'POST' });
+        const response = await fetchAPI('/mfa/enable', { method: 'POST' });
         if (!response.ok) throw new Error('Failed to enable MFA');
         updateMFAStatus(true);
         document.getElementById('qr-code').style.display = 'none';
@@ -145,7 +142,7 @@ function updateMFAStatus(enabled) {
 
 async function loadBackupCodes() {
     try {
-        const response = await fetch('/api/mfa/backup-codes');
+        const response = await fetchAPI('/mfa/backup-codes');
         if (!response.ok) throw new Error('Failed to load backup codes');
         const codes = await response.json();
         const list = document.getElementById('codes-list');
@@ -163,7 +160,7 @@ async function loadBackupCodes() {
 
 async function regenerateBackupCodes() {
     try {
-        const response = await fetch('/api/mfa/regenerate-backup-codes', { method: 'POST' });
+        const response = await fetchAPI('/mfa/regenerate-backup-codes', { method: 'POST' });
         if (!response.ok) throw new Error('Failed to regenerate codes');
         loadBackupCodes();
         alert('Backup codes regenerated');
@@ -187,9 +184,8 @@ async function deleteAccount() {
         return;
     }
     try {
-        const response = await fetch('/api/auth/me', {
+        const response = await fetchAPI('/auth/me', {
             method: 'DELETE',
-            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ password })
         });
         if (!response.ok) throw new Error('Failed to delete account');
@@ -203,7 +199,7 @@ async function deleteAccount() {
 async function checkRole() {
     // Assume role is in user data or separate call
     try {
-        const response = await fetch('/api/auth/me');
+        const response = await fetchAPI('/auth/me');
         const user = await response.json();
         if (user.role === 'admin') {
             document.getElementById('admin-panel').style.display = 'block';
@@ -219,7 +215,7 @@ async function loadUsers(page = 1) {
     const role = document.getElementById('filter-role').value;
     const params = new URLSearchParams({ page, limit: pageSize, search, role });
     try {
-        const response = await fetch(`/api/admin/users?${params}`);
+        const response = await fetchAPI(`/admin/users?${params}`);
         if (!response.ok) throw new Error('Failed to load users');
         const data = await response.json();
         renderUsers(data.users);
@@ -262,7 +258,7 @@ function changePage(delta) {
 
 async function suspendUser(id) {
     try {
-        const response = await fetch(`/api/admin/users/${id}/suspend`, { method: 'PUT' });
+        const response = await fetchAPI(`/admin/users/${id}/suspend`, { method: 'PUT' });
         if (!response.ok) throw new Error('Failed to suspend user');
         loadUsers(currentPage);
     } catch (error) {
@@ -272,7 +268,7 @@ async function suspendUser(id) {
 
 async function unlockUser(id) {
     try {
-        const response = await fetch(`/api/admin/users/${id}/unlock`, { method: 'PUT' });
+        const response = await fetchAPI(`/admin/users/${id}/unlock`, { method: 'PUT' });
         if (!response.ok) throw new Error('Failed to unlock user');
         loadUsers(currentPage);
     } catch (error) {
@@ -282,7 +278,7 @@ async function unlockUser(id) {
 
 async function logout() {
     try {
-        await fetch('/api/auth/logout', { method: 'POST' });
+        await fetchAPI('/auth/logout', { method: 'POST' });
         window.location.href = 'login.html';
     } catch (error) {
         // Ignore

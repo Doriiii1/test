@@ -3,12 +3,6 @@
 // Handles: Password Validation, Role Selection
 // ============================================================
 
-// Configuration
-const CONFIG = {
-  API_BASE_URL: 'http://localhost:5000/api',
-  REGISTER_ENDPOINT: '/auth/register',
-};
-
 // State management
 const appState = {
   isPasswordValid: false,
@@ -222,40 +216,35 @@ async function submitRegistration(event) {
     return;
   }
 
-  try {
+try {
     elements.submitBtn.disabled = true;
     elements.submitBtn.textContent = 'Creating account...';
 
-    const response = await fetch(`${CONFIG.API_BASE_URL}${CONFIG.REGISTER_ENDPOINT}`, {
+    // Thay thế fetch thuần bằng fetchAPI (không cần truyền BASE_URL hay headers nữa)
+    const response = await fetchAPI('/auth/register', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        fullName: formData.fullName,
+        full_name: formData.fullName, // Đổi thành full_name để khớp MySQL Backend
         email: formData.email,
         username: formData.username,
         phone: formData.phone,
         password: formData.password,
-        role: formData.role,
+        role: formData.role, // Nếu ở giao diện không có thẻ select role, nhớ mặc định là 'user'
       }),
     });
 
-    const data = await response.json();
-
-    if (response.ok) {
+    // Vì fetchAPI đã tự throw lỗi nếu response.ok = false, nên xuống được đây chắc chắn là success
+    if (response.success) {
       showNotification('Registration successful! Redirecting to login...', 'success');
       setTimeout(() => {
         window.location.href = 'loginbd.html/login.html';
       }, 1500);
-    } else {
-      showNotification(data.message || 'Registration failed', 'error');
-      elements.submitBtn.disabled = false;
-      elements.submitBtn.textContent = 'Dang ky';
     }
   } catch (error) {
     console.error('Error during registration:', error);
-    showNotification('Network error. Please try again.', 'error');
+    showNotification(error.message || 'Network error. Please try again.', 'error');
     elements.submitBtn.disabled = false;
-    elements.submitBtn.textContent = 'Dang ky';
+    elements.submitBtn.textContent = 'Đăng ký';
   }
 }
 

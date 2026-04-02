@@ -124,17 +124,16 @@ async function handleLoginSubmit(event) {
         console.log('Full user object:', user);
       }
       
-      const APP_ROOT = `${window.location.origin}/Nike/ofuture-frontend`;
-      let redirectUrl = `${APP_ROOT}/index.html`; // default for buyer/user
-      
+      let redirectUrl = '../index.html'; // mặc định
+
       if (userRole === 'admin') {
-        redirectUrl = `${APP_ROOT}/dashboard-admin/index.html`;
+        redirectUrl = '../dashboard-admin/indexAdmin.html';
         console.log('✓ Admin user detected - redirecting to admin dashboard');
       } else if (userRole === 'seller') {
-        redirectUrl = `${APP_ROOT}/dashboard-seller/index.html`;
+        redirectUrl = '../dashboard-seller/indexSeller.html';
         console.log('✓ Seller user detected');
-      } else if (userRole === 'buyer') {
-        redirectUrl = `${APP_ROOT}/index.html`;
+      } else if (userRole === 'buyer' || userRole === 'user') {
+        redirectUrl = '../buyer-dashboard.html';
         console.log('✓ Buyer user detected');
       } else {
         console.warn('⚠️  Unknown role - defaulting to home page. Role value:', userRole);
@@ -335,13 +334,14 @@ async function handleGoogleSignIn(response) {
       // Role-based redirect (similar logic)
       const user = data.data?.user || data.user;
       const userRole = user?.role;
-      const APP_ROOT = `${window.location.origin}/Nike/ofuture-frontend`;
-      let redirectUrl = `${APP_ROOT}/index.html`;
+      let redirectUrl = '../index.html';
 
       if (userRole === 'admin') {
-        redirectUrl = `${APP_ROOT}/dashboard-admin/index.html`;
+        redirectUrl = '../dashboard-admin/indexAdmin.html';
       } else if (userRole === 'seller') {
-        redirectUrl = `${APP_ROOT}/dashboard-seller/index.html`;
+        redirectUrl = '../dashboard-seller/indexSeller.html';
+      } else if (userRole === 'buyer' || userRole === 'user') {
+        redirectUrl = '../buyer-dashboard.html';
       }
 
       setTimeout(() => {

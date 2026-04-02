@@ -3,8 +3,6 @@
 // API Base URL
 // ============================================================
 
-const API_BASE_URL = 'http://localhost:5000/api';
-
 // Store data
 let currentUser = null;
 let allProducts = [];
@@ -55,7 +53,7 @@ async function initializeDashboard() {
 // API Calls with Auth
 // ============================================================
 
-async function apiCall(endpoint, options = {}) {
+async function fetchAPI(endpoint, options = {}) {
     const token = localStorage.getItem('accessToken');
 
     if (!token) {
@@ -115,7 +113,7 @@ async function loadDashboardData() {
 
 async function loadProducts() {
     try {
-        const response = await apiCall(`/products?sellerId=${currentUser.id}`);
+        const response = await fetchAPI(`/products?sellerId=${currentUser.id}`);
         allProducts = response.data || [];
         renderProductsTable();
     } catch (error) {
@@ -126,7 +124,7 @@ async function loadProducts() {
 
 async function loadOrders() {
     try {
-        const response = await apiCall(`/orders?sellerId=${currentUser.id}`);
+        const response = await fetchAPI(`/orders?sellerId=${currentUser.id}`);
         allOrders = response.data || [];
         renderOrdersTable();
     } catch (error) {
@@ -137,7 +135,7 @@ async function loadOrders() {
 
 async function loadEscrow() {
     try {
-        const response = await apiCall(`/escrow?sellerId=${currentUser.id}`);
+        const response = await fetchAPI(`/escrow?sellerId=${currentUser.id}`);
         allEscrow = response.data || [];
         renderEscrowTable();
     } catch (error) {
@@ -148,7 +146,7 @@ async function loadEscrow() {
 
 async function loadReviews() {
     try {
-        const response = await apiCall(`/reviews?sellerId=${currentUser.id}`);
+        const response = await fetchAPI(`/reviews?sellerId=${currentUser.id}`);
         allReviews = response.data || [];
         renderReviews();
     } catch (error) {
@@ -309,7 +307,7 @@ async function addProduct(e) {
     }
 
     try {
-        const response = await apiCall('/products', {
+        const response = await fetchAPI('/products', {
             method: 'POST',
             body: JSON.stringify({
                 name,
@@ -332,7 +330,7 @@ async function deleteProduct(productId) {
     if (!confirm('Are you sure you want to delete this product?')) return;
 
     try {
-        await apiCall(`/products/${productId}`, {
+        await fetchAPI(`/products/${productId}`, {
             method: 'DELETE',
         });
 
@@ -351,7 +349,7 @@ async function confirmShipping(orderId) {
     if (!confirm('Confirm shipping for this order?')) return;
 
     try {
-        await apiCall(`/orders/${orderId}/status`, {
+        await fetchAPI(`/orders/${orderId}/status`, {
             method: 'PATCH',
             body: JSON.stringify({
                 status: 'shipped',
