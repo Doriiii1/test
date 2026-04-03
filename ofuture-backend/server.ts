@@ -13,6 +13,7 @@ import morgan from 'morgan';
 import rateLimit from 'express-rate-limit';
 import { v4 as uuidv4 } from 'uuid';
 import path from 'path';
+const sampleRoutes = require('./routes/sampleRoutes');
 
 // Mở rộng interface Request của Express để TypeScript nhận diện req.requestId
 declare global {
@@ -214,7 +215,8 @@ app.use('/api/admin',    adminRoutes);    // Phase 9
 app.use('/api/mfa',      mfaRoutes);      // Phase 11
 app.use('/api/chat',     chatRoutes);     // Phase 12
 app.use('/api/payments', paymentRoutes);
-app.use('/api/seller', sellerRoutes);
+app.use('/api/seller',   sellerRoutes);
+app.use('/api/samples',  sampleRoutes);
 
 // ────────────────────────────────────────────
 // 7. 404 HANDLER

@@ -13,6 +13,7 @@ import { LogModel, LOG_EVENTS } from '../models/logModel';
 const { generateSlug } = require('../utils/securityUtils');
 import logger from '../utils/logger';
 import { pool } from '../config/db';
+import crypto from 'crypto';
 
 interface ProductRequest extends Request {
   user?: any;
@@ -53,7 +54,8 @@ const createProduct = async (req: ProductRequest, res: Response): Promise<any> =
         : [req.body.imageUrls];
     }
 
-    const slug = generateSlug(name);
+    const randomHex = crypto.randomBytes(3).toString('hex');
+    const slug = `${generateSlug(name)}-${randomHex}`;
 
     await ProductModel.create({
       sellerId     : req.user.id,

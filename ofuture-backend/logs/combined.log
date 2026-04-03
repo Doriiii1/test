@@ -1,1 +1,50 @@
 
+2026-04-03 15:16:32 [warn]: [CSRF] CSRF_SECRET not set in env — falling back to JWT_SECRET. Set CSRF_SECRET explicitly in production.
+2026-04-03 15:16:33 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 15:16:33 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 15:16:33 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 15:16:33 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 15:16:33 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 15:16:33 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 15:16:33 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 15:16:33 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 15:16:33 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 15:16:33 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 15:16:33 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 15:16:33 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 15:16:33 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 15:16:33 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 15:16:33 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 15:16:33 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 15:16:33 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 15:16:33 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 15:16:34 [info]: 🧪  RBAC test routes enabled (development only)
+2026-04-03 15:16:34 [info]: 🚀  O'Future API running on port 5000
+2026-04-03 15:16:34 [info]: 📍  Environment: development
+2026-04-03 15:16:34 [info]: 🔗  Health check: http://localhost:5000/health
+2026-04-03 15:16:34 [info]: [redisClient] ioredis ready — using real Redis client.
+2026-04-03 15:16:48 [http]: ::1 - - [03/Apr/2026:08:16:48 +0000] "GET /api/auth/me HTTP/1.1" 401 51 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 15:42:09 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 15:42:09 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 15:42:09 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 15:42:09 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 15:42:09 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 15:42:09 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 15:42:09 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 15:42:09 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 15:42:09 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 15:42:09 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 15:42:09 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 15:42:09 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 15:42:09 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 15:42:09 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 15:42:09 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 15:42:09 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 15:42:09 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 15:42:09 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 15:42:09 [warn]: [CSRF] CSRF_SECRET not set in env — falling back to JWT_SECRET. Set CSRF_SECRET explicitly in production.
+2026-04-03 15:42:10 [info]: 🧪  RBAC test routes enabled (development only)
+2026-04-03 15:42:10 [info]: 🚀  O'Future API running on port 5000
+2026-04-03 15:42:10 [info]: 📍  Environment: development
+2026-04-03 15:42:10 [info]: 🔗  Health check: http://localhost:5000/health
+2026-04-03 15:42:10 [info]: [redisClient] ioredis ready — using real Redis client.

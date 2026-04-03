@@ -77,8 +77,8 @@ async function loadProducts() {
     if (tbody) tbody.innerHTML = '<tr><td colspan="5" class="text-center">Loading...</td></tr>';
     try {
         // Public route accepts sellerId query param for listing — safe because it only reads
-        const response = await fetchAPI(`/products?sellerId=${currentUser.id}&limit=100`);
-        allProducts = response.data || [];
+        const response = await fetchAPI(`/products/seller/my?limit=100`);
+        allProducts = Array.isArray(response.data) ? response.data : [];
         renderProductsTable();
     } catch (error) {
         const tbody = document.getElementById('productsTableBody');

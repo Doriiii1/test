@@ -51,7 +51,7 @@ function renderOrderSummary() {
 async function placeOrders() {
     if (!accessToken) {
         showToast('Vui lòng đăng nhập để đặt hàng', 'error');
-        window.location.href = 'login.html';
+        window.location.href = 'loginbd.html/login.html';
         return;
     }
 

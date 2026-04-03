@@ -1,1 +1,21 @@
 
+2026-04-03 15:16:32 [warn]: [CSRF] CSRF_SECRET not set in env — falling back to JWT_SECRET. Set CSRF_SECRET explicitly in production.
+2026-04-03 15:16:33 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 15:16:33 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 15:16:33 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 15:16:33 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 15:16:33 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 15:16:33 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 15:16:33 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 15:16:33 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 15:16:33 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 15:42:09 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 15:42:09 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 15:42:09 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 15:42:09 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 15:42:09 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 15:42:09 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 15:42:09 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 15:42:09 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 15:42:09 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 15:42:09 [warn]: [CSRF] CSRF_SECRET not set in env — falling back to JWT_SECRET. Set CSRF_SECRET explicitly in production.
