@@ -299,6 +299,77 @@ button:hover{transform:translateY(-2px);box-shadow:0 16px 36px rgba(79,70,229,0.
  100%{ transform: rotate(0deg) }
 }
 
+/* ── CAPTCHA and Google Sign-In Styles ─────────────────── */
+.g-recaptcha {
+	margin: 10px 0;
+	display: flex;
+	justify-content: center;
+}
+
+.google-btn {
+	margin: 10px 0;
+	display: flex;
+	justify-content: center;
+}
+
+/* ── Additional Responsive Design ─────────────────── */
+@media (max-width: 768px) {
+	.main-container {
+		flex-direction: column;
+		gap: 20px;
+		padding: 100px 18px 120px;
+	}
+
+	.logo-panel {
+		position: static;
+		transform: none;
+		width: 100%;
+		text-align: center;
+		margin-bottom: 20px;
+		opacity: 1;
+		visibility: visible;
+	}
+
+	.logo-image {
+		width: min(80vw, 300px);
+	}
+
+	.login-box {
+		position: static;
+		transform: none;
+		width: 100%;
+		max-width: 400px;
+		padding: 30px 20px;
+		margin: 0 auto;
+		opacity: 1;
+		pointer-events: auto;
+	}
+
+	.login-title {
+		font-size: 28px;
+	}
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+	.main-container {
+		gap: 24px;
+	}
+
+	.logo-panel {
+		left: 8vw;
+		width: min(30vw, 350px);
+	}
+
+	.logo-image {
+		width: min(32vw, 400px);
+	}
+
+	.login-box {
+		right: 8vw;
+		width: 400px;
+	}
+}
+
 @keyframes kick-leg{
 	0%{ transform: rotate(0deg) }
 	40%{ transform: rotate(-80deg) }
