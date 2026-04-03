@@ -31,48 +31,27 @@ function getStatusText(status) {
 }
 
 // Tab navigation
-document.querySelectorAll('.tab').forEach(tab => {
+document.querySelectorAll('.tab-btn').forEach(tab => {
     tab.addEventListener('click', () => {
-        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.tab-btn').forEach(t => t.classList.remove('active'));
         tab.classList.add('active');
-        
         currentStatus = tab.dataset.status;
-        currentPage = 1;
+        currentPage   = 1;
         loadOrders();
     });
 });
 
 async function loadOrders() {
-    if (!accessToken) {
-        window.location.href = 'loginbd.html/login.html';
-        return;
-    }
-
+    if (!accessToken) { window.location.href = 'loginbd.html/login.html'; return; }
     try {
-        const params = new URLSearchParams({
-            page: currentPage,
-            limit: 10
-        });
+        const params = new URLSearchParams({ page: currentPage, limit: 10 });
+        if (currentStatus !== 'all') params.append('status', currentStatus);
 
-        if (currentStatus !== 'all') {
-            params.append('status', currentStatus);
-        }
-
-        const response = await fetch(`${API_URL}/orders/my?${params}`, {
-            headers: { 'Authorization': `Bearer ${accessToken}` }
-        });
-
-        if (!response.ok) throw new Error('Failed to load orders');
-
-        const { data } = await response.json();
-        renderOrders(data);
+        const { data } = await fetchAPI(`/orders/my?${params}`);
+        renderOrders(data || []);
     } catch (error) {
-        document.getElementById('ordersList').innerHTML = `
-            <div class="empty-state">
-                <h2>Không thể tải đơn hàng</h2>
-                <p>${error.message}</p>
-            </div>
-        `;
+        document.getElementById('ordersList').innerHTML =
+          `<div class="empty-state"><h2>Không thể tải đơn hàng</h2><p>${error.message}</p></div>`;
     }
 }
 
@@ -229,9 +208,7 @@ function showOrderDetail(order) {
     modal.classList.add('show');
 }
 
-function closeOrderModal() {
-    document.getElementById('orderModal').classList.remove('show');
-}
+function closeOrderModal()  { document.getElementById('orderModal').style.display  = 'none'; }
 
 async function cancelOrder(orderId) {
     if (!confirm('Bạn có chắc muốn hủy đơn hàng này?')) return;
@@ -287,10 +264,7 @@ function openDispute(orderId) {
     document.getElementById('disputeModal').classList.add('show');
 }
 
-function closeDisputeModal() {
-    document.getElementById('disputeModal').classList.remove('show');
-    currentOrderId = null;
-}
+function closeDisputeModal(){ document.getElementById('disputeModal').style.display = 'none'; }
 
 document.getElementById('disputeForm').addEventListener('submit', async (e) => {
     e.preventDefault();

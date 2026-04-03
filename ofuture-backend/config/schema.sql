@@ -80,6 +80,12 @@ CREATE TABLE IF NOT EXISTS refresh_tokens (
     REFERENCES users (id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+ALTER TABLE refresh_tokens
+  ADD COLUMN IF NOT EXISTS device_fingerprint VARCHAR(128) NULL AFTER token_hash,
+  ADD COLUMN IF NOT EXISTS last_used_ip       VARCHAR(45)  NULL AFTER ip_address,
+  ADD COLUMN IF NOT EXISTS last_used_at       DATETIME     NULL AFTER last_used_ip,
+  ADD COLUMN IF NOT EXISTS revoke_reason      VARCHAR(100) NULL AFTER revoked;
+
 -- ============================================================
 -- TABLE 3: products
 -- Products listed by sellers.
@@ -380,6 +386,65 @@ CREATE TABLE IF NOT EXISTS chat_messages (
     INDEX idx_chat_message_session (session_id),
     CONSTRAINT fk_chat_message_session FOREIGN KEY (session_id)
         REFERENCES chat_sessions(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- ============================================================
+-- TABLE: sample_requests
+-- ============================================================
+CREATE TABLE IF NOT EXISTS sample_requests (
+  id             CHAR(36)        NOT NULL DEFAULT (UUID()),
+  product_id     CHAR(36)        NOT NULL,
+  buyer_id       CHAR(36)        NOT NULL,
+  seller_id      CHAR(36)        NOT NULL,
+  deposit_amount DECIMAL(12, 2)  NOT NULL,
+  notes          TEXT            NULL,
+  status         ENUM(
+                   'requested',
+                   'approved',
+                   'shipped',
+                   'returned',
+                   'cancelled',
+                   'converted_to_order'
+                 )               NOT NULL DEFAULT 'requested',
+  created_at     DATETIME        NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at     DATETIME        NOT NULL DEFAULT CURRENT_TIMESTAMP
+                                 ON UPDATE CURRENT_TIMESTAMP,
+
+  PRIMARY KEY (id),
+  INDEX idx_sr_buyer_id  (buyer_id),
+  INDEX idx_sr_seller_id (seller_id),
+  INDEX idx_sr_product_id(product_id),
+  CONSTRAINT fk_sr_buyer   FOREIGN KEY (buyer_id)   REFERENCES users    (id) ON DELETE RESTRICT,
+  CONSTRAINT fk_sr_seller  FOREIGN KEY (seller_id)  REFERENCES users    (id) ON DELETE RESTRICT,
+  CONSTRAINT fk_sr_product FOREIGN KEY (product_id) REFERENCES products (id) ON DELETE RESTRICT
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- ============================================================
+-- TABLE: disputes
+-- ============================================================
+CREATE TABLE IF NOT EXISTS disputes (
+  id              CHAR(36)        NOT NULL DEFAULT (UUID()),
+  order_id        CHAR(36)        NOT NULL,
+  complainant_id  CHAR(36)        NOT NULL,
+  reason          TEXT            NOT NULL,
+  evidence_url    VARCHAR(500)    NULL,
+  status          ENUM(
+                    'pending',
+                    'resolved_refunded',
+                    'resolved_released',
+                    'rejected'
+                  )               NOT NULL DEFAULT 'pending',
+  resolved_at     DATETIME        NULL,
+  created_at      DATETIME        NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at      DATETIME        NOT NULL DEFAULT CURRENT_TIMESTAMP
+                                  ON UPDATE CURRENT_TIMESTAMP,
+
+  PRIMARY KEY (id),
+  INDEX idx_disputes_order_id       (order_id),
+  INDEX idx_disputes_complainant_id (complainant_id),
+  INDEX idx_disputes_status         (status),
+  CONSTRAINT fk_disputes_order      FOREIGN KEY (order_id)       REFERENCES orders (id) ON DELETE RESTRICT,
+  CONSTRAINT fk_disputes_complainant FOREIGN KEY (complainant_id) REFERENCES users  (id) ON DELETE RESTRICT
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- 3. (Optional) Table to store platform policies for RAG context

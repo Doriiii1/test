@@ -6,6 +6,11 @@
 
 import express from 'express';
 import rateLimit from 'express-rate-limit';
+import { Request, Response } from 'express';
+import { body } from 'express-validator';
+import bcrypt from 'bcryptjs';
+import UserModel from '../models/userModel';
+import { pool } from '../config/db';
 const { register, login, refreshToken, logout, getMe, verifyEmail, resendOtp, googleLogin } = require('../controllers/authController');
 const { authenticate }     = require('../middleware/auth');
 const { noCache, autobanCheck } = require('../middleware/security');
@@ -51,6 +56,65 @@ const refreshLimiter = rateLimit({
   standardHeaders: true,
   legacyHeaders  : false,
 });
+
+
+// PUT /api/auth/profile  — update fullName + phone
+router.put(
+  '/profile',
+  authenticate,
+  [
+    body('fullName').optional().trim().isLength({ min: 2, max: 150 }).escape(),
+    body('phone').optional().isMobilePhone('any').withMessage('Invalid phone number.'),
+  ],
+  async (req: any, res: Response): Promise<any> => {
+    const { fullName, phone } = req.body;
+    try {
+      await UserModel.updateProfile(req.user.id, {
+        fullName : fullName ?? null,
+        phone    : phone    ?? null,
+        avatarUrl: null,
+      });
+      res.status(200).json({ success: true, message: 'Profile updated.' });
+    } catch (err) {
+      res.status(500).json({ success: false, message: 'Update failed.' });
+    }
+  }
+);
+
+// POST /api/auth/change-password
+router.post(
+  '/change-password',
+  authenticate,
+  [
+    body('currentPassword').notEmpty().withMessage('Current password required.'),
+    body('newPassword')
+      .isLength({ min: 8 }).withMessage('Min 8 characters.')
+      .matches(/[A-Z]/).withMessage('Needs uppercase.')
+      .matches(/[a-z]/).withMessage('Needs lowercase.')
+      .matches(/\d/).withMessage('Needs number.')
+      .matches(/[!@#$%^&*(),.?":{}|<>]/).withMessage('Needs special char.'),
+  ],
+  async (req: any, res: Response): Promise<any> => {
+    const { currentPassword, newPassword } = req.body;
+    try {
+      const user = await UserModel.findByEmail(req.user.email);
+      if (!user) return res.status(404).json({ success: false, message: 'User not found.' });
+
+      const match = await bcrypt.compare(currentPassword, user.password_hash);
+      if (!match) return res.status(401).json({ success: false, message: 'Current password is incorrect.' });
+
+      const hash = await bcrypt.hash(newPassword, 12);
+      await pool.execute('UPDATE users SET password_hash = ? WHERE id = ?', [hash, req.user.id]);
+
+      // Revoke all sessions so stolen tokens are invalidated
+      await pool.execute('UPDATE refresh_tokens SET revoked = 1 WHERE user_id = ?', [req.user.id]);
+
+      res.status(200).json({ success: true, message: 'Password changed. Please log in again.' });
+    } catch (err) {
+      res.status(500).json({ success: false, message: 'Failed to change password.' });
+    }
+  }
+);
 
 // ── Route Definitions ─────────────────────────
 

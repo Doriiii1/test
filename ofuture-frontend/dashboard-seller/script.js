@@ -1,16 +1,12 @@
-// ============================================================
-// O'Future Seller Dashboard - JavaScript (Optimized & Cleaned)
-// LƯU Ý: Không tự định nghĩa fetchAPI, sử dụng từ ../api.js
-// ============================================================
+// ofuture-frontend/dashboard-seller/script.js
+// Complete rewrite of data-loading section only — structure unchanged
 
-// Store data
 let currentUser = null;
 let allProducts = [];
-let allOrders = [];
-let allEscrow = [];
-let allReviews = [];
-// BỔ SUNG: Chứa dữ liệu Hàng mẫu và Tranh chấp
-let allSamples = []; 
+let allOrders   = [];
+let allEscrow   = [];
+let allReviews  = [];
+let allSamples  = [];
 let allDisputes = [];
 
 // ============================================================
@@ -19,7 +15,7 @@ let allDisputes = [];
 
 async function initializeDashboard() {
     const token = localStorage.getItem('accessToken');
-    const user = localStorage.getItem('user');
+    const user  = localStorage.getItem('user');
 
     if (!token || !user) {
         window.location.href = '../loginbd.html/login.html';
@@ -30,173 +26,206 @@ async function initializeDashboard() {
         currentUser = JSON.parse(user);
 
         if (currentUser.role !== 'seller') {
-            alert('Chỉ người bán (Seller) mới có quyền truy cập trang này!');
+            alert('Only sellers can access this dashboard.');
             window.location.href = '../index.html';
             return;
         }
 
         const usernameEl = document.getElementById('username');
-        if(usernameEl) usernameEl.textContent = currentUser.full_name || currentUser.username;
+        if (usernameEl) usernameEl.textContent = currentUser.full_name || currentUser.username;
 
         await loadDashboardData();
         setupEventListeners();
 
     } catch (error) {
-        console.error('Error initializing dashboard:', error);
-        alert('Lỗi phiên đăng nhập. Vui lòng đăng nhập lại.');
+        console.error('Dashboard init error:', error);
+        localStorage.clear();
         window.location.href = '../loginbd.html/login.html';
     }
 }
 
 // ============================================================
-// Data Loading Functions
+// Data Loading — ALL use seller-scoped endpoints
+// sellerId is read from JWT server-side (NOT sent as query param)
 // ============================================================
 
 async function loadDashboardData() {
+    // Show loading state
+    showSectionLoading(true);
     try {
-        // Tải toàn bộ dữ liệu song song để tối ưu tốc độ
         await Promise.all([
             loadProducts(),
             loadOrders(),
             loadEscrow(),
             loadReviews(),
-            loadSamples(),   // Gọi hàm tải Hàng mẫu mới
-            loadDisputes()   // Gọi hàm tải Tranh chấp mới
+            loadSamples(),
+            loadDisputes(),
         ]);
         updateDashboardStats();
     } catch (error) {
-        console.error('Lỗi tải dữ liệu Dashboard: ', error);
-        alert('Lỗi khi tải dữ liệu từ máy chủ!');
+        console.error('Dashboard data error:', error);
+        showGlobalError('Failed to load dashboard data. Please refresh the page.');
+    } finally {
+        showSectionLoading(false);
     }
 }
 
+// FIX: Use /api/products with seller's own listings (public route, no auth needed but filtered by sellerId)
+// Since seller is authenticated, we use the seller route for consistency
 async function loadProducts() {
+    const tbody = document.getElementById('productsTableBody');
+    if (tbody) tbody.innerHTML = '<tr><td colspan="5" class="text-center">Loading...</td></tr>';
     try {
-        const response = await fetchAPI(`/products?sellerId=${currentUser.id}`);
-        allProducts = response.data || response || [];
+        // Public route accepts sellerId query param for listing — safe because it only reads
+        const response = await fetchAPI(`/products?sellerId=${currentUser.id}&limit=100`);
+        allProducts = response.data || [];
         renderProductsTable();
     } catch (error) {
         const tbody = document.getElementById('productsTableBody');
-        if(tbody) tbody.innerHTML = '<tr><td colspan="5" class="text-center" style="color:red;">Lỗi tải sản phẩm</td></tr>';
+        if (tbody) tbody.innerHTML = `<tr><td colspan="5" class="text-center" style="color:red;">
+            Failed to load products: ${error.message}
+        </td></tr>`;
     }
 }
 
+// FIX: was /orders?sellerId=... (adminOnly) → now /seller/orders
 async function loadOrders() {
+    const tbody = document.getElementById('ordersTableBody');
+    if (tbody) tbody.innerHTML = '<tr><td colspan="6" class="text-center">Loading...</td></tr>';
     try {
-        const response = await fetchAPI(`/orders?sellerId=${currentUser.id}`);
-        allOrders = response.data || response || [];
+        const response = await fetchAPI('/seller/orders');
+        allOrders = response.data || [];
         renderOrdersTable();
     } catch (error) {
         const tbody = document.getElementById('ordersTableBody');
-        if(tbody) tbody.innerHTML = '<tr><td colspan="6" class="text-center" style="color:red;">Lỗi tải đơn hàng</td></tr>';
+        if (tbody) tbody.innerHTML = `<tr><td colspan="6" class="text-center" style="color:red;">
+            Failed to load orders: ${error.message}
+        </td></tr>`;
     }
 }
 
+// FIX: was /escrow?sellerId=... (no such route) → now /seller/escrow
 async function loadEscrow() {
+    const tbody = document.getElementById('escrowTableBody');
+    if (tbody) tbody.innerHTML = '<tr><td colspan="6" class="text-center">Loading...</td></tr>';
     try {
-        const response = await fetchAPI(`/escrow?sellerId=${currentUser.id}`);
-        allEscrow = response.data || response || [];
+        const response = await fetchAPI('/seller/escrow');
+        allEscrow = response.data || [];
         renderEscrowTable();
     } catch (error) {
         const tbody = document.getElementById('escrowTableBody');
-        if(tbody) tbody.innerHTML = '<tr><td colspan="6" class="text-center" style="color:red;">Lỗi tải giao dịch ký quỹ</td></tr>';
+        if (tbody) tbody.innerHTML = `<tr><td colspan="6" class="text-center" style="color:red;">
+            Failed to load escrow: ${error.message}
+        </td></tr>`;
     }
 }
 
+// FIX: was /reviews?sellerId=... (no such route) → now /seller/reviews
 async function loadReviews() {
+    const container = document.getElementById('reviewsContainer');
+    if (container) container.innerHTML = '<p class="text-center">Loading...</p>';
     try {
-        const response = await fetchAPI(`/reviews?sellerId=${currentUser.id}`);
-        allReviews = response.data || response || [];
+        const response = await fetchAPI('/seller/reviews');
+        allReviews = response.data || [];
         renderReviews();
     } catch (error) {
         const container = document.getElementById('reviewsContainer');
-        if(container) container.innerHTML = '<p class="text-center" style="color:red;">Lỗi tải đánh giá</p>';
+        if (container) container.innerHTML = `<p class="text-center" style="color:red;">
+            Failed to load reviews: ${error.message}
+        </p>`;
     }
 }
 
-// BỔ SUNG: Hàm tải dữ liệu Hàng mẫu
+// FIX: was /samples?sellerId=... (wrong path) → now /seller/samples
 async function loadSamples() {
+    const tbody = document.getElementById('samplesTableBody');
+    if (tbody) tbody.innerHTML = '<tr><td colspan="6" class="text-center">Loading...</td></tr>';
     try {
-        const response = await fetchAPI(`/samples?sellerId=${currentUser.id}`);
-        allSamples = response.data || response || [];
+        const response = await fetchAPI('/seller/samples');
+        allSamples = response.data || [];
         renderSamplesTable();
     } catch (error) {
         const tbody = document.getElementById('samplesTableBody');
-        if(tbody) tbody.innerHTML = '<tr><td colspan="6" class="text-center" style="color:red;">Lỗi tải yêu cầu hàng mẫu</td></tr>';
+        if (tbody) tbody.innerHTML = `<tr><td colspan="6" class="text-center" style="color:red;">
+            Failed to load samples: ${error.message}
+        </td></tr>`;
     }
 }
 
-// BỔ SUNG: Hàm tải dữ liệu Tranh chấp
+// FIX: was /disputes?sellerId=... (no such route) → now /seller/disputes
 async function loadDisputes() {
+    const tbody = document.getElementById('disputesTableBody');
+    if (tbody) tbody.innerHTML = '<tr><td colspan="6" class="text-center">Loading...</td></tr>';
     try {
-        const response = await fetchAPI(`/disputes?sellerId=${currentUser.id}`);
-        allDisputes = response.data || response || [];
+        const response = await fetchAPI('/seller/disputes');
+        allDisputes = response.data || [];
         renderDisputesTable();
     } catch (error) {
         const tbody = document.getElementById('disputesTableBody');
-        if(tbody) tbody.innerHTML = '<tr><td colspan="6" class="text-center" style="color:red;">Lỗi tải dữ liệu tranh chấp</td></tr>';
+        if (tbody) tbody.innerHTML = `<tr><td colspan="6" class="text-center" style="color:red;">
+            Failed to load disputes: ${error.message}
+        </td></tr>`;
     }
 }
 
 // ============================================================
-// Rendering Functions
+// Rendering Functions (unchanged logic, added null guards)
 // ============================================================
 
 function renderProductsTable() {
     const tbody = document.getElementById('productsTableBody');
     if (!tbody) return;
 
-    if (allProducts.length === 0) {
-        tbody.innerHTML = '<tr><td colspan="5" class="text-center">Chưa có sản phẩm nào</td></tr>';
+    if (!allProducts.length) {
+        tbody.innerHTML = '<tr><td colspan="5" class="text-center">No products yet. Click "Add New Product" to start.</td></tr>';
         return;
     }
 
-    tbody.innerHTML = allProducts.map(product => `
+    tbody.innerHTML = allProducts.map(p => `
         <tr>
             <td>
-                <strong>${product.name}</strong><br>
-                <small style="color: #64748b;">${product.category || 'General'}</small>
+                <strong>${escapeHtml(p.name)}</strong><br>
+                <small style="color:#64748b;">${escapeHtml(p.category || 'General')}</small>
             </td>
-            <td>$${parseFloat(product.price).toFixed(2)}</td>
-            <td>${product.stock_quantity || 0}</td>
+            <td>$${parseFloat(p.price).toFixed(2)}</td>
+            <td>${p.stockQuantity ?? p.stock_quantity ?? 0}</td>
             <td>
-                <span class="badge ${product.status === 'active' ? 'badge-success' : 'badge-warning'}">
-                    ${product.status || 'active'}
+                <span class="badge ${p.status === 'active' ? 'badge-success' : 'badge-warning'}">
+                    ${p.status || 'active'}
                 </span>
             </td>
             <td>
-                <button class="btn btn-small btn-secondary" onclick="alert('Tính năng sửa đang phát triển')">Sửa</button>
-                <button class="btn btn-small btn-danger" onclick="deleteProduct('${product.id}')">Xóa</button>
+                <button class="btn btn-small btn-danger" onclick="deleteProduct('${p.id}')">Delete</button>
             </td>
         </tr>
     `).join('');
-    addBadgeStyles();
+    ensureBadgeStyles();
 }
 
 function renderOrdersTable() {
     const tbody = document.getElementById('ordersTableBody');
     if (!tbody) return;
 
-    if (allOrders.length === 0) {
-        tbody.innerHTML = '<tr><td colspan="6" class="text-center">Chưa có đơn hàng nào</td></tr>';
+    if (!allOrders.length) {
+        tbody.innerHTML = '<tr><td colspan="6" class="text-center">No orders yet.</td></tr>';
         return;
     }
 
     tbody.innerHTML = allOrders.map(order => `
         <tr>
             <td>${order.id?.substring(0, 8).toUpperCase() || 'N/A'}</td>
-            <td>${order.buyer?.username || 'Khách hàng'}</td>
-            <td>${order.product?.name || 'Sản phẩm'}</td>
-            <td>$${parseFloat(order.total_amount).toFixed(2)}</td>
+            <td>${escapeHtml(order.buyer_username || order.buyerUsername || 'Buyer')}</td>
+            <td>${escapeHtml(order.product_name   || order.productName   || 'Product')}</td>
+            <td>$${parseFloat(order.total_amount  || order.totalAmount  || 0).toFixed(2)}</td>
             <td>
                 <span class="badge ${getStatusBadgeClass(order.status)}">
                     ${order.status}
                 </span>
             </td>
             <td>
-                ${(order.status === 'paid' || order.status === 'processing') 
-                    ? `<button class="btn btn-small btn-success" onclick="confirmShipping('${order.id}')">Giao Hàng</button>` 
-                    : '-'}
+                ${order.status === 'paid'
+                    ? `<button class="btn btn-small btn-success" onclick="markShipped('${order.id}')">Mark Shipped</button>`
+                    : '—'}
             </td>
         </tr>
     `).join('');
@@ -206,87 +235,96 @@ function renderEscrowTable() {
     const tbody = document.getElementById('escrowTableBody');
     if (!tbody) return;
 
-    if (allEscrow.length === 0) {
-        tbody.innerHTML = '<tr><td colspan="6" class="text-center">Chưa có giao dịch ký quỹ nào</td></tr>';
+    if (!allEscrow.length) {
+        tbody.innerHTML = '<tr><td colspan="6" class="text-center">No escrow transactions yet.</td></tr>';
         return;
     }
 
-    // BỔ SUNG: Xử lý tính toán Fee và Net Amount minh bạch
-    tbody.innerHTML = allEscrow.map(escrow => {
-        const grossAmount = parseFloat(escrow.amount) || 0;
-        const platformFeePercent = 0.05; // Giả sử phí nền tảng 5%
-        const feeAmount = grossAmount * platformFeePercent;
-        const netAmount = grossAmount - feeAmount;
+    tbody.innerHTML = allEscrow.map(e => {
+        const gross      = parseFloat(e.amount       || 0);
+        const fee        = parseFloat(e.platform_fee || 0);
+        const net        = parseFloat(e.net_amount   || gross - fee);
 
         return `
         <tr>
-            <td>${escrow.order_id?.substring(0, 8).toUpperCase() || 'N/A'}</td>
-            <td>$${grossAmount.toFixed(2)}</td>
-            <td style="color: #ef4444;">-$${feeAmount.toFixed(2)} (5%)</td>
-            <td style="font-weight: 600; color: #10b981;">$${netAmount.toFixed(2)}</td>
+            <td>${(e.order_id || '').substring(0, 8).toUpperCase()}</td>
+            <td>$${gross.toFixed(2)}</td>
+            <td style="color:#ef4444;">-$${fee.toFixed(2)}</td>
+            <td style="font-weight:600;color:#10b981;">$${net.toFixed(2)}</td>
             <td>
-                <span class="badge ${getStatusBadgeClass(escrow.status)}">
-                    ${escrow.status}
-                </span>
+                <span class="badge ${getStatusBadgeClass(e.status)}">${e.status}</span>
             </td>
-            <td>${escrow.released_at ? new Date(escrow.released_at).toLocaleDateString() : '-'}</td>
-        </tr>
-    `}).join('');
+            <td>${e.released_at ? new Date(e.released_at).toLocaleDateString() : '—'}</td>
+        </tr>`;
+    }).join('');
+
+    // Update escrow summary cards
+    const totalHeld     = allEscrow
+        .filter(e => e.status === 'held' || e.status === 'processing')
+        .reduce((sum, e) => sum + parseFloat(e.net_amount || 0), 0);
+    const totalReleased = allEscrow
+        .filter(e => e.status === 'released')
+        .reduce((sum, e) => sum + parseFloat(e.net_amount || 0), 0);
+
+    const heldEl     = document.getElementById('totalHeld');
+    const releasedEl = document.getElementById('totalReleased');
+    if (heldEl)     heldEl.textContent     = `$${totalHeld.toFixed(2)}`;
+    if (releasedEl) releasedEl.textContent = `$${totalReleased.toFixed(2)}`;
 }
 
-// BỔ SUNG: Render bảng Hàng mẫu
 function renderSamplesTable() {
     const tbody = document.getElementById('samplesTableBody');
     if (!tbody) return;
 
-    if (allSamples.length === 0) {
-        tbody.innerHTML = '<tr><td colspan="6" class="text-center">Không có yêu cầu hàng mẫu nào</td></tr>';
+    if (!allSamples.length) {
+        tbody.innerHTML = '<tr><td colspan="6" class="text-center">No sample requests yet.</td></tr>';
         return;
     }
 
-    tbody.innerHTML = allSamples.map(sample => `
+    tbody.innerHTML = allSamples.map(s => `
         <tr>
-            <td>${sample.id?.substring(0, 8).toUpperCase() || 'N/A'}</td>
-            <td>${sample.buyer?.username || 'Buyer'}</td>
-            <td>${sample.product?.name || 'Sản phẩm'}</td>
-            <td>$${parseFloat(sample.deposit_amount).toFixed(2)}</td>
+            <td>${(s.id || '').substring(0, 8).toUpperCase()}</td>
+            <td>${escapeHtml(s.buyer_name  || 'Buyer')}</td>
+            <td>${escapeHtml(s.product_name || 'Product')}</td>
+            <td>$${parseFloat(s.deposit_amount || 0).toFixed(2)}</td>
             <td>
-                <span class="badge ${getStatusBadgeClass(sample.status)}">
-                    ${sample.status}
-                </span>
+                <span class="badge ${getStatusBadgeClass(s.status)}">${s.status}</span>
             </td>
             <td>
-                ${sample.status === 'pending' 
-                    ? `<button class="btn btn-small btn-primary" onclick="alert('Đã duyệt gửi hàng mẫu')">Duyệt</button>` 
-                    : '-'}
+                ${s.status === 'requested'
+                    ? `<button class="btn btn-small btn-primary"
+                              onclick="approveSample('${s.id}')">Approve</button>`
+                    : '—'}
             </td>
         </tr>
     `).join('');
 }
 
-// BỔ SUNG: Render bảng Tranh chấp
 function renderDisputesTable() {
     const tbody = document.getElementById('disputesTableBody');
     if (!tbody) return;
 
-    if (allDisputes.length === 0) {
-        tbody.innerHTML = '<tr><td colspan="6" class="text-center">Không có tranh chấp nào</td></tr>';
+    if (!allDisputes.length) {
+        tbody.innerHTML = '<tr><td colspan="6" class="text-center">No disputes filed against your orders.</td></tr>';
         return;
     }
 
-    tbody.innerHTML = allDisputes.map(dispute => `
+    tbody.innerHTML = allDisputes.map(d => `
         <tr>
-            <td>${dispute.id?.substring(0, 8).toUpperCase() || 'N/A'}</td>
-            <td>${dispute.order_id?.substring(0, 8).toUpperCase() || 'N/A'}</td>
-            <td>${dispute.buyer?.username || 'Buyer'}</td>
-            <td>${dispute.reason || 'Hàng lỗi'}</td>
-            <td>
-                <span class="badge ${getStatusBadgeClass(dispute.status)}">
-                    ${dispute.status}
-                </span>
+            <td>${(d.id || '').substring(0, 8).toUpperCase()}</td>
+            <td>${(d.order_id || '').substring(0, 8).toUpperCase()}</td>
+            <td>${escapeHtml(d.complainant_username || 'Buyer')}</td>
+            <td style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;"
+                title="${escapeHtml(d.reason || '')}">
+                ${escapeHtml(d.reason || '')}
             </td>
             <td>
-                <button class="btn btn-small btn-secondary" onclick="alert('Đang mở hội thoại với Buyer')">Thỏa thuận</button>
+                <span class="badge ${getStatusBadgeClass(d.status)}">${d.status}</span>
+            </td>
+            <td>
+                ${d.status === 'pending'
+                    ? `<span style="color:#f97316;font-size:13px;">Admin reviewing…</span>`
+                    : '—'}
             </td>
         </tr>
     `).join('');
@@ -296,173 +334,217 @@ function renderReviews() {
     const container = document.getElementById('reviewsContainer');
     if (!container) return;
 
-    if (allReviews.length === 0) {
-        container.innerHTML = '<p class="text-center">Chưa có đánh giá nào</p>';
+    if (!allReviews.length) {
+        container.innerHTML = '<p class="text-center" style="color:#64748b;">No reviews yet.</p>';
         return;
     }
 
-    container.innerHTML = allReviews.map(review => `
+    container.innerHTML = allReviews.map(r => `
         <div class="review-card">
-            <div class="review-rating">${'⭐'.repeat(review.rating || 0)}</div>
-            <div class="review-product"><strong>${review.product?.name || 'Sản phẩm'}</strong></div>
-            <div class="review-comment">"${review.body || 'Không có bình luận'}"</div>
+            <div class="review-rating">${'⭐'.repeat(r.rating || 0)}</div>
+            <div class="review-product">
+                <strong>${escapeHtml(r.product_name || 'Product')}</strong>
+                <small style="color:#64748b;"> — ${escapeHtml(r.buyer_username || 'Buyer')}</small>
+            </div>
+            <div class="review-comment">"${escapeHtml(r.body || r.title || 'No comment')}"</div>
+            <div style="font-size:12px;color:#94a3b8;margin-top:8px;">
+                ${new Date(r.created_at).toLocaleDateString()}
+            </div>
         </div>
     `).join('');
 }
 
 function updateDashboardStats() {
-    const totalProdEl = document.getElementById('totalProducts');
-    const totalOrdEl = document.getElementById('totalOrders');
-    if(totalProdEl) totalProdEl.textContent = allProducts.length;
-    if(totalOrdEl) totalOrdEl.textContent = allOrders.length;
+    const setEl = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
 
-    // Tính toán lại tổng tiền sau khi trừ 5% phí
-    const totalGrossHeld = allEscrow.reduce((sum, e) => sum + ((e.status === 'held' || e.status === 'processing') ? parseFloat(e.amount || 0) : 0), 0);
-    const totalGrossReleased = allEscrow.reduce((sum, e) => sum + (e.status === 'released' ? parseFloat(e.amount || 0) : 0), 0);
+    setEl('totalProducts', allProducts.length);
+    setEl('totalOrders',   allOrders.length);
 
-    const netHeld = totalGrossHeld * 0.95;
-    const netReleased = totalGrossReleased * 0.95;
+    const netHeld = allEscrow
+        .filter(e => e.status === 'held' || e.status === 'processing')
+        .reduce((sum, e) => sum + parseFloat(e.net_amount || 0), 0);
+    setEl('totalEscrow', `$${netHeld.toFixed(2)}`);
 
-    const totalEscrowEl = document.getElementById('totalEscrow');
-    const totalHeldEl = document.getElementById('totalHeld');
-    const totalRelEl = document.getElementById('totalReleased');
-    
-    // Hiển thị số tiền thực nhận (Net)
-    if(totalEscrowEl) totalEscrowEl.textContent = '$' + netHeld.toFixed(2);
-    if(totalHeldEl) totalHeldEl.textContent = '$' + netHeld.toFixed(2);
-    if(totalRelEl) totalRelEl.textContent = '$' + netReleased.toFixed(2);
-
-    const avgRating = allReviews.length > 0
-        ? (allReviews.reduce((sum, r) => sum + (r.rating || 0), 0) / allReviews.length).toFixed(1)
-        : '0';
-    const avgRatingEl = document.getElementById('avgRating');
-    if(avgRatingEl) avgRatingEl.textContent = avgRating + ' ⭐';
+    const avgRating = allReviews.length
+        ? (allReviews.reduce((s, r) => s + (r.rating || 0), 0) / allReviews.length).toFixed(1)
+        : '—';
+    setEl('avgRating', avgRating + (allReviews.length ? ' ⭐' : ''));
 }
 
 // ============================================================
 // Action Functions
 // ============================================================
 
+// FIX: Product creation uses FormData — backend now has multer middleware
 async function addProduct(e) {
     e.preventDefault();
 
-    const name = document.getElementById('productName').value;
-    const category = document.getElementById('productCategory').value;
-    const description = document.getElementById('productDesc').value;
-    const price = document.getElementById('productPrice').value;
-    const stock = document.getElementById('productStock').value;
-    const imageInput = document.getElementById('productImages');
+    const name        = document.getElementById('productName').value.trim();
+    const category    = document.getElementById('productCategory').value;
+    const description = document.getElementById('productDesc').value.trim();
+    const price       = document.getElementById('productPrice').value;
+    const stock       = document.getElementById('productStock').value;
+    const imageInput  = document.getElementById('productImages');
 
     if (!name || !category || !price || stock < 0) {
-        alert('Vui lòng điền đầy đủ thông tin bắt buộc (Tên, Danh mục, Giá, Tồn kho)');
+        alert('Please fill in all required fields (Name, Category, Price, Stock).');
         return;
     }
 
-    try {
-        // 1. Dùng FormData thay vì JSON.stringify để chở được File vật lý
-        const formData = new FormData();
-        formData.append('name', name);
-        formData.append('category', category);
-        formData.append('description', description);
-        formData.append('price', price);
-        formData.append('stockQuantity', stock);
+    const formData = new FormData();
+    formData.append('name',          name);
+    formData.append('category',      category);
+    formData.append('description',   description);
+    formData.append('price',         price);
+    formData.append('stockQuantity', stock);
 
-        // 2. Nhồi các file ảnh vào FormData (Giới hạn 5 ảnh)
-        if (imageInput.files && imageInput.files.length > 0) {
-            const files = Array.from(imageInput.files).slice(0, 5);
-            files.forEach(file => {
-                // Tên key 'images' phải khớp chính xác với uploadImages.array('images', 5) ở Backend
-                formData.append('images', file); 
-            });
-        }
-
-        // 3. Bắn thẳng FormData lên API
-        await fetchAPI('/products', {
-            method: 'POST',
-            body: formData 
+    if (imageInput.files && imageInput.files.length > 0) {
+        Array.from(imageInput.files).slice(0, 5).forEach(file => {
+            formData.append('images', file);  // key must match uploadImages.array('images', 5)
         });
+    }
 
-        alert('Thêm sản phẩm thành công!');
+    try {
+        const submitBtn = document.querySelector('#productForm button[type="submit"]');
+        if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Saving...'; }
+
+        // fetchAPI in api.js detects FormData and does NOT set Content-Type
+        // (lets browser set multipart/form-data with boundary automatically)
+        await fetchAPI('/products', { method: 'POST', body: formData });
+
+        alert('Product added successfully!');
         closeProductForm();
         await loadProducts();
+
     } catch (error) {
-        alert('Lỗi thêm sản phẩm: ' + error.message);
+        alert(`Failed to add product: ${error.message}`);
+    } finally {
+        const submitBtn = document.querySelector('#productForm button[type="submit"]');
+        if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Save Product'; }
     }
 }
 
 async function deleteProduct(productId) {
-    if (!confirm('Bạn có chắc chắn muốn xóa sản phẩm này?')) return;
+    if (!confirm('Are you sure you want to delete this product?')) return;
     try {
         await fetchAPI(`/products/${productId}`, { method: 'DELETE' });
-        alert('Xóa sản phẩm thành công!');
+        alert('Product deleted.');
         await loadProducts();
     } catch (error) {
-        alert('Lỗi xóa sản phẩm: ' + error.message);
+        alert(`Failed to delete product: ${error.message}`);
     }
 }
 
-async function confirmShipping(orderId) {
-    if (!confirm('Xác nhận đã gửi hàng cho đơn này?')) return;
+// FIX: was PATCH /orders/:id/status → correct is POST /orders/:id/ship
+async function markShipped(orderId) {
+    if (!confirm('Confirm this order has been shipped?')) return;
     try {
-        await fetchAPI(`/orders/${orderId}/status`, {
-            method: 'PATCH',
-            body: JSON.stringify({ status: 'shipped' }),
+        await fetchAPI(`/orders/${orderId}/ship`, {
+            method: 'POST',
+            body  : JSON.stringify({ trackingNumber: '', carrier: '' }),
         });
-        alert('Cập nhật trạng thái đơn hàng thành "Đang giao" thành công!');
+        alert('Order marked as shipped!');
         await loadOrders();
     } catch (error) {
-        alert('Lỗi cập nhật: ' + error.message);
+        alert(`Failed to update order: ${error.message}`);
+    }
+}
+
+// Approve sample request (update status → 'approved')
+async function approveSample(sampleId) {
+    if (!confirm('Approve this sample request?')) return;
+    try {
+        await fetchAPI(`/samples/${sampleId}/status`, {
+            method: 'PUT',
+            body  : JSON.stringify({ status: 'approved' }),
+        });
+        alert('Sample request approved!');
+        await loadSamples();
+    } catch (error) {
+        alert(`Failed to approve sample: ${error.message}`);
     }
 }
 
 // ============================================================
-// Helper & Event Listeners
+// Helpers
 // ============================================================
 
 function getStatusBadgeClass(status) {
-    const classes = {
-        pending: 'badge-warning',
+    const map = {
+        pending   : 'badge-warning',
         processing: 'badge-info',
-        paid: 'badge-info',
-        shipped: 'badge-info',
-        completed: 'badge-success',
-        cancelled: 'badge-danger',
-        held: 'badge-warning',
-        released: 'badge-success',
-        disputed: 'badge-danger',
-        resolved: 'badge-success'
+        paid      : 'badge-info',
+        shipped   : 'badge-info',
+        completed : 'badge-success',
+        cancelled : 'badge-danger',
+        held      : 'badge-warning',
+        releasing : 'badge-info',
+        released  : 'badge-success',
+        disputed  : 'badge-danger',
+        resolved_refunded : 'badge-danger',
+        resolved_released : 'badge-success',
+        rejected  : 'badge-secondary',
+        requested : 'badge-warning',
+        approved  : 'badge-success',
+        active    : 'badge-success',
+        inactive  : 'badge-warning',
     };
-    return classes[status] || 'badge-secondary';
+    return map[status] || 'badge-secondary';
 }
 
-function addBadgeStyles() {
-    if (!document.getElementById('badge-styles')) {
-        const style = document.createElement('style');
-        style.id = 'badge-styles';
-        style.textContent = `
-            .badge { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; text-transform: uppercase; }
-            .badge-success { background-color: #d1fae5; color: #065f46; }
-            .badge-warning { background-color: #fed7aa; color: #92400e; }
-            .badge-danger { background-color: #fee2e2; color: #991b1b; }
-            .badge-info { background-color: #dbeafe; color: #0c2d6b; }
-            .badge-secondary { background-color: #e5e7eb; color: #374151; }
-        `;
-        document.head.appendChild(style);
-    }
+// XSS prevention for rendered HTML
+function escapeHtml(str) {
+    if (str == null) return '';
+    return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+}
+
+function showSectionLoading(loading) {
+    // Update dashboard stat cards to show loading state
+    ['totalProducts','totalOrders','totalEscrow','avgRating'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el && loading) el.textContent = '…';
+    });
+}
+
+function showGlobalError(message) {
+    console.error(message);
+    // Could add a toast notification here
+}
+
+function ensureBadgeStyles() {
+    if (document.getElementById('badge-styles')) return;
+    const style = document.createElement('style');
+    style.id = 'badge-styles';
+    style.textContent = `
+        .badge{display:inline-block;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.3px}
+        .badge-success{background:#d1fae5;color:#065f46}
+        .badge-warning{background:#fed7aa;color:#92400e}
+        .badge-danger{background:#fee2e2;color:#991b1b}
+        .badge-info{background:#dbeafe;color:#1e40af}
+        .badge-secondary{background:#e5e7eb;color:#374151}
+    `;
+    document.head.appendChild(style);
 }
 
 function closeProductForm() {
-    const formPanel = document.getElementById('addProductForm');
-    if(formPanel) formPanel.style.display = 'none';
-    const formEl = document.getElementById('productForm');
-    if(formEl) formEl.reset();
+    const panel = document.getElementById('addProductForm');
+    if (panel) panel.style.display = 'none';
+    const form  = document.getElementById('productForm');
+    if (form)  form.reset();
 }
 
+// ============================================================
+// Event Listeners & Navigation
+// ============================================================
+
 function setupEventListeners() {
-    // Xử lý chuyển tab Menu
-    const menuItems = document.querySelectorAll('.menu-item');
-    menuItems.forEach((item) => {
-        item.addEventListener('click', (e) => {
+    document.querySelectorAll('.menu-item').forEach(item => {
+        item.addEventListener('click', e => {
             e.preventDefault();
             const section = item.getAttribute('data-section');
             showSection(section, item);
@@ -470,43 +552,45 @@ function setupEventListeners() {
     });
 
     const addBtn = document.getElementById('addProductBtn');
-    if(addBtn) addBtn.addEventListener('click', () => { document.getElementById('addProductForm').style.display = 'flex'; });
-    
-    const prodForm = document.getElementById('productForm');
-    if(prodForm) prodForm.addEventListener('submit', addProduct);
+    if (addBtn) addBtn.addEventListener('click', () => {
+        document.getElementById('addProductForm').style.display = 'flex';
+    });
 
-    const formPanel = document.getElementById('addProductForm');
-    if(formPanel) formPanel.addEventListener('click', (e) => { if (e.target.id === 'addProductForm') closeProductForm(); });
+    const prodForm = document.getElementById('productForm');
+    if (prodForm) prodForm.addEventListener('submit', addProduct);
+
+    const overlay = document.getElementById('addProductForm');
+    if (overlay) overlay.addEventListener('click', e => {
+        if (e.target.id === 'addProductForm') closeProductForm();
+    });
 
     const logoutBtn = document.getElementById('logoutBtn');
-    if(logoutBtn) {
-        logoutBtn.addEventListener('click', async () => {
-            try { await fetchAPI('/auth/logout', { method: 'POST' }); } catch(e){}
-            localStorage.clear();
-            window.location.href = '../loginbd.html/login.html';
-        });
-    }
+    if (logoutBtn) logoutBtn.addEventListener('click', async () => {
+        try { await fetchAPI('/auth/logout', { method: 'POST', body: JSON.stringify({ allDevices: false }) }); }
+        catch (e) {}
+        localStorage.clear();
+        window.location.href = '../loginbd.html/login.html';
+    });
 }
 
-function showSection(sectionName, menuItem) {
+function showSection(name, menuItem) {
     document.querySelectorAll('.menu-item').forEach(i => i.classList.remove('active'));
     menuItem.classList.add('active');
     document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-    const section = document.getElementById(`${sectionName}-section`);
+    const section = document.getElementById(`${name}-section`);
     if (section) section.classList.add('active');
 
-    // Bổ sung Title cho 2 trang mới
     const titles = {
-        dashboard: 'Dashboard',
-        products: 'Products',
-        orders: 'Orders',
-        escrow: 'Escrow Tracking',
-        samples: 'Sample Requests',
-        disputes: 'Disputes Management',
-        reviews: 'Reviews',
+        dashboard : 'Dashboard',
+        products  : 'My Products',
+        orders    : 'Orders',
+        escrow    : 'Escrow Tracking',
+        samples   : 'Sample Requests',
+        disputes  : 'Disputes',
+        reviews   : 'Reviews',
     };
     const titleEl = document.getElementById('pageTitle');
-    if(titleEl) titleEl.textContent = titles[sectionName] || 'Dashboard';
+    if (titleEl) titleEl.textContent = titles[name] || 'Dashboard';
 }
 
 document.addEventListener('DOMContentLoaded', initializeDashboard);

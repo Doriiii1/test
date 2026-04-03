@@ -54,7 +54,42 @@
     </main>
 
     <div id="toast" class="toast"></div>
-
+    
+    <script src="api.js"></script>
     <script src="orders.js"></script>
+
+<!-- Order Detail Modal -->
+<div id="orderModal" class="modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:1000;align-items:center;justify-content:center;">
+  <div style="background:#fff;border-radius:16px;padding:32px;max-width:600px;width:90%;max-height:80vh;overflow-y:auto;position:relative;">
+    <button onclick="closeOrderModal()" style="position:absolute;top:16px;right:16px;background:none;border:none;font-size:24px;cursor:pointer;">×</button>
+    <div id="orderDetail"></div>
+  </div>
+</div>
+
+<!-- Dispute Modal -->
+<div id="disputeModal" class="modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:1000;align-items:center;justify-content:center;">
+  <div style="background:#fff;border-radius:16px;padding:32px;max-width:500px;width:90%;">
+    <h2 style="margin-bottom:16px;">Gửi Khiếu Nại</h2>
+    <form id="disputeForm">
+      <div style="margin-bottom:16px;">
+        <label style="display:block;font-weight:600;margin-bottom:8px;">Lý do khiếu nại *</label>
+        <textarea id="disputeReason" rows="4" required
+          placeholder="Mô tả vấn đề với đơn hàng (ít nhất 10 ký tự)..."
+          style="width:100%;padding:12px;border:1px solid #e2e8f0;border-radius:8px;font-family:inherit;"></textarea>
+      </div>
+      <div style="display:flex;gap:12px;justify-content:flex-end;">
+        <button type="button" onclick="closeDisputeModal()"
+          style="padding:10px 20px;background:#f1f5f9;border:none;border-radius:8px;cursor:pointer;font-weight:600;">Hủy</button>
+        <button type="submit"
+          style="padding:10px 20px;background:#ef4444;color:#fff;border:none;border-radius:8px;cursor:pointer;font-weight:600;">Gửi Khiếu Nại</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Also add the modal display fix (display:flex when shown) -->
+<style>
+  .modal.show { display: flex !important; }
+</style>
 </body>
 </html>

@@ -69,14 +69,11 @@ const generateMfaToken = (userId: string) => {
 const generateSetup = async (userId: string) => {
   const { state, user } = await getUserState(userId);
 
-  if (state === 'NO_USER')
-    return { success: false, code: 'USER_NOT_FOUND' };
-
-  if (state === 'ENABLED')
-    return { success: false, code: 'MFA_ALREADY_ENABLED' };
+  if (state === 'NO_USER')  return { success: false, code: 'USER_NOT_FOUND' };
+  if (state === 'ENABLED')  return { success: false, code: 'MFA_ALREADY_ENABLED' };
 
   const secret = speakeasy.generateSecret({
-    name: `${process.env.MFA_ISSUER}:${user.email}`
+    name: `${process.env.MFA_ISSUER ?? 'OFuture'}:${user.email}`,
   });
 
   await UserModel.saveMfaSecret(userId, secret.base32);
@@ -84,9 +81,10 @@ const generateSetup = async (userId: string) => {
   const qrCode = await qrcode.toDataURL(secret.otpauth_url as string);
 
   return {
-    success: true,
+    success    : true,
     qrCode,
-    secret: secret.base32
+    otpauthUrl : secret.otpauth_url,   // ← was missing
+    secret     : secret.base32,
   };
 };
 
@@ -249,11 +247,22 @@ const disableMfa = async (userId: string, password: string, token: string) => {
 // STATUS
 // =============================
 const getMfaStatus = async (userId: string) => {
-  const { user } = await getUserState(userId);
+  const { state, user } = await getUserState(userId);
+
+  if (state === 'NO_USER') return { success: false };   // ← add success flag
 
   return {
-    mfaEnabled: Boolean(user?.mfa_enabled),
-    setupPending: Boolean(user?.mfa_secret && !user?.mfa_enabled)
+    success      : true,                                 // ← was missing
+    mfaEnabled   : Boolean(user?.mfa_enabled),
+    setupPending : Boolean(user?.mfa_secret && !user?.mfa_enabled),
+    backupCodesRemaining: (() => {
+      try {
+        const codes = user?.mfa_backup_codes
+          ? JSON.parse(user.mfa_backup_codes)
+          : [];
+        return Array.isArray(codes) ? codes.length : 0;
+      } catch { return 0; }
+    })(),
   };
 };
 

@@ -38,11 +38,15 @@ export class SampleModel {
    */
   static async findById(id: string): Promise<any> {
     const [rows]: any = await pool.execute(
-      `SELECT s.*, p.product_name, p.wholesale_price, u.full_name as buyer_name, seller.full_name as seller_name
+      `SELECT s.*,
+              p.name        AS product_name,
+              p.price       AS wholesale_price,
+              u.full_name   AS buyer_name,
+              seller.full_name AS seller_name
        FROM sample_requests s
-       JOIN products p ON s.product_id = p.id
-       JOIN users u ON s.buyer_id = u.id
-       JOIN users seller ON s.seller_id = seller.id
+       JOIN products p      ON s.product_id = p.id
+       JOIN users u         ON s.buyer_id   = u.id
+       JOIN users seller    ON s.seller_id  = seller.id
        WHERE s.id = ?`,
       [id]
     );
@@ -52,16 +56,20 @@ export class SampleModel {
   /**
    * 3. Lấy danh sách yêu cầu mẫu dành cho Người Mua (Buyer)
    */
-  static async findByBuyer(buyerId: string, limit: number = 20, offset: number = 0): Promise<any[]> {
+  static async findByBuyer(
+    buyerId: string,
+    limit: number = 20,
+    offset: number = 0
+  ): Promise<any[]> {
     const [rows]: any = await pool.execute(
-      `SELECT s.*, p.product_name, seller.full_name as seller_name
+      `SELECT s.*, p.name AS product_name, seller.full_name AS seller_name
        FROM sample_requests s
-       JOIN products p ON s.product_id = p.id
-       JOIN users seller ON s.seller_id = seller.id
+       JOIN products p   ON s.product_id = p.id
+       JOIN users seller ON s.seller_id  = seller.id
        WHERE s.buyer_id = ?
        ORDER BY s.created_at DESC
        LIMIT ? OFFSET ?`,
-      [buyerId, limit.toString(), offset.toString()] // Ép kiểu chuỗi để tránh lỗi cú pháp LIMIT trong mysql2
+      [buyerId, limit.toString(), offset.toString()]
     );
     return rows;
   }
@@ -69,12 +77,16 @@ export class SampleModel {
   /**
    * 4. Lấy danh sách yêu cầu mẫu dành cho Người Bán (Seller)
    */
-  static async findBySeller(sellerId: string, limit: number = 20, offset: number = 0): Promise<any[]> {
+  static async findBySeller(
+    sellerId: string,
+    limit: number = 20,
+    offset: number = 0
+  ): Promise<any[]> {
     const [rows]: any = await pool.execute(
-      `SELECT s.*, p.product_name, u.full_name as buyer_name
+      `SELECT s.*, p.name AS product_name, u.full_name AS buyer_name
        FROM sample_requests s
        JOIN products p ON s.product_id = p.id
-       JOIN users u ON s.buyer_id = u.id
+       JOIN users u    ON s.buyer_id   = u.id
        WHERE s.seller_id = ?
        ORDER BY s.created_at DESC
        LIMIT ? OFFSET ?`,

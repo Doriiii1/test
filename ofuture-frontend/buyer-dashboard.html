@@ -149,167 +149,133 @@
   </div>
 
   <script src="api.js"></script>
-  
   <script>
     document.addEventListener('DOMContentLoaded', async () => {
-      // 1. Lấy dữ liệu user để hiển thị Lời chào
       const user = JSON.parse(localStorage.getItem('user') || '{}');
-      const greetingName = user.full_name || user.username || 'Khách hàng';
-      document.getElementById('userGreeting').textContent = `Xin chào, ${greetingName}`;
+      document.getElementById('userGreeting').textContent =
+        `Xin chào, ${user.full_name || user.username || 'Khách hàng'}`;
 
       try {
-        // 2. Fetch danh sách đơn hàng của Buyer từ Database
-        const ordersRes = await fetchAPI('/orders');
-        const orders = ordersRes.data || [];
+        // FIX 1: was '/orders' (admin) → must be '/orders/my'
+        const ordersRes = await fetchAPI('/orders/my');
+        const orders    = ordersRes.data || [];
 
-        const orderListEl = document.getElementById('order-list-container');
+        const orderListEl    = document.getElementById('order-list-container');
         const escrowContainer = document.getElementById('escrow-container');
 
-        // 3. Xử lý trường hợp User chưa có đơn hàng nào
         if (orders.length === 0) {
-          orderListEl.innerHTML = '<li style="color: #64748b; justify-content: center;">Chưa có đơn hàng nào</li>';
-          escrowContainer.innerHTML = '<p style="color: #64748b; font-size: 14px; text-align: center; margin-top: 10px;">Bạn chưa có giao dịch ký quỹ nào.</p>';
-          return;
+          orderListEl.innerHTML   = '<li style="color:#64748b;justify-content:center;">Chưa có đơn hàng nào</li>';
+          escrowContainer.innerHTML = '<p style="color:#64748b;font-size:14px;text-align:center;margin-top:10px;">Bạn chưa có giao dịch ký quỹ nào.</p>';
+        } else {
+          orderListEl.innerHTML = orders.map(o => `
+            <li>
+              <strong>#${o.id.substring(0, 8).toUpperCase()}</strong>
+              <span>${o.status.toUpperCase()}</span>
+            </li>`).join('');
+
+          escrowContainer.innerHTML = orders.map(o => {
+            let actionBtn = '';
+            let statusText = 'Đang chờ xử lý';
+            let statusClass = 'pending';
+
+            if (o.status === 'pending') {
+              // FIX 2: was '/escrow/pay-and-hold' → '/escrow/pay'
+              actionBtn   = `<button onclick="payEscrow('${o.id}')" style="margin-top:10px;width:100%;padding:8px 10px;background:#0062ff;color:#fff;border:none;border-radius:4px;font-weight:600;cursor:pointer;">Thanh toán Ký quỹ</button>`;
+              statusText  = 'Chờ bạn Nạp Ký Quỹ';
+            } else if (o.status === 'paid' || o.status === 'processing') {
+              statusClass = 'success'; statusText = 'Đã đóng băng quỹ • Chờ giao hàng';
+            } else if (o.status === 'shipped') {
+              actionBtn   = `<button onclick="releaseEscrow('${o.id}')" style="margin-top:10px;width:100%;padding:8px 10px;background:#10b981;color:#fff;border:none;border-radius:4px;font-weight:600;cursor:pointer;">Đã nhận hàng (Giải ngân)</button>`;
+              statusClass = 'success'; statusText = 'Chờ bạn Xác nhận nhận hàng';
+            } else if (o.status === 'completed') {
+              statusClass = 'info'; statusText = 'Giao dịch hoàn tất';
+            } else {
+              statusText = 'Trạng thái: ' + o.status;
+            }
+
+            return `
+              <div class="escrow-item ${statusClass}">
+                <h4>Đơn #${o.id.substring(0, 8).toUpperCase()}</h4>
+                <p>${statusText}<br><strong>Tổng tiền: $${parseFloat(o.totalAmount).toLocaleString()}</strong></p>
+                ${actionBtn}
+              </div>`;
+          }).join('');
         }
 
-        // 4. Render danh sách Đơn hàng
-        orderListEl.innerHTML = orders.map(o => `
-          <li>
-            <strong>#${o.id.substring(0,8).toUpperCase()}</strong>
-            <span>${o.status.toUpperCase()}</span>
-          </li>
-        `).join('');
-
-        // 5. Render danh sách Ký quỹ kèm Logic Action Buttons
-        escrowContainer.innerHTML = orders.map(o => {
-          let actionBtn = '';
-          let statusClass = 'pending';
-          let statusText = 'Đang chờ xử lý';
-
-          // Mapping trạng thái
-          if (o.status === 'pending') {
-            actionBtn = `<button onclick="payEscrow('${o.id}')" style="margin-top:10px; width:100%; padding:8px 10px; background:#0062ff; color:#fff; border:none; border-radius:4px; font-weight:600; cursor:pointer;">Thanh toán Ký quỹ</button>`;
-            statusText = 'Chờ bạn Nạp Ký Quỹ';
-          } else if (o.status === 'paid' || o.status === 'processing') {
-            statusClass = 'success';
-            statusText = 'Đã đóng băng quỹ • Chờ giao hàng';
-          } else if (o.status === 'shipped') {
-            actionBtn = `<button onclick="releaseEscrow('${o.id}')" style="margin-top:10px; width:100%; padding:8px 10px; background:#10b981; color:#fff; border:none; border-radius:4px; font-weight:600; cursor:pointer;">Đã nhận hàng (Giải ngân)</button>`;
-            statusClass = 'success';
-            statusText = 'Chờ bạn Xác nhận nhận hàng';
-          } else if (o.status === 'completed') {
-            statusClass = 'info';
-            statusText = 'Giao dịch hoàn tất';
-          } else {
-            statusClass = 'pending';
-            statusText = 'Trạng thái: ' + o.status;
-          }
-
-          return `
-            <div class="escrow-item ${statusClass}">
-              <h4>Đơn #${o.id.substring(0,8).toUpperCase()}</h4>
-              <p>${statusText} <br> <strong>Tổng tiền: $${parseFloat(o.total_amount).toLocaleString()}</strong></p>
-              ${actionBtn}
-            </div>
-          `;
-        }).join('');
-
-        // 6. FETCH VÀ RENDER DANH SÁCH SẢN PHẨM MỚI NHẤT
+        // Products section
         try {
-          // Gọi API lấy danh sách tất cả sản phẩm đang bán
           const productsRes = await fetchAPI('/products');
-          const products = productsRes.data || [];
+          const products    = productsRes.data || [];
+          // FIX 3: was duplicate #product-list-container — use the outer one
           const productListEl = document.getElementById('product-list-container');
 
-          if (products.length === 0) {
-            productListEl.innerHTML = '<p style="color: #64748b; text-align: center; width: 100%;">Hiện chưa có sản phẩm nào được đăng bán.</p>';
-          } else {
-            productListEl.innerHTML = products.map(p => {
-              // Xử lý lấy link ảnh: Nếu có ảnh thì ghép với host Backend, nếu không thì dùng ảnh mặc định
-              const backendHost = 'http://localhost:5000'; 
-              const imageUrl = (p.imageUrls && p.imageUrls.length > 0) 
-                ? backendHost + p.imageUrls[0] 
-                : 'https://placehold.co/300x200/eeeeee/999999?text=No+Image';
-
-              return `
-                <article class="product-card">
-                  <div class="product-image" style="padding: 0; overflow: hidden; background: none;">
-                    <img src="${imageUrl}" alt="${p.name}" style="width: 100%; height: 100%; object-fit: cover;" />
-                  </div>
-                  <div class="product-info">
-                    <h3>${p.name}</h3>
-                    <p class="product-meta">Danh mục: ${p.category || 'General'} • Kho: ${p.stockQuantity}</p>
-                    <p class="product-price">Giá sỉ: $${parseFloat(p.price).toLocaleString()}</p>
-                  </div>
-                  <div class="product-actions">
-                    <button class="btn btn-outline small-btn">Chi tiết</button>
-                    <button class="btn btn-primary small-btn" onclick="alert('Đang phát triển chức năng Thêm giỏ hàng')">Thêm giỏ</button>
-                  </div>
-                </article>
-              `;
-            }).join('');
-          }
+          productListEl.innerHTML = products.length === 0
+            ? '<p style="color:#64748b;text-align:center;width:100%;">Hiện chưa có sản phẩm nào được đăng bán.</p>'
+            : products.map(p => {
+                const backendHost = 'http://localhost:5000';
+                const imageUrl = (p.imageUrls && p.imageUrls.length > 0)
+                  ? backendHost + p.imageUrls[0]
+                  : 'https://placehold.co/300x200/eeeeee/999999?text=No+Image';
+                return `
+                  <article class="product-card">
+                    <div class="product-image" style="padding:0;overflow:hidden;background:none;">
+                      <img src="${imageUrl}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;" />
+                    </div>
+                    <div class="product-info">
+                      <h3>${p.name}</h3>
+                      <p class="product-meta">Danh mục: ${p.category || 'General'} • Kho: ${p.stockQuantity}</p>
+                      <p class="product-price">Giá sỉ: $${parseFloat(p.price).toLocaleString()}</p>
+                    </div>
+                    <div class="product-actions">
+                      <button class="btn btn-outline small-btn">Chi tiết</button>
+                      <button class="btn btn-primary small-btn" onclick="alert('Đang phát triển')">Thêm giỏ</button>
+                    </div>
+                  </article>`;
+              }).join('');
         } catch (prodErr) {
-          console.error("Lỗi khi tải sản phẩm:", prodErr);
-          document.getElementById('product-list-container').innerHTML = '<p style="color: red;">Lỗi tải sản phẩm.</p>';
+          console.error('Lỗi tải sản phẩm:', prodErr);
         }
 
       } catch (err) {
-        console.error("Lỗi khi tải dữ liệu dashboard:", err);
-        document.getElementById('escrow-container').innerHTML = `<p style="color: red; font-size: 14px;">Lỗi tải dữ liệu. Vui lòng F5.</p>`;
+        console.error('Lỗi dashboard:', err);
+        document.getElementById('escrow-container').innerHTML =
+          '<p style="color:red;font-size:14px;">Lỗi tải dữ liệu. Vui lòng F5.</p>';
       }
     });
 
-    // ─── HÀM KÍCH HOẠT LỆNH KÝ QUỸ (NẠP TIỀN) ───
     async function payEscrow(orderId) {
-      if(!confirm("Xác nhận thanh toán và đóng băng tiền vào Escrow?")) return;
+      if (!confirm('Xác nhận thanh toán và đóng băng tiền vào Escrow?')) return;
       try {
-        await fetchAPI('/escrow/pay-and-hold', {
+        // FIX: correct endpoint
+        await fetchAPI('/escrow/pay', {
           method: 'POST',
-          body: JSON.stringify({ orderId })
+          body: JSON.stringify({ orderId }),
         });
-        alert("Nạp tiền ký quỹ thành công! Tiền đã được đóng băng.");
-        window.location.reload(); // Tải lại trang để cập nhật UI
-      } catch (error) {
-        alert("Lỗi thanh toán: " + error.message);
-      }
+        alert('Nạp tiền ký quỹ thành công! Tiền đã được đóng băng.');
+        window.location.reload();
+      } catch (error) { alert('Lỗi thanh toán: ' + error.message); }
     }
 
-    // ─── HÀM KÍCH HOẠT LỆNH GIẢI NGÂN (NHẬN HÀNG) ───
     async function releaseEscrow(orderId) {
-      if(!confirm("Bạn đã nhận được hàng và đồng ý giải ngân tiền cho người bán? Hành động này không thể hoàn tác!")) return;
+      if (!confirm('Bạn đã nhận được hàng và đồng ý giải ngân? Hành động này không thể hoàn tác!')) return;
       try {
         await fetchAPI('/escrow/release', {
           method: 'POST',
-          body: JSON.stringify({ orderId })
+          body: JSON.stringify({ orderId }),
         });
-        alert("Đã giải ngân tiền thành công cho người bán!");
+        alert('Đã giải ngân tiền thành công cho người bán!');
         window.location.reload();
-      } catch (error) {
-        alert("Lỗi giải ngân: " + error.message);
-      }
+      } catch (error) { alert('Lỗi giải ngân: ' + error.message); }
     }
 
-    // ─── HÀM ĐĂNG XUẤT ───
     async function handleLogout(e) {
-      e.preventDefault(); // Chống nháy trang / reload #
-      
+      e.preventDefault();
       try {
-        // Báo cho Server hủy token
-        await fetchAPI('/auth/logout', { 
-          method: 'POST', 
-          body: JSON.stringify({ allDevices: false }) 
-        });
-      } catch (err) {
-        console.warn("Lỗi server khi logout, thực hiện local logout.", err);
-      }
-      
-      // Xóa toàn bộ dấu vết phiên làm việc ở Client
+        await fetchAPI('/auth/logout', { method: 'POST', body: JSON.stringify({ allDevices: false }) });
+      } catch (err) { console.warn('Server logout error:', err); }
       localStorage.removeItem('accessToken');
       localStorage.removeItem('refreshToken');
       localStorage.removeItem('user');
-      
-      alert("Bạn đã đăng xuất thành công.");
       window.location.href = 'loginbd.html/login.html';
     }
   </script>

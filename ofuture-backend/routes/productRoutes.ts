@@ -7,6 +7,7 @@ import express, { Request, Response, NextFunction } from 'express';
 import rateLimit from 'express-rate-limit';
 import { body, query, param, validationResult } from 'express-validator';
 import ProductModel from '../models/productModel';
+import { uploadImages } from '../middleware/upload';
 
 const {
   createProduct,
@@ -173,10 +174,15 @@ const validateProdReviewsQuery = [
   },
 ];
 
-router.get(
-  '/:productId/reviews',
-  validateProdReviewsQuery,
-  getProductReviews
+router.post(
+  '/',
+  authenticate,
+  authorizeRoles('seller', 'admin'),
+  writeLimiter,
+  uploadImages.array('images', 5),   // ← ADD: multer must run BEFORE body validation
+  detectSuspiciousPayload,           // ← runs after multer so req.body is populated
+  validateCreateProduct,
+  createProduct
 );
 
 export = router;

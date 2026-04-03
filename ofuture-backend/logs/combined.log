@@ -22,3 +22,298 @@
 2026-04-03 12:20:34 [info]: 📍  Environment: development
 2026-04-03 12:20:34 [info]: 🔗  Health check: http://localhost:5000/health
 2026-04-03 12:20:34 [info]: [redisClient] ioredis ready — using real Redis client.
+2026-04-03 12:23:57 [warn]: [CSRF] CSRF_SECRET not set in env — falling back to JWT_SECRET. Set CSRF_SECRET explicitly in production.
+2026-04-03 12:23:57 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 12:23:57 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 12:23:57 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 12:23:57 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 12:23:57 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 12:23:57 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 12:23:57 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 12:23:57 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 12:23:57 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 12:23:57 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 12:23:57 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 12:23:57 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 12:23:57 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 12:23:57 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 12:23:57 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 12:23:57 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 12:23:57 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 12:23:57 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 12:23:58 [info]: 🧪  RBAC test routes enabled (development only)
+2026-04-03 12:23:58 [info]: 🚀  O'Future API running on port 5000
+2026-04-03 12:23:58 [info]: 📍  Environment: development
+2026-04-03 12:23:58 [info]: 🔗  Health check: http://localhost:5000/health
+2026-04-03 12:23:58 [info]: [redisClient] ioredis ready — using real Redis client.
+2026-04-03 12:24:06 [http]: ::1 - - [03/Apr/2026:05:24:06 +0000] "GET /api/escrow?sellerId=2a4f4f3a-1f23-11f1-b252-9c2dcd0692eb HTTP/1.1" 404 112 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 12:24:06 [http]: ::1 - - [03/Apr/2026:05:24:06 +0000] "GET /api/reviews?sellerId=2a4f4f3a-1f23-11f1-b252-9c2dcd0692eb HTTP/1.1" 404 113 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 12:24:06 [http]: ::1 - - [03/Apr/2026:05:24:06 +0000] "GET /api/samples?sellerId=2a4f4f3a-1f23-11f1-b252-9c2dcd0692eb HTTP/1.1" 404 113 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 12:24:06 [http]: ::1 - - [03/Apr/2026:05:24:06 +0000] "GET /api/disputes?sellerId=2a4f4f3a-1f23-11f1-b252-9c2dcd0692eb HTTP/1.1" 404 114 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 12:24:06 [http]: ::1 - - [03/Apr/2026:05:24:06 +0000] "GET /api/orders?sellerId=2a4f4f3a-1f23-11f1-b252-9c2dcd0692eb HTTP/1.1" - - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 12:24:06 [http]: ::1 - - [03/Apr/2026:05:24:06 +0000] "GET /api/products?sellerId=2a4f4f3a-1f23-11f1-b252-9c2dcd0692eb HTTP/1.1" - - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 12:24:06 [warn]: RBAC denied: userId=2a4f4f3a-1f23-11f1-b252-9c2dcd0692eb role="seller" attempted action requiring [admin]
+2026-04-03 12:24:06 [http]: ::1 - - [03/Apr/2026:05:24:06 +0000] "GET /api/escrow?sellerId=2a4f4f3a-1f23-11f1-b252-9c2dcd0692eb HTTP/1.1" 404 112 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 12:24:06 [http]: ::1 - - [03/Apr/2026:05:24:06 +0000] "GET /api/reviews?sellerId=2a4f4f3a-1f23-11f1-b252-9c2dcd0692eb HTTP/1.1" 404 113 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 12:24:06 [http]: ::1 - - [03/Apr/2026:05:24:06 +0000] "GET /api/samples?sellerId=2a4f4f3a-1f23-11f1-b252-9c2dcd0692eb HTTP/1.1" 404 113 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 12:24:06 [http]: ::1 - - [03/Apr/2026:05:24:06 +0000] "GET /api/disputes?sellerId=2a4f4f3a-1f23-11f1-b252-9c2dcd0692eb HTTP/1.1" 404 114 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 12:24:06 [http]: ::1 - - [03/Apr/2026:05:24:06 +0000] "GET /api/products?sellerId=2a4f4f3a-1f23-11f1-b252-9c2dcd0692eb HTTP/1.1" 200 2271 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 12:24:06 [warn]: RBAC denied: userId=2a4f4f3a-1f23-11f1-b252-9c2dcd0692eb role="seller" attempted action requiring [admin]
+2026-04-03 12:24:06 [http]: ::1 - - [03/Apr/2026:05:24:06 +0000] "GET /api/orders?sellerId=2a4f4f3a-1f23-11f1-b252-9c2dcd0692eb HTTP/1.1" 403 120 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 12:24:06 [http]: ::1 - - [03/Apr/2026:05:24:06 +0000] "GET /api/products?sellerId=2a4f4f3a-1f23-11f1-b252-9c2dcd0692eb HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 12:24:06 [http]: ::1 - - [03/Apr/2026:05:24:06 +0000] "GET /api/escrow?sellerId=2a4f4f3a-1f23-11f1-b252-9c2dcd0692eb HTTP/1.1" 404 112 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 12:24:06 [http]: ::1 - - [03/Apr/2026:05:24:06 +0000] "GET /api/reviews?sellerId=2a4f4f3a-1f23-11f1-b252-9c2dcd0692eb HTTP/1.1" 404 113 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 12:24:06 [http]: ::1 - - [03/Apr/2026:05:24:06 +0000] "GET /api/samples?sellerId=2a4f4f3a-1f23-11f1-b252-9c2dcd0692eb HTTP/1.1" 404 113 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 12:24:06 [http]: ::1 - - [03/Apr/2026:05:24:06 +0000] "GET /api/disputes?sellerId=2a4f4f3a-1f23-11f1-b252-9c2dcd0692eb HTTP/1.1" 404 114 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 12:24:06 [warn]: RBAC denied: userId=2a4f4f3a-1f23-11f1-b252-9c2dcd0692eb role="seller" attempted action requiring [admin]
+2026-04-03 12:24:06 [http]: ::1 - - [03/Apr/2026:05:24:06 +0000] "GET /api/orders?sellerId=2a4f4f3a-1f23-11f1-b252-9c2dcd0692eb HTTP/1.1" 403 120 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 12:24:06 [http]: ::1 - - [03/Apr/2026:05:24:06 +0000] "GET /api/products?sellerId=2a4f4f3a-1f23-11f1-b252-9c2dcd0692eb HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 12:24:06 [http]: ::1 - - [03/Apr/2026:05:24:06 +0000] "GET /api/escrow?sellerId=2a4f4f3a-1f23-11f1-b252-9c2dcd0692eb HTTP/1.1" 404 112 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 12:24:06 [http]: ::1 - - [03/Apr/2026:05:24:06 +0000] "GET /api/reviews?sellerId=2a4f4f3a-1f23-11f1-b252-9c2dcd0692eb HTTP/1.1" 404 113 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 12:24:06 [http]: ::1 - - [03/Apr/2026:05:24:06 +0000] "GET /api/samples?sellerId=2a4f4f3a-1f23-11f1-b252-9c2dcd0692eb HTTP/1.1" 404 113 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 12:24:06 [http]: ::1 - - [03/Apr/2026:05:24:06 +0000] "GET /api/disputes?sellerId=2a4f4f3a-1f23-11f1-b252-9c2dcd0692eb HTTP/1.1" 404 114 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 12:24:06 [warn]: RBAC denied: userId=2a4f4f3a-1f23-11f1-b252-9c2dcd0692eb role="seller" attempted action requiring [admin]
+2026-04-03 12:24:06 [http]: ::1 - - [03/Apr/2026:05:24:06 +0000] "GET /api/orders?sellerId=2a4f4f3a-1f23-11f1-b252-9c2dcd0692eb HTTP/1.1" 403 120 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 12:24:07 [http]: ::1 - - [03/Apr/2026:05:24:07 +0000] "GET /api/products?sellerId=2a4f4f3a-1f23-11f1-b252-9c2dcd0692eb HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 12:24:07 [http]: ::1 - - [03/Apr/2026:05:24:07 +0000] "GET /api/escrow?sellerId=2a4f4f3a-1f23-11f1-b252-9c2dcd0692eb HTTP/1.1" 404 112 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 12:24:07 [http]: ::1 - - [03/Apr/2026:05:24:07 +0000] "GET /api/reviews?sellerId=2a4f4f3a-1f23-11f1-b252-9c2dcd0692eb HTTP/1.1" 404 113 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 12:24:07 [warn]: RBAC denied: userId=2a4f4f3a-1f23-11f1-b252-9c2dcd0692eb role="seller" attempted action requiring [admin]
+2026-04-03 12:24:07 [http]: ::1 - - [03/Apr/2026:05:24:07 +0000] "GET /api/orders?sellerId=2a4f4f3a-1f23-11f1-b252-9c2dcd0692eb HTTP/1.1" 403 120 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 12:24:07 [http]: ::1 - - [03/Apr/2026:05:24:07 +0000] "GET /api/samples?sellerId=2a4f4f3a-1f23-11f1-b252-9c2dcd0692eb HTTP/1.1" 404 113 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 12:24:07 [http]: ::1 - - [03/Apr/2026:05:24:07 +0000] "GET /api/disputes?sellerId=2a4f4f3a-1f23-11f1-b252-9c2dcd0692eb HTTP/1.1" 404 114 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 12:24:55 [http]: ::1 - - [03/Apr/2026:05:24:55 +0000] "GET /api/mfa/devices HTTP/1.1" 404 117 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 12:24:55 [http]: ::1 - - [03/Apr/2026:05:24:55 +0000] "GET /api/auth/me HTTP/1.1" 401 84 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 12:25:14 [http]: ::1 - - [03/Apr/2026:05:25:14 +0000] "POST /api/auth/avatar HTTP/1.1" 404 118 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 12:26:01 [http]: ::1 - - [03/Apr/2026:05:26:01 +0000] "PUT /api/auth/me HTTP/1.1" 404 113 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 12:43:36 [warn]: [CSRF] CSRF_SECRET not set in env — falling back to JWT_SECRET. Set CSRF_SECRET explicitly in production.
+2026-04-03 12:43:37 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 12:43:37 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 12:43:37 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 12:43:37 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 12:43:37 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 12:43:37 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 12:43:37 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 12:43:37 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 12:43:37 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 12:43:37 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 12:43:37 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 12:43:37 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 12:43:37 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 12:43:37 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 12:43:37 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 12:43:37 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 12:43:37 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 12:43:37 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 12:43:38 [info]: 🧪  RBAC test routes enabled (development only)
+2026-04-03 12:43:38 [info]: 🚀  O'Future API running on port 5000
+2026-04-03 12:43:38 [info]: 📍  Environment: development
+2026-04-03 12:43:38 [info]: 🔗  Health check: http://localhost:5000/health
+2026-04-03 12:43:38 [info]: [redisClient] ioredis ready — using real Redis client.
+2026-04-03 12:44:41 [warn]: [CSRF] CSRF_SECRET not set in env — falling back to JWT_SECRET. Set CSRF_SECRET explicitly in production.
+2026-04-03 12:44:42 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 12:44:42 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 12:44:42 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 12:44:42 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 12:44:42 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 12:44:42 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 12:44:42 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 12:44:42 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 12:44:42 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 12:44:42 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 12:44:42 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 12:44:42 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 12:44:42 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 12:44:42 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 12:44:42 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 12:44:42 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 12:44:42 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 12:44:42 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 12:44:43 [info]: 🧪  RBAC test routes enabled (development only)
+2026-04-03 12:44:43 [info]: 🚀  O'Future API running on port 5000
+2026-04-03 12:44:43 [info]: 📍  Environment: development
+2026-04-03 12:44:43 [info]: 🔗  Health check: http://localhost:5000/health
+2026-04-03 12:44:43 [info]: [redisClient] ioredis ready — using real Redis client.
+2026-04-03 12:56:26 [warn]: [CSRF] CSRF_SECRET not set in env — falling back to JWT_SECRET. Set CSRF_SECRET explicitly in production.
+2026-04-03 12:56:27 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 12:56:27 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 12:56:27 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 12:56:27 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 12:56:27 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 12:56:27 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 12:56:27 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 12:56:27 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 12:56:27 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 12:56:27 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 12:56:27 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 12:56:27 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 12:56:27 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 12:56:27 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 12:56:27 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 12:56:27 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 12:56:27 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 12:56:27 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 12:56:28 [info]: 🧪  RBAC test routes enabled (development only)
+2026-04-03 12:56:28 [info]: 🚀  O'Future API running on port 5000
+2026-04-03 12:56:28 [info]: 📍  Environment: development
+2026-04-03 12:56:28 [info]: 🔗  Health check: http://localhost:5000/health
+2026-04-03 12:56:28 [info]: [redisClient] ioredis ready — using real Redis client.
+2026-04-03 12:57:09 [warn]: [CSRF] CSRF_SECRET not set in env — falling back to JWT_SECRET. Set CSRF_SECRET explicitly in production.
+2026-04-03 12:57:09 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 12:57:09 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 12:57:09 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 12:57:09 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 12:57:09 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 12:57:09 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 12:57:09 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 12:57:09 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 12:57:09 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 12:57:09 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 12:57:09 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 12:57:09 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 12:57:09 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 12:57:09 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 12:57:09 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 12:57:09 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 12:57:09 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 12:57:09 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 12:57:10 [info]: 🧪  RBAC test routes enabled (development only)
+2026-04-03 12:57:10 [info]: 🚀  O'Future API running on port 5000
+2026-04-03 12:57:10 [info]: 📍  Environment: development
+2026-04-03 12:57:10 [info]: 🔗  Health check: http://localhost:5000/health
+2026-04-03 12:57:10 [info]: [redisClient] ioredis ready — using real Redis client.
+2026-04-03 12:59:11 [http]: ::1 - - [03/Apr/2026:05:59:11 +0000] "GET /api/auth/me HTTP/1.1" 401 84 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 12:59:49 [warn]: [CSRF] CSRF_SECRET not set in env — falling back to JWT_SECRET. Set CSRF_SECRET explicitly in production.
+2026-04-03 12:59:49 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 12:59:49 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 12:59:49 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 12:59:49 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 12:59:49 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 12:59:49 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 12:59:49 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 12:59:49 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 12:59:49 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 12:59:49 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 12:59:49 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 12:59:49 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 12:59:49 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 12:59:49 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 12:59:49 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 12:59:49 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 12:59:49 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 12:59:49 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 12:59:50 [info]: 🧪  RBAC test routes enabled (development only)
+2026-04-03 12:59:50 [info]: 🚀  O'Future API running on port 5000
+2026-04-03 12:59:50 [info]: 📍  Environment: development
+2026-04-03 12:59:50 [info]: 🔗  Health check: http://localhost:5000/health
+2026-04-03 12:59:50 [info]: [redisClient] ioredis ready — using real Redis client.
+2026-04-03 13:00:01 [http]: ::1 - - [03/Apr/2026:06:00:01 +0000] "GET /api/auth/me HTTP/1.1" 401 84 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 13:00:06 [http]: ::1 - - [03/Apr/2026:06:00:06 +0000] "POST /api/auth/logout HTTP/1.1" 401 84 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 13:00:18 [info]: User logged in: bob1@example.com
+2026-04-03 13:00:18 [http]: ::1 - - [03/Apr/2026:06:00:18 +0000] "POST /api/auth/login HTTP/1.1" 200 684 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 13:00:19 [http]: ::1 - - [03/Apr/2026:06:00:19 +0000] "GET /api/products?sellerId=2a4f4f3a-1f23-11f1-b252-9c2dcd0692eb HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 13:00:19 [http]: ::1 - - [03/Apr/2026:06:00:19 +0000] "GET /api/disputes?sellerId=2a4f4f3a-1f23-11f1-b252-9c2dcd0692eb HTTP/1.1" 404 114 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 13:00:19 [http]: ::1 - - [03/Apr/2026:06:00:19 +0000] "GET /api/escrow?sellerId=2a4f4f3a-1f23-11f1-b252-9c2dcd0692eb HTTP/1.1" 404 112 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 13:00:19 [http]: ::1 - - [03/Apr/2026:06:00:19 +0000] "GET /api/reviews?sellerId=2a4f4f3a-1f23-11f1-b252-9c2dcd0692eb HTTP/1.1" 404 113 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 13:00:19 [http]: ::1 - - [03/Apr/2026:06:00:19 +0000] "GET /api/samples?sellerId=2a4f4f3a-1f23-11f1-b252-9c2dcd0692eb HTTP/1.1" 404 113 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 13:00:19 [warn]: RBAC denied: userId=2a4f4f3a-1f23-11f1-b252-9c2dcd0692eb role="seller" attempted action requiring [admin]
+2026-04-03 13:00:19 [http]: ::1 - - [03/Apr/2026:06:00:19 +0000] "GET /api/orders?sellerId=2a4f4f3a-1f23-11f1-b252-9c2dcd0692eb HTTP/1.1" 403 120 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 13:01:43 [http]: ::1 - - [03/Apr/2026:06:01:43 +0000] "DELETE /api/products/7eaa26af-2f12-11f1-87ff-9c2dcd0692eb HTTP/1.1" 200 58 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 13:01:44 [http]: ::1 - - [03/Apr/2026:06:01:44 +0000] "GET /api/products?sellerId=2a4f4f3a-1f23-11f1-b252-9c2dcd0692eb HTTP/1.1" 200 1924 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 13:01:46 [http]: ::1 - - [03/Apr/2026:06:01:46 +0000] "DELETE /api/products/f09b4feb-29f0-11f1-87c0-9c2dcd0692eb HTTP/1.1" 200 58 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 13:01:46 [http]: ::1 - - [03/Apr/2026:06:01:46 +0000] "GET /api/products?sellerId=2a4f4f3a-1f23-11f1-b252-9c2dcd0692eb HTTP/1.1" 200 1621 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 13:01:48 [http]: ::1 - - [03/Apr/2026:06:01:48 +0000] "DELETE /api/products/f1d0a55b-29a8-11f1-868d-9c2dcd0692eb HTTP/1.1" 200 58 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 13:01:49 [http]: ::1 - - [03/Apr/2026:06:01:49 +0000] "GET /api/products?sellerId=2a4f4f3a-1f23-11f1-b252-9c2dcd0692eb HTTP/1.1" 200 1320 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 13:01:50 [http]: ::1 - - [03/Apr/2026:06:01:50 +0000] "DELETE /api/products/dbb9709e-28ec-11f1-a2fc-9c2dcd0692eb HTTP/1.1" 200 58 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 13:01:51 [http]: ::1 - - [03/Apr/2026:06:01:51 +0000] "GET /api/products?sellerId=2a4f4f3a-1f23-11f1-b252-9c2dcd0692eb HTTP/1.1" 200 1027 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 13:01:53 [http]: ::1 - - [03/Apr/2026:06:01:53 +0000] "DELETE /api/products/d66e1592-28ea-11f1-a2fc-9c2dcd0692eb HTTP/1.1" 200 58 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 13:01:53 [http]: ::1 - - [03/Apr/2026:06:01:53 +0000] "GET /api/products?sellerId=2a4f4f3a-1f23-11f1-b252-9c2dcd0692eb HTTP/1.1" 200 730 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 13:01:55 [http]: ::1 - - [03/Apr/2026:06:01:55 +0000] "DELETE /api/products/288bec07-276a-11f1-8efe-9c2dcd0692eb HTTP/1.1" 200 58 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 13:01:55 [http]: ::1 - - [03/Apr/2026:06:01:55 +0000] "GET /api/products?sellerId=2a4f4f3a-1f23-11f1-b252-9c2dcd0692eb HTTP/1.1" 200 407 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 13:01:57 [http]: ::1 - - [03/Apr/2026:06:01:57 +0000] "DELETE /api/products/be7c4f1d-21e9-11f1-a4dd-9c2dcd0692eb HTTP/1.1" 200 58 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 13:01:58 [http]: ::1 - - [03/Apr/2026:06:01:58 +0000] "GET /api/products?sellerId=2a4f4f3a-1f23-11f1-b252-9c2dcd0692eb HTTP/1.1" 200 86 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 13:02:45 [http]: ::1 - - [03/Apr/2026:06:02:45 +0000] "POST /api/products HTTP/1.1" 422 262 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 13:08:40 [http]: ::1 - - [03/Apr/2026:06:08:40 +0000] "GET /api/products?sellerId=2a4f4f3a-1f23-11f1-b252-9c2dcd0692eb HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 13:08:40 [http]: ::1 - - [03/Apr/2026:06:08:40 +0000] "GET /api/reviews?sellerId=2a4f4f3a-1f23-11f1-b252-9c2dcd0692eb HTTP/1.1" 404 113 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 13:08:42 [warn]: [CSRF] CSRF_SECRET not set in env — falling back to JWT_SECRET. Set CSRF_SECRET explicitly in production.
+2026-04-03 13:08:43 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 13:08:43 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 13:08:43 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 13:08:43 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 13:08:43 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 13:08:43 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 13:08:43 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 13:08:43 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 13:08:43 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 13:08:43 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 13:08:43 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 13:08:43 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 13:08:43 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 13:08:43 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 13:08:43 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 13:08:43 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 13:08:43 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 13:08:43 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 13:08:44 [info]: 🧪  RBAC test routes enabled (development only)
+2026-04-03 13:08:44 [info]: 🚀  O'Future API running on port 5000
+2026-04-03 13:08:44 [info]: 📍  Environment: development
+2026-04-03 13:08:44 [info]: 🔗  Health check: http://localhost:5000/health
+2026-04-03 13:08:44 [info]: [redisClient] ioredis ready — using real Redis client.
+2026-04-03 13:28:38 [warn]: [CSRF] CSRF_SECRET not set in env — falling back to JWT_SECRET. Set CSRF_SECRET explicitly in production.
+2026-04-03 13:28:39 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 13:28:39 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 13:28:39 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 13:28:39 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 13:28:39 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 13:28:39 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 13:28:39 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 13:28:39 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 13:28:39 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 13:28:39 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 13:28:39 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 13:28:39 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 13:28:39 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 13:28:39 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 13:28:39 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 13:28:39 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 13:28:39 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 13:28:39 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 13:28:40 [info]: 🧪  RBAC test routes enabled (development only)
+2026-04-03 13:28:40 [info]: 🚀  O'Future API running on port 5000
+2026-04-03 13:28:40 [info]: 📍  Environment: development
+2026-04-03 13:28:40 [info]: 🔗  Health check: http://localhost:5000/health
+2026-04-03 13:28:40 [info]: [redisClient] ioredis ready — using real Redis client.
+2026-04-03 13:30:04 [http]: ::1 - - [03/Apr/2026:06:30:04 +0000] "GET /api/auth/me HTTP/1.1" 401 51 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 13:30:17 [http]: ::1 - - [03/Apr/2026:06:30:17 +0000] "GET /api/auth/me HTTP/1.1" 401 51 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 13:30:20 [http]: ::1 - - [03/Apr/2026:06:30:20 +0000] "POST /api/auth/logout HTTP/1.1" 401 51 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 13:30:29 [info]: User logged in: admin@ofuture.com
+2026-04-03 13:30:29 [http]: ::1 - - [03/Apr/2026:06:30:29 +0000] "POST /api/auth/login HTTP/1.1" 200 678 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 13:30:29 [http]: ::1 - - [03/Apr/2026:06:30:29 +0000] "GET /api/admin/stats HTTP/1.1" 403 213 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 13:30:29 [http]: ::1 - - [03/Apr/2026:06:30:29 +0000] "GET /api/admin/users HTTP/1.1" 403 213 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 13:30:29 [http]: ::1 - - [03/Apr/2026:06:30:29 +0000] "GET /api/admin/logs HTTP/1.1" 403 213 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 13:30:48 [info]: User logged in: bob1@example.com
+2026-04-03 13:30:48 [http]: ::1 - - [03/Apr/2026:06:30:48 +0000] "POST /api/auth/login HTTP/1.1" 200 684 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 13:30:48 [http]: ::1 - - [03/Apr/2026:06:30:48 +0000] "GET /api/seller/samples HTTP/1.1" 200 26 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 13:30:48 [http]: ::1 - - [03/Apr/2026:06:30:48 +0000] "GET /api/products?sellerId=2a4f4f3a-1f23-11f1-b252-9c2dcd0692eb&limit=100 HTTP/1.1" 200 87 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 13:30:48 [http]: ::1 - - [03/Apr/2026:06:30:48 +0000] "GET /api/seller/disputes HTTP/1.1" 200 445 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 13:30:48 [http]: ::1 - - [03/Apr/2026:06:30:48 +0000] "GET /api/seller/orders HTTP/1.1" 200 1544 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 13:30:48 [http]: ::1 - - [03/Apr/2026:06:30:48 +0000] "GET /api/seller/reviews HTTP/1.1" 200 86 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 13:30:48 [http]: ::1 - - [03/Apr/2026:06:30:48 +0000] "GET /api/seller/escrow HTTP/1.1" 200 2470 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 13:31:01 [http]: ::1 - - [03/Apr/2026:06:31:01 +0000] "POST /api/products HTTP/1.1" 422 262 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 13:31:07 [http]: ::1 - - [03/Apr/2026:06:31:07 +0000] "POST /api/products HTTP/1.1" 422 262 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 13:34:08 [http]: ::1 - - [03/Apr/2026:06:34:08 +0000] "POST /api/products HTTP/1.1" 422 262 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 13:34:16 [http]: ::1 - - [03/Apr/2026:06:34:16 +0000] "POST /api/products HTTP/1.1" 422 262 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 13:34:20 [http]: ::1 - - [03/Apr/2026:06:34:20 +0000] "POST /api/products HTTP/1.1" 422 262 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 13:34:27 [http]: ::1 - - [03/Apr/2026:06:34:27 +0000] "POST /api/products HTTP/1.1" 422 262 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 13:34:30 [http]: ::1 - - [03/Apr/2026:06:34:30 +0000] "POST /api/products HTTP/1.1" 422 262 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 13:35:00 [http]: ::1 - - [03/Apr/2026:06:35:00 +0000] "GET /api/products?sellerId=2a4f4f3a-1f23-11f1-b252-9c2dcd0692eb&limit=100 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 13:35:00 [http]: ::1 - - [03/Apr/2026:06:35:00 +0000] "GET /api/seller/escrow HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 13:35:00 [http]: ::1 - - [03/Apr/2026:06:35:00 +0000] "GET /api/seller/orders HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 13:35:00 [http]: ::1 - - [03/Apr/2026:06:35:00 +0000] "GET /api/seller/reviews HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 13:35:00 [http]: ::1 - - [03/Apr/2026:06:35:00 +0000] "GET /api/seller/samples HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 13:35:00 [http]: ::1 - - [03/Apr/2026:06:35:00 +0000] "GET /api/seller/disputes HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 13:35:03 [http]: ::1 - - [03/Apr/2026:06:35:03 +0000] "GET /api/seller/orders HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 13:35:03 [http]: ::1 - - [03/Apr/2026:06:35:03 +0000] "GET /api/seller/reviews HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 13:35:03 [http]: ::1 - - [03/Apr/2026:06:35:03 +0000] "GET /api/products?sellerId=2a4f4f3a-1f23-11f1-b252-9c2dcd0692eb&limit=100 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 13:35:03 [http]: ::1 - - [03/Apr/2026:06:35:03 +0000] "GET /api/seller/escrow HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 13:35:03 [http]: ::1 - - [03/Apr/2026:06:35:03 +0000] "GET /api/seller/samples HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-03 13:35:03 [http]: ::1 - - [03/Apr/2026:06:35:03 +0000] "GET /api/seller/disputes HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"

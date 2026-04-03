@@ -36,24 +36,36 @@ const createProduct = async (req: ProductRequest, res: Response): Promise<any> =
   try {
     const {
       name, description, category,
-      price, stockQuantity, imageUrls,
+      price, stockQuantity,
     } = req.body;
 
-    // Generate unique slug from product name
+    // FIX: Read uploaded files from req.files (multer populates this)
+    // Fall back to req.body.imageUrls for JSON requests (backward compat)
+    let imageUrls: string[] = [];
+
+    const uploadedFiles = req.files as Express.Multer.File[] | undefined;
+    if (uploadedFiles && uploadedFiles.length > 0) {
+      // Convert disk paths to URL paths served by /uploads static route
+      imageUrls = uploadedFiles.map(f => `/uploads/${f.filename}`);
+    } else if (req.body.imageUrls) {
+      imageUrls = Array.isArray(req.body.imageUrls)
+        ? req.body.imageUrls
+        : [req.body.imageUrls];
+    }
+
     const slug = generateSlug(name);
 
     await ProductModel.create({
-      sellerId      : req.user.id,
+      sellerId     : req.user.id,
       name,
       slug,
       description,
       category,
-      price,
-      stockQuantity : stockQuantity ?? 0,
-      imageUrls     : imageUrls ?? [],
+      price        : parseFloat(price),
+      stockQuantity: stockQuantity ? parseInt(stockQuantity) : 0,
+      imageUrls,
     });
 
-    // Fetch back the created product via slug (has the UUID)
     const product: any = await ProductModel.findBySlug(slug);
 
     await LogModel.write({

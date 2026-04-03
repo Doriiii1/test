@@ -94,21 +94,13 @@ function updateSummary() {
     document.getElementById('total').textContent = formatPrice(total);
 }
 
-// ==================== CHECKOUT ====================
 async function proceedToCheckout() {
-    if (cart.length === 0) {
-        showToast('Giỏ hàng trống', 'error');
-        return;
-    }
+    if (cart.length === 0) { showToast('Giỏ hàng trống', 'error'); return; }
 
     const accessToken = getAccessToken();
-
-    console.log("=== PROCEED TO CHECKOUT ===");
-    console.log("Access Token:", accessToken ? "CÓ TOKEN" : "KHÔNG CÓ TOKEN");
-
     if (!accessToken) {
-        showToast('Bạn chưa đăng nhập hoặc phiên đăng nhập đã hết hạn. Vui lòng đăng nhập lại.', 'error');
-        setTimeout(() => window.location.href = 'login.html', 1500);
+        showToast('Bạn chưa đăng nhập. Vui lòng đăng nhập lại.', 'error');
+        setTimeout(() => window.location.href = 'loginbd.html/login.html', 1500);
         return;
     }
 
@@ -117,51 +109,30 @@ async function proceedToCheckout() {
 
     try {
         showToast('Đang tạo đơn hàng...', 'success');
-
         const orderIds = [];
 
         for (const item of cart) {
-            const response = await fetch(`${API_URL}/orders`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${accessToken}`
-                },
-                body: JSON.stringify({
-                    productId: item.id,
-                    quantity: item.quantity,
-                    shippingAddress: {
-                        fullName: "",
-                        phone: "",
-                        street: "",
-                        city: "",
-                        zipCode: "",
-                        country: "Vietnam"
-                    },
-                    notes: ""
-                })
+            // FIX: use fetchAPI wrapper — it injects Authorization header automatically
+            const result = await fetchAPI('/orders', {
+                method : 'POST',
+                body   : JSON.stringify({
+                    productId       : item.id,
+                    quantity        : item.quantity,
+                    shippingAddress : { street: 'TBD', city: 'TBD', country: 'Vietnam', zip: '000000' },
+                    notes           : '',
+                }),
             });
-
-            if (!response.ok) {
-                const errorData = await response.json().catch(() => ({}));
-                throw new Error(errorData.message || `Lỗi ${response.status}`);
-            }
-
-            const result = await response.json();
             orderIds.push(result.data.orderId);
         }
 
-        localStorage.setItem('currentOrderIds', JSON.stringify(orderIds));
-        localStorage.setItem('checkoutCart', JSON.stringify(cart));
-
+        localStorage.setItem('currentOrderIds',  JSON.stringify(orderIds));
+        localStorage.setItem('checkoutCart',      JSON.stringify(cart));
         showToast(`Đã tạo ${orderIds.length} đơn hàng!`, 'success');
         window.location.href = `checkout.html?orders=${orderIds.join(',')}`;
-
     } catch (error) {
         console.error(error);
         showToast(error.message || 'Tạo đơn hàng thất bại', 'error');
     } finally {
-        const checkoutBtn = document.getElementById('checkoutBtn');
         if (checkoutBtn) checkoutBtn.disabled = false;
     }
 }

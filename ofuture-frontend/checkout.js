@@ -123,43 +123,26 @@ async function placeOrders() {
 }
 
 async function processPayment(orderId, amount, method) {
-    if (method === 'cod') {
-        return; // COD không cần gọi API thanh toán ngay
-    }
+    if (method === 'cod') return; // COD requires no immediate API call
 
     if (method === 'momo') {
-        const response = await fetch(`${API_URL}/payments/momo`, {   // Lưu ý: route của bạn là /payments/momo/create ?
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${accessToken}`
-            },
-            body: JSON.stringify({ orderId, amount })
+        // FIX: was '/payments/momo' → correct route is '/payments/momo/create'
+        const data = await fetchAPI('/payments/momo/create', {
+            method : 'POST',
+            body   : JSON.stringify({ orderId, amount }),
         });
-
-        if (!response.ok) throw new Error('Không thể tạo thanh toán MoMo');
-
-        const { data } = await response.json();
-        window.open(data.payUrl, '_blank');
+        window.open(data.data.payUrl, '_blank');
         return;
     }
 
     if (method === 'qr') {
-        const response = await fetch(`${API_URL}/payments/qr`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${accessToken}`
-            },
-            body: JSON.stringify({ orderId, amount })
+        // FIX: was '/payments/qr' → correct route is '/payments/qr/create'
+        const data = await fetchAPI('/payments/qr/create', {
+            method : 'POST',
+            body   : JSON.stringify({ orderId, amount }),
         });
-
-        if (!response.ok) throw new Error('Không thể tạo mã QR');
-
-        const { data } = await response.json();
-        currentPaymentId = data.paymentId;
-        showQRModal(data.qrCode || data.qrCodeImage);
-        return;
+        currentPaymentId = data.data.paymentId;
+        showQRModal(data.data.qrCodeImage || data.data.qrCode);
     }
 }
 
