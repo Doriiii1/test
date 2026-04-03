@@ -8,7 +8,6 @@
 </head>
 <body>
     <div class="dashboard-container">
-        <!-- Sidebar -->
         <aside class="sidebar">
             <div class="sidebar-header">
                 <h1>O'Future</h1>
@@ -16,24 +15,12 @@
             </div>
 
             <nav class="sidebar-menu">
-                <a href="#" class="menu-item active" data-section="dashboard">
-                    📊 Dashboard
-                </a>
-                <a href="#" class="menu-item" data-section="users">
-                    👥 Users
-                </a>
-                <a href="#" class="menu-item" data-section="escrow">
-                    💰 Escrow
-                </a>
-                <a href="#" class="menu-item" data-section="payments">
-                    💳 Payments
-                </a>
-                <a href="#" class="menu-item" data-section="logs">
-                    📋 Activity Logs
-                </a>
-                <a href="#" class="menu-item" data-section="system-logs">
-                    🔧 System Logs
-                </a>
+                <a href="#" class="menu-item active" data-section="dashboard">📊 Dashboard</a>
+                <a href="#" class="menu-item" data-section="users">👥 Users</a>
+                <a href="#" class="menu-item" data-section="escrow">💰 Escrow</a>
+                <a href="#" class="menu-item" data-section="payments">💳 Payments</a>
+                <a href="#" class="menu-item" data-section="logs">📝 Activity Logs</a>
+                <a href="#" class="menu-item" data-section="system-logs">⚙️ System Logs</a>
             </nav>
 
             <div class="sidebar-footer">
@@ -41,9 +28,7 @@
             </div>
         </aside>
 
-        <!-- Main Content -->
         <main class="main-content">
-            <!-- Topbar -->
             <div class="topbar">
                 <h2 id="pageTitle">Dashboard</h2>
                 <div class="user-info">
@@ -52,9 +37,7 @@
                 </div>
             </div>
 
-            <!-- Content Area -->
             <div class="content">
-                <!-- Dashboard Section -->
                 <section id="dashboard-section" class="section active">
                     <h2>Admin Dashboard Overview</h2>
                     <div class="stats-grid">
@@ -77,7 +60,6 @@
                     </div>
                 </section>
 
-                <!-- Users Section -->
                 <section id="users-section" class="section">
                     <div class="section-header">
                         <h2>User Management</h2>
@@ -106,7 +88,6 @@
                     </div>
                 </section>
 
-                <!-- Escrow Section -->
                 <section id="escrow-section" class="section">
                     <div class="section-header">
                         <h2>Escrow Management</h2>
@@ -115,7 +96,7 @@
                                 <option value="">All Status</option>
                                 <option value="pending">Pending</option>
                                 <option value="held">Held</option>
-                                <option value="releasing">Releasing</option>
+                                <option value="disputed">Disputed</option>
                                 <option value="released">Released</option>
                             </select>
                         </div>
@@ -156,94 +137,29 @@
                     </div>
                 </section>
 
-                <!-- Payments Section -->
                 <section id="payments-section" class="section">
                     <div class="section-header">
                         <h2>Payment Management</h2>
-                        <div class="payment-filters">
-                            <select id="paymentStatusFilter" class="filter-select">
-                                <option value="">All Status</option>
-                                <option value="pending">Pending</option>
-                                <option value="approved">Approved</option>
-                                <option value="rejected">Rejected</option>
-                            </select>
-                        </div>
                     </div>
-
                     <div class="table-container">
                         <table id="paymentsTable">
-                            <thead>
-                                <tr>
-                                    <th>Payment ID</th>
-                                    <th>User</th>
-                                    <th>Amount</th>
-                                    <th>Status</th>
-                                    <th>Method</th>
-                                    <th>Created</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody id="paymentsTableBody">
-                                <tr><td colspan="7" class="text-center">Loading...</td></tr>
-                            </tbody>
+                            <tbody id="paymentsTableBody"><tr><td class="text-center">Loading...</td></tr></tbody>
                         </table>
                     </div>
                 </section>
-
-                <!-- Logs Section -->
+                
                 <section id="logs-section" class="section">
-                    <div class="section-header">
-                        <h2>Activity Logs</h2>
-                        <div class="log-filters">
-                            <select id="logTypeFilter" class="filter-select">
-                                <option value="">All Events</option>
-                                <option value="user_login">User Login</option>
-                                <option value="user_registration">User Registration</option>
-                                <option value="escrow_created">Escrow Created</option>
-                                <option value="escrow_released">Escrow Released</option>
-                                <option value="user_blocked">User Blocked</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="logs-container" id="logsContainer">
-                        <p class="text-center">Loading...</p>
-                    </div>
+                     <h2>Activity Logs</h2>
+                     <div class="logs-container" id="logsContainer"><p class="text-center">Loading...</p></div>
                 </section>
 
-                <!-- System Logs Section -->
                 <section id="system-logs-section" class="section">
-                    <div class="section-header">
-                        <h2>System Logs</h2>
-                        <div class="log-filters">
-                            <select id="systemLogSeverityFilter" class="filter-select">
-                                <option value="">All Severities</option>
-                                <option value="info">Info</option>
-                                <option value="warn">Warning</option>
-                                <option value="error">Error</option>
-                                <option value="critical">Critical</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="table-container">
+                     <h2>System Logs</h2>
+                     <div class="table-container">
                         <table id="systemLogsTable">
-                            <thead>
-                                <tr>
-                                    <th>Timestamp</th>
-                                    <th>Severity</th>
-                                    <th>Event Type</th>
-                                    <th>Message</th>
-                                    <th>User ID</th>
-                                    <th>IP Address</th>
-                                    <th>Endpoint</th>
-                                </tr>
-                            </thead>
-                            <tbody id="logsTableBody">
-                                <tr><td colspan="7" class="text-center">Loading...</td></tr>
-                            </tbody>
+                            <tbody id="systemLogsTableBody"><tr><td class="text-center">Loading...</td></tr></tbody>
                         </table>
-                    </div>
+                     </div>
                 </section>
             </div>
         </main>

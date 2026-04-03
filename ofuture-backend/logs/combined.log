@@ -1,192 +1,24 @@
-
-2026-04-03 02:24:53 [warn]: [CSRF] CSRF_SECRET not set in env — falling back to JWT_SECRET. Set CSRF_SECRET explicitly in production.
-2026-04-03 02:24:53 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
-2026-04-03 02:24:53 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 02:24:53 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
-2026-04-03 02:24:53 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 02:24:53 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
-2026-04-03 02:24:53 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 02:24:53 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
-2026-04-03 02:24:53 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 02:24:53 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
-2026-04-03 02:24:53 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 02:24:53 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
-2026-04-03 02:24:53 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 02:24:53 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
-2026-04-03 02:24:53 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 02:24:53 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
-2026-04-03 02:24:53 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 02:24:53 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
-2026-04-03 02:24:53 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 02:24:54 [info]: 🧪  RBAC test routes enabled (development only)
-2026-04-03 02:26:16 [warn]: [CSRF] CSRF_SECRET not set in env — falling back to JWT_SECRET. Set CSRF_SECRET explicitly in production.
-2026-04-03 02:26:17 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
-2026-04-03 02:26:17 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 02:26:17 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
-2026-04-03 02:26:17 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 02:26:17 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
-2026-04-03 02:26:17 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 02:26:17 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
-2026-04-03 02:26:17 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 02:26:17 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
-2026-04-03 02:26:17 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 02:26:17 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
-2026-04-03 02:26:17 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 02:26:17 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
-2026-04-03 02:26:17 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 02:26:17 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
-2026-04-03 02:26:17 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 02:26:17 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
-2026-04-03 02:26:17 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 02:26:18 [info]: 🧪  RBAC test routes enabled (development only)
-2026-04-03 02:26:18 [info]: 🚀  O'Future API running on port 5000
-2026-04-03 02:26:18 [info]: 📍  Environment: development
-2026-04-03 02:26:18 [info]: 🔗  Health check: http://localhost:5000/health
-2026-04-03 02:26:18 [info]: [redisClient] ioredis ready — using real Redis client.
-2026-04-03 02:28:08 [info]: User logged in: bob1@example.com
-2026-04-03 02:28:08 [http]: ::1 - - [02/Apr/2026:19:28:08 +0000] "POST /api/auth/login HTTP/1.1" 200 684 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
-2026-04-03 02:29:56 [http]: ::1 - - [02/Apr/2026:19:29:56 +0000] "POST /api/auth/login HTTP/1.1" 200 299 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
-2026-04-03 02:32:55 [http]: ::1 - - [02/Apr/2026:19:32:55 +0000] "POST /api/auth/login HTTP/1.1" 200 299 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
-2026-04-03 02:42:33 [warn]: [CSRF] CSRF_SECRET not set in env — falling back to JWT_SECRET. Set CSRF_SECRET explicitly in production.
-2026-04-03 02:42:34 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
-2026-04-03 02:42:34 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 02:42:34 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
-2026-04-03 02:42:34 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 02:42:34 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
-2026-04-03 02:42:34 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 02:42:34 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
-2026-04-03 02:42:34 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 02:42:34 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
-2026-04-03 02:42:34 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 02:42:34 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
-2026-04-03 02:42:34 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 02:42:34 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
-2026-04-03 02:42:34 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 02:42:34 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
-2026-04-03 02:42:34 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 02:42:34 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
-2026-04-03 02:42:34 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 02:42:35 [info]: 🧪  RBAC test routes enabled (development only)
-2026-04-03 02:42:35 [info]: 🚀  O'Future API running on port 5000
-2026-04-03 02:42:35 [info]: 📍  Environment: development
-2026-04-03 02:42:35 [info]: 🔗  Health check: http://localhost:5000/health
-2026-04-03 02:42:35 [info]: [redisClient] ioredis ready — using real Redis client.
-2026-04-03 02:43:23 [http]: ::1 - - [02/Apr/2026:19:43:23 +0000] "POST /api/auth/login HTTP/1.1" 200 299 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
-2026-04-03 02:45:46 [http]: ::1 - - [02/Apr/2026:19:45:46 +0000] "GET /favicon.ico HTTP/1.1" 404 113 "http://localhost:5000/health" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
-2026-04-03 02:57:46 [warn]: [CSRF] CSRF_SECRET not set in env — falling back to JWT_SECRET. Set CSRF_SECRET explicitly in production.
-2026-04-03 02:57:47 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
-2026-04-03 02:57:47 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 02:57:47 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
-2026-04-03 02:57:47 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 02:57:47 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
-2026-04-03 02:57:47 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 02:57:47 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
-2026-04-03 02:57:47 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 02:57:47 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
-2026-04-03 02:57:47 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 02:57:47 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
-2026-04-03 02:57:47 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 02:57:47 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
-2026-04-03 02:57:47 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 02:57:47 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
-2026-04-03 02:57:47 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 02:57:47 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
-2026-04-03 02:57:47 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 02:57:49 [info]: 🧪  RBAC test routes enabled (development only)
-2026-04-03 02:57:49 [info]: 🚀  O'Future API running on port 5000
-2026-04-03 02:57:49 [info]: 📍  Environment: development
-2026-04-03 02:57:49 [info]: 🔗  Health check: http://localhost:5000/health
-2026-04-03 02:57:49 [info]: [redisClient] ioredis ready — using real Redis client.
-2026-04-03 02:58:26 [http]: ::1 - - [02/Apr/2026:19:58:26 +0000] "POST /api/auth/login HTTP/1.1" 200 299 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
-2026-04-03 03:00:47 [http]: ::1 - - [02/Apr/2026:20:00:47 +0000] "POST /api/auth/login HTTP/1.1" 200 299 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
-2026-04-03 03:01:11 [info]: User logged in: bob1@example.com
-2026-04-03 03:01:11 [http]: ::1 - - [02/Apr/2026:20:01:11 +0000] "POST /api/auth/login HTTP/1.1" 200 684 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
-2026-04-03 03:02:21 [http]: ::1 - - [02/Apr/2026:20:02:21 +0000] "POST /api/auth/login HTTP/1.1" 200 299 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
-2026-04-03 03:11:32 [warn]: RBAC denied: userId=2a4f4f3a-1f23-11f1-b252-9c2dcd0692eb role="seller" attempted action requiring [buyer|admin]
-2026-04-03 03:11:32 [http]: ::1 - - [02/Apr/2026:20:11:32 +0000] "POST /api/orders HTTP/1.1" 403 127 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
-2026-04-03 03:19:50 [http]: ::1 - - [02/Apr/2026:20:19:50 +0000] "GET /api/orders HTTP/1.1" 401 84 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
-2026-04-03 03:20:14 [http]: ::1 - - [02/Apr/2026:20:20:14 +0000] "GET /api/orders HTTP/1.1" 401 87 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
-2026-04-03 03:20:31 [http]: ::1 - - [02/Apr/2026:20:20:31 +0000] "POST /api/auth/login HTTP/1.1" 200 299 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
-2026-04-03 03:20:48 [http]: ::1 - - [02/Apr/2026:20:20:48 +0000] "GET /api/orders HTTP/1.1" 401 87 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
-2026-04-03 03:22:44 [http]: ::1 - - [02/Apr/2026:20:22:44 +0000] "GET /api/orders HTTP/1.1" 401 87 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
-2026-04-03 03:33:41 [http]: ::1 - - [02/Apr/2026:20:33:41 +0000] "POST /api/auth/login HTTP/1.1" 200 299 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
-2026-04-03 03:37:58 [info]: User logged in: admin@ofuture.com
-2026-04-03 03:37:58 [http]: ::1 - - [02/Apr/2026:20:37:58 +0000] "POST /api/auth/login HTTP/1.1" 200 678 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
-2026-04-03 03:37:59 [http]: ::1 - - [02/Apr/2026:20:37:59 +0000] "GET /api/admin/users HTTP/1.1" 403 213 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
-2026-04-03 03:37:59 [http]: ::1 - - [02/Apr/2026:20:37:59 +0000] "GET /api/admin/escrow?status=disputed HTTP/1.1" 403 213 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
-2026-04-03 03:37:59 [http]: ::1 - - [02/Apr/2026:20:37:59 +0000] "GET /api/admin/payments HTTP/1.1" 403 213 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
-2026-04-03 03:37:59 [http]: ::1 - - [02/Apr/2026:20:37:59 +0000] "GET /api/admin/system-logs HTTP/1.1" 403 213 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
-2026-04-03 03:37:59 [http]: ::1 - - [02/Apr/2026:20:37:59 +0000] "GET /api/admin/logs HTTP/1.1" 403 213 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
-2026-04-03 03:38:19 [info]: User logged in: bob1@example.com
-2026-04-03 03:38:19 [http]: ::1 - - [02/Apr/2026:20:38:19 +0000] "POST /api/auth/login HTTP/1.1" 200 684 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
-2026-04-03 03:44:26 [warn]: RBAC denied: userId=2a4f4f3a-1f23-11f1-b252-9c2dcd0692eb role="seller" attempted action requiring [admin]
-2026-04-03 03:44:26 [http]: ::1 - - [02/Apr/2026:20:44:26 +0000] "GET /api/orders HTTP/1.1" 403 120 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
-2026-04-03 03:44:31 [warn]: RBAC denied: userId=2a4f4f3a-1f23-11f1-b252-9c2dcd0692eb role="seller" attempted action requiring [admin]
-2026-04-03 03:44:31 [http]: ::1 - - [02/Apr/2026:20:44:31 +0000] "GET /api/orders HTTP/1.1" 403 120 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
-2026-04-03 03:44:40 [warn]: RBAC denied: userId=2a4f4f3a-1f23-11f1-b252-9c2dcd0692eb role="seller" attempted action requiring [admin]
-2026-04-03 03:44:40 [http]: ::1 - - [02/Apr/2026:20:44:40 +0000] "GET /api/orders HTTP/1.1" 403 120 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
-2026-04-03 03:44:41 [warn]: RBAC denied: userId=2a4f4f3a-1f23-11f1-b252-9c2dcd0692eb role="seller" attempted action requiring [admin]
-2026-04-03 03:44:41 [http]: ::1 - - [02/Apr/2026:20:44:41 +0000] "GET /api/orders HTTP/1.1" 403 120 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
-2026-04-03 03:45:05 [warn]: RBAC denied: userId=2a4f4f3a-1f23-11f1-b252-9c2dcd0692eb role="seller" attempted action requiring [admin]
-2026-04-03 03:45:05 [http]: ::1 - - [02/Apr/2026:20:45:05 +0000] "GET /api/orders HTTP/1.1" 403 120 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
-2026-04-03 03:45:43 [http]: ::1 - - [02/Apr/2026:20:45:43 +0000] "POST /api/auth/login HTTP/1.1" 200 299 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
-2026-04-03 04:03:58 [http]: ::1 - - [02/Apr/2026:21:03:58 +0000] "GET /api/auth/me HTTP/1.1" 401 84 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
-2026-04-03 04:17:23 [http]: ::1 - - [02/Apr/2026:21:17:23 +0000] "POST /api/auth/login HTTP/1.1" 200 299 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
-2026-04-03 04:20:19 [http]: ::1 - - [02/Apr/2026:21:20:19 +0000] "POST /api/auth/login HTTP/1.1" 200 299 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
-2026-04-03 04:22:28 [warn]: [CSRF] CSRF_SECRET not set in env — falling back to JWT_SECRET. Set CSRF_SECRET explicitly in production.
-2026-04-03 04:22:29 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
-2026-04-03 04:22:29 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 04:22:29 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
-2026-04-03 04:22:29 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 04:22:29 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
-2026-04-03 04:22:29 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 04:22:29 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
-2026-04-03 04:22:29 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 04:22:29 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
-2026-04-03 04:22:29 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 04:22:29 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
-2026-04-03 04:22:29 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 04:22:29 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
-2026-04-03 04:22:29 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 04:22:29 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
-2026-04-03 04:22:29 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 04:22:29 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
-2026-04-03 04:22:29 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 04:22:31 [info]: 🧪  RBAC test routes enabled (development only)
-2026-04-03 04:22:31 [info]: 🚀  O'Future API running on port 5000
-2026-04-03 04:22:31 [info]: 📍  Environment: development
-2026-04-03 04:22:31 [info]: 🔗  Health check: http://localhost:5000/health
-2026-04-03 04:22:31 [info]: [redisClient] ioredis ready — using real Redis client.
-2026-04-03 04:22:57 [http]: ::1 - - [02/Apr/2026:21:22:57 +0000] "POST /api/auth/login HTTP/1.1" 200 299 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
-2026-04-03 04:38:26 [http]: ::1 - - [02/Apr/2026:21:38:26 +0000] "POST /api/auth/register HTTP/1.1" 422 130 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
-2026-04-03 04:38:50 [http]: ::1 - - [02/Apr/2026:21:38:50 +0000] "POST /api/auth/register HTTP/1.1" 422 130 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
-2026-04-03 04:39:12 [http]: ::1 - - [02/Apr/2026:21:39:12 +0000] "POST /api/auth/register HTTP/1.1" 422 130 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
-2026-04-03 04:39:15 [http]: ::1 - - [02/Apr/2026:21:39:15 +0000] "POST /api/auth/register HTTP/1.1" 422 130 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
-2026-04-03 04:39:21 [http]: ::1 - - [02/Apr/2026:21:39:21 +0000] "POST /api/auth/register HTTP/1.1" 422 130 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
-2026-04-03 04:39:27 [http]: ::1 - - [02/Apr/2026:21:39:27 +0000] "POST /api/auth/register HTTP/1.1" 422 130 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
-2026-04-03 04:39:34 [http]: ::1 - - [02/Apr/2026:21:39:34 +0000] "POST /api/auth/register HTTP/1.1" 422 130 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
-2026-04-03 04:39:38 [http]: ::1 - - [02/Apr/2026:21:39:38 +0000] "POST /api/auth/register HTTP/1.1" 422 130 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
-2026-04-03 04:42:37 [warn]: [CSRF] CSRF_SECRET not set in env — falling back to JWT_SECRET. Set CSRF_SECRET explicitly in production.
-2026-04-03 04:42:38 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
-2026-04-03 04:42:38 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 04:42:38 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
-2026-04-03 04:42:38 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 04:42:38 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
-2026-04-03 04:42:38 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 04:42:38 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
-2026-04-03 04:42:38 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 04:42:38 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
-2026-04-03 04:42:38 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 04:42:38 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
-2026-04-03 04:42:38 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 04:42:38 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
-2026-04-03 04:42:38 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 04:42:38 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
-2026-04-03 04:42:38 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 04:42:38 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
-2026-04-03 04:42:38 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 04:42:39 [info]: 🧪  RBAC test routes enabled (development only)
-2026-04-03 04:42:39 [info]: 🚀  O'Future API running on port 5000
-2026-04-03 04:42:39 [info]: 📍  Environment: development
-2026-04-03 04:42:39 [info]: 🔗  Health check: http://localhost:5000/health
-2026-04-03 04:42:39 [info]: [redisClient] ioredis ready — using real Redis client.
+2026-04-03 12:20:33 [warn]: [CSRF] CSRF_SECRET not set in env — falling back to JWT_SECRET. Set CSRF_SECRET explicitly in production.
+2026-04-03 12:20:33 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 12:20:33 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 12:20:33 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 12:20:33 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 12:20:33 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 12:20:33 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 12:20:33 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 12:20:33 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 12:20:33 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 12:20:33 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 12:20:33 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 12:20:33 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 12:20:33 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 12:20:33 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 12:20:33 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 12:20:33 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 12:20:33 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-03 12:20:33 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 12:20:34 [info]: 🧪  RBAC test routes enabled (development only)
+2026-04-03 12:20:34 [info]: 🚀  O'Future API running on port 5000
+2026-04-03 12:20:34 [info]: 📍  Environment: development
+2026-04-03 12:20:34 [info]: 🔗  Health check: http://localhost:5000/health
+2026-04-03 12:20:34 [info]: [redisClient] ioredis ready — using real Redis client.

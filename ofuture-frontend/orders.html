@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đơn hàng - O'Future</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="orders.css">
+</head>
+<body>
+   <header class="header">
+    <div class="container nav">
+        <a href="index.html" class="logo">
+            <span class="logo-mark">O</span>
+            <span class="logo-text">O'Future</span>
+        </a>
+        <nav class="menu">
+            <a href="index.html">Home</a>
+            <a href="product.html">Products</a>
+            <a href="cart.html">Cart</a>
+            <a href="orders.html">Orders</a>
+            <a href="profile-management.html">Account</a>
+        </nav>
+        <div class="nav-actions">
+            <button id="logoutBtn" class="btn btn-outline">Logout</button>
+        </div>
+    </div>
+</header>
+
+<main class="section">
+    <div class="container">
+        <div class="page-header">
+            <h1>My Orders</h1>
+            <p>Track and manage your orders</p>
+        </div>
+
+        <div class="tabs">
+            <button class="tab-btn active" data-status="all">All</button>
+            <button class="tab-btn" data-status="pending">Pending</button>
+            <button class="tab-btn" data-status="paid">Paid</button>
+            <button class="tab-btn" data-status="shipped">Shipping</button>
+            <button class="tab-btn" data-status="completed">Completed</button>
+            <button class="tab-btn" data-status="cancelled">Cancelled</button>
+        </div>
+
+        <div id="ordersList">
+            <p class="loading">Loading orders...</p>
+        </div>
+    </div>
+</main>
+    </main>
+
+    <div id="toast" class="toast"></div>
+
+    <script src="orders.js"></script>
+</body>
+</html>

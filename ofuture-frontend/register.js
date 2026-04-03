@@ -1,9 +1,7 @@
 // ============================================================
 // O'Future Register Feature
-// Handles: Password Validation, Role Selection
 // ============================================================
 
-// State management
 const appState = {
   isPasswordValid: false,
 };
@@ -18,18 +16,17 @@ const elements = {
   role: document.getElementById('role'),
   password: document.getElementById('password'),
   confirmPassword: document.getElementById('confirmPassword'),
-  passwordRequirements: document.getElementById('passwordRequirements'),
   confirmStatus: document.getElementById('confirmStatus'),
   submitBtn: document.getElementById('submitBtn'),
 };
 
 // ── Password Validation ──────────────────────────────────
 const passwordRules = {
-  length: /^.{8,}$/,           // At least 8 characters
-  uppercase: /[A-Z]/,           // At least 1 uppercase
-  lowercase: /[a-z]/,           // At least 1 lowercase
-  number: /\d/,                 // At least 1 number
-  special: /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/,  // At least 1 special char
+  length: /^.{8,}$/,           
+  uppercase: /[A-Z]/,          
+  lowercase: /[a-z]/,          
+  number: /\d/,                
+  special: /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/, 
 };
 
 const passwordRequirementIds = {
@@ -41,10 +38,6 @@ const passwordRequirementIds = {
 };
 
 // ── Utility Functions ─────────────────────────────────────
-
-/**
- * Check if password meets all requirements
- */
 function validatePassword(pwd) {
   const results = {};
   for (const [key, regex] of Object.entries(passwordRules)) {
@@ -53,17 +46,10 @@ function validatePassword(pwd) {
   return results;
 }
 
-/**
- * Check if all password requirements are met
- */
 function isPasswordValid(pwd) {
-  const validation = validatePassword(pwd);
-  return Object.values(validation).every((isValid) => isValid);
+  return Object.values(validatePassword(pwd)).every((isValid) => isValid);
 }
 
-/**
- * Update password requirements UI
- */
 function updatePasswordRequirements() {
   const pwd = elements.password.value;
   const validation = validatePassword(pwd);
@@ -81,9 +67,6 @@ function updatePasswordRequirements() {
   updateSubmitButton();
 }
 
-/**
- * Check if passwords match
- */
 function checkPasswordMatch() {
   const pwd = elements.password.value;
   const confirmPwd = elements.confirmPassword.value;
@@ -101,197 +84,107 @@ function checkPasswordMatch() {
   return isMatch;
 }
 
-
-
-/**
- * Update submit button state
- */
 function updateSubmitButton() {
-  const pwd = elements.password.value;
-  const confirmPwd = elements.confirmPassword.value;
-  const fullName = elements.fullName.value.trim();
-  const email = elements.email.value.trim();
-  const username = elements.username.value.trim();
-
   const isFormValid =
-    fullName &&
-    email &&
-    username &&
+    elements.fullName.value.trim() &&
+    elements.email.value.trim() &&
+    elements.username.value.trim() &&
     appState.isPasswordValid &&
-    pwd === confirmPwd;
+    elements.password.value === elements.confirmPassword.value;
 
   elements.submitBtn.disabled = !isFormValid;
 }
 
-
-
-/**
- * Show notification/toast message
- */
 function showNotification(message, type = 'info') {
-  // Create notification element
   const notification = document.createElement('div');
   notification.className = `notification notification-${type}`;
   notification.textContent = message;
   notification.style.cssText = `
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    padding: 12px 20px;
-    background-color: ${type === 'success' ? '#10b981' : type === 'error' ? '#ef4444' : '#3b82f6'};
-    color: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    z-index: 10000;
-    animation: slideIn 0.3s ease-out;
+    position: fixed; top: 20px; right: 20px; padding: 12px 20px;
+    background-color: ${type === 'success' ? '#10b981' : '#ef4444'};
+    color: white; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    z-index: 10000; animation: slideIn 0.3s ease-out;
   `;
-
   document.body.appendChild(notification);
-
   setTimeout(() => {
     notification.style.animation = 'slideOut 0.3s ease-out';
     setTimeout(() => notification.remove(), 300);
-  }, 3000);
+  }, 3500);
 }
 
-/**
- * Add CSS animations if not already present
- */
 function ensureAnimations() {
   if (!document.getElementById('register-animations')) {
     const style = document.createElement('style');
     style.id = 'register-animations';
     style.textContent = `
-      @keyframes slideIn {
-        from {
-          transform: translateX(400px);
-          opacity: 0;
-        }
-        to {
-          transform: translateX(0);
-          opacity: 1;
-        }
-      }
-
-      @keyframes slideOut {
-        from {
-          transform: translateX(0);
-          opacity: 1;
-        }
-        to {
-          transform: translateX(400px);
-          opacity: 0;
-        }
-      }
+      @keyframes slideIn { from { transform: translateX(400px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+      @keyframes slideOut { from { transform: translateX(0); opacity: 1; } to { transform: translateX(400px); opacity: 0; } }
     `;
     document.head.appendChild(style);
   }
 }
 
-// ── API Calls ─────────────────────────────────────────────
-
-/**
- * Submit registration form
- */
+// ── API Integration (Integration Phase) ────────────────────
 async function submitRegistration(event) {
   event.preventDefault();
 
-  if (!appState.isPasswordValid) {
-    showNotification('Please complete all required fields correctly', 'error');
+  if (!appState.isPasswordValid || elements.password.value !== elements.confirmPassword.value) {
+    showNotification('Vui lòng hoàn thiện đúng các trường yêu cầu', 'error');
     return;
   }
 
-  const formData = {
-    fullName: elements.fullName.value.trim(),
+  // Khớp chính xác với payload mà authController.ts đang bóc tách
+  const payload = {
+    fullName: elements.fullName.value.trim(), 
     email: elements.email.value.trim(),
     username: elements.username.value.trim(),
-    phone: elements.phone.value.trim() || null,
+    phone: elements.phone.value.trim() || undefined,
     password: elements.password.value,
-    confirmPassword: elements.confirmPassword.value,
     role: elements.role.value,
   };
 
-  if (formData.password !== formData.confirmPassword) {
-    showNotification('Passwords do not match', 'error');
-    return;
-  }
-
-try {
+  try {
     elements.submitBtn.disabled = true;
-    elements.submitBtn.textContent = 'Creating account...';
+    elements.submitBtn.textContent = 'Đang xử lý...';
 
-    // Thay thế fetch thuần bằng fetchAPI (không cần truyền BASE_URL hay headers nữa)
+    // Gọi API thông qua wrapper chung api.js
     const response = await fetchAPI('/auth/register', {
       method: 'POST',
-      body: JSON.stringify({
-        full_name: formData.fullName, // Đổi thành full_name để khớp MySQL Backend
-        email: formData.email,
-        username: formData.username,
-        phone: formData.phone,
-        password: formData.password,
-        role: formData.role, // Nếu ở giao diện không có thẻ select role, nhớ mặc định là 'user'
-      }),
+      body: JSON.stringify(payload),
     });
 
-    // Vì fetchAPI đã tự throw lỗi nếu response.ok = false, nên xuống được đây chắc chắn là success
     if (response.success) {
-      showNotification('Registration successful! Redirecting to login...', 'success');
+      showNotification('Đăng ký thành công! Vui lòng kiểm tra Email để lấy mã OTP.', 'success');
+      
+      // Chuyển hướng về trang đăng nhập sau 2.5 giây để User kịp đọc thông báo
       setTimeout(() => {
         window.location.href = 'loginbd.html/login.html';
-      }, 1500);
+      }, 2500);
     }
   } catch (error) {
-    console.error('Error during registration:', error);
-    showNotification(error.message || 'Network error. Please try again.', 'error');
+    console.error('Lỗi đăng ký:', error);
+    showNotification(error.message || 'Lỗi kết nối máy chủ. Vui lòng thử lại.', 'error');
+  } finally {
     elements.submitBtn.disabled = false;
     elements.submitBtn.textContent = 'Đăng ký';
   }
 }
 
-// ── Event Listeners ───────────────────────────────────────
-
-/**
- * Initialize all event listeners
- */
-function initializeEventListeners() {
-  // Password validation - real-time feedback
+// ── Initialization ────────────────────────────────────────
+function initializeRegisterForm() {
+  ensureAnimations();
+  
   elements.password.addEventListener('input', updatePasswordRequirements);
   elements.password.addEventListener('change', updatePasswordRequirements);
-
-  // Confirm password match
-  elements.confirmPassword.addEventListener('input', () => {
-    checkPasswordMatch();
-    updateSubmitButton();
-  });
-
-  // Enable/disable based on form state
+  elements.confirmPassword.addEventListener('input', () => { checkPasswordMatch(); updateSubmitButton(); });
   elements.fullName.addEventListener('input', updateSubmitButton);
   elements.email.addEventListener('input', updateSubmitButton);
   elements.username.addEventListener('input', updateSubmitButton);
-
-  // Form submission
+  
   elements.form.addEventListener('submit', submitRegistration);
-}
 
-// ── Initialization ────────────────────────────────────────
-
-/**
- * Initialize the register form
- */
-function initializeRegisterForm() {
-  ensureAnimations();
-  initializeEventListeners();
-
-  // Initialize password requirements
   updatePasswordRequirements();
   updateSubmitButton();
-
-  console.log('Register form initialized');
 }
 
-// Start when DOM is ready
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initializeRegisterForm);
-} else {
-  initializeRegisterForm();
-}
+document.addEventListener('DOMContentLoaded', initializeRegisterForm);

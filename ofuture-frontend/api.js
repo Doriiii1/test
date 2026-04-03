@@ -1,4 +1,7 @@
-// api.js - Xử lý mọi kết nối từ FE gọi lên BE Node.js
+// ============================================================
+// CORE API WRAPPER - Xử lý mọi kết nối từ FE lên BE
+// ============================================================
+
 const CONFIG = {
   // Tự động nhận diện môi trường để chuyển URL, tránh hardcode chết
   API_BASE_URL: window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
@@ -7,14 +10,15 @@ const CONFIG = {
 };
 
 async function fetchAPI(endpoint, options = {}) {
-  // Lấy token chuẩn từ localStorage (do login.js đã lưu trước đó)
   const token = localStorage.getItem('accessToken');
   
-  const headers = {
-    'Content-Type': 'application/json',
-    ...options.headers,
-  };
+  const headers = { ...options.headers };
+  // Nếu dữ liệu không phải là File/FormData thì mới ép kiểu JSON
+  if (!(options.body instanceof FormData)) {
+    headers['Content-Type'] = headers['Content-Type'] || 'application/json';
+  }
 
+  // Đính kèm Token nếu có
   if (token) {
     headers['Authorization'] = `Bearer ${token}`;
   }
@@ -25,19 +29,30 @@ async function fetchAPI(endpoint, options = {}) {
       headers,
     });
 
-    // Xử lý mất phiên đăng nhập (Token hết hạn / bị BE từ chối)
+    // ── XỬ LÝ LỖI 401 (Mất Session / Token hết hạn) ──
     if (response.status === 401) {
       localStorage.removeItem('accessToken');
+      localStorage.removeItem('refreshToken');
       localStorage.removeItem('user');
-      window.location.href = 'loginbd.html/login.html';
-      throw new Error('Phiên đăng nhập hết hạn');
+      
+      // Tính toán đường dẫn lùi cấp nếu file đang nằm trong dashboard 
+      const currentPath = window.location.pathname;
+      const isInsideSubFolder = currentPath.includes('/dashboard-') || currentPath.includes('/loginbd.html/');
+      const loginPath = isInsideSubFolder ? '../loginbd.html/login.html' : 'loginbd.html/login.html';
+      
+      alert('Phiên đăng nhập đã hết hạn. Vui lòng đăng nhập lại!');
+      window.location.href = loginPath;
+      throw new Error('Unauthorized');
     }
 
     const data = await response.json();
-    if (!response.ok) {
+    
+    // Ném lỗi nếu response trả về không success
+    if (!response.ok || !data.success) {
       throw new Error(data.message || `Lỗi HTTP: ${response.status}`);
     }
-    return data;
+    
+    return data; // Trả về toàn bộ object chuẩn của BE
   } catch (error) {
     console.error('[API Error]:', error);
     throw error;

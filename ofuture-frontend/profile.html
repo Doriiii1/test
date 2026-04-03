@@ -3,82 +3,430 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile - OFuture</title>
-    <link rel="stylesheet" href="profile.css">
+    <title>Hồ sơ cá nhân - O'Future</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
     <style>
-        :root{box-sizing:border-box}
-        *,*::before,*::after{box-sizing:inherit}
+        .profile-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .profile-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .profile-header h1 {
+            font-size: 42px;
+            margin-bottom: 12px;
+            letter-spacing: -0.03em;
+        }
+
+        .profile-header p {
+            color: var(--muted);
+            font-size: 16px;
+        }
+
+        .profile-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 22px;
+            padding: 32px;
+            box-shadow: var(--shadow-soft);
+            margin-bottom: 24px;
+        }
+
+        .profile-card h2 {
+            font-size: 24px;
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .profile-card h2 span {
+            font-size: 28px;
+        }
+
+        .avatar-section {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            margin-bottom: 32px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .avatar-placeholder {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 48px;
+            font-weight: 800;
+            border: 3px solid var(--border);
+        }
+
+        .avatar-info {
+            flex: 1;
+        }
+
+        .avatar-info h3 {
+            font-size: 24px;
+            margin-bottom: 6px;
+        }
+
+        .avatar-info p {
+            color: var(--muted);
+            margin-bottom: 16px;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            transition: all 0.25s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px var(--accent-soft);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .security-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+            background: var(--soft-bg);
+            border-radius: 14px;
+            margin-bottom: 16px;
+        }
+
+        .toggle-info h4 {
+            font-size: 16px;
+            margin-bottom: 4px;
+        }
+
+        .toggle-info p {
+            color: var(--muted);
+            font-size: 14px;
+            margin: 0;
+        }
+
+        .toggle-switch {
+            position: relative;
+            width: 56px;
+            height: 30px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #cbd5e1;
+            transition: 0.3s;
+            border-radius: 30px;
+        }
+
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 22px;
+            width: 22px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: 0.3s;
+            border-radius: 50%;
+        }
+
+        .toggle-switch input:checked + .toggle-slider {
+            background-color: var(--accent);
+        }
+
+        .toggle-switch input:checked + .toggle-slider:before {
+            transform: translateX(26px);
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            padding: 16px 24px;
+            background: var(--primary);
+            color: var(--white);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .toast.success {
+            background: #15803d;
+        }
+
+        .toast.error {
+            background: #dc2626;
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .avatar-section {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .profile-card {
+                padding: 24px;
+            }
+        }
     </style>
 </head>
 <body>
-    <iframe class="header-embed" src="header.html" title="Site Header" loading="eager"></iframe>
-    <main class="settings-layout">
-        <aside class="settings-sidebar">
-            <nav>
-                <ul>
-                    <li class="active">Profile</li>
-                </ul>
+    <header class="header">
+        <div class="container nav">
+            <a href="index.html" class="logo">
+                <span class="logo-mark">O</span>
+                <span class="logo-text">O'Future</span>
+            </a>
+            <nav class="menu">
+                <a href="index.html">Home page</a>
+                <a href="product.html">Products</a>
+                <a href="cart.html">Shopping</a>
+                <a href="orders.html">Order</a>
+                <a href="profile-management.html">Account</a>
             </nav>
-        </aside>
-
-        <section class="settings-content">
-            <div class="page-header">
-                <div class="page-head-left">
-                    <h1 class="page-heading">Profile</h1>
-                    <p class="page-sub">Manage your profile settings</p>
-                </div>
-                <div class="header-actions">
-                    <a href="index.html" class="btn ghost back-btn" id="homeBtn">Home</a>
-                </div>
+            <div class="nav-actions">
+                <a href="loginbd.html/login.html" class="btn btn-outline">Login</a>
             </div>
+        </div>
+    </header>
 
-            <div class="panel-card">
-                <h3>Basic info</h3>
-                <p class="muted">Tell us your basic info details</p>
+    <main class="section">
+        <div class="container">
+            <div class="profile-container">
+                <div class="profile-header">
+                    <h1>Profile</h1>
+                    <p>Manage account information and settings.</p>
+                </div>
 
-                <form id="update-form" class="basic-form">
-                    <label class="field">Full name
-                        <input type="text" id="fullName" name="fullName" placeholder="Full name" required>
-                    </label>
+                <!-- THÔNG TIN CÁ NHÂN -->
+                <div class="profile-card">
+                    <h2><span>👤</span> Personal information</h2>
+                    
+                    <div class="avatar-section">
+                        <div class="avatar-placeholder" id="avatarDisplay">
+                            U
+                        </div>
+                        <div class="avatar-info">
+                            <h3 id="displayName">User</h3>
+                            <p>Member since 2024</p>
+                            <button class="btn btn-outline" onclick="editAvatar()">Change profile picture</button>
+                        </div>
+                    </div>
 
-                    <div class="inline-row">
-                        <label class="field">Email
-                            <input type="email" id="emailInput" placeholder="email@example.com" readonly>
+                    <form id="profileForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Full name *</label>
+                                <input type="text" id="fullname" placeholder="Nhập họ và tên" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Phone number *</label>
+                                <input type="tel" id="phone" placeholder="Nhập số điện thoại" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" id="email" placeholder="email@example.com" disabled>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Update information</button>
+                    </form>
+                </div>
+
+                <!-- BẢO MẬT -->
+                <div class="profile-card">
+                    <h2><span>🔒</span> Security</h2>
+
+                    <form id="passwordForm">
+                        <div class="form-group">
+                            <label>Current password*</label>
+                            <input type="password" id="oldPass" placeholder="Nhập mật khẩu hiện tại" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>New password *</label>
+                            <input type="password" id="newPass" placeholder="Nhập mật khẩu mới" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Confirm new password *</label>
+                            <input type="password" id="confirmPass" placeholder="Nhập lại mật khẩu mới" required>
+                        </div>
+
+                        <button type="button" onclick="changePassword()" class="btn btn-primary">Change password</button>
+                    </form>
+                </div>
+
+                <!-- CÀI ĐẶT BẢO MẬT -->
+                <div class="profile-card">
+                    <h2><span>⚙️</span> Security settings</h2>
+
+                    <div class="security-toggle">
+                        <div class="toggle-info">
+                            <h4>Two-factor authentication (MFA)</h4>
+                            <p>Enhance account security with verification codes.</p>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="mfaToggle" onchange="toggleMFA()">
+                            <span class="toggle-slider"></span>
                         </label>
                     </div>
 
-                    <label class="field">Phone number
-                        <input type="tel" id="phone" name="phone" placeholder="+84 9xx xxx xxx">
-                    </label>
-
-                    <label class="field">Profile picture
-                        <input type="url" id="avatar" name="avatar" placeholder="Avatar URL">
-                    </label>
-
-                    <div class="form-actions">
-                        <button type="submit" class="submit-btn">Update</button>
+                    <div class="security-toggle">
+                        <div class="toggle-info">
+                            <h4>Email notifications</h4>
+                            <p>Receive notifications about your order and promotions.</p>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="emailNotif" checked>
+                            <span class="toggle-slider"></span>
+                        </label>
                     </div>
-                </form>
-            </div>
 
-            <!-- Keep security and admin sections (collapsed by default) -->
-            <div id="security" class="panel-card">
-                <h3>Security</h3>
-                <button id="logout-all" class="submit-btn">Logout from All Devices</button>
-                <h4>Two-Factor Authentication (MFA)</h4>
-                <p id="mfa-status">Status: Disabled</p>
-                <button id="toggle-mfa" class="submit-btn">Enable MFA</button>
+                    <div class="security-toggle">
+                        <div class="toggle-info">
+                            <h4>Remember the device</h4>
+                            <p>MFA is not required on this device.</p>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="rememberDevice">
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                </div>
             </div>
-
-            <div id="admin-panel" class="panel-card" style="display:none">
-                <h3>User Management</h3>
-                <!-- admin content remains -->
-            </div>
-        </section>
+        </div>
     </main>
 
-    <iframe class="footer-embed" src="footer.html" title="Site Footer" loading="eager"></iframe>
-    <script src="api.js"></script>
+    <div id="toast" class="toast"></div>
+
     <script src="profile.js"></script>
+    <script>
+        // Update avatar display with first letter of name
+        function updateAvatarDisplay() {
+            const fullname = document.getElementById('fullname').value;
+            const displayName = document.getElementById('displayName');
+            const avatarDisplay = document.getElementById('avatarDisplay');
+            
+            if (fullname) {
+                displayName.textContent = fullname;
+                avatarDisplay.textContent = fullname.charAt(0).toUpperCase();
+            }
+        }
+
+        // Profile form submission
+        document.getElementById('profileForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            updateAvatarDisplay();
+            showToast('Cập nhật thông tin thành công!', 'success');
+        });
+
+        // Edit avatar placeholder
+        function editAvatar() {
+            showToast('Tính năng đang phát triển', 'error');
+        }
+
+        // Toggle MFA
+        function toggleMFA() {
+            const mfaToggle = document.getElementById('mfaToggle');
+            if (mfaToggle.checked) {
+                showToast('MFA đã được bật', 'success');
+            } else {
+                showToast('MFA đã được tắt', 'success');
+            }
+        }
+
+        // Show toast notification
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.className = `toast ${type} show`;
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // Load user data on page load
+        window.addEventListener('load', function() {
+            // Simulate loading user data
+            const userData = JSON.parse(localStorage.getItem('user') || '{}');
+            if (userData.fullname) {
+                document.getElementById('fullname').value = userData.fullname;
+                updateAvatarDisplay();
+            }
+            if (userData.phone) {
+                document.getElementById('phone').value = userData.phone;
+            }
+            if (userData.email) {
+                document.getElementById('email').value = userData.email;
+            }
+        });
+    </script>
 </body>
 </html>

@@ -1,0 +1,17 @@
+<h2 id="name"></h2>
+<img id="image" width="300"/>
+<p id="desc"></p>
+<h3 id="price"></h3>
+
+<script>
+const id = new URLSearchParams(window.location.search).get("id");
+
+fetch(`http://localhost:3000/api/products/${id}`)
+.then(res => res.json())
+.then(data => {
+    document.getElementById("name").innerText = data.name;
+    document.getElementById("image").src = data.image;
+    document.getElementById("desc").innerText = data.description;
+    document.getElementById("price").innerText = "$" + data.price;
+});
+</script>

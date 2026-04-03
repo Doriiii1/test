@@ -1,67 +1,10 @@
-
-2026-04-03 02:24:53 [warn]: [CSRF] CSRF_SECRET not set in env — falling back to JWT_SECRET. Set CSRF_SECRET explicitly in production.
-2026-04-03 02:24:53 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 02:24:53 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 02:24:53 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 02:24:53 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 02:24:53 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 02:24:53 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 02:24:53 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 02:24:53 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 02:24:53 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 02:26:16 [warn]: [CSRF] CSRF_SECRET not set in env — falling back to JWT_SECRET. Set CSRF_SECRET explicitly in production.
-2026-04-03 02:26:17 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 02:26:17 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 02:26:17 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 02:26:17 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 02:26:17 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 02:26:17 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 02:26:17 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 02:26:17 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 02:26:17 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 02:42:33 [warn]: [CSRF] CSRF_SECRET not set in env — falling back to JWT_SECRET. Set CSRF_SECRET explicitly in production.
-2026-04-03 02:42:34 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 02:42:34 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 02:42:34 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 02:42:34 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 02:42:34 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 02:42:34 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 02:42:34 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 02:42:34 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 02:42:34 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 02:57:46 [warn]: [CSRF] CSRF_SECRET not set in env — falling back to JWT_SECRET. Set CSRF_SECRET explicitly in production.
-2026-04-03 02:57:47 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 02:57:47 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 02:57:47 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 02:57:47 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 02:57:47 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 02:57:47 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 02:57:47 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 02:57:47 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 02:57:47 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 03:11:32 [warn]: RBAC denied: userId=2a4f4f3a-1f23-11f1-b252-9c2dcd0692eb role="seller" attempted action requiring [buyer|admin]
-2026-04-03 03:44:26 [warn]: RBAC denied: userId=2a4f4f3a-1f23-11f1-b252-9c2dcd0692eb role="seller" attempted action requiring [admin]
-2026-04-03 03:44:31 [warn]: RBAC denied: userId=2a4f4f3a-1f23-11f1-b252-9c2dcd0692eb role="seller" attempted action requiring [admin]
-2026-04-03 03:44:40 [warn]: RBAC denied: userId=2a4f4f3a-1f23-11f1-b252-9c2dcd0692eb role="seller" attempted action requiring [admin]
-2026-04-03 03:44:41 [warn]: RBAC denied: userId=2a4f4f3a-1f23-11f1-b252-9c2dcd0692eb role="seller" attempted action requiring [admin]
-2026-04-03 03:45:05 [warn]: RBAC denied: userId=2a4f4f3a-1f23-11f1-b252-9c2dcd0692eb role="seller" attempted action requiring [admin]
-2026-04-03 04:22:28 [warn]: [CSRF] CSRF_SECRET not set in env — falling back to JWT_SECRET. Set CSRF_SECRET explicitly in production.
-2026-04-03 04:22:29 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 04:22:29 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 04:22:29 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 04:22:29 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 04:22:29 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 04:22:29 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 04:22:29 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 04:22:29 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 04:22:29 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 04:42:37 [warn]: [CSRF] CSRF_SECRET not set in env — falling back to JWT_SECRET. Set CSRF_SECRET explicitly in production.
-2026-04-03 04:42:38 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 04:42:38 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 04:42:38 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 04:42:38 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 04:42:38 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 04:42:38 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 04:42:38 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 04:42:38 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
-2026-04-03 04:42:38 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 12:20:33 [warn]: [CSRF] CSRF_SECRET not set in env — falling back to JWT_SECRET. Set CSRF_SECRET explicitly in production.
+2026-04-03 12:20:33 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 12:20:33 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 12:20:33 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 12:20:33 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 12:20:33 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 12:20:33 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 12:20:33 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 12:20:33 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-03 12:20:33 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:

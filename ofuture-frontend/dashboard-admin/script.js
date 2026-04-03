@@ -1,794 +1,205 @@
 // ============================================================
-// O'Future Admin Dashboard - JavaScript
-// API Base URL
+// O'Future Admin Dashboard - Core Logic (Optimized for BE/DB)
 // ============================================================
 
-// Store data
-let currentAdmin = null;
 let allUsers = [];
-let allEscrow = [];
-let allPayments = [];
 let allLogs = [];
 
-// ============================================================
-// Authentication & Initialization
-// ============================================================
-
+// ── 1. KHỞI TẠO HỆ THỐNG ─────────────────────────────────────
 async function initializeDashboard() {
-    // Check if user is authenticated and is admin
     const token = localStorage.getItem('accessToken');
-    const user = localStorage.getItem('user');
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
 
-    if (!token || !user) {
+    // Kiểm tra quyền Admin ngay tại đầu phễu
+    if (!token || user.role !== 'admin') {
+        alert('Bạn không có quyền truy cập! Đang chuyển hướng về trang Login.');
         window.location.href = '../loginbd.html/login.html';
         return;
     }
 
-    try {
-        currentAdmin = JSON.parse(user);
-
-        // Check if user is admin
-        if (currentAdmin.role !== 'admin') {
-            alert('Only admins can access this dashboard');
-            window.location.href = '../index.html';
-            return;
-        }
-
-        // Update UI with user info
-        document.getElementById('username').textContent = currentAdmin.username;
-
-        // Load initial data
-        await loadDashboardData();
-
-        // Setup event listeners
-        setupEventListeners();
-    } catch (error) {
-        console.error('Error initializing dashboard:', error);
-        alert('Error loading dashboard. Please login again.');
-        window.location.href = '../loginbd.html/login.html';
-    }
+    document.getElementById('username').textContent = user.username || 'Admin';
+    
+    setupEventListeners();
+    await loadDashboardData();
 }
 
-
-// ============================================================
-// Data Loading Functions
-// ============================================================
-
+// ── 2. KẾT NỐI API & TẢI DỮ LIỆU ──────────────────────────────
 async function loadDashboardData() {
     try {
-        // Load all data in parallel
+        // Tải song song để tăng tốc độ hiển thị
         await Promise.all([
-            loadAllUsers(),
-            loadDisputedEscrow(),
-            loadPayments(),
-            loadSystemLogs(),
+            loadStats(),
+            loadUsers(),
+            loadLogs()
         ]);
-
-        // Update dashboard stats
-        updateDashboardStats();
     } catch (error) {
-        alert('Error loading dashboard data: ' + error.message);
+        console.error('Lỗi kết nối Backend:', error);
     }
 }
 
+// Lấy số liệu tổng quát từ API /admin/stats
+async function loadStats() {
+    try {
+        const res = await fetchAPI('/admin/stats');
+        const stats = res.data || {};
+        
+        document.getElementById('totalUsers').textContent = stats.totalUsers || 0;
+        document.getElementById('totalSellers').textContent = stats.totalSellers || 0;
+        document.getElementById('totalTransactions').textContent = stats.totalOrders || 0;
+        document.getElementById('totalEscrowBalance').textContent = '$' + (stats.totalEscrowHeld || 0).toLocaleString();
+    } catch (err) {
+        console.warn('Không thể tải thống kê stats');
+    }
+}
+
+// Lấy danh sách User từ API /admin/users
 async function loadUsers() {
     try {
-        const response = await fetchAPI('/admin/users');
-        allUsers = response.data || [];
+        const res = await fetchAPI('/admin/users');
+        allUsers = res.data || [];
         renderUsersTable();
-    } catch (error) {
-        console.error('Error loading users:', error);
-        document.getElementById('usersTableBody').innerHTML = '<tr><td colspan="7" class="text-center">Error loading users</td></tr>';
+    } catch (err) {
+        document.getElementById('usersTableBody').innerHTML = '<tr><td colspan="7" class="text-center" style="color:red;">Lỗi tải dữ liệu người dùng</td></tr>';
     }
 }
 
-async function loadEscrow() {
-    try {
-        const response = await fetchAPI('/admin/escrow');
-        allEscrow = response.data || [];
-        renderEscrowTable();
-    } catch (error) {
-        console.error('Error loading escrow:', error);
-        document.getElementById('escrowTableBody').innerHTML = '<tr><td colspan="7" class="text-center">Error loading escrow</td></tr>';
-    }
-}
-
-async function loadPayments() {
-    try {
-        const response = await fetchAPI('/admin/payments');
-        allPayments = response.data || [];
-        renderPaymentsTable();
-    } catch (error) {
-        console.error('Error loading payments:', error);
-        document.getElementById('paymentsTableBody').innerHTML = '<tr><td colspan="7" class="text-center">Error loading payments</td></tr>';
-    }
-}
-
+// Lấy Nhật ký hoạt động từ API /admin/logs
 async function loadLogs() {
     try {
-        const response = await fetchAPI('/admin/logs');
-        allLogs = response.data || [];
-        renderLogs();
-    } catch (error) {
-        console.error('Error loading logs:', error);
-        document.getElementById('logsContainer').innerHTML = '<p class="text-center">Error loading logs</p>';
+        const res = await fetchAPI('/admin/logs');
+        allLogs = res.data || [];
+        renderLogsTable();
+    } catch (err) {
+        // ĐÃ SỬA: Đổi id thành systemLogsTableBody
+        const tbody = document.getElementById('systemLogsTableBody');
+        if (tbody) tbody.innerHTML = '<tr><td colspan="7" class="text-center">Lỗi tải nhật ký hệ thống</td></tr>';
     }
 }
 
-// ============================================================
-// Rendering Functions
-// ============================================================
-
-function renderUsersTable() {
+// ── 3. HIỂN THỊ DỮ LIỆU (RENDERING) ──────────────────────────
+function renderUsersTable(data = allUsers) {
     const tbody = document.getElementById('usersTableBody');
+    if (!tbody) return;
 
-    if (allUsers.length === 0) {
-        tbody.innerHTML = '<tr><td colspan="7" class="text-center">No users found</td></tr>';
+    if (data.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="7" class="text-center">Chưa có người dùng nào</td></tr>';
         return;
     }
 
-    tbody.innerHTML = allUsers
-        .map(
-            (user) => `
+    tbody.innerHTML = data.map(u => {
+        // Map chuẩn với cột is_active trong Database
+        const activeStatus = u.is_active === 1 || u.is_active === true;
+        
+        return `
         <tr>
-            <td>${user.email}</td>
-            <td>${user.username}</td>
-            <td>${user.full_name || '-'}</td>
+            <td>${u.email}</td>
+            <td>${u.username}</td>
+            <td>${u.full_name || '-'}</td>
+            <td><span class="badge ${u.role === 'admin' ? 'badge-admin' : 'badge-info'}">${u.role.toUpperCase()}</span></td>
             <td>
-                <span class="badge badge-${user.role === 'admin' ? 'admin' : user.role === 'seller' ? 'info' : 'secondary'}">
-                    ${user.role || 'user'}
+                <span class="badge ${activeStatus ? 'badge-success' : 'badge-danger'}">
+                    ${activeStatus ? 'Hoạt động' : 'Bị khóa'}
                 </span>
             </td>
+            <td>${new Date(u.created_at).toLocaleDateString()}</td>
             <td>
-                <span class="badge ${user.status === 'active' ? 'badge-success' : 'badge-danger'}">
-                    ${user.status === 'active' ? 'Active' : 'Blocked'}
-                </span>
-            </td>
-            <td class="text-muted">${new Date(user.created_at).toLocaleDateString()}</td>
-            <td>
-                ${user.status === 'active'
-                    ? `<button class="btn btn-small btn-danger" onclick="toggleUserStatus('${user.id}', 'lock')">Block</button>`
-                    : `<button class="btn btn-small btn-success" onclick="toggleUserStatus('${user.id}', 'unlock')">Unblock</button>`}
+                <button class="btn btn-small ${activeStatus ? 'btn-danger' : 'btn-success'}" 
+                        onclick="handleSuspendUser('${u.id}', ${activeStatus})">
+                    ${activeStatus ? 'Khóa' : 'Mở khóa'}
+                </button>
             </td>
         </tr>
-    `
-        )
-        .join('');
+    `}).join('');
 }
 
-function renderEscrowTable() {
-    const tbody = document.getElementById('escrowTableBody');
-
-    if (allEscrow.length === 0) {
-        tbody.innerHTML = '<tr><td colspan="6" class="text-center">No disputed escrow records found</td></tr>';
-        return;
-    }
-
-    tbody.innerHTML = allEscrow
-        .map(
-            (escrow) => `
-        <tr>
-            <td>${escrow.id?.substring(0, 8) || 'N/A'}</td>
-            <td>${escrow.buyer?.username || 'Unknown'}</td>
-            <td>${escrow.seller?.username || 'Unknown'}</td>
-            <td>$${escrow.amount?.toFixed(2) || '0.00'}</td>
-            <td class="text-muted">${new Date(escrow.created_at).toLocaleDateString()}</td>
-            <td>
-                <button class="btn btn-small btn-primary" onclick="resolveDispute('${escrow.id}')">Resolve</button>
-            </td>
-        </tr>
-    `
-        )
-        .join('');
-}
-
-function renderPaymentsTable() {
-    const tbody = document.getElementById('paymentsTableBody');
-
-    if (allPayments.length === 0) {
-        tbody.innerHTML = '<tr><td colspan="7" class="text-center">No payments found</td></tr>';
-        return;
-    }
-
-    tbody.innerHTML = allPayments
-        .map(
-            (payment) => `
-        <tr>
-            <td>${payment.id?.substring(0, 8) || 'N/A'}</td>
-            <td>${payment.user?.username || 'Unknown'}</td>
-            <td>$${payment.amount?.toFixed(2) || '0.00'}</td>
-            <td>
-                <span class="badge ${getStatusBadgeClass(payment.status)}">
-                    ${payment.status || 'unknown'}
-                </span>
-            </td>
-            <td>${payment.gateway || '-'}</td>
-            <td class="text-muted">${new Date(payment.created_at).toLocaleDateString()}</td>
-            <td>
-                ${
-                    payment.status === 'pending'
-                        ? `
-                    <button class="btn btn-small btn-success" onclick="approvePayment('${payment.id}')">Approve</button>
-                    <button class="btn btn-small btn-danger" onclick="rejectPayment('${payment.id}')">Reject</button>
-                `
-                        : '-'
-                }
-            </td>
-        </tr>
-    `
-        )
-        .join('');
-}
-
-function renderLogs() {
-    const container = document.getElementById('logsContainer');
+function renderLogsTable() {
+    // ĐÃ SỬA: Đổi id thành systemLogsTableBody
+    const tbody = document.getElementById('systemLogsTableBody');
+    if (!tbody) return;
 
     if (allLogs.length === 0) {
-        container.innerHTML = '<p class="text-center">No logs found</p>';
+        tbody.innerHTML = '<tr><td colspan="7" class="text-center">Không có nhật ký nào</td></tr>';
         return;
     }
 
-    container.innerHTML = allLogs
-        .slice(0, 50)
-        .map(
-            (log) => `
-        <div class="log-entry">
-            <div class="log-time">${new Date(log.created_at).toLocaleString()}</div>
-            <div class="log-event">${log.event_type || 'Unknown Event'}</div>
-            <div class="log-details">
-                User: ${log.user?.username || 'System'} | 
-                ${log.message || 'No details'}
-            </div>
-        </div>
-    `
-        )
-        .join('');
-}
-
-function updateDashboardStats() {
-    // Users stats
-    const totalUsers = allUsers.length;
-    const totalSellers = allUsers.filter((u) => u.role === 'seller').length;
-    document.getElementById('totalUsers').textContent = totalUsers;
-    document.getElementById('totalSellers').textContent = totalSellers;
-
-    // Escrow stats
-    const totalHeld = allEscrow.reduce((sum, e) => sum + (e.status === 'held' ? (e.amount || 0) : 0), 0);
-    const totalReleased = allEscrow.reduce((sum, e) => sum + (e.status === 'released' ? (e.amount || 0) : 0), 0);
-    const totalPending = allEscrow.reduce((sum, e) => sum + (e.status === 'pending' || e.status === 'processing' ? (e.amount || 0) : 0), 0);
-
-    document.getElementById('totalEscrowBalance').textContent = '$' + totalHeld.toFixed(2);
-    document.getElementById('escrowHeld').textContent = '$' + totalHeld.toFixed(2);
-    document.getElementById('escrowReleased').textContent = '$' + totalReleased.toFixed(2);
-    document.getElementById('escrowPending').textContent = '$' + totalPending.toFixed(2);
-
-    // Transactions
-    document.getElementById('totalTransactions').textContent = allEscrow.length;
-}
-
-// ============================================================
-// Action Functions
-// ============================================================
-
-async function blockUser(userId) {
-    if (!confirm('Are you sure you want to block this user?')) return;
-
-    try {
-        await fetchAPI(`/admin/users/${userId}/block`, {
-            method: 'PATCH',
-        });
-
-        alert('User blocked successfully!');
-        await loadUsers();
-    } catch (error) {
-        alert('Error blocking user: ' + error.message);
-    }
-}
-
-async function unblockUser(userId) {
-    if (!confirm('Are you sure you want to unblock this user?')) return;
-
-    try {
-        await fetchAPI(`/admin/users/${userId}/unblock`, {
-            method: 'PATCH',
-        });
-
-        alert('User unblocked successfully!');
-        await loadUsers();
-    } catch (error) {
-        alert('Error unblocking user: ' + error.message);
-    }
-}
-
-async function releaseEscrow(escrowId) {
-    if (!confirm('Release funds for this escrow transaction?')) return;
-
-    try {
-        await fetchAPI('/admin/escrow/release', {
-            method: 'POST',
-            body: JSON.stringify({
-                escrow_id: escrowId,
-            }),
-        });
-
-        alert('Escrow funds released successfully!');
-        await loadEscrow();
-    } catch (error) {
-        alert('Error releasing escrow: ' + error.message);
-    }
-}
-
-async function approvePayment(paymentId) {
-    if (!confirm('Approve this payment?')) return;
-
-    try {
-        await fetchAPI(`/admin/payments/${paymentId}/approve`, {
-            method: 'PATCH',
-        });
-
-        alert('Payment approved successfully!');
-        await loadPayments();
-    } catch (error) {
-        alert('Error approving payment: ' + error.message);
-    }
-}
-
-async function rejectPayment(paymentId) {
-    const reason = prompt('Reason for rejection:');
-    if (!reason) return;
-
-    try {
-        await fetchAPI(`/admin/payments/${paymentId}/reject`, {
-            method: 'PATCH',
-            body: JSON.stringify({
-                reason,
-            }),
-        });
-
-        alert('Payment rejected successfully!');
-        await loadPayments();
-    } catch (error) {
-        alert('Error rejecting payment: ' + error.message);
-    }
-}
-
-// ============================================================
-// NEW ADMIN FUNCTIONS - User Management
-// ============================================================
-
-async function loadAllUsers() {
-    try {
-        const response = await fetchAPI('/admin/users');
-        allUsers = response.data || [];
-        renderUsersTable();
-    } catch (error) {
-        console.error('Error loading users:', error);
-        document.getElementById('usersTableBody').innerHTML = '<tr><td colspan="7" class="text-center">Error loading users</td></tr>';
-    }
-}
-
-async function toggleUserStatus(userId, action) {
-    const actionText = action === 'lock' ? 'block' : 'unblock';
-    const reason = prompt(`Reason for ${actionText}ing user:`);
-    if (!reason) return;
-
-    try {
-        await fetchAPI(`/admin/users/${userId}/status`, {
-            method: 'PUT',
-            body: JSON.stringify({
-                action,
-                reason,
-            }),
-        });
-
-        alert(`User ${actionText}ed successfully!`);
-        await loadAllUsers();
-    } catch (error) {
-        alert(`Error ${actionText}ing user: ` + error.message);
-    }
-}
-
-// ============================================================
-// NEW ADMIN FUNCTIONS - Escrow Disputes
-// ============================================================
-
-async function loadDisputedEscrow() {
-    try {
-        const response = await fetchAPI('/admin/escrow?status=disputed');
-        allEscrow = response.data || [];
-        renderEscrowTable();
-    } catch (error) {
-        console.error('Error loading disputed escrow:', error);
-        document.getElementById('escrowTableBody').innerHTML = '<tr><td colspan="6" class="text-center">Error loading escrow disputes</td></tr>';
-    }
-}
-
-// ============================================================
-// NEW ADMIN FUNCTIONS - System Logs
-// ============================================================
-
-async function loadSystemLogs() {
-    try {
-        const response = await fetchAPI('/admin/system-logs');
-        allLogs = response.data || [];
-        renderSystemLogsTable();
-    } catch (error) {
-        console.error('Error loading system logs:', error);
-        document.getElementById('logsTableBody').innerHTML = '<tr><td colspan="7" class="text-center">Error loading logs</td></tr>';
-    }
-}
-
-function renderSystemLogsTable() {
-    const tbody = document.getElementById('logsTableBody');
-
-    if (allLogs.length === 0) {
-        tbody.innerHTML = '<tr><td colspan="7" class="text-center">No logs found</td></tr>';
-        return;
-    }
-
-    tbody.innerHTML = allLogs
-        .slice(0, 100) // Show first 100 logs
-        .map(
-            (log) => `
+    tbody.innerHTML = allLogs.map(log => `
         <tr>
             <td class="text-muted">${new Date(log.created_at).toLocaleString()}</td>
-            <td>
-                <span class="badge badge-${getSeverityClass(log.severity)}">
-                    ${log.severity || 'info'}
-                </span>
-            </td>
+            <td><span class="badge badge-info">${log.severity || 'info'}</span></td>
             <td>${log.event_type || '-'}</td>
-            <td class="text-truncate" style="max-width: 300px;" title="${log.message || ''}">${log.message || '-'}</td>
-            <td>${log.user_id || '-'}</td>
+            <td title="${log.message}">${log.message?.substring(0, 50)}...</td>
+            <td>${log.user_id || 'System'}</td>
             <td>${log.ip_address || '-'}</td>
             <td>${log.endpoint || '-'}</td>
         </tr>
-    `
-        )
-        .join('');
+    `).join('');
 }
 
-function getSeverityClass(severity) {
-    switch (severity) {
-        case 'error':
-        case 'critical':
-            return 'danger';
-        case 'warn':
-            return 'warning';
-        case 'info':
-        default:
-            return 'info';
+// ── 4. THỰC THI HÀNH ĐỘNG (ACTIONS) ──────────────────────────
+// Khớp với route PUT /admin/users/:id/suspend
+async function handleSuspendUser(userId, currentIsActive) {
+    const actionText = currentIsActive ? 'Khóa' : 'Mở khóa';
+    const reason = prompt(`Lý do ${actionText} người dùng này:`);
+    
+    if (currentIsActive && !reason) {
+        alert('Phải có lý do khi khóa tài khoản!');
+        return;
     }
-}
-
-// ============================================================
-// Dispute Resolution Function
-// ============================================================
-
-async function resolveDispute(escrowId) {
-    const decision = prompt('Enter resolution decision (e.g., "Release to buyer", "Release to seller", "Refund"):');
-    if (!decision) return;
-
-    const reason = prompt('Reason for resolution:');
-    if (!reason) return;
 
     try {
-        await fetchAPI(`/admin/escrow/${escrowId}/resolve`, {
+        await fetchAPI(`/admin/users/${userId}/suspend`, {
             method: 'PUT',
-            body: JSON.stringify({
-                decision,
-                reason,
-            }),
+            body: JSON.stringify({ 
+                suspend: currentIsActive, // Nếu đang active (true) thì gửi suspend = true
+                reason: reason || 'Thay đổi bởi Admin' 
+            })
         });
-
-        alert('Dispute resolved successfully!');
-        await loadDisputedEscrow();
+        alert(`Đã ${actionText} tài khoản thành công.`);
+        await loadUsers(); // Refresh lại bảng
     } catch (error) {
-        alert('Error resolving dispute: ' + error.message);
+        alert('Lỗi thực hiện: ' + error.message);
     }
 }
 
-// ============================================================
-// Update initialization to load new data
-// ============================================================
-
-async function loadDashboardData() {
-    await Promise.all([
-        loadAllUsers(),
-        loadDisputedEscrow(),
-        loadSystemLogs(),
-        // Keep existing loads
-        loadPayments(),
-        loadLogs(),
-    ]);
-}
-
-// ============================================================
-// Helper Functions
-// ============================================================
-
-function getStatusBadgeClass(status) {
-    const classes = {
-        pending: 'badge-warning',
-        approved: 'badge-success',
-        rejected: 'badge-danger',
-        held: 'badge-warning',
-        releasing: 'badge-info',
-        released: 'badge-success',
-        active: 'badge-success',
-        blocked: 'badge-danger',
-    };
-    return classes[status] || 'badge-secondary';
-}
-
-// ============================================================
-// Navigation & Events
-// ============================================================
-
+// ── 5. ĐIỀU HƯỚNG & SỰ KIỆN ──────────────────────────────────
 function setupEventListeners() {
-    // Menu items
-    const menuItems = document.querySelectorAll('.menu-item');
-    menuItems.forEach((item) => {
+    // Chuyển Tab Menu
+    document.querySelectorAll('.menu-item').forEach(item => {
         item.addEventListener('click', (e) => {
             e.preventDefault();
             const section = item.getAttribute('data-section');
-            showSection(section, item);
+            
+            // Cập nhật UI Menu
+            document.querySelectorAll('.menu-item').forEach(i => i.classList.remove('active'));
+            item.classList.add('active');
+
+            // Cập nhật Section hiển thị
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.getElementById(`${section}-section`).classList.add('active');
+            
+            // Cập nhật Tiêu đề trang
+            document.getElementById('pageTitle').textContent = item.textContent.trim();
         });
     });
 
-    // Search & filters
-    document.getElementById('userSearch').addEventListener('input', (e) => {
-        filterUsers(e.target.value);
-    });
+    // Tìm kiếm User theo Email/Username
+    const searchInput = document.getElementById('userSearch');
+    if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase();
+            const filtered = allUsers.filter(u => 
+                u.username.toLowerCase().includes(term) || u.email.toLowerCase().includes(term)
+            );
+            renderUsersTable(filtered);
+        });
+    }
 
-    document.getElementById('escrowStatusFilter').addEventListener('change', (e) => {
-        filterEscrow(e.target.value);
-    });
-
-    document.getElementById('paymentStatusFilter').addEventListener('change', (e) => {
-        filterPayments(e.target.value);
-    });
-
-    document.getElementById('logTypeFilter').addEventListener('change', (e) => {
-        filterLogs(e.target.value);
-    });
-
-    document.getElementById('systemLogSeverityFilter').addEventListener('change', (e) => {
-        filterSystemLogs(e.target.value);
-    });
-
-    // Logout button
+    // Đăng xuất
     document.getElementById('logoutBtn').addEventListener('click', () => {
         localStorage.clear();
         window.location.href = '../loginbd.html/login.html';
     });
 }
 
-function showSection(sectionName, menuItem) {
-    // Update menu items
-    document.querySelectorAll('.menu-item').forEach((item) => {
-        item.classList.remove('active');
-    });
-    menuItem.classList.add('active');
-
-    // Update sections
-    document.querySelectorAll('.section').forEach((section) => {
-        section.classList.remove('active');
-    });
-
-    const section = document.getElementById(`${sectionName}-section`);
-    if (section) {
-        section.classList.add('active');
-    }
-
-    // Update page title
-    const titles = {
-        dashboard: 'Dashboard',
-        users: 'User Management',
-        escrow: 'Escrow Management',
-        payments: 'Payment Management',
-        logs: 'Activity Logs',
-        'system-logs': 'System Logs',
-    };
-    document.getElementById('pageTitle').textContent = titles[sectionName] || 'Dashboard';
-}
-
-// ============================================================
-// Filtering Functions
-// ============================================================
-
-function filterUsers(searchTerm) {
-    const tbody = document.getElementById('usersTableBody');
-    const filtered = allUsers.filter(
-        (user) =>
-            user.username.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            user.email.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-
-    if (filtered.length === 0) {
-        tbody.innerHTML = '<tr><td colspan="7" class="text-center">No users match your search</td></tr>';
-        return;
-    }
-
-    tbody.innerHTML = filtered
-        .map(
-            (user) => `
-        <tr>
-            <td>${user.email}</td>
-            <td>${user.username}</td>
-            <td>${user.full_name || '-'}</td>
-            <td>
-                <span class="badge badge-${user.role === 'admin' ? 'admin' : user.role === 'seller' ? 'info' : 'secondary'}">
-                    ${user.role || 'user'}
-                </span>
-            </td>
-            <td>
-                <span class="badge ${user.is_active ? 'badge-success' : 'badge-danger'}">
-                    ${user.is_active ? 'Active' : 'Blocked'}
-                </span>
-            </td>
-            <td class="text-muted">${new Date(user.created_at).toLocaleDateString()}</td>
-            <td>
-                ${user.is_active
-                    ? `<button class="btn btn-small btn-danger" onclick="blockUser('${user.id}')">Block</button>`
-                    : `<button class="btn btn-small btn-success" onclick="unblockUser('${user.id}')">Unblock</button>`}
-            </td>
-        </tr>
-    `
-        )
-        .join('');
-}
-
-function filterEscrow(status) {
-    if (!status) {
-        renderEscrowTable();
-        return;
-    }
-
-    const tbody = document.getElementById('escrowTableBody');
-    const filtered = allEscrow.filter((e) => e.status === status);
-
-    if (filtered.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="7" class="text-center">No escrow records with status: ${status}</td></tr>`;
-        return;
-    }
-
-    tbody.innerHTML = filtered
-        .map(
-            (escrow) => `
-        <tr>
-            <td>${escrow.id?.substring(0, 8) || 'N/A'}</td>
-            <td>${escrow.buyer?.username || 'Unknown'}</td>
-            <td>${escrow.seller?.username || 'Unknown'}</td>
-            <td>$${escrow.amount?.toFixed(2) || '0.00'}</td>
-            <td>
-                <span class="badge ${getStatusBadgeClass(escrow.status)}">
-                    ${escrow.status || 'unknown'}
-                </span>
-            </td>
-            <td class="text-muted">${new Date(escrow.created_at).toLocaleDateString()}</td>
-            <td>
-                ${escrow.status === 'held' ? `<button class="btn btn-small btn-success" onclick="releaseEscrow('${escrow.id}')">Release</button>` : '-'}
-            </td>
-        </tr>
-    `
-        )
-        .join('');
-}
-
-function filterPayments(status) {
-    if (!status) {
-        renderPaymentsTable();
-        return;
-    }
-
-    const tbody = document.getElementById('paymentsTableBody');
-    const filtered = allPayments.filter((p) => p.status === status);
-
-    if (filtered.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="7" class="text-center">No payments with status: ${status}</td></tr>`;
-        return;
-    }
-
-    tbody.innerHTML = filtered
-        .map(
-            (payment) => `
-        <tr>
-            <td>${payment.id?.substring(0, 8) || 'N/A'}</td>
-            <td>${payment.user?.username || 'Unknown'}</td>
-            <td>$${payment.amount?.toFixed(2) || '0.00'}</td>
-            <td>
-                <span class="badge ${getStatusBadgeClass(payment.status)}">
-                    ${payment.status || 'unknown'}
-                </span>
-            </td>
-            <td>${payment.gateway || '-'}</td>
-            <td class="text-muted">${new Date(payment.created_at).toLocaleDateString()}</td>
-            <td>
-                ${
-                    payment.status === 'pending'
-                        ? `
-                    <button class="btn btn-small btn-success" onclick="approvePayment('${payment.id}')">Approve</button>
-                    <button class="btn btn-small btn-danger" onclick="rejectPayment('${payment.id}')">Reject</button>
-                `
-                        : '-'
-                }
-            </td>
-        </tr>
-    `
-        )
-        .join('');
-}
-
-function filterLogs(eventType) {
-    if (!eventType) {
-        renderLogs();
-        return;
-    }
-
-    const filtered = allLogs.filter((log) => log.event_type === eventType);
-    const container = document.getElementById('logsContainer');
-
-    if (filtered.length === 0) {
-        container.innerHTML = `<p class="text-center">No logs with event type: ${eventType}</p>`;
-        return;
-    }
-
-    container.innerHTML = filtered
-        .slice(0, 50)
-        .map(
-            (log) => `
-        <div class="log-entry">
-            <div class="log-time">${new Date(log.created_at).toLocaleString()}</div>
-            <div class="log-event">${log.event_type || 'Unknown Event'}</div>
-            <div class="log-details">
-                User: ${log.user?.username || 'System'} | 
-                ${log.message || 'No details'}
-            </div>
-        </div>
-    `
-        )
-        .join('');
-}
-
-function filterSystemLogs(severity) {
-    if (!severity) {
-        renderSystemLogsTable();
-        return;
-    }
-
-    const tbody = document.getElementById('logsTableBody');
-    const filtered = allLogs.filter((log) => log.severity === severity);
-
-    if (filtered.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="7" class="text-center">No logs with severity: ${severity}</td></tr>`;
-        return;
-    }
-
-    tbody.innerHTML = filtered
-        .slice(0, 100)
-        .map(
-            (log) => `
-        <tr>
-            <td class="text-muted">${new Date(log.created_at).toLocaleString()}</td>
-            <td>
-                <span class="badge badge-${getSeverityClass(log.severity)}">
-                    ${log.severity || 'info'}
-                </span>
-            </td>
-            <td>${log.event_type || '-'}</td>
-            <td class="text-truncate" style="max-width: 300px;" title="${log.message || ''}">${log.message || '-'}</td>
-            <td>${log.user_id || '-'}</td>
-            <td>${log.ip_address || '-'}</td>
-            <td>${log.endpoint || '-'}</td>
-        </tr>
-    `
-        )
-        .join('');
-}
-
-// ============================================================
-// Initialize on page load
-// ============================================================
-
+// Chạy ứng dụng
 document.addEventListener('DOMContentLoaded', initializeDashboard);

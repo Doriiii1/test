@@ -1,8 +1,3 @@
-// ============================================================
-// O'Future Contact Form Handler
-// Sends contact messages to API on port 5000
-// ============================================================
-
 document.addEventListener('DOMContentLoaded', function () {
 	const form = document.getElementById('contactForm');
 	const submitBtn = document.getElementById('submitBtn');
@@ -63,11 +58,11 @@ document.addEventListener('DOMContentLoaded', function () {
 		return valid;
 	}
 
-	function sendContactMessage(payload) {
-        // Dùng wrapper chung của hệ thống
-		return fetchAPI('/contact', {
-			method: 'POST',
-			body: JSON.stringify(payload)
+	function simulateSend(payload) {
+		return new Promise(function (resolve) {
+			setTimeout(function () {
+				resolve(payload);
+			}, 900);
 		});
 	}
 
@@ -88,14 +83,13 @@ document.addEventListener('DOMContentLoaded', function () {
 			message: fields.message.value.trim()
 		};
 
-		sendContactMessage(payload)
+		simulateSend(payload)
 			.then(function () {
 				form.reset();
 				successBox.textContent = 'Your message has been sent successfully.';
 				successBox.classList.add('show');
 			})
-			.catch(function (error) {
-				console.error('Contact error:', error);
+			.catch(function () {
 				successBox.textContent = 'Unable to send right now. Please try again.';
 				successBox.classList.add('show');
 			})

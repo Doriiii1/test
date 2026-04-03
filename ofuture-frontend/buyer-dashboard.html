@@ -6,15 +6,11 @@
   <title>Buyer Dashboard | O’Future</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet"
-  />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="buyer-dashboard.css" />
 </head>
 <body>
   <div class="layout">
-    <!-- Sidebar -->
     <aside class="sidebar">
       <div class="brand">
         <div class="brand-mark">O</div>
@@ -25,32 +21,28 @@
       </div>
 
       <nav class="sidebar-nav">
-        <a href="#" class="nav-item active">Trang chủ</a>
-        <a href="#" class="nav-item">Sản phẩm</a>
+        <a href="buyer-dashboard.html" class="nav-item active">Trang chủ</a>
+        <a href="product.html" class="nav-item">Sản phẩm</a>
         <a href="#" class="nav-item">Giỏ hàng</a>
         <a href="#" class="nav-item">Đơn hàng</a>
         <a href="#" class="nav-item">Ký quỹ</a>
         <a href="#" class="nav-item">Lịch sử mua hàng</a>
-        <a href="#" class="nav-item">Tài khoản</a>
+        <a href="profile.html" class="nav-item">Tài khoản</a>
+        <a href="#" onclick="handleLogout(event)" class="nav-item" style="color: #ef4444; margin-top: 20px;">Đăng xuất</a>
       </nav>
 
       <div class="sidebar-box">
         <p class="mini-label">Mẹo sử dụng</p>
         <h3>Tìm nguồn hàng nhanh hơn</h3>
-        <p>
-          Bắt đầu từ danh mục sản phẩm, lọc theo giá sỉ, số lượng tối thiểu
-          và khu vực giao hàng.
-        </p>
+        <p>Bắt đầu từ danh mục sản phẩm, lọc theo giá sỉ, số lượng tối thiểu và khu vực giao hàng.</p>
       </div>
     </aside>
 
-    <!-- Main -->
     <main class="main-content">
-      <!-- Topbar -->
       <header class="topbar">
         <div>
           <p class="welcome-tag">Buyer Dashboard</p>
-          <h1>Xin chào, Name</h1>
+          <h1 id="userGreeting">Xin chào, Khách hàng</h1>
         </div>
 
         <div class="topbar-actions">
@@ -62,7 +54,6 @@
         </div>
       </header>
 
-      <!-- Stats -->
       <section class="stats-grid">
         <div class="stat-card">
           <p>Đơn hàng đang xử lý</p>
@@ -82,7 +73,6 @@
         </div>
       </section>
 
-      <!-- Quick filter -->
       <section class="panel">
         <div class="panel-head">
           <div>
@@ -112,7 +102,6 @@
         </div>
       </section>
 
-      <!-- Product list + right info -->
       <section class="content-grid">
         <div class="panel">
           <div class="panel-head">
@@ -120,48 +109,13 @@
               <p class="section-tag">Đề cử cho bạn</p>
               <h2>Nguồn hàng nổi bật</h2>
             </div>
-            <a href="#" class="text-link">Xem thêm</a>
+            <a href="product.html" class="text-link">Xem thêm</a>
           </div>
 
           <div class="product-list">
-            <article class="product-card">
-              <div class="product-image">Ảnh SP</div>
-              <div class="product-info">
-                <h3>Áo thun nữ basic form rộng</h3>
-                <p class="product-meta">Danh mục: Thời trang • MOQ: 20 sản phẩm</p>
-                <p class="product-price">Giá sỉ: ₫45.000 / sản phẩm</p>
-              </div>
-              <div class="product-actions">
-                <button class="btn btn-outline small-btn">Chi tiết</button>
-                <button class="btn btn-primary small-btn">Thêm giỏ</button>
-              </div>
-            </article>
-
-            <article class="product-card">
-              <div class="product-image">Ảnh SP</div>
-              <div class="product-info">
-                <h3>Set skincare mini size</h3>
-                <p class="product-meta">Danh mục: Mỹ phẩm • MOQ: 10 bộ</p>
-                <p class="product-price">Giá sỉ: ₫89.000 / bộ</p>
-              </div>
-              <div class="product-actions">
-                <button class="btn btn-outline small-btn">Chi tiết</button>
-                <button class="btn btn-primary small-btn">Thêm giỏ</button>
-              </div>
-            </article>
-
-            <article class="product-card">
-              <div class="product-image">Ảnh SP</div>
-              <div class="product-info">
-                <h3>Hộp đựng thực phẩm 3 ngăn</h3>
-                <p class="product-meta">Danh mục: Gia dụng • MOQ: 30 hộp</p>
-                <p class="product-price">Giá sỉ: ₫22.000 / hộp</p>
-              </div>
-              <div class="product-actions">
-                <button class="btn btn-outline small-btn">Chi tiết</button>
-                <button class="btn btn-primary small-btn">Thêm giỏ</button>
-              </div>
-            </article>
+            <div class="product-list" id="product-list-container">
+            <p style="color: #64748b; font-size: 14px; text-align: center; width: 100%;">Đang tải sản phẩm...</p>
+            </div>
           </div>
         </div>
 
@@ -173,8 +127,9 @@
                 <h2>Trạng thái gần đây</h2>
               </div>
             </div>
-
-            <div id="escrow-container"></div>
+            <div id="escrow-container">
+              <p style="color: #64748b; font-size: 14px; text-align: center; margin-top: 10px;">Đang tải dữ liệu...</p>
+            </div>
           </div>
 
           <div class="panel small-panel">
@@ -184,20 +139,8 @@
                 <h2>Đơn gần đây</h2>
               </div>
             </div>
-
-            <ul class="order-list">
-              <li>
-                <strong>#OF1025</strong>
-                <span>Đang giao hàng</span>
-              </li>
-              <li>
-                <strong>#OF1018</strong>
-                <span>Hoàn tất</span>
-              </li>
-              <li>
-                <strong>#OF1009</strong>
-                <span>Đã hoàn tiền</span>
-              </li>
+            <ul class="order-list" id="order-list-container">
+               <li style="color: #64748b; font-size: 14px; text-align: center;">Đang tải...</li>
             </ul>
           </div>
         </div>
@@ -209,85 +152,165 @@
   
   <script>
     document.addEventListener('DOMContentLoaded', async () => {
-      // Lấy data user từ localStorage 
+      // 1. Lấy dữ liệu user để hiển thị Lời chào
       const user = JSON.parse(localStorage.getItem('user') || '{}');
-      document.querySelectorAll('.profile-name, .welcome-text span').forEach(el => {el.textContent = user.username || user.full_name || 'Khách hàng';});
+      const greetingName = user.full_name || user.username || 'Khách hàng';
+      document.getElementById('userGreeting').textContent = `Xin chào, ${greetingName}`;
 
       try {
-        // 1. Fetch danh sách đơn hàng của Buyer
+        // 2. Fetch danh sách đơn hàng của Buyer từ Database
         const ordersRes = await fetchAPI('/orders');
         const orders = ordersRes.data || [];
 
-        // 2. Render Widget "Lịch sử đơn hàng"
-        const orderListEl = document.querySelector('.order-list');
+        const orderListEl = document.getElementById('order-list-container');
+        const escrowContainer = document.getElementById('escrow-container');
+
+        // 3. Xử lý trường hợp User chưa có đơn hàng nào
+        if (orders.length === 0) {
+          orderListEl.innerHTML = '<li style="color: #64748b; justify-content: center;">Chưa có đơn hàng nào</li>';
+          escrowContainer.innerHTML = '<p style="color: #64748b; font-size: 14px; text-align: center; margin-top: 10px;">Bạn chưa có giao dịch ký quỹ nào.</p>';
+          return;
+        }
+
+        // 4. Render danh sách Đơn hàng
         orderListEl.innerHTML = orders.map(o => `
           <li>
-            <strong>#${o.id.substring(0,8)}</strong>
+            <strong>#${o.id.substring(0,8).toUpperCase()}</strong>
             <span>${o.status.toUpperCase()}</span>
           </li>
         `).join('');
 
-        // 3. Render Widget "Tiền Ký Quỹ" (Tương tác Escrow)
-        const escrowContainer = document.getElementById('escrow-container');
+        // 5. Render danh sách Ký quỹ kèm Logic Action Buttons
         escrowContainer.innerHTML = orders.map(o => {
           let actionBtn = '';
           let statusClass = 'pending';
-          let statusText = 'Chờ xử lý';
+          let statusText = 'Đang chờ xử lý';
 
+          // Mapping trạng thái
           if (o.status === 'pending') {
-            actionBtn = `<button onclick="payEscrow('${o.id}')" style="margin-top:10px; padding:5px 10px; background:#0062ff; color:#fff; border:none; border-radius:4px; cursor:pointer;">Thanh toán Ký quỹ</button>`;
-            statusText = 'Đang chờ nạp quỹ';
-          } else if (o.status === 'shipped') {
-            actionBtn = `<button onclick="releaseEscrow('${o.id}')" style="margin-top:10px; padding:5px 10px; background:#10b981; color:#fff; border:none; border-radius:4px; cursor:pointer;">Đã nhận hàng (Giải ngân)</button>`;
+            actionBtn = `<button onclick="payEscrow('${o.id}')" style="margin-top:10px; width:100%; padding:8px 10px; background:#0062ff; color:#fff; border:none; border-radius:4px; font-weight:600; cursor:pointer;">Thanh toán Ký quỹ</button>`;
+            statusText = 'Chờ bạn Nạp Ký Quỹ';
+          } else if (o.status === 'paid' || o.status === 'processing') {
             statusClass = 'success';
-            statusText = 'Chờ bạn xác nhận nhận hàng';
+            statusText = 'Đã đóng băng quỹ • Chờ giao hàng';
+          } else if (o.status === 'shipped') {
+            actionBtn = `<button onclick="releaseEscrow('${o.id}')" style="margin-top:10px; width:100%; padding:8px 10px; background:#10b981; color:#fff; border:none; border-radius:4px; font-weight:600; cursor:pointer;">Đã nhận hàng (Giải ngân)</button>`;
+            statusClass = 'success';
+            statusText = 'Chờ bạn Xác nhận nhận hàng';
           } else if (o.status === 'completed') {
             statusClass = 'info';
-            statusText = 'Giao dịch thành công';
+            statusText = 'Giao dịch hoàn tất';
+          } else {
+            statusClass = 'pending';
+            statusText = 'Trạng thái: ' + o.status;
           }
 
           return `
             <div class="escrow-item ${statusClass}">
-              <h4>Đơn #${o.id.substring(0,8)}</h4>
-              <p>${statusText} - Tổng: $${o.total_amount}</p>
+              <h4>Đơn #${o.id.substring(0,8).toUpperCase()}</h4>
+              <p>${statusText} <br> <strong>Tổng tiền: $${parseFloat(o.total_amount).toLocaleString()}</strong></p>
               ${actionBtn}
             </div>
           `;
         }).join('');
 
+        // 6. FETCH VÀ RENDER DANH SÁCH SẢN PHẨM MỚI NHẤT
+        try {
+          // Gọi API lấy danh sách tất cả sản phẩm đang bán
+          const productsRes = await fetchAPI('/products');
+          const products = productsRes.data || [];
+          const productListEl = document.getElementById('product-list-container');
+
+          if (products.length === 0) {
+            productListEl.innerHTML = '<p style="color: #64748b; text-align: center; width: 100%;">Hiện chưa có sản phẩm nào được đăng bán.</p>';
+          } else {
+            productListEl.innerHTML = products.map(p => {
+              // Xử lý lấy link ảnh: Nếu có ảnh thì ghép với host Backend, nếu không thì dùng ảnh mặc định
+              const backendHost = 'http://localhost:5000'; 
+              const imageUrl = (p.imageUrls && p.imageUrls.length > 0) 
+                ? backendHost + p.imageUrls[0] 
+                : 'https://placehold.co/300x200/eeeeee/999999?text=No+Image';
+
+              return `
+                <article class="product-card">
+                  <div class="product-image" style="padding: 0; overflow: hidden; background: none;">
+                    <img src="${imageUrl}" alt="${p.name}" style="width: 100%; height: 100%; object-fit: cover;" />
+                  </div>
+                  <div class="product-info">
+                    <h3>${p.name}</h3>
+                    <p class="product-meta">Danh mục: ${p.category || 'General'} • Kho: ${p.stockQuantity}</p>
+                    <p class="product-price">Giá sỉ: $${parseFloat(p.price).toLocaleString()}</p>
+                  </div>
+                  <div class="product-actions">
+                    <button class="btn btn-outline small-btn">Chi tiết</button>
+                    <button class="btn btn-primary small-btn" onclick="alert('Đang phát triển chức năng Thêm giỏ hàng')">Thêm giỏ</button>
+                  </div>
+                </article>
+              `;
+            }).join('');
+          }
+        } catch (prodErr) {
+          console.error("Lỗi khi tải sản phẩm:", prodErr);
+          document.getElementById('product-list-container').innerHTML = '<p style="color: red;">Lỗi tải sản phẩm.</p>';
+        }
+
       } catch (err) {
         console.error("Lỗi khi tải dữ liệu dashboard:", err);
+        document.getElementById('escrow-container').innerHTML = `<p style="color: red; font-size: 14px;">Lỗi tải dữ liệu. Vui lòng F5.</p>`;
       }
     });
 
-    // Hàm kích hoạt lệnh Ký quỹ (Gọi xuống DB)
+    // ─── HÀM KÍCH HOẠT LỆNH KÝ QUỸ (NẠP TIỀN) ───
     async function payEscrow(orderId) {
-      if(!confirm("Xác nhận thanh toán đưa tiền vào Escrow?")) return;
+      if(!confirm("Xác nhận thanh toán và đóng băng tiền vào Escrow?")) return;
       try {
         await fetchAPI('/escrow/pay-and-hold', {
           method: 'POST',
           body: JSON.stringify({ orderId })
         });
-        alert("Nạp tiền ký quỹ thành công!");
-        window.location.reload();
+        alert("Nạp tiền ký quỹ thành công! Tiền đã được đóng băng.");
+        window.location.reload(); // Tải lại trang để cập nhật UI
       } catch (error) {
-        alert("Lỗi: " + error.message);
+        alert("Lỗi thanh toán: " + error.message);
       }
     }
 
-    // Hàm kích hoạt lệnh Giải ngân cho Seller
+    // ─── HÀM KÍCH HOẠT LỆNH GIẢI NGÂN (NHẬN HÀNG) ───
     async function releaseEscrow(orderId) {
-      if(!confirm("Bạn đã nhận được hàng và đồng ý giải ngân cho người bán?")) return;
+      if(!confirm("Bạn đã nhận được hàng và đồng ý giải ngân tiền cho người bán? Hành động này không thể hoàn tác!")) return;
       try {
         await fetchAPI('/escrow/release', {
           method: 'POST',
           body: JSON.stringify({ orderId })
         });
-        alert("Đã giải ngân cho người bán!");
+        alert("Đã giải ngân tiền thành công cho người bán!");
         window.location.reload();
       } catch (error) {
-        alert("Lỗi: " + error.message);
+        alert("Lỗi giải ngân: " + error.message);
       }
+    }
+
+    // ─── HÀM ĐĂNG XUẤT ───
+    async function handleLogout(e) {
+      e.preventDefault(); // Chống nháy trang / reload #
+      
+      try {
+        // Báo cho Server hủy token
+        await fetchAPI('/auth/logout', { 
+          method: 'POST', 
+          body: JSON.stringify({ allDevices: false }) 
+        });
+      } catch (err) {
+        console.warn("Lỗi server khi logout, thực hiện local logout.", err);
+      }
+      
+      // Xóa toàn bộ dấu vết phiên làm việc ở Client
+      localStorage.removeItem('accessToken');
+      localStorage.removeItem('refreshToken');
+      localStorage.removeItem('user');
+      
+      alert("Bạn đã đăng xuất thành công.");
+      window.location.href = 'loginbd.html/login.html';
     }
   </script>
 </body>

@@ -35,10 +35,6 @@ const RESOURCES = {
   OWN_PROFILE   : 'own_profile',
   ADMIN_PANEL   : 'admin_panel',
   LOGS          : 'logs',
-  SAMPLE        : 'sample',
-  OWN_SAMPLE    : 'own_sample',
-  DISPUTE       : 'dispute',
-  OWN_DISPUTE   : 'own_dispute',
 } as const;
 
 // ─────────────────────────────────────────────
@@ -54,8 +50,6 @@ const PERMISSIONS: Record<string, Record<string, Set<string>>> = {
     [RESOURCES.ESCROW]      : new Set([ACTIONS.READ]),
     [RESOURCES.REVIEW]      : new Set([ACTIONS.CREATE, ACTIONS.READ, ACTIONS.LIST]),
     [RESOURCES.OWN_PROFILE] : new Set([ACTIONS.READ, ACTIONS.UPDATE]),
-    [RESOURCES.OWN_SAMPLE]  : new Set([ACTIONS.CREATE, ACTIONS.READ, ACTIONS.LIST, ACTIONS.UPDATE]),
-    [RESOURCES.OWN_DISPUTE] : new Set([ACTIONS.CREATE, ACTIONS.READ, ACTIONS.LIST]),
   },
 
   // ── SELLER ────────────────────────────────
@@ -66,8 +60,6 @@ const PERMISSIONS: Record<string, Record<string, Set<string>>> = {
     [RESOURCES.ESCROW]      : new Set([ACTIONS.READ]),
     [RESOURCES.REVIEW]      : new Set([ACTIONS.READ, ACTIONS.LIST]),
     [RESOURCES.OWN_PROFILE] : new Set([ACTIONS.READ, ACTIONS.UPDATE]),
-    [RESOURCES.OWN_SAMPLE]  : new Set([ACTIONS.READ, ACTIONS.LIST, ACTIONS.UPDATE]),
-    [RESOURCES.OWN_DISPUTE] : new Set([ACTIONS.READ, ACTIONS.LIST]),
   },
 
   // ── ADMIN ─────────────────────────────────
@@ -82,8 +74,6 @@ const PERMISSIONS: Record<string, Record<string, Set<string>>> = {
     [RESOURCES.OWN_PROFILE] : new Set([ACTIONS.MANAGE]),
     [RESOURCES.ADMIN_PANEL] : new Set([ACTIONS.MANAGE]),
     [RESOURCES.LOGS]        : new Set([ACTIONS.READ, ACTIONS.LIST]),
-    [RESOURCES.SAMPLE]      : new Set([ACTIONS.MANAGE]),
-    [RESOURCES.DISPUTE]     : new Set([ACTIONS.MANAGE]),
   },
 };
 
