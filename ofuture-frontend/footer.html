@@ -156,31 +156,32 @@
   </footer>
 
   <div id="footer-container"></div>
-<script>
-	async function loadFooter() {
-		try {
-			const response = await fetch('./footer.html');
-			if (!response.ok) throw new Error('Footer file not found');
+  <script src="api.js"></script>
+  <script>
+    async function loadFooter() {
+      try {
+        const response = await fetch('./footer.html');
+        if (!response.ok) throw new Error('Footer file not found');
 
-			const html = await response.text();
-			const temp = document.createElement('div');
-			temp.innerHTML = html;
+        const html = await response.text();
+        const temp = document.createElement('div');
+        temp.innerHTML = html;
 
-			const style = temp.querySelector('#footer-shared-style');
-			if (style && !document.getElementById('footer-shared-style')) {
-				document.head.appendChild(style.cloneNode(true));
-			}
+        const style = temp.querySelector('#footer-shared-style');
+        if (style && !document.getElementById('footer-shared-style')) {
+          document.head.appendChild(style.cloneNode(true));
+        }
 
-			const footer = temp.querySelector('footer.footer');
-			if (footer) {
-				document.getElementById('footer-container').appendChild(footer);
-			}
-		} catch (error) {
-			console.error('Could not load footer:', error);
-		}
-	}
+        const footer = temp.querySelector('footer.footer');
+        if (footer) {
+          document.getElementById('footer-container').appendChild(footer);
+        }
+      } catch (error) {
+        console.error('Could not load footer:', error);
+      }
+    }
 
-	loadFooter();
-</script>
+    loadFooter();
+  </script>
 </body>
 </html>

@@ -1,0 +1,41 @@
+2026-04-05 02:10:48 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-05 02:10:48 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-05 02:10:48 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-05 02:10:48 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-05 02:10:48 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-05 02:10:48 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-05 02:10:48 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-05 02:10:48 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-05 02:10:48 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-05 02:10:48 [warn]: [CSRF] CSRF_SECRET not set in env — falling back to JWT_SECRET. Set CSRF_SECRET explicitly in production.
+2026-04-05 02:17:21 [warn]: [redisClient] ioredis error — falling back to in-memory client. Error:
+2026-04-05 02:34:57 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-05 02:34:57 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-05 02:34:57 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-05 02:34:57 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-05 02:34:57 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-05 02:34:57 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-05 02:34:57 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-05 02:34:57 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-05 02:34:57 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-05 02:34:57 [warn]: [CSRF] CSRF_SECRET not set in env — falling back to JWT_SECRET. Set CSRF_SECRET explicitly in production.
+2026-04-05 02:40:07 [warn]: [redisClient] ioredis error — falling back to in-memory client. Error:
+2026-04-05 02:43:33 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-05 02:43:33 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-05 02:43:33 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-05 02:43:33 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-05 02:43:33 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-05 02:43:33 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-05 02:43:33 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-05 02:43:33 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-05 02:43:33 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-05 02:43:33 [warn]: [CSRF] CSRF_SECRET not set in env — falling back to JWT_SECRET. Set CSRF_SECRET explicitly in production.
+2026-04-05 02:44:31 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-05 02:44:31 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-05 02:44:31 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-05 02:44:31 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-05 02:44:31 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-05 02:44:31 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-05 02:44:31 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-05 02:44:31 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-05 02:44:31 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:

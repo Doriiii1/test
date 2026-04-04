@@ -202,15 +202,17 @@ const trackViolation = async (ip: string, reason = 'security violation') => {
 
 const autobanCheck = async (req: SecurityRequest, res: Response, next: NextFunction) => {
   const ip = req.meta?.ip ?? getClientIp(req);
-  const originalJson = res.json.bind(res);
-
-  res.json = function (body: any) {
+  
+  // FIX: Listen to the 'finish' event instead of monkey-patching res.json.
+  // This guarantees we catch all responses regardless of how they are sent.
+  res.on('finish', () => {
     const status = res.statusCode;
     if (status === 401 || status === 403 || status === 429) {
-      trackViolation(ip, `HTTP ${status} on ${req.path}`).catch(() => {});
+      trackViolation(ip, `HTTP ${status} on ${req.path}`).catch((err) => {
+        logger.error(`Failed to track violation for IP ${ip}:`, err);
+      });
     }
-    return originalJson(body);
-  };
+  });
 
   next();
 };

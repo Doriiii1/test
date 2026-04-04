@@ -66,14 +66,14 @@ async function handleLoginSubmit(event) {
     
     // Chuyển hướng theo Role
     const userRole = userData.user?.role;
-    let redirectUrl = '../index.html'; 
+    let redirectUrl = 'index.html'; 
 
     if (userRole === 'admin') {
-      redirectUrl = '../dashboard-admin/indexAdmin.html';
+      redirectUrl = 'dashboard-admin/indexAdmin.html';
     } else if (userRole === 'seller') {
-      redirectUrl = '../dashboard-seller/indexSeller.html';
+      redirectUrl = 'dashboard-seller/indexSeller.html';
     } else if (userRole === 'buyer' || userRole === 'user') {
-      redirectUrl = '../buyer-dashboard.html';
+      redirectUrl = 'buyer-dashboard.html';
     }
     
     setTimeout(() => {
@@ -111,10 +111,14 @@ function initializeGoogleSignIn() {
 }
 
 async function handleGoogleSignIn(response) {
+  const loginBtn = document.getElementById('loginBtn');
   try {
-    const googleToken = response.credential;
+    if (loginBtn) {
+      loginBtn.disabled = true;
+      loginBtn.textContent = 'Đang xác thực Google...';
+    }
 
-    // Gọi API thông qua wrapper chung api.js
+    const googleToken = response.credential;
     const res = await fetchAPI('/auth/google-login', {
       method: 'POST',
       body: JSON.stringify({ idToken: googleToken }),
@@ -122,7 +126,6 @@ async function handleGoogleSignIn(response) {
 
     const userData = res.data;
 
-    // Lưu tokens và thông tin user
     if (userData.accessToken) localStorage.setItem('accessToken', userData.accessToken);
     if (userData.refreshToken) localStorage.setItem('refreshToken', userData.refreshToken);
     if (userData.user) localStorage.setItem('user', JSON.stringify(userData.user));
@@ -131,15 +134,11 @@ async function handleGoogleSignIn(response) {
 
     // Chuyển hướng theo Role
     const userRole = userData.user?.role;
-    let redirectUrl = '../index.html';
+    let redirectUrl = 'index.html';
 
-    if (userRole === 'admin') {
-      redirectUrl = '../dashboard-admin/indexAdmin.html';
-    } else if (userRole === 'seller') {
-      redirectUrl = '../dashboard-seller/indexSeller.html';
-    } else if (userRole === 'buyer' || userRole === 'user') {
-      redirectUrl = '../buyer-dashboard.html';
-    }
+    if (userRole === 'admin') redirectUrl = 'dashboard-admin/indexAdmin.html';
+    else if (userRole === 'seller') redirectUrl = 'dashboard-seller/indexSeller.html';
+    else if (userRole === 'buyer' || userRole === 'user') redirectUrl = 'buyer-dashboard.html';
 
     setTimeout(() => {
       window.location.href = redirectUrl;
@@ -148,6 +147,12 @@ async function handleGoogleSignIn(response) {
   } catch (error) {
     console.error('Google login error:', error);
     showNotification(error.message || 'Xác thực Google thất bại.', 'error');
+  } finally {
+    // FIX: Ensure button is re-enabled if verification fails
+    if (loginBtn && !window.location.href.includes('dashboard')) {
+       loginBtn.disabled = false;
+       loginBtn.textContent = 'Đăng nhập';
+    }
   }
 }
 

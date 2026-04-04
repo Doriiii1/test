@@ -37,8 +37,9 @@ async function fetchAPI(endpoint, options = {}) {
       
       // Tính toán đường dẫn lùi cấp nếu file đang nằm trong dashboard 
       const currentPath = window.location.pathname;
-      const isInsideSubFolder = currentPath.includes('/dashboard-') || currentPath.includes('/loginbd.html/');
-      const loginPath = isInsideSubFolder ? '../loginbd.html/login.html' : 'loginbd.html/login.html';
+      const isInsideSubFolder = currentPath.includes('/dashboard-');
+      // Trỏ thẳng về file login.html ở thư mục gốc
+      const loginPath = isInsideSubFolder ? '../login.html' : 'login.html';
       
       alert('Phiên đăng nhập đã hết hạn. Vui lòng đăng nhập lại!');
       window.location.href = loginPath;

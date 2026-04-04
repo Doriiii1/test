@@ -100,7 +100,7 @@ async function proceedToCheckout() {
     const accessToken = getAccessToken();
     if (!accessToken) {
         showToast('Bạn chưa đăng nhập. Vui lòng đăng nhập lại.', 'error');
-        setTimeout(() => window.location.href = 'loginbd.html/login.html', 1500);
+        setTimeout(() => window.location.href = 'login.html', 1500);
         return;
     }
 

@@ -25,7 +25,7 @@ async function initializeDashboard() {
     const user = localStorage.getItem('user');
 
     if (!token || !user) {
-        window.location.href = '../loginbd.html/login.html';
+        window.location.href = '../login.html';
         return;
     }
 
@@ -52,7 +52,7 @@ async function initializeDashboard() {
         console.error('Error initializing dashboard:', error);
         alert('Error loading dashboard. Please login again.');
         localStorage.clear();
-        window.location.href = '../loginbd.html/login.html';
+        window.location.href = '../login.html';
     }
 }
 
@@ -85,7 +85,7 @@ async function apiCall(endpoint, options = {}) {
 
         if (response.status === 401) {
             localStorage.clear();
-            window.location.href = '../loginbd.html/login.html';
+            window.location.href = '../login.html';
             throw new Error('Unauthorized');
         }
 

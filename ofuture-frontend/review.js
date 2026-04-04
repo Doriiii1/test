@@ -43,7 +43,7 @@ document.getElementById('reviewForm').addEventListener('submit', async (e) => {
 
     if (!accessToken) {
         showToast('Vui lòng đăng nhập', 'error');
-        window.location.href = 'loginbd.html/login.html';
+        window.location.href = 'login.html';
         return;
     }
 

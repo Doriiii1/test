@@ -42,7 +42,7 @@ document.querySelectorAll('.tab-btn').forEach(tab => {
 });
 
 async function loadOrders() {
-    if (!accessToken) { window.location.href = 'loginbd.html/login.html'; return; }
+    if (!accessToken) { window.location.href = 'login.html'; return; }
     try {
         const params = new URLSearchParams({ page: currentPage, limit: 10 });
         if (currentStatus !== 'all') params.append('status', currentStatus);

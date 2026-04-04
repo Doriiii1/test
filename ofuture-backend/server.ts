@@ -54,21 +54,27 @@ const sellerRoutes = require('./routes/sellerRoutes');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+// FIX: Trust proxy so req.ip reflects the actual client, not the load balancer.
+// Set to 1 to trust the first proxy hop (standard for AWS/Render/Heroku)
+app.set('trust proxy', 1);
+
 // ────────────────────────────────────────────
 // 1. SECURITY MIDDLEWARE
 // ────────────────────────────────────────────
 
-// Helmet sets secure HTTP headers
+// FIX: Update Helmet CSP to allow Google Sign-In scripts and iframes.
 app.use(helmet({
   contentSecurityPolicy: {
     directives: {
       defaultSrc: ["'self'"],
-      scriptSrc: ["'self'"],
-      styleSrc: ["'self'"],
+      scriptSrc: ["'self'", "https://accounts.google.com", "https://apis.google.com"],
+      frameSrc: ["'self'", "https://accounts.google.com"], // Required for Google One Tap
+      styleSrc: ["'self'", "'unsafe-inline'"], // Often needed by third-party widgets
       imgSrc: ["'self'", 'data:', 'https:'],
+      connectSrc: ["'self'", "https://accounts.google.com"]
     },
   },
-  crossOriginEmbedderPolicy: true,
+  crossOriginEmbedderPolicy: false, // Set to false to prevent breaking external iframes like Google Login
   hsts: {
     maxAge: 31536000,          // 1 year
     includeSubDomains: true,

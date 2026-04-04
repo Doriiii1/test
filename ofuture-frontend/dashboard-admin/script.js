@@ -30,7 +30,7 @@ async function initializeDashboard() {
     // Kiểm tra quyền Admin ngay tại đầu phễu (từ script.js)
     if (!token || user.role !== 'admin') {
         alert('Bạn không có quyền truy cập! Đang chuyển hướng về trang Login.');
-        window.location.href = '../loginbd.html/login.html';
+        window.location.href = '../login.html';
         return;
     }
 
@@ -73,7 +73,7 @@ async function apiCall(endpoint, options = {}) {
 
         if (response.status === 401) {
             localStorage.clear();
-            window.location.href = '../loginbd.html/login.html';
+            window.location.href = '../login.html';
             throw new Error('Unauthorized');
         }
 
@@ -616,7 +616,7 @@ function setupEventListeners() {
     // Đăng xuất
     document.getElementById('logoutBtn').addEventListener('click', () => {
         localStorage.clear();
-        window.location.href = '../loginbd.html/login.html';
+        window.location.href = '../login.html';
     });
 }
 

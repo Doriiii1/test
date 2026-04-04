@@ -135,7 +135,7 @@ document.getElementById('logoutBtn')?.addEventListener('click', async () => {
         });
     } catch (e) {}
     localStorage.clear();
-    window.location.href = 'loginbd.html/login.html';
+    window.location.href = 'login.html';
 });
 
 // ── Init ──────────────────────────────────────────────────
