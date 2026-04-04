@@ -8,6 +8,7 @@
 </head>
 <body>
     <div class="dashboard-container">
+        <!-- Sidebar -->
         <aside class="sidebar">
             <div class="sidebar-header">
                 <h1>O'Future</h1>
@@ -15,12 +16,36 @@
             </div>
 
             <nav class="sidebar-menu">
-                <a href="#" class="menu-item active" data-section="dashboard">📊 Dashboard</a>
-                <a href="#" class="menu-item" data-section="users">👥 Users</a>
-                <a href="#" class="menu-item" data-section="escrow">💰 Escrow</a>
-                <a href="#" class="menu-item" data-section="payments">💳 Payments</a>
-                <a href="#" class="menu-item" data-section="logs">📝 Activity Logs</a>
-                <a href="#" class="menu-item" data-section="system-logs">⚙️ System Logs</a>
+                <a href="#" class="menu-item active" data-section="dashboard">
+                    📊 Dashboard
+                </a>
+                <a href="#" class="menu-item" data-section="users">
+                    👥 Users
+                </a>
+                <a href="#" class="menu-item" data-section="content-products">
+                    📦 Products
+                </a>
+                <a href="#" class="menu-item" data-section="content-reviews">
+                    📝 Reviews
+                </a>
+                <a href="#" class="menu-item" data-section="escrow">
+                    💰 Escrow
+                </a>
+                <a href="#" class="menu-item" data-section="payments">
+                    💳 Payments
+                </a>
+                <a href="#" class="menu-item" data-section="ai-knowledge">
+                    🤖 AI Knowledge
+                </a>
+                <a href="#" class="menu-item" data-section="live-chat">
+                    💬 Live Chat
+                </a>
+                <a href="#" class="menu-item" data-section="logs">
+                    📋 Activity Logs
+                </a>
+                <a href="#" class="menu-item" data-section="system-logs">
+                    🔧 System Logs
+                </a>
             </nav>
 
             <div class="sidebar-footer">
@@ -28,7 +53,9 @@
             </div>
         </aside>
 
+        <!-- Main Content -->
         <main class="main-content">
+            <!-- Topbar -->
             <div class="topbar">
                 <h2 id="pageTitle">Dashboard</h2>
                 <div class="user-info">
@@ -37,7 +64,9 @@
                 </div>
             </div>
 
+            <!-- Content Area -->
             <div class="content">
+                <!-- Dashboard Section -->
                 <section id="dashboard-section" class="section active">
                     <h2>Admin Dashboard Overview</h2>
                     <div class="stats-grid">
@@ -60,6 +89,7 @@
                     </div>
                 </section>
 
+                <!-- Users Section -->
                 <section id="users-section" class="section">
                     <div class="section-header">
                         <h2>User Management</h2>
@@ -88,6 +118,7 @@
                     </div>
                 </section>
 
+                <!-- Escrow Section -->
                 <section id="escrow-section" class="section">
                     <div class="section-header">
                         <h2>Escrow Management</h2>
@@ -96,7 +127,7 @@
                                 <option value="">All Status</option>
                                 <option value="pending">Pending</option>
                                 <option value="held">Held</option>
-                                <option value="disputed">Disputed</option>
+                                <option value="releasing">Releasing</option>
                                 <option value="released">Released</option>
                             </select>
                         </div>
@@ -137,29 +168,190 @@
                     </div>
                 </section>
 
+                <!-- Payments Section -->
                 <section id="payments-section" class="section">
                     <div class="section-header">
                         <h2>Payment Management</h2>
+                        <div class="payment-filters">
+                            <select id="paymentStatusFilter" class="filter-select">
+                                <option value="">All Status</option>
+                                <option value="pending">Pending</option>
+                                <option value="approved">Approved</option>
+                                <option value="rejected">Rejected</option>
+                            </select>
+                        </div>
                     </div>
+
                     <div class="table-container">
                         <table id="paymentsTable">
-                            <tbody id="paymentsTableBody"><tr><td class="text-center">Loading...</td></tr></tbody>
+                            <thead>
+                                <tr>
+                                    <th>Payment ID</th>
+                                    <th>User</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                    <th>Method</th>
+                                    <th>Created</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="paymentsTableBody">
+                                <tr><td colspan="7" class="text-center">Loading...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Logs Section -->
+                <section id="logs-section" class="section">
+                    <div class="section-header">
+                        <h2>Activity Logs</h2>
+                        <div class="log-filters">
+                            <select id="logTypeFilter" class="filter-select">
+                                <option value="">All Events</option>
+                                <option value="user_login">User Login</option>
+                                <option value="user_registration">User Registration</option>
+                                <option value="escrow_created">Escrow Created</option>
+                                <option value="escrow_released">Escrow Released</option>
+                                <option value="user_blocked">User Blocked</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="logs-container" id="logsContainer">
+                        <p class="text-center">Loading...</p>
+                    </div>
+                </section>
+
+                <!-- System Logs Section -->
+                <section id="system-logs-section" class="section">
+                    <div class="section-header">
+                        <h2>System Logs</h2>
+                        <div class="log-filters">
+                            <select id="systemLogSeverityFilter" class="filter-select">
+                                <option value="">All Severities</option>
+                                <option value="info">Info</option>
+                                <option value="warn">Warning</option>
+                                <option value="error">Error</option>
+                                <option value="critical">Critical</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="table-container">
+                        <table id="systemLogsTable">
+                            <thead>
+                                <tr>
+                                    <th>Timestamp</th>
+                                    <th>Severity</th>
+                                    <th>Event Type</th>
+                                    <th>Message</th>
+                                    <th>User ID</th>
+                                    <th>IP Address</th>
+                                    <th>Endpoint</th>
+                                </tr>
+                            </thead>
+                            <tbody id="logsTableBody">
+                                <tr><td colspan="7" class="text-center">Loading...</td></tr>
+                            </tbody>
                         </table>
                     </div>
                 </section>
                 
-                <section id="logs-section" class="section">
-                     <h2>Activity Logs</h2>
-                     <div class="logs-container" id="logsContainer"><p class="text-center">Loading...</p></div>
+                <!-- Content Moderation - Products -->
+                <section id="content-products-section" class="section">
+                    <div class="section-header">
+                        <h2>Content Moderation - Products</h2>
+                        <div>
+                            <button id="refreshProductsModeration" class="btn btn-primary">Refresh</button>
+                        </div>
+                    </div>
+                    <div class="table-container">
+                        <table id="productsModerationTable">
+                            <thead>
+                                <tr>
+                                    <th>Product ID</th>
+                                    <th>Name</th>
+                                    <th>Seller</th>
+                                    <th>Category</th>
+                                    <th>Price</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="productsModerationBody">
+                                <tr><td colspan="7" class="text-center">Loading...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </section>
 
-                <section id="system-logs-section" class="section">
-                     <h2>System Logs</h2>
-                     <div class="table-container">
-                        <table id="systemLogsTable">
-                            <tbody id="systemLogsTableBody"><tr><td class="text-center">Loading...</td></tr></tbody>
+                <!-- Content Moderation - Reviews -->
+                <section id="content-reviews-section" class="section">
+                    <div class="section-header">
+                        <h2>Content Moderation - Reviews</h2>
+                    </div>
+                    <div class="table-container">
+                        <table id="reviewsModerationTable">
+                            <thead>
+                                <tr>
+                                    <th>Review ID</th>
+                                    <th>Product</th>
+                                    <th>Reviewer</th>
+                                    <th>Rating</th>
+                                    <th>Body</th>
+                                    <th>Hidden</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="reviewsModerationBody">
+                                <tr><td colspan="7" class="text-center">Loading...</td></tr>
+                            </tbody>
                         </table>
-                     </div>
+                    </div>
+                </section>
+
+                <!-- AI Knowledge Base -->
+                <section id="ai-knowledge-section" class="section">
+                    <div class="section-header">
+                        <h2>AI Knowledge Base</h2>
+                        <div>
+                            <button id="addAiTopicBtn" class="btn btn-primary">+ Add Topic</button>
+                        </div>
+                    </div>
+                    <div class="table-container">
+                        <table id="aiKnowledgeTable">
+                            <thead>
+                                <tr>
+                                    <th>Topic</th>
+                                    <th>Content</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="aiKnowledgeBody">
+                                <tr><td colspan="3" class="text-center">Loading...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Live Chat Handoff -->
+                <section id="live-chat-section" class="section">
+                    <div class="section-header">
+                        <h2>Live Chat - Handoff to Admin</h2>
+                    </div>
+                    <div class="table-container" style="display:flex; gap:12px; padding:12px;">
+                        <div style="width:320px; max-height:500px; overflow:auto;">
+                            <ul id="liveChatsList"></ul>
+                        </div>
+                        <div style="flex:1; display:flex; flex-direction:column;">
+                            <div id="chatWindow" style="flex:1; overflow:auto; padding:12px; background:#fff; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.06);">Select a chat to view messages</div>
+                            <div style="margin-top:8px; display:flex; gap:8px;">
+                                <input id="chatMessageInput" placeholder="Type message..." style="flex:1; padding:8px 10px; border-radius:6px; border:1px solid #e2e8f0;" />
+                                <button id="sendChatBtn" class="btn btn-primary">Send</button>
+                            </div>
+                        </div>
+                    </div>
                 </section>
             </div>
         </main>
