@@ -55,13 +55,22 @@ async function loadProfile() {
     }
 }
 
-// ── Update Profile — FIX: No PUT /auth/me endpoint exists
-// Use PATCH via a user-profile route if added, or advise user this is read-only
+// ── Update Profile — FIX: Submit to correct PUT /auth/profile endpoint
 document.getElementById('profileForm').addEventListener('submit', async e => {
     e.preventDefault();
-    // Note: Backend currently has no profile-update endpoint.
-    // Recommended fix: add PUT /api/auth/profile in authRoutes.ts
-    showToast('Tính năng cập nhật hồ sơ đang được phát triển.', 'error');
+    const fullName = document.getElementById('fullName').value;
+    const phone = document.getElementById('phone').value;
+    
+    try {
+        const res = await fetchAPI('/auth/profile', {
+            method: 'PUT',
+            body: JSON.stringify({ fullName, phone })
+        });
+        showToast(res.message || 'Cập nhật hồ sơ thành công!', 'success');
+        loadProfile(); // Refresh visual data
+    } catch(err) {
+        showToast(err.message || 'Cập nhật thất bại', 'error');
+    }
 });
 
 // ── MFA Setup — POST /api/mfa/setup (exists) ─────────────

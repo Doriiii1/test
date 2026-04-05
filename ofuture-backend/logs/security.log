@@ -39,3 +39,47 @@
 2026-04-05 02:44:31 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
 2026-04-05 02:44:31 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
 2026-04-05 02:44:31 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-05 16:31:04 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-05 16:31:04 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-05 16:31:04 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-05 16:31:04 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-05 16:31:04 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-05 16:31:04 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-05 16:31:04 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-05 16:31:04 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-05 16:31:04 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-05 17:15:56 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-05 17:15:56 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-05 17:15:56 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-05 17:15:56 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-05 17:15:56 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-05 17:15:56 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-05 17:15:56 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-05 17:15:56 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-05 17:15:56 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-05 17:23:10 [warn]: Rate limit exceeded: IP=::1 PATH=/uploads/product-1775179397856-63345535.png
+2026-04-05 17:23:13 [warn]: Rate limit exceeded: IP=::1 PATH=/api/orders/my
+2026-04-05 17:23:19 [warn]: Rate limit exceeded: IP=::1 PATH=/api/auth/me
+2026-04-05 17:23:24 [warn]: Rate limit exceeded: IP=::1 PATH=/api/auth/me
+2026-04-05 17:23:24 [warn]: Rate limit exceeded: IP=::1 PATH=/api/auth/me
+2026-04-05 17:23:24 [warn]: Rate limit exceeded: IP=::1 PATH=/api/auth/me
+2026-04-05 17:23:24 [warn]: Rate limit exceeded: IP=::1 PATH=/api/auth/me
+2026-04-05 17:23:25 [warn]: Rate limit exceeded: IP=::1 PATH=/api/auth/me
+2026-04-05 17:23:25 [warn]: Rate limit exceeded: IP=::1 PATH=/api/auth/me
+2026-04-05 17:23:25 [warn]: Rate limit exceeded: IP=::1 PATH=/api/auth/me
+2026-04-05 17:23:25 [warn]: Rate limit exceeded: IP=::1 PATH=/api/auth/me
+2026-04-05 17:23:25 [warn]: Rate limit exceeded: IP=::1 PATH=/api/auth/me
+2026-04-05 17:23:25 [warn]: Rate limit exceeded: IP=::1 PATH=/api/auth/me
+2026-04-05 17:23:25 [warn]: Rate limit exceeded: IP=::1 PATH=/api/auth/me
+2026-04-05 17:23:26 [warn]: Rate limit exceeded: IP=::1 PATH=/api/auth/me
+2026-04-05 17:23:26 [warn]: Rate limit exceeded: IP=::1 PATH=/api/auth/me
+2026-04-05 17:23:27 [warn]: Rate limit exceeded: IP=::1 PATH=/api/auth/me
+2026-04-05 17:23:27 [warn]: Rate limit exceeded: IP=::1 PATH=/api/auth/me
+2026-04-05 17:23:27 [warn]: Rate limit exceeded: IP=::1 PATH=/api/auth/me
+2026-04-05 17:23:27 [warn]: Rate limit exceeded: IP=::1 PATH=/api/auth/me
+2026-04-05 17:23:27 [warn]: Rate limit exceeded: IP=::1 PATH=/api/auth/me
+2026-04-05 17:23:28 [warn]: Rate limit exceeded: IP=::1 PATH=/api/auth/logout
+2026-04-05 17:23:39 [warn]: Rate limit exceeded: IP=::1 PATH=/api/auth/login
+2026-04-05 17:23:58 [warn]: Rate limit exceeded: IP=::1 PATH=/api/auth/login
+2026-04-05 17:28:16 [warn]: Rate limit exceeded: IP=::1 PATH=/api/auth/login
+2026-04-05 17:30:05 [warn]: Rate limit exceeded: IP=::1 PATH=/api/auth/login

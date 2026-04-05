@@ -23,8 +23,8 @@
       <nav class="sidebar-nav">
         <a href="buyer-dashboard.html" class="nav-item active">Trang chủ</a>
         <a href="product.html" class="nav-item">Sản phẩm</a>
-        <a href="#" class="nav-item">Giỏ hàng</a>
-        <a href="#" class="nav-item">Đơn hàng</a>
+        <a href="cart.html" class="nav-item">Giỏ hàng</a>
+        <a href="orders.html" class="nav-item">Đơn hàng</a>
         <a href="#" class="nav-item">Ký quỹ</a>
         <a href="#" class="nav-item">Lịch sử mua hàng</a>
         <a href="profile.html" class="nav-item">Tài khoản</a>
@@ -227,8 +227,8 @@
                       <p class="product-price">Giá sỉ: $${parseFloat(p.price).toLocaleString()}</p>
                     </div>
                     <div class="product-actions">
-                      <button class="btn btn-outline small-btn">Chi tiết</button>
-                      <button class="btn btn-primary small-btn" onclick="alert('Đang phát triển')">Thêm giỏ</button>
+                      <button class="btn btn-outline small-btn" onclick="window.location.href='product.html'">Chi tiết</button>
+                      <button class="btn btn-primary small-btn" onclick="addToCartFromDashboard('${p.id}', \`${(p.name || '').replace(/'/g, "\\'")}\`, ${p.price}, '${imageUrl}', '${p.sellerUsername}', ${p.stockQuantity})">Thêm giỏ</button>
                     </div>
                   </article>`;
               }).join('');
@@ -277,6 +277,22 @@
       localStorage.removeItem('refreshToken');
       localStorage.removeItem('user');
       window.location.href = 'login.html';
+    }
+
+    function addToCartFromDashboard(id, name, price, image, sellerUsername, stock) {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const existingIndex = cart.findIndex(item => item.id === id);
+      if (existingIndex >= 0) {
+        if (cart[existingIndex].quantity >= stock) {
+          alert('Số lượng vượt quá tồn kho');
+          return;
+        }
+        cart[existingIndex].quantity += 1;
+      } else {
+        cart.push({ id, name, price: parseFloat(price), image, sellerUsername, stock: parseInt(stock), quantity: 1 });
+      }
+      localStorage.setItem('cart', JSON.stringify(cart));
+      alert('Đã thêm vào giỏ hàng thành công!');
     }
   </script>
 </body>

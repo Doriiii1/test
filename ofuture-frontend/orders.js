@@ -124,7 +124,7 @@ function renderOrders(orders) {
 
 async function viewOrderDetail(orderId) {
     try {
-        const response = await fetch(`${API_URL}/orders/${orderId}`, {
+        const response = await fetchAPI(`${API_URL}/orders/${orderId}`, {
             headers: { 'Authorization': `Bearer ${accessToken}` }
         });
 
@@ -217,7 +217,7 @@ async function cancelOrder(orderId) {
     if (!reason) return;
 
     try {
-        const response = await fetch(`${API_URL}/orders/${orderId}/cancel`, {
+        const response = await fetchAPI(`${API_URL}/orders/${orderId}/cancel`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -242,7 +242,7 @@ async function confirmDelivery(orderId) {
     if (!confirm('Xác nhận bạn đã nhận được hàng?')) return;
 
     try {
-        const response = await fetch(`${API_URL}/orders/${orderId}/confirm-delivery`, {
+        const response = await fetchAPI(`${API_URL}/orders/${orderId}/confirm-delivery`, {
             method: 'POST',
             headers: { 'Authorization': `Bearer ${accessToken}` }
         });
@@ -272,7 +272,7 @@ document.getElementById('disputeForm').addEventListener('submit', async (e) => {
     const reason = document.getElementById('disputeReason').value;
 
     try {
-        const response = await fetch(`${API_URL}/escrow/dispute`, {
+        const response = await fetchAPI(`${API_URL}/escrow/dispute`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
