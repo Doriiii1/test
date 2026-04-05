@@ -1,4 +1,3 @@
-const API_URL = 'http://localhost:5000/api';
 const accessToken = localStorage.getItem('accessToken');
 let currentStatus = 'all';
 let currentPage = 1;
@@ -124,15 +123,13 @@ function renderOrders(orders) {
 
 async function viewOrderDetail(orderId) {
     try {
-        const response = await fetchAPI(`${API_URL}/orders/${orderId}`, {
-            headers: { 'Authorization': `Bearer ${accessToken}` }
-        });
+        // Chỉ cần truyền path, fetchAPI sẽ tự nối domain, tự gắn Token và tự parse JSON
+        const response = await fetchAPI(`/orders/${orderId}`);
 
-        if (!response.ok) throw new Error('Failed to load order detail');
-
-        const { data } = await response.json();
-        showOrderDetail(data);
+        // response lúc này chính là object dữ liệu chuẩn (đã parse), ta lấy thẳng field data
+        showOrderDetail(response.data);
     } catch (error) {
+        console.error('Lỗi tải chi tiết đơn hàng:', error);
         showToast('Không thể tải chi tiết đơn hàng', 'error');
     }
 }
@@ -217,23 +214,16 @@ async function cancelOrder(orderId) {
     if (!reason) return;
 
     try {
-        const response = await fetchAPI(`${API_URL}/orders/${orderId}/cancel`, {
+        // fetchAPI đã tự xử lý URL, Headers và parse JSON
+        await fetchAPI(`/orders/${orderId}/cancel`, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${accessToken}`
-            },
             body: JSON.stringify({ reason })
         });
-
-        if (!response.ok) {
-            const error = await response.json();
-            throw new Error(error.message);
-        }
 
         showToast('Hủy đơn hàng thành công!');
         loadOrders();
     } catch (error) {
+        // fetchAPI ném lỗi trực tiếp nếu !data.success, nên bắt lỗi tại đây là đủ
         showToast(error.message || 'Không thể hủy đơn hàng', 'error');
     }
 }
@@ -242,15 +232,10 @@ async function confirmDelivery(orderId) {
     if (!confirm('Xác nhận bạn đã nhận được hàng?')) return;
 
     try {
-        const response = await fetchAPI(`${API_URL}/orders/${orderId}/confirm-delivery`, {
-            method: 'POST',
-            headers: { 'Authorization': `Bearer ${accessToken}` }
+        // Rút gọn: Bỏ API_URL, bỏ headers dư thừa, bỏ check response.ok/json()
+        await fetchAPI(`/orders/${orderId}/confirm-delivery`, {
+            method: 'POST'
         });
-
-        if (!response.ok) {
-            const error = await response.json();
-            throw new Error(error.message);
-        }
 
         showToast('Xác nhận nhận hàng thành công! Tiền đã được chuyển cho người bán.');
         loadOrders();
@@ -272,19 +257,11 @@ document.getElementById('disputeForm').addEventListener('submit', async (e) => {
     const reason = document.getElementById('disputeReason').value;
 
     try {
-        const response = await fetchAPI(`${API_URL}/escrow/dispute`, {
+        // Tối ưu hóa việc gọi API khiếu nại
+        await fetchAPI('/escrow/dispute', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${accessToken}`
-            },
             body: JSON.stringify({ orderId: currentOrderId, reason })
         });
-
-        if (!response.ok) {
-            const error = await response.json();
-            throw new Error(error.message);
-        }
 
         showToast('Gửi khiếu nại thành công! Admin sẽ xem xét.');
         closeDisputeModal();

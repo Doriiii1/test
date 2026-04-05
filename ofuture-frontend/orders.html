@@ -54,9 +54,6 @@
     </main>
 
     <div id="toast" class="toast"></div>
-    
-    <script src="api.js"></script>
-    <script src="orders.js"></script>
 
 <!-- Order Detail Modal -->
 <div id="orderModal" class="modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:1000;align-items:center;justify-content:center;">
@@ -87,9 +84,9 @@
   </div>
 </div>
 
-<!-- Also add the modal display fix (display:flex when shown) -->
-<style>
-  .modal.show { display: flex !important; }
-</style>
+    <script src="api.js"></script>
+    <script src="orders.js"></script>
+    <!-- Also add the modal display fix (display:flex when shown) -->
+    <style>.modal.show { display: flex !important; }</style>
 </body>
 </html>

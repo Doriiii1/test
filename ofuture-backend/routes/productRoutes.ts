@@ -110,6 +110,7 @@ router.post(
   authenticate,
   authorizeRoles('seller', 'admin'),
   writeLimiter,
+  uploadImages.array('images', 5),
   detectSuspiciousPayload,
   validateCreateProduct,
   createProduct
@@ -125,6 +126,7 @@ router.put(
     return product?.seller_id ?? null;
   }),
   writeLimiter,
+  uploadImages.array('images', 5),
   detectSuspiciousPayload,
   validateUpdateProduct,
   updateProduct
@@ -173,16 +175,5 @@ const validateProdReviewsQuery = [
     next();
   },
 ];
-
-router.post(
-  '/',
-  authenticate,
-  authorizeRoles('seller', 'admin'),
-  writeLimiter,
-  uploadImages.array('images', 5),   // ← ADD: multer must run BEFORE body validation
-  detectSuspiciousPayload,           // ← runs after multer so req.body is populated
-  validateCreateProduct,
-  createProduct
-);
 
 export = router;

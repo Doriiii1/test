@@ -51,45 +51,17 @@ async function initializeDashboard() {
 // ============================================================
 
 async function apiCall(endpoint, options = {}) {
-    const token = localStorage.getItem('accessToken');
-    if (!token) throw new Error('No authentication token found');
-
+    // Bật spinner loading của Admin Dashboard
     activeRequests += 1; showAdminSpinner();
 
-    const headers = {
-        'Authorization': `Bearer ${token}`,
-        ...options.headers,
-    };
-
-    if (!(options.body instanceof FormData)) {
-        headers['Content-Type'] = headers['Content-Type'] || 'application/json';
-    }
-
     try {
-        const response = await fetch(`${API_BASE_URL}${endpoint}`, {
-            ...options,
-            headers,
-        });
-
-        if (response.status === 401) {
-            localStorage.clear();
-            window.location.href = '../login.html';
-            throw new Error('Unauthorized');
-        }
-
-        if (!response.ok) {
-            let txt = await response.text();
-            try { txt = JSON.parse(txt).message || txt; } catch(e){}
-            throw new Error(txt || `HTTP ${response.status}`);
-        }
-
-        const ct = response.headers.get('content-type') || '';
-        if (ct.includes('application/json')) return await response.json();
-        return await response.text();
+        // Tái sử dụng fetchAPI từ file api.js để quản lý Token, Header và lỗi 401 tập trung
+        return await fetchAPI(endpoint, options);
     } catch (error) {
-        console.error('API Error:', error);
+        console.error('Admin API Error:', error);
         throw error;
     } finally {
+        // Tắt spinner khi request xong (dù thành công hay thất bại)
         activeRequests = Math.max(0, activeRequests - 1);
         if (activeRequests === 0) hideAdminSpinner();
     }
@@ -448,11 +420,20 @@ function updatePlatformRevenue() {
 
 // Khớp với route PUT /admin/users/:id/suspend (Tích hợp logic từ script.js)
 async function handleSuspendUser(userId, currentIsActive) {
-    const actionText = currentIsActive ? 'Khóa' : 'Mở khóa';
-    const reason = prompt(`Lý do ${actionText} người dùng này:`);
+    // Ép kiểu an toàn để đảm bảo luôn là boolean
+    const isCurrentlyActive = currentIsActive === true || currentIsActive === 'true' || currentIsActive === 1;
+    const actionText = isCurrentlyActive ? 'Khóa' : 'Mở khóa';
     
-    if (currentIsActive && !reason) {
-        alert('Phải có lý do khi khóa tài khoản!');
+    const reason = prompt(`Lý do ${actionText} tài khoản này (Bấm Cancel để hủy):`);
+    
+    // Nếu Admin bấm Cancel ở prompt -> Hủy ngay thao tác
+    if (reason === null) {
+        return;
+    }
+
+    // Nếu đang khóa mà Admin cố tình để trống text -> Chặn lại
+    if (isCurrentlyActive && reason.trim() === '') {
+        alert('Vui lòng nhập lý do để khóa tài khoản!');
         return;
     }
 
@@ -460,8 +441,8 @@ async function handleSuspendUser(userId, currentIsActive) {
         await apiCall(`/admin/users/${userId}/suspend`, {
             method: 'PUT',
             body: JSON.stringify({ 
-                suspend: currentIsActive, // Nếu đang active (true) thì gửi suspend = true
-                reason: reason || 'Thay đổi bởi Admin' 
+                suspend: isCurrentlyActive,
+                reason: reason.trim() || 'Thay đổi bởi Admin' 
             })
         });
         alert(`Đã ${actionText} tài khoản thành công.`);
@@ -576,13 +557,14 @@ function setupEventListeners() {
         });
     });
 
-    // Tìm kiếm User theo Email/Username
+    // Tìm kiếm User theo Email/Username an toàn (Tránh crash nếu thiếu data)
     const searchInput = document.getElementById('userSearch');
     if (searchInput) {
         searchInput.addEventListener('input', (e) => {
             const term = e.target.value.toLowerCase();
             const filtered = allUsers.filter(u => 
-                u.username.toLowerCase().includes(term) || u.email.toLowerCase().includes(term)
+                (u.username || '').toLowerCase().includes(term) || 
+                (u.email || '').toLowerCase().includes(term)
             );
             renderUsersTable(filtered);
         });

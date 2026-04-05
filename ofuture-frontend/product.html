@@ -709,39 +709,9 @@
 
     <script src="api.js"></script>
     <script>
-        const products = [
-            {id:1,name:"Áo sơ mi trắng basic",price:120000,cat:"SHIRT",img:"https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=400",desc:"Áo sơ mi trắng basic, chất liệu cotton cao cấp, thoáng mát"},
-            {id:2,name:"Áo cotton cao cấp",price:150000,cat:"SHIRT",img:"https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=400",desc:"Áo cotton cao cấp, form dáng hiện đại, phù hợp mọi dịp"},
-            {id:3,name:"Áo oversize street",price:140000,cat:"SHIRT",img:"https://images.unsplash.com/photo-1621072156002-e2fccdc0b176?w=400",desc:"Áo oversize phong cách street, trendy và năng động"},
-            {id:4,name:"Áo thiết kế luxury",price:200000,cat:"SHIRT",img:"https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=400",desc:"Áo thiết kế luxury, chất liệu cao cấp, sang trọng"},
-            {id:5,name:"Áo thể thao casual",price:110000,cat:"SHIRT",img:"https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=400",desc:"Áo thể thao casual, thoải mái cho mọi hoạt động"},
-            {id:6,name:"Đồng hồ classic",price:300000,cat:"CLOCK",img:"https://images.unsplash.com/photo-1524805444758-089113d48a6d?w=400",desc:"Đồng hồ classic, thiết kế thanh lịch, bền bỉ"},
-            {id:7,name:"Đồng hồ vàng luxury",price:450000,cat:"CLOCK",img:"https://images.unsplash.com/photo-1587836374828-4dbafa94cf0e?w=400",desc:"Đồng hồ vàng luxury, sang trọng và đẳng cấp"},
-            {id:8,name:"Smart watch pro",price:250000,cat:"CLOCK",img:"https://images.unsplash.com/photo-1579586337278-3befd40fd17a?w=400",desc:"Smart watch pro, tích hợp nhiều tính năng thông minh"},
-            {id:9,name:"Đồng hồ kim cương",price:700000,cat:"CLOCK",img:"https://images.unsplash.com/photo-1622434641406-a158123450f9?w=400",desc:"Đồng hồ kim cương, xa xỉ và quý phái"},
-            {id:10,name:"Đồng hồ tối giản",price:210000,cat:"CLOCK",img:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400",desc:"Đồng hồ tối giản, phong cách minimalist hiện đại"},
-            {id:11,name:"Nước hoa luxury",price:320000,cat:"PERFUME",img:"https://images.unsplash.com/photo-1541643600914-78b084683601?w=400",desc:"Nước hoa luxury, hương thơm quyến rũ, lưu hương lâu"},
-            {id:12,name:"Nước hoa hoa hồng",price:280000,cat:"PERFUME",img:"https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=400",desc:"Nước hoa hoa hồng, ngọt ngào và nữ tính"},
-            {id:13,name:"Nước hoa đêm đen",price:390000,cat:"PERFUME",img:"https://images.unsplash.com/photo-1594035910387-fea47794261f?w=400",desc:"Nước hoa đêm đen, hương thơm mạnh mẽ và bí ẩn"},
-            {id:14,name:"Nước hoa mùa hè",price:260000,cat:"PERFUME",img:"https://images.unsplash.com/photo-1588405748880-12d1d2a59d75?w=400",desc:"Nước hoa mùa hè, tươi mát và sảng khoái"},
-            {id:15,name:"Nước hoa VIP gold",price:520000,cat:"PERFUME",img:"https://images.unsplash.com/photo-1615634260167-c8cdede054de?w=400",desc:"Nước hoa VIP gold, đẳng cấp và sang trọng"},
-            {id:16,name:"Túi da cao cấp",price:420000,cat:"HAND",img:"https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=400",desc:"Túi da cao cấp, thiết kế tinh tế, bền đẹp"},
-            {id:17,name:"Túi luxury nữ",price:550000,cat:"HAND",img:"https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=400",desc:"Túi luxury nữ, thời trang và sang trọng"},
-            {id:18,name:"Túi mini thời trang",price:260000,cat:"HAND",img:"https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=400",desc:"Túi mini thời trang, nhỏ gọn và tiện lợi"},
-            {id:19,name:"Túi công sở classic",price:340000,cat:"HAND",img:"https://images.unsplash.com/photo-1591561954557-26941169b49e?w=400",desc:"Túi công sở classic, chuyên nghiệp và lịch sự"},
-            {id:20,name:"Túi tote cao cấp",price:480000,cat:"HAND",img:"https://images.unsplash.com/photo-1564422170194-896b89110ef8?w=400",desc:"Túi tote cao cấp, rộng rãi và đa năng"},
-            {id:21,name:"Áo khoác thời trang",price:600000,cat:"FASHION",img:"https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400",desc:"Áo khoác thời trang, ấm áp và phong cách"},
-            {id:22,name:"Hoodie street",price:220000,cat:"FASHION",img:"https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=400",desc:"Hoodie street, năng động và cá tính"},
-            {id:23,name:"Áo khoác luxury",price:780000,cat:"FASHION",img:"https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=400",desc:"Áo khoác luxury, sang trọng và đẳng cấp"},
-            {id:24,name:"Quần jean denim",price:180000,cat:"FASHION",img:"https://images.unsplash.com/photo-1542272604-787c3835535d?w=400",desc:"Quần jean denim, bền đẹp và thời trang"},
-            {id:25,name:"Bộ suit cao cấp",price:950000,cat:"FASHION",img:"https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=400",desc:"Bộ suit cao cấp, lịch lãm và chuyên nghiệp"},
-            {id:26,name:"Mũ lưỡi trai",price:80000,cat:"HATS",img:"https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=400",desc:"Mũ lưỡi trai, năng động và trẻ trung"},
-            {id:27,name:"Mũ luxury",price:140000,cat:"HATS",img:"https://images.unsplash.com/photo-1514327605112-b887c0e61c0a?w=400",desc:"Mũ luxury, sang trọng và thời thượng"},
-            {id:28,name:"Mũ street style",price:95000,cat:"HATS",img:"https://images.unsplash.com/photo-1575428652377-a2d80e2277fc?w=400",desc:"Mũ street style, cá tính và phong cách"},
-            {id:29,name:"Mũ quý ông classic",price:210000,cat:"HATS",img:"https://images.unsplash.com/photo-1521369909029-2afed882baee?w=400",desc:"Mũ quý ông classic, lịch lãm và thanh lịch"},
-            {id:30,name:"Mũ mùa đông",price:160000,cat:"HATS",img:"https://images.unsplash.com/photo-1576871337622-98d48d1cf531?w=400",desc:"Mũ mùa đông, ấm áp và thời trang"}
-        ];
-
+        // Khai báo mảng rỗng, sẽ được đổ data từ API
+        let products = [];
+        
         let currentCategory = "ALL";
         let searchQuery = "";
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -749,12 +719,50 @@
         let modalQuantity = 1;
         let selectedSize = "S";
 
+        // ==========================================
+        // TÍCH HỢP GỌI API BACKEND
+        // ==========================================
+        async function loadProductsFromAPI() {
+            const list = document.getElementById('productList');
+            list.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--muted);">Đang tải sản phẩm...</div>`;
+            
+            try {
+                // Gọi API lấy toàn bộ sản phẩm đang active trên hệ thống
+                // Phân trang 100 sản phẩm (có thể nâng lên nếu cần)
+                const response = await fetchAPI('/products?limit=100');
+                
+                // Chuẩn hóa dữ liệu từ Backend (formatProductSummary) sang định dạng của Frontend
+                products = response.data.map(p => ({
+                    id: p.id,
+                    name: p.name,
+                    price: p.price,
+                    cat: p.category || 'FASHION', // Nếu không có category thì mặc định
+                    img: (p.imageUrls && p.imageUrls.length > 0) ? `http://localhost:5000${p.imageUrls[0]}` : '', 
+                    desc: p.description || 'Chưa có mô tả'
+                }));
+
+                // Render lại giao diện sau khi có data
+                renderProducts();
+            } catch (error) {
+                console.error("Lỗi tải sản phẩm:", error);
+                list.innerHTML = `
+                    <div class="empty-state" style="grid-column: 1/-1;">
+                        <h3 style="color: var(--danger)">Lỗi kết nối máy chủ</h3>
+                        <p>${error.message}</p>
+                    </div>
+                `;
+            }
+        }
+
+        // ==========================================
+        // CÁC HÀM XỬ LÝ GIAO DIỆN HIỆN TẠI
+        // ==========================================
         function renderProducts() {
             const list = document.getElementById('productList');
             list.innerHTML = '';
 
             let filtered = products.filter(p => {
-                const matchCategory = currentCategory === "ALL" || p.cat === currentCategory;
+                const matchCategory = currentCategory === "ALL" || p.cat.toUpperCase() === currentCategory;
                 const matchSearch = p.name.toLowerCase().includes(searchQuery.toLowerCase());
                 return matchCategory && matchSearch;
             });
@@ -774,17 +782,20 @@
                 list.innerHTML += `
                     <div class="product-card">
                         ${isHot ? '<div class="product-badge">HOT</div>' : ''}
-                        <img src="${p.img}" alt="${p.name}" class="product-image" onclick="openModal(${p.id})">
+                        <img src="${p.img}" alt="${p.name}" class="product-image" onclick="openModal('${p.id}')">
                         <div class="product-info">
                             <div class="product-category">${getCategoryName(p.cat)}</div>
                             <h3 class="product-name">${p.name}</h3>
                             <div class="product-price">${p.price.toLocaleString('vi-VN')} VNĐ</div>
                             <div class="product-actions">
-                                <button class="btn-add-cart" onclick="quickAddToCart(${p.id})">
+                                <button class="btn-add-cart" onclick="quickAddToCart('${p.id}')">
                                     Thêm vào giỏ
                                 </button>
-                                <button class="btn-quick-view" onclick="openModal(${p.id})">
+                                <button class="btn-quick-view" onclick="openModal('${p.id}')">
                                     👁️
+                                </button>
+                                <button class="btn-quick-view" onclick="window.location.href='product-detail.html?id=${p.id}'" style="border-color:var(--accent); color:var(--accent)">
+                                    Chi tiết
                                 </button>
                             </div>
                         </div>
@@ -800,30 +811,48 @@
                 'PERFUME': 'Nước hoa',
                 'HAND': 'Túi xách',
                 'FASHION': 'Thời trang',
-                'HATS': 'Mũ'
+                'HATS': 'Mũ',
+                'ACCESSORIES': 'Phụ kiện'
             };
-            return names[cat] || cat;
+            // Nếu không có trong dict, trả về tên gốc (viết hoa chữ cái đầu)
+            return names[cat.toUpperCase()] || (cat.charAt(0).toUpperCase() + cat.slice(1).toLowerCase());
         }
 
-        function openModal(id) {
-            selectedProduct = products.find(p => p.id === id);
-            modalQuantity = 1;
-            selectedSize = "S";
+        async function openModal(id) {
+            try {
+                // Gọi API lấy chi tiết 1 sản phẩm để hiển thị trên Modal
+                const response = await fetchAPI(`/products/${id}`);
+                const pInfo = response.data;
 
-            document.getElementById('modalImage').src = selectedProduct.img;
-            document.getElementById('modalCategory').textContent = getCategoryName(selectedProduct.cat);
-            document.getElementById('modalName').textContent = selectedProduct.name;
-            document.getElementById('modalPrice').textContent = selectedProduct.price.toLocaleString('vi-VN') + ' VNĐ';
-            document.getElementById('modalDescription').textContent = selectedProduct.desc;
-            document.getElementById('modalQuantity').textContent = modalQuantity;
+                selectedProduct = {
+                    id: pInfo.id,
+                    name: pInfo.name,
+                    price: pInfo.price,
+                    cat: pInfo.category,
+                    img: (pInfo.imageUrls && pInfo.imageUrls.length > 0) ? `http://localhost:5000${pInfo.imageUrls[0]}` : '',
+                    desc: pInfo.description
+                };
 
-            // Reset size selection
-            document.querySelectorAll('.size-option').forEach(opt => {
-                opt.classList.remove('active');
-                if (opt.dataset.size === 'S') opt.classList.add('active');
-            });
+                modalQuantity = 1;
+                selectedSize = "S";
 
-            document.getElementById('productModal').classList.add('show');
+                document.getElementById('modalImage').src = selectedProduct.img;
+                document.getElementById('modalCategory').textContent = getCategoryName(selectedProduct.cat);
+                document.getElementById('modalName').textContent = selectedProduct.name;
+                document.getElementById('modalPrice').textContent = selectedProduct.price.toLocaleString('vi-VN') + ' VNĐ';
+                document.getElementById('modalDescription').textContent = selectedProduct.desc || 'Chưa có mô tả';
+                document.getElementById('modalQuantity').textContent = modalQuantity;
+
+                // Reset size selection
+                document.querySelectorAll('.size-option').forEach(opt => {
+                    opt.classList.remove('active');
+                    if (opt.dataset.size === 'S') opt.classList.add('active');
+                });
+
+                document.getElementById('productModal').classList.add('show');
+            } catch (error) {
+                alert("Lỗi khi lấy thông tin sản phẩm: " + error.message);
+            }
         }
 
         function closeModal() {
@@ -835,13 +864,16 @@
             document.getElementById('modalQuantity').textContent = modalQuantity;
         }
 
-        function quickAddToCart(id) {
+        async function quickAddToCart(id) {
+            // Thay vì dùng hàm đồng bộ cũ, ta bắt buộc phải tìm sản phẩm từ mảng data đang có
             const product = products.find(p => p.id === id);
+            if (!product) return alert("Sản phẩm không hợp lệ");
             addToCartLogic(product, 1, 'M');
             alert('✓ Đã thêm vào giỏ hàng!');
         }
 
         function addModalToCart() {
+            if (!selectedProduct) return;
             addToCartLogic(selectedProduct, modalQuantity, selectedSize);
             closeModal();
             alert('✓ Đã thêm vào giỏ hàng!');
@@ -874,7 +906,7 @@
             tab.addEventListener('click', function() {
                 document.querySelectorAll('.category-tab').forEach(t => t.classList.remove('active'));
                 this.classList.add('active');
-                currentCategory = this.dataset.category;
+                currentCategory = this.dataset.category.toUpperCase();
                 renderProducts();
             });
         });
@@ -901,9 +933,12 @@
             }
         });
 
-        // Initialize
-        renderProducts();
+        // ==========================================
+        // INITIALIZE (Gọi API ngay khi mở trang)
+        // ==========================================
+        loadProductsFromAPI();
         updateCartCount();
     </script>
+    <script src="chat-widget.js"></script>
 </body>
 </html>

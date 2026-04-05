@@ -1,4 +1,3 @@
-const API_URL = 'http://localhost:5000/api';
 const accessToken = localStorage.getItem('accessToken');
 let cart = JSON.parse(localStorage.getItem('checkoutCart')) || [];  // Lấy từ cart khi checkout
 let currentPaymentId = null;
@@ -88,12 +87,9 @@ async function placeOrders() {
     try {
         // Cập nhật shippingAddress cho tất cả order đã tạo
         for (const orderId of currentOrderIds) {
-            await fetch(`${API_URL}/orders/${orderId}/update-shipping`, {  // Nếu chưa có endpoint này thì bỏ qua tạm
+            // Sử dụng fetchAPI để tự động xử lý Content-Type, Authorization Token và lỗi 401
+            await fetchAPI(`/orders/${orderId}/update-shipping`, {  
                 method: 'PATCH',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${accessToken}`
-                },
                 body: JSON.stringify({ shippingAddress, notes })
             });
         }
@@ -162,21 +158,17 @@ async function confirmQRPayment() {
     if (!currentPaymentId) return;
 
     try {
-        const response = await fetch(`${API_URL}/payments/qr/${currentPaymentId}/status`, {
+        // fetchAPI sẽ lo việc nối URL, gắn Header Authorization và tự bắt lỗi nếu thất bại (401, 500...)
+        await fetchAPI(`/payments/qr/${currentPaymentId}/status`, {
             method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${accessToken}`
-            },
             body: JSON.stringify({ success: true })
         });
-
-        if (!response.ok) throw new Error('Xác nhận thanh toán thất bại');
 
         closeQRModal();
         showToast('Xác nhận thanh toán thành công!');
     } catch (error) {
-        showToast(error.message, 'error');
+        // Đảm bảo luôn có message lỗi hiển thị kể cả khi backend không trả về error.message
+        showToast(error.message || 'Xác nhận thanh toán thất bại', 'error');
     }
 }
 

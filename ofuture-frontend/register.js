@@ -158,7 +158,7 @@ async function submitRegistration(event) {
       
       // Chuyển hướng về trang đăng nhập sau 2.5 giây để User kịp đọc thông báo
       setTimeout(() => {
-        window.location.href = 'loginbd.html/login.html';
+        window.location.href = 'login.html';
       }, 2500);
     }
   } catch (error) {

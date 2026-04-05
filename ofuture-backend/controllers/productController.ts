@@ -212,8 +212,21 @@ const updateProduct = async (req: ProductRequest, res: Response): Promise<any> =
     const id = req.params.id as string;
     const {
       name, description, category,
-      price, stockQuantity, imageUrls, status,
+      price, stockQuantity, status, // Bỏ imageUrls ra khỏi req.body trực tiếp
     } = req.body;
+
+    // --- BẮT ĐẦU ĐOẠN CODE THÊM MỚI ĐỂ XỬ LÝ ẢNH ---
+    let imageUrls: string[] | undefined = undefined; // Mặc định là undefined để DB không ghi đè nếu khách không upload ảnh mới
+
+    const uploadedFiles = req.files as Express.Multer.File[] | undefined;
+    if (uploadedFiles && uploadedFiles.length > 0) {
+      imageUrls = uploadedFiles.map(f => `/uploads/${f.filename}`);
+    } else if (req.body.imageUrls) {
+      imageUrls = Array.isArray(req.body.imageUrls)
+        ? req.body.imageUrls
+        : [req.body.imageUrls];
+    }
+    // --- KẾT THÚC ĐOẠN XỬ LÝ ẢNH ---
 
     // Admin can set any status; seller can only toggle active/inactive
     const allowedStatuses = req.user.role === 'admin'
@@ -232,18 +245,27 @@ const updateProduct = async (req: ProductRequest, res: Response): Promise<any> =
     const result: any = await ProductModel.update(
       id,
       sellerIdFilter,
-      { name, description, category, price,
-        stock_quantity: stockQuantity, image_urls: imageUrls, status }
+      { 
+        name, 
+        description, 
+        category, 
+        price,
+        stock_quantity: stockQuantity, 
+        image_urls: imageUrls, // Sẽ update ảnh mới nếu có
+        status 
+      }
     );
 
-    if (!result || result.affectedRows === 0) {
+    // FIX LOGIC DB: Nếu affectedRows = 0 có thể do người dùng không sửa gì cả, không hẳn là lỗi
+    // Ta lấy product ra kiểm tra luôn xem nó có tồn tại không
+    const updated = await ProductModel.findById(id);
+    
+    if (!updated) {
       return res.status(404).json({
         success : false,
         message : 'Product not found or you do not own it.',
       });
     }
-
-    const updated = await ProductModel.findById(id);
 
     res.status(200).json({
       success : true,

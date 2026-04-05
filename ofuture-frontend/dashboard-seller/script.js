@@ -61,47 +61,18 @@ async function initializeDashboard() {
 // ============================================================
 
 async function apiCall(endpoint, options = {}) {
-    const token = localStorage.getItem('accessToken');
-    if (!token) throw new Error('No authentication token found');
-
+    // Bật spinner loading của Seller Dashboard
     activeRequests += 1;
     showSpinner();
 
-    const headers = {
-        'Authorization': `Bearer ${token}`,
-        ...options.headers,
-    };
-
-    // If body is not FormData, default to JSON
-    if (!(options.body instanceof FormData)) {
-        headers['Content-Type'] = headers['Content-Type'] || 'application/json';
-    }
-
     try {
-        const response = await fetch(`${API_BASE_URL}${endpoint}`, {
-            ...options,
-            headers,
-        });
-
-        if (response.status === 401) {
-            localStorage.clear();
-            window.location.href = '../login.html';
-            throw new Error('Unauthorized');
-        }
-
-        if (!response.ok) {
-            let text = await response.text();
-            try { text = JSON.parse(text).message || text; } catch (e) {}
-            throw new Error(text || `HTTP ${response.status}`);
-        }
-
-        const contentType = response.headers.get('content-type') || '';
-        if (contentType.includes('application/json')) return await response.json();
-        return await response.text();
+        // Gọi qua fetchAPI trung tâm (api.js) để xử lý header và tự động đá về login nếu mất phiên
+        return await fetchAPI(endpoint, options);
     } catch (error) {
-        console.error('API Error:', error);
+        console.error('Seller API Error:', error);
         throw error;
     } finally {
+        // Tắt spinner khi hoàn thành
         activeRequests = Math.max(0, activeRequests - 1);
         if (activeRequests === 0) hideSpinner();
     }
@@ -707,7 +678,7 @@ function setupEventListeners() {
                 await apiCall('/auth/logout', { method: 'POST', body: JSON.stringify({ allDevices: false }) }); 
             } catch (e) {}
             localStorage.clear();
-            window.location.href = '../loginbd.html/login.html';
+            window.location.href = '../login.html';
         });
     }
 }

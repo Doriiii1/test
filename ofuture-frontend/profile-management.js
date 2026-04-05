@@ -1,8 +1,3 @@
-// ofuture-frontend/profile-management.js — FULL REPLACEMENT
-
-const API_URL     = 'http://localhost:5000/api';
-const accessToken = localStorage.getItem('accessToken');
-
 // ── Navigation ────────────────────────────────────────────
 document.querySelectorAll('.nav-link').forEach(link => {
     link.addEventListener('click', e => {
@@ -25,12 +20,9 @@ function showToast(message, type = 'success') {
 // ── Load Profile — uses GET /api/auth/me (exists) ─────────
 async function loadProfile() {
     try {
-        // FIX: correct endpoint — GET /api/auth/me
-        const res = await fetch(`${API_URL}/auth/me`, {
-            headers: { Authorization: `Bearer ${accessToken}` },
-        });
-        if (!res.ok) throw new Error('Unauthorized');
-        const { data } = await res.json();
+        // Dùng fetchAPI chuẩn, không cần header hay parse json thủ công
+        const response = await fetchAPI('/auth/me');
+        const data = response.data;
 
         document.getElementById('email').value    = data.email     || '';
         document.getElementById('username').value = data.username  || '';
@@ -50,7 +42,8 @@ async function loadProfile() {
             mfaBtn.textContent    = 'Bật MFA';
             mfaBtn.onclick        = enableMFA;
         }
-    } catch {
+    } catch (error) {
+        console.error(error);
         showToast('Không thể tải thông tin tài khoản', 'error');
     }
 }
@@ -76,19 +69,17 @@ document.getElementById('profileForm').addEventListener('submit', async e => {
 // ── MFA Setup — POST /api/mfa/setup (exists) ─────────────
 async function enableMFA() {
     try {
-        const res = await fetch(`${API_URL}/mfa/setup`, {
-            method  : 'POST',
-            headers : { Authorization: `Bearer ${accessToken}` },
+        const response = await fetchAPI('/mfa/setup', {
+            method  : 'POST'
         });
-        if (!res.ok) throw new Error('Setup failed');
-        const { data } = await res.json();
+        const data = response.data;
 
         document.getElementById('mfaSetup').style.display = 'block';
         document.getElementById('qrCode').innerHTML =
           `<img src="${data.qrCode}" alt="QR Code" style="max-width:200px"><br>
            <small>Manual key: ${data.secret}</small>`;
-    } catch {
-        showToast('Không thể thiết lập MFA', 'error');
+    } catch (error) {
+        showToast(error.message || 'Không thể thiết lập MFA', 'error');
     }
 }
 
@@ -97,16 +88,16 @@ async function verifyMFA() {
     const code = document.getElementById('mfaCode').value;
     if (code.length < 6) { showToast('Mã xác thực phải có 6 chữ số', 'error'); return; }
     try {
-        const res = await fetch(`${API_URL}/mfa/confirm`, {
+        await fetchAPI('/mfa/confirm', {
             method  : 'POST',
-            headers : { 'Content-Type': 'application/json', Authorization: `Bearer ${accessToken}` },
             body    : JSON.stringify({ code }),
         });
-        if (!res.ok) throw new Error('Invalid code');
         showToast('Bật MFA thành công!');
         document.getElementById('mfaSetup').style.display = 'none';
         loadProfile();
-    } catch { showToast('Mã xác thực không đúng', 'error'); }
+    } catch (error) { 
+        showToast(error.message || 'Mã xác thực không đúng', 'error'); 
+    }
 }
 
 // ── Disable MFA — POST /api/mfa/disable (exists) ─────────
@@ -116,15 +107,15 @@ async function disableMFA() {
     const code     = prompt('Nhập mã TOTP 6 chữ số:');
     if (!password || !code) return;
     try {
-        const res = await fetch(`${API_URL}/mfa/disable`, {
+        await fetchAPI('/mfa/disable', {
             method  : 'POST',
-            headers : { 'Content-Type': 'application/json', Authorization: `Bearer ${accessToken}` },
             body    : JSON.stringify({ password, code }),
         });
-        if (!res.ok) throw new Error('Failed');
         showToast('Tắt MFA thành công!');
         loadProfile();
-    } catch { showToast('Không thể tắt MFA', 'error'); }
+    } catch (error) { 
+        showToast(error.message || 'Không thể tắt MFA', 'error'); 
+    }
 }
 
 // ── Trusted Devices — FIX: No GET /mfa/devices endpoint exists
@@ -137,12 +128,13 @@ function loadDevices() {
 // ── Logout ────────────────────────────────────────────────
 document.getElementById('logoutBtn')?.addEventListener('click', async () => {
     try {
-        await fetch(`${API_URL}/auth/logout`, {
+        await fetchAPI('/auth/logout', {
             method  : 'POST',
-            headers : { 'Content-Type': 'application/json', Authorization: `Bearer ${accessToken}` },
             body    : JSON.stringify({ allDevices: false }),
         });
-    } catch (e) {}
+    } catch (e) {
+        console.error('Logout error:', e);
+    }
     localStorage.clear();
     window.location.href = 'login.html';
 });

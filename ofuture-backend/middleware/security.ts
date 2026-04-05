@@ -41,7 +41,7 @@ const responseHardening = (_req: Request, res: Response, next: NextFunction) => 
   res.setHeader('Referrer-Policy',              'strict-origin-when-cross-origin');
   res.setHeader('Permissions-Policy',           'geolocation=(), microphone=(), camera=(), payment=()');
   res.setHeader('Cross-Origin-Opener-Policy',   'same-origin');
-  res.setHeader('Cross-Origin-Resource-Policy', 'same-origin');
+  res.setHeader('Cross-Origin-Resource-Policy', 'cross-origin');
   next();
 };
 
