@@ -227,7 +227,17 @@ const disableMfa = async (userId: string, password: string, token: string) => {
   if (state !== 'ENABLED')
     return { success: false, code: 'MFA_NOT_ENABLED' };
 
-  const passOk = await bcrypt.compare(password, user.password_hash);
+  // FIX: Truy vấn riêng password_hash vì UserModel.findById không bao gồm trường này
+  const [[dbUser]]: any = await pool.execute(
+    `SELECT password_hash FROM users WHERE id = ?`,
+    [userId]
+  );
+
+  if (!dbUser || !dbUser.password_hash) {
+    return { success: false, code: 'USER_NOT_FOUND' };
+  }
+
+  const passOk = await bcrypt.compare(password, dbUser.password_hash);
   if (!passOk)
     return { success: false, code: 'INVALID_PASSWORD' };
 

@@ -93,21 +93,11 @@ document.getElementById('mfaToggleBtn')?.addEventListener('click', async functio
             showToast(error.message || "Lỗi khi khởi tạo mã QR.", 'error');
         }
     } else if (action === "disable") {
-        const password = prompt("Bảo mật: Vui lòng nhập mật khẩu của bạn để tắt MFA:");
-        if (!password) return;
-        const code = prompt("Bảo mật: Nhập mã OTP hiện tại trên điện thoại:");
-        if (!code) return;
-
-        try {
-            await fetchAPI('/mfa/disable', {
-                method: 'POST',
-                body: JSON.stringify({ password, code }),
-            });
-            showToast('Tắt MFA thành công!');
-            loadProfile(); // Reload lại UI
-        } catch (error) { 
-            showToast(error.message || 'Sai mật khẩu hoặc mã OTP', 'error'); 
-        }
+        // Mở modal Disable MFA an toàn
+        document.getElementById('mfaDisablePassword').value = '';
+        document.getElementById('mfaDisableCode').value = '';
+        document.getElementById('mfaDisableModal').style.display = 'block';
+        document.getElementById('mfaOverlay').style.display = 'block';
     }
 });
 
@@ -134,6 +124,33 @@ async function confirmMfaSetup() {
 function cancelMfaSetup() {
     document.getElementById("mfaSetupModal").style.display = "none";
     document.getElementById("mfaOverlay").style.display = "none";
+}
+
+// ── Xử lý Xác nhận & Hủy Modal Tắt MFA ────────────────────────────────
+async function confirmMfaDisable() {
+    const password = document.getElementById('mfaDisablePassword').value;
+    const code = document.getElementById('mfaDisableCode').value.trim();
+
+    if (!password) return showToast('Vui lòng nhập mật khẩu!', 'error');
+    if (!code || code.length < 6) return showToast('Vui lòng nhập đủ 6 số OTP!', 'error');
+
+    try {
+        await fetchAPI('/mfa/disable', {
+            method: 'POST',
+            body: JSON.stringify({ password, code }),
+        });
+        
+        showToast('Tắt MFA thành công!');
+        cancelMfaDisable();
+        loadProfile(); // Tải lại UI để nút chuyển lại thành "Bật MFA"
+    } catch (error) { 
+        showToast(error.message || 'Sai mật khẩu hoặc mã OTP', 'error'); 
+    }
+}
+
+function cancelMfaDisable() {
+    document.getElementById('mfaDisableModal').style.display = 'none';
+    document.getElementById('mfaOverlay').style.display = 'none';
 }
 
 // ── Trusted Devices (Đang phát triển) ─────────────────────────────────

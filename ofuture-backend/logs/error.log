@@ -1,0 +1,40 @@
+2026-04-06 19:13:25 [error]: Error: Illegal arguments: string, undefined
+    at _async (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\bcryptjs\dist\bcrypt.js:286:46)
+    at C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\bcryptjs\dist\bcrypt.js:307:17
+    at new Promise (<anonymous>)
+    at Object.bcrypt.compare (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\bcryptjs\dist\bcrypt.js:306:20)
+    at Object.disableMfa (C:\Users\nguye\test Ofuture\test\ofuture-backend\services\mfaService.ts:230:31)
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async disable (C:\Users\nguye\test Ofuture\test\ofuture-backend\controllers\mfaController.ts:101:20)
+2026-04-06 19:13:51 [error]: Error: Illegal arguments: string, undefined
+    at _async (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\bcryptjs\dist\bcrypt.js:286:46)
+    at C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\bcryptjs\dist\bcrypt.js:307:17
+    at new Promise (<anonymous>)
+    at Object.bcrypt.compare (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\bcryptjs\dist\bcrypt.js:306:20)
+    at Object.disableMfa (C:\Users\nguye\test Ofuture\test\ofuture-backend\services\mfaService.ts:230:31)
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async disable (C:\Users\nguye\test Ofuture\test\ofuture-backend\controllers\mfaController.ts:101:20)
+2026-04-06 19:15:36 [error]: Error: Illegal arguments: string, undefined
+    at _async (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\bcryptjs\dist\bcrypt.js:286:46)
+    at C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\bcryptjs\dist\bcrypt.js:307:17
+    at new Promise (<anonymous>)
+    at Object.bcrypt.compare (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\bcryptjs\dist\bcrypt.js:306:20)
+    at Object.disableMfa (C:\Users\nguye\test Ofuture\test\ofuture-backend\services\mfaService.ts:230:31)
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async disable (C:\Users\nguye\test Ofuture\test\ofuture-backend\controllers\mfaController.ts:101:20)
+2026-04-06 19:16:23 [error]: Error: Illegal arguments: string, undefined
+    at _async (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\bcryptjs\dist\bcrypt.js:286:46)
+    at C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\bcryptjs\dist\bcrypt.js:307:17
+    at new Promise (<anonymous>)
+    at Object.bcrypt.compare (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\bcryptjs\dist\bcrypt.js:306:20)
+    at Object.disableMfa (C:\Users\nguye\test Ofuture\test\ofuture-backend\services\mfaService.ts:230:31)
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async disable (C:\Users\nguye\test Ofuture\test\ofuture-backend\controllers\mfaController.ts:101:20)
+2026-04-06 19:16:52 [error]: Error: Illegal arguments: string, undefined
+    at _async (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\bcryptjs\dist\bcrypt.js:286:46)
+    at C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\bcryptjs\dist\bcrypt.js:307:17
+    at new Promise (<anonymous>)
+    at Object.bcrypt.compare (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\bcryptjs\dist\bcrypt.js:306:20)
+    at Object.disableMfa (C:\Users\nguye\test Ofuture\test\ofuture-backend\services\mfaService.ts:230:31)
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async disable (C:\Users\nguye\test Ofuture\test\ofuture-backend\controllers\mfaController.ts:101:20)

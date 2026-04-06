@@ -146,7 +146,7 @@
     </div>
 </main>
 
-<div id="mfaSetupModal" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); background:#fff; padding:24px; border-radius:12px; box-shadow:0 10px 25px rgba(0,0,0,0.2); z-index:9999; text-align:center; min-width:300px;">
+    <div id="mfaSetupModal" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); background:#fff; padding:24px; border-radius:12px; box-shadow:0 10px 25px rgba(0,0,0,0.2); z-index:9999; text-align:center; min-width:300px;">
         <h3 style="margin-top:0; color:#1e293b;">Cài đặt Bảo mật 2 lớp (MFA)</h3>
         <p style="color:#64748b; font-size:14px;">1. Quét mã QR dưới đây bằng Google Authenticator hoặc Authy.</p>
         
@@ -162,6 +162,27 @@
             <button onclick="cancelMfaSetup()" style="flex:1; padding:10px; background:#ef4444; color:white; border:none; border-radius:6px; cursor:pointer;">Hủy bỏ</button>
         </div>
     </div>
+
+    <div id="mfaDisableModal" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); background:#fff; padding:24px; border-radius:12px; box-shadow:0 10px 25px rgba(0,0,0,0.2); z-index:9999; text-align:center; min-width:320px;">
+        <h3 style="margin-top:0; color:#1e293b;">Tắt bảo mật 2 lớp (MFA)</h3>
+        <p style="color:#64748b; font-size:14px; margin-bottom:16px;">Vui lòng nhập mật khẩu và mã OTP để xác nhận tắt.</p>
+        
+        <div style="text-align:left; margin-bottom:12px;">
+            <label style="display:block; font-size:14px; margin-bottom:4px; font-weight:500;">Mật khẩu hiện tại:</label>
+            <input type="password" id="mfaDisablePassword" placeholder="Nhập mật khẩu" style="width:100%; padding:10px; border:1px solid #cbd5e1; border-radius:6px; box-sizing:border-box;">
+        </div>
+
+        <div style="text-align:left; margin-bottom:20px;">
+            <label style="display:block; font-size:14px; margin-bottom:4px; font-weight:500;">Mã OTP (6 số):</label>
+            <input type="text" id="mfaDisableCode" placeholder="000000" maxlength="6" style="width:100%; padding:10px; text-align:center; font-size:20px; letter-spacing:4px; font-weight:bold; border:1px solid #cbd5e1; border-radius:6px; box-sizing:border-box;">
+        </div>
+        
+        <div style="display:flex; gap:10px;">
+            <button onclick="confirmMfaDisable()" style="flex:1; padding:10px; background:#ef4444; color:white; border:none; border-radius:6px; cursor:pointer; font-weight:600;">Xác nhận tắt</button>
+            <button onclick="cancelMfaDisable()" style="flex:1; padding:10px; background:#cbd5e1; color:#1e293b; border:none; border-radius:6px; cursor:pointer; font-weight:600;">Hủy bỏ</button>
+        </div>
+    </div>
+
     <div id="mfaOverlay" style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.5); z-index:9998;"></div>
 
     <div id="toast" class="toast"></div>
