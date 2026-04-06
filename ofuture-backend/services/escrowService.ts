@@ -61,6 +61,7 @@ interface OpenDisputeParams {
 
 interface ResolveDisputeParams {
   orderId: string;
+  disputeId: string;
   adminId: string;
   resolution: 'release' | 'refund';
   reason: string;
@@ -381,65 +382,50 @@ const openDispute = async ({ orderId, buyerId, reason, ipAddress }: OpenDisputeP
 // ─────────────────────────────────────────────
 // resolveDispute({ orderId, adminId, resolution, reason, ipAddress })
 // ─────────────────────────────────────────────
-const resolveDispute = async ({ orderId, adminId, resolution, reason, ipAddress }: ResolveDisputeParams) => {
+const resolveDispute = async ({ orderId, disputeId, adminId, resolution, reason, ipAddress }: ResolveDisputeParams) => {
   if (!['release', 'refund'].includes(resolution)) {
-    return { success: false, code: 'INVALID_RESOLUTION',
-             message: 'resolution must be "release" or "refund".' };
+    return { success: false, code: 'INVALID_RESOLUTION', message: 'resolution must be "release" or "refund".' };
   }
 
   const conn = await pool.getConnection();
   try {
     await conn.beginTransaction();
 
-    const [[escrow]] = (await conn.execute(
-      'SELECT * FROM escrow_transactions WHERE order_id = ? FOR UPDATE',
-      [orderId]
-    )) as any[];
+    const [[escrow]] = (await conn.execute('SELECT * FROM escrow_transactions WHERE order_id = ? FOR UPDATE', [orderId])) as any[];
 
     if (!escrow || escrow.status !== 'disputed') {
       await conn.rollback();
-      return { success: false, code: 'NOT_DISPUTED',
-               message: 'This order does not have an active dispute.' };
+      return { success: false, code: 'NOT_DISPUTED', message: 'This order does not have an active dispute.' };
     }
 
-    const [[order]] = (await conn.execute(
-      'SELECT * FROM orders WHERE id = ? FOR UPDATE',
-      [orderId]
-    )) as any[];
+    const [[order]] = (await conn.execute('SELECT * FROM orders WHERE id = ? FOR UPDATE', [orderId])) as any[];
 
     if (resolution === 'release') {
-      // Enqueue transfer to seller via outbox (admin-approved release)
       await conn.execute("UPDATE escrow_transactions SET status = 'releasing' WHERE order_id = ? AND status = 'disputed'", [orderId]);
 
       const transferPayload = {
         orderId,
         escrowId: escrow.id,
+        disputeId, // <-- ĐƯA DISPUTE_ID VÀO PAYLOAD CHO WORKER
         sellerId: order.seller_id,
         amount: parseFloat(escrow.net_amount),
         currency: 'USD',
         idempotencyKey: `${escrow.id}:transfer`,
       };
 
-      await OutboxService.enqueueEvent(conn, {
-        aggregateType: 'escrow_transaction',
-        aggregateId: escrow.id,
-        eventType: 'transfer',
-        payload: transferPayload,
-      });
-
+      await OutboxService.enqueueEvent(conn, { aggregateType: 'escrow_transaction', aggregateId: escrow.id, eventType: 'transfer', payload: transferPayload });
       await conn.commit();
-
-      await escrowLog({ userId: adminId, eventType: LOG_EVENTS.ESCROW_RELEASED, orderId, amount: escrow.net_amount, message: `Admin enqueued release to seller ${order.seller_id}. escrowId=${escrow.id}`, ipAddress });
-
-      return { success: true, message: 'Dispute resolved: release scheduled. Funds will be transferred shortly.', orderId, resolution: 'released', escrowStatus: 'releasing' };
+      
+      await escrowLog({ userId: adminId, eventType: LOG_EVENTS.ESCROW_RELEASED, orderId, amount: escrow.net_amount, message: `Admin enqueued release. escrowId=${escrow.id}`, ipAddress });
+      return { success: true, message: 'Dispute resolved: release scheduled.', orderId, resolution: 'released', escrowStatus: 'releasing' };
 
     } else {
-      // Enqueue refund to buyer via outbox (admin-approved refund)
       await conn.execute("UPDATE escrow_transactions SET status = 'refunding' WHERE order_id = ? AND status = 'disputed'", [orderId]);
 
       const refundPayload = {
         orderId,
         escrowId: escrow.id,
+        disputeId, // <-- ĐƯA DISPUTE_ID VÀO PAYLOAD CHO WORKER
         amount: parseFloat(escrow.amount),
         currency: 'USD',
         chargeId: escrow.charge_id || null,
@@ -449,18 +435,11 @@ const resolveDispute = async ({ orderId, adminId, resolution, reason, ipAddress 
         idempotencyKey: `${escrow.id}:refund`,
       };
 
-      await OutboxService.enqueueEvent(conn, {
-        aggregateType: 'escrow_transaction',
-        aggregateId: escrow.id,
-        eventType: 'refund',
-        payload: refundPayload,
-      });
-
+      await OutboxService.enqueueEvent(conn, { aggregateType: 'escrow_transaction', aggregateId: escrow.id, eventType: 'refund', payload: refundPayload });
       await conn.commit();
 
-      await escrowLog({ userId: adminId, eventType: LOG_EVENTS.ESCROW_REFUNDED, orderId, amount: escrow.amount, message: `Admin enqueued refund. escrowId=${escrow.id} reason="${reason}"`, ipAddress });
-
-      return { success: true, message: 'Dispute resolved: refund scheduled. The refund will be processed shortly.', orderId, resolution: 'refunded', escrowStatus: 'refunding' };
+      await escrowLog({ userId: adminId, eventType: LOG_EVENTS.ESCROW_REFUNDED, orderId, amount: escrow.amount, message: `Admin enqueued refund. escrowId=${escrow.id}`, ipAddress });
+      return { success: true, message: 'Dispute resolved: refund scheduled.', orderId, resolution: 'refunded', escrowStatus: 'refunding' };
     }
 
   } catch (err) {

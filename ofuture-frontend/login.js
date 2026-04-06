@@ -33,6 +33,28 @@ function ensureAnimations() {
 }
 
 // ── 2. Xử lý Đăng nhập thông thường ────────────────────────
+// ── Khai báo biến toàn cục để lưu token MFA tạm thời ──
+let currentMfaToken = null;
+
+// ── Hàm tiện ích: Xử lý sau khi đăng nhập/xác thực thành công ──
+function completeLoginFlow(userData) {
+  if (userData.accessToken) localStorage.setItem('accessToken', userData.accessToken);
+  if (userData.refreshToken) localStorage.setItem('refreshToken', userData.refreshToken);
+  if (userData.user) localStorage.setItem('user', JSON.stringify(userData.user));
+
+  showNotification('Xác thực thành công! Đang chuyển hướng...', 'success');
+  
+  const userRole = userData.user?.role;
+  let redirectUrl = 'index.html'; 
+
+  if (userRole === 'admin') redirectUrl = 'dashboard-admin/indexAdmin.html';
+  else if (userRole === 'seller') redirectUrl = 'dashboard-seller/indexSeller.html';
+  else if (userRole === 'buyer' || userRole === 'user') redirectUrl = 'buyer-dashboard.html';
+  
+  setTimeout(() => { window.location.href = redirectUrl; }, 500);
+}
+
+// ── 2. Xử lý Đăng nhập thông thường ────────────────────────
 async function handleLoginSubmit(event) {
   event.preventDefault();
 
@@ -40,67 +62,102 @@ async function handleLoginSubmit(event) {
   const password = document.getElementById('password').value;
   const loginBtn = document.getElementById('loginBtn');
 
-  if (!email || !password) {
-    showNotification('Vui lòng nhập email và mật khẩu', 'error');
-    return;
-  }
+  if (!email || !password) return showNotification('Vui lòng nhập email và mật khẩu', 'error');
 
   try {
-    loginBtn.disabled = true;
-    loginBtn.textContent = 'Đang đăng nhập...';
+    loginBtn.disabled = true; loginBtn.textContent = 'Đang đăng nhập...';
 
-    // Gọi API thông qua wrapper chung api.js
-    const response = await fetchAPI('/auth/login', {
+    // Dùng fetch thuần thay vì fetchAPI để bắt được payload mfaRequired khi HTTP Status = 403
+    const response = await fetch(`${CONFIG.API_BASE_URL}/auth/login`, {
       method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password }),
     });
-
-    const userData = response.data;
     
-    // Lưu tokens và thông tin user
-    if (userData.accessToken) localStorage.setItem('accessToken', userData.accessToken);
-    if (userData.refreshToken) localStorage.setItem('refreshToken', userData.refreshToken);
-    if (userData.user) localStorage.setItem('user', JSON.stringify(userData.user));
+    const data = await response.json();
 
-    showNotification('Đăng nhập thành công! Đang chuyển hướng...', 'success');
-    
-    // Chuyển hướng theo Role
-    const userRole = userData.user?.role;
-    let redirectUrl = 'index.html'; 
-
-    if (userRole === 'admin') {
-      redirectUrl = 'dashboard-admin/indexAdmin.html';
-    } else if (userRole === 'seller') {
-      redirectUrl = 'dashboard-seller/indexSeller.html';
-    } else if (userRole === 'buyer' || userRole === 'user') {
-      redirectUrl = 'buyer-dashboard.html';
+    // ── KIỂM TRA LUỒNG MFA ──
+    if (data.mfaRequired) {
+      currentMfaToken = data.mfaToken || (data.data && data.data.mfaToken);
+      
+      // Ẩn form đăng nhập thường, hiện form OTP
+      loginBtn.style.display = 'none';
+      document.getElementById('google-signin-button').style.display = 'none';
+      document.querySelector('.switch-auth').style.display = 'none';
+      document.getElementById('mfaSection').style.display = 'block';
+      
+      showNotification('Vui lòng nhập mã bảo mật (OTP)', 'info');
+      return;
     }
-    
-    setTimeout(() => {
-      window.location.href = redirectUrl;
-    }, 500);
+
+    if (!response.ok || !data.success) throw new Error(data.message || 'Sai Email hoặc Mật khẩu');
+
+    // Nếu không yêu cầu MFA, hoàn tất đăng nhập
+    completeLoginFlow(data.data);
 
   } catch (error) {
-    console.error('Login error:', error);
-    showNotification(error.message || 'Sai Email hoặc Mật khẩu. Vui lòng thử lại.', 'error');
-    loginBtn.disabled = false;
-    loginBtn.textContent = 'Đăng nhập';
+    showNotification(error.message, 'error');
+    loginBtn.disabled = false; loginBtn.textContent = 'Đăng nhập';
   }
 }
 
+// ── 3. Xử lý Xác nhận OTP (MFA) ───────────────────────────
+async function handleVerifyMfa() {
+  const code = document.getElementById('mfaCode').value.trim();
+  const verifyBtn = document.getElementById('verifyMfaBtn');
+
+  if (!code || code.length < 6) return showNotification('Vui lòng nhập đủ 6 số OTP', 'error');
+
+  try {
+    verifyBtn.disabled = true; verifyBtn.textContent = 'Đang kiểm tra...';
+
+    const response = await fetch(`${CONFIG.API_BASE_URL}/mfa/verify`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ mfaToken: currentMfaToken, code, codeType: 'totp' }),
+    });
+
+    const data = await response.json();
+    if (!response.ok || !data.success) throw new Error(data.message || 'Mã OTP không hợp lệ');
+
+    completeLoginFlow(data.data);
+
+  } catch (error) {
+    showNotification(error.message, 'error');
+    verifyBtn.disabled = false; verifyBtn.textContent = 'Xác nhận OTP';
+  }
+}
+
+// ── Khởi tạo Form và Lắng nghe sự kiện ────────────────────
 function initializeLoginForm() {
   ensureAnimations();
   const loginForm = document.getElementById('loginForm');
-  if (loginForm) {
-    loginForm.addEventListener('submit', handleLoginSubmit);
+  if (loginForm) loginForm.addEventListener('submit', handleLoginSubmit);
+
+  const verifyBtn = document.getElementById('verifyMfaBtn');
+  if (verifyBtn) verifyBtn.addEventListener('click', handleVerifyMfa);
+
+  const cancelBtn = document.getElementById('cancelMfaBtn');
+  if (cancelBtn) {
+    cancelBtn.addEventListener('click', () => {
+      // Reset giao diện về lúc chưa đăng nhập
+      document.getElementById('mfaSection').style.display = 'none';
+      document.getElementById('loginBtn').style.display = 'block';
+      document.getElementById('loginBtn').disabled = false;
+      document.getElementById('loginBtn').textContent = 'Đăng nhập';
+      document.getElementById('google-signin-button').style.display = 'block';
+      document.querySelector('.switch-auth').style.display = 'block';
+      document.getElementById('mfaCode').value = '';
+      currentMfaToken = null;
+    });
   }
 }
 
-// ── 3. Xử lý Đăng nhập Google ─────────────────────────────
+// ── 4. Xử lý Đăng nhập Google ─────────────────────────────
 function initializeGoogleSignIn() {
-  if (typeof google === 'undefined') return; // Chặn lỗi nếu thư viện chưa load
+  if (typeof google === 'undefined') return;
   google.accounts.id.initialize({
-    client_id: 'YOUR_GOOGLE_CLIENT_ID', // Nhớ thay bằng Client ID thật
+    client_id: '755787409662-tdmm13om66r0jeg0csi6rf916fhobrlq.apps.googleusercontent.com', 
     callback: handleGoogleSignIn
   });
 
@@ -113,46 +170,34 @@ function initializeGoogleSignIn() {
 async function handleGoogleSignIn(response) {
   const loginBtn = document.getElementById('loginBtn');
   try {
-    if (loginBtn) {
-      loginBtn.disabled = true;
-      loginBtn.textContent = 'Đang xác thực Google...';
-    }
+    if (loginBtn) { loginBtn.disabled = true; loginBtn.textContent = 'Đang xác thực...'; }
 
     const googleToken = response.credential;
-    const res = await fetchAPI('/auth/google-login', {
+    const res = await fetch(`${CONFIG.API_BASE_URL}/auth/google-login`, {
       method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ idToken: googleToken }),
     });
+    
+    const data = await res.json();
 
-    const userData = res.data;
+    if (data.mfaRequired) {
+      currentMfaToken = data.mfaToken || (data.data && data.data.mfaToken);
+      loginBtn.style.display = 'none';
+      document.getElementById('google-signin-button').style.display = 'none';
+      document.querySelector('.switch-auth').style.display = 'none';
+      document.getElementById('mfaSection').style.display = 'block';
+      showNotification('Vui lòng nhập mã bảo mật (OTP)', 'info');
+      return;
+    }
 
-    if (userData.accessToken) localStorage.setItem('accessToken', userData.accessToken);
-    if (userData.refreshToken) localStorage.setItem('refreshToken', userData.refreshToken);
-    if (userData.user) localStorage.setItem('user', JSON.stringify(userData.user));
+    if (!res.ok || !data.success) throw new Error(data.message || 'Xác thực Google thất bại');
 
-    showNotification('Đăng nhập Google thành công! Đang chuyển hướng...', 'success');
-
-    // Chuyển hướng theo Role
-    const userRole = userData.user?.role;
-    let redirectUrl = 'index.html';
-
-    if (userRole === 'admin') redirectUrl = 'dashboard-admin/indexAdmin.html';
-    else if (userRole === 'seller') redirectUrl = 'dashboard-seller/indexSeller.html';
-    else if (userRole === 'buyer' || userRole === 'user') redirectUrl = 'buyer-dashboard.html';
-
-    setTimeout(() => {
-      window.location.href = redirectUrl;
-    }, 500);
+    completeLoginFlow(data.data);
 
   } catch (error) {
-    console.error('Google login error:', error);
-    showNotification(error.message || 'Xác thực Google thất bại.', 'error');
-  } finally {
-    // FIX: Ensure button is re-enabled if verification fails
-    if (loginBtn && !window.location.href.includes('dashboard')) {
-       loginBtn.disabled = false;
-       loginBtn.textContent = 'Đăng nhập';
-    }
+    showNotification(error.message, 'error');
+    if (loginBtn) { loginBtn.disabled = false; loginBtn.textContent = 'Đăng nhập'; }
   }
 }
 

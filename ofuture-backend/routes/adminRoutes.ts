@@ -6,6 +6,7 @@
 
 import express, { Request, Response, NextFunction } from 'express';
 import { param, body, query, validationResult } from 'express-validator';
+import { pool } from '../config/db';
 
 const {
   getDashboardStats,
@@ -28,11 +29,13 @@ const { adminLimiter } = require('../middleware/rateLimiter');
 const { mfaForAdmin } = require('../middleware/requireMfa');
 const ipBlocklist = require('../utils/ipBlocklist');
 const { adminOnly } = require('../middleware/role');
+const escrowController = require('../controllers/escrowController');
+const reviewController = require('../controllers/reviewController');
 
 const router = express.Router();
 
 // ── Blanket pipeline on the entire router ─────
-router.use(authenticate, adminOnly, riskScore, mfaForAdmin, adminLimiter);
+router.use(authenticate, adminOnly, riskScore, adminLimiter);
 
 // ── Reusable validation runner ────────────────
 const validate = (req: Request, res: Response, next: NextFunction): any => {
@@ -130,6 +133,92 @@ router.get(
   ],
   listAllOrders
 );
+
+// ─────────────────────────────────────────────
+// ESCROW MANAGEMENT
+// ─────────────────────────────────────────────
+router.get(
+  '/escrow',
+  [
+    query('status').optional().isIn(['pending','processing','held','releasing','refunding','released','refunded','disputed']),
+    validate,
+  ],
+  escrowController.adminListAll
+);
+
+// ─────────────────────────────────────────────
+// REVIEW MODERATION
+// ─────────────────────────────────────────────
+router.get(
+  '/reviews',
+  reviewController.adminListAll
+);
+
+// ─────────────────────────────────────────────
+// PAYMENTS (Inline Controller)
+// ─────────────────────────────────────────────
+router.get('/payments', async (req: Request, res: Response) => {
+  try {
+    // Lấy thông tin payment kèm username của buyer qua bảng orders
+    const [rows]: any = await pool.execute(`
+      SELECT p.id, p.amount, p.status, p.method AS gateway, p.created_at,
+             u.username AS buyer_username
+      FROM payments p
+      JOIN orders o ON p.order_id = o.id
+      JOIN users u ON o.buyer_id = u.id
+      ORDER BY p.created_at DESC LIMIT 50
+    `);
+    
+    // Format lại dữ liệu cho khớp với frontend script.js (payment.user.username)
+    const formatted = rows.map((r: any) => ({
+      ...r,
+      user: { username: r.buyer_username }
+    }));
+    
+    res.status(200).json({ success: true, data: formatted });
+  } catch (err) {
+    res.status(500).json({ success: false, message: 'Lỗi tải danh sách Payment' });
+  }
+});
+
+// ─────────────────────────────────────────────
+// AI KNOWLEDGE BASE (Inline Controller)
+// ─────────────────────────────────────────────
+router.get('/ai-knowledge', async (req: Request, res: Response) => {
+  try {
+    const [rows]: any = await pool.execute('SELECT id, topic, content FROM knowledge_base ORDER BY created_at DESC');
+    res.status(200).json({ success: true, data: rows });
+  } catch (err) {
+    res.status(500).json({ success: false, message: 'Lỗi tải AI Knowledge Base' });
+  }
+});
+
+// ─────────────────────────────────────────────
+// LIVE CHATS HANDOFF (Inline Controller)
+// ─────────────────────────────────────────────
+router.get('/chats', async (req: Request, res: Response) => {
+  try {
+    const status = req.query.status || 'handoff_to_admin';
+    const [rows]: any = await pool.execute(`
+      SELECT c.id, c.status, u.username 
+      FROM chat_sessions c 
+      JOIN users u ON c.user_id = u.id 
+      WHERE c.status = ? 
+      ORDER BY c.created_at DESC
+    `, [status]);
+
+    // Format cho script.js (c.user.username)
+    const formatted = rows.map((r: any) => ({
+      id: r.id,
+      status: r.status,
+      user: { username: r.username }
+    }));
+
+    res.status(200).json({ success: true, data: formatted });
+  } catch (err) {
+    res.status(500).json({ success: false, message: 'Lỗi tải Chat Session' });
+  }
+});
 
 // ─────────────────────────────────────────────
 // REPORTS

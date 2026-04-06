@@ -181,7 +181,8 @@ const dispute = async (req: EscrowRequest, res: Response): Promise<any> => {
 // ─────────────────────────────────────────────
 const resolve = async (req: EscrowRequest, res: Response): Promise<any> => {
   try {
-    const { orderId, resolution, reason } = req.body;
+    // SỬA DÒNG NÀY: Lấy thêm disputeId từ req.body
+    const { orderId, disputeId, resolution, reason } = req.body; 
 
     if (!reason || reason.trim().length < 5) {
       return res.status(400).json({
@@ -192,6 +193,7 @@ const resolve = async (req: EscrowRequest, res: Response): Promise<any> => {
 
     const result = await escrowService.resolveDispute({
       orderId,
+      disputeId, // <--- SỬA DÒNG NÀY: Truyền thêm disputeId vào service
       adminId    : req.user.id,
       resolution,
       reason     : reason.trim(),

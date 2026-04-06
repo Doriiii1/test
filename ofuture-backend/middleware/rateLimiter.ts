@@ -155,7 +155,7 @@ const authLimiters = {
 const financialLimiter = createLimiter({ ...financial, keyPrefix: 'rl:financial:', message: 'Too many financial requests. Wait 15 minutes.' });
 const writeLimiter = createLimiter({ ...writes, keyPrefix: 'rl:write:', message: 'Write rate limit reached. Wait 15 minutes.' });
 const publicLimiter = createLimiter({ ...publicRead, keyPrefix: 'rl:public:', message: 'Request rate limit exceeded.' });
-const adminLimiter = createLimiter({ ...admin, keyPrefix: 'rl:admin:', message: 'Admin request rate limit reached.' });
+const adminLimiter = createLimiter({ ...admin, max: 200, keyPrefix: 'rl:admin:', message: 'Admin request rate limit reached.' });
 const globalLimiter = createLimiter({ ...globalCfg, keyPrefix: 'rl:global:', message: 'Global rate limit reached. Slow down.' });
 
 export = {

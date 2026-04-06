@@ -135,11 +135,15 @@ async function loadLogs() {
     try {
         const response = await apiCall('/admin/logs');
         allLogs = response.data || [];
-        renderLogsTable();
+        renderLogsTable();    // Render cho bảng System Logs
+        renderActivityLogs(); // <-- THÊM DÒNG NÀY: Render cho Activity Logs
     } catch (error) {
         console.error('Error loading logs:', error);
         const tbody = document.getElementById('systemLogsTableBody');
         if (tbody) tbody.innerHTML = '<tr><td colspan="7" class="text-center" style="color:red;">Lỗi tải nhật ký hệ thống</td></tr>';
+        
+        const container = document.getElementById('logsContainer');
+        if (container) container.innerHTML = '<p class="text-center" style="color:red;">Lỗi tải nhật ký hoạt động</p>';
     }
 }
 
@@ -214,7 +218,7 @@ async function loadLiveChats() {
 // Rendering Functions
 // ============================================================
 
-// Tích hợp logic xử lý is_active chuẩn Database
+// Tích hợp logic xử lý khớp với API Backend (camelCase)
 function renderUsersTable(data = allUsers) {
     const tbody = document.getElementById('usersTableBody');
     if (!tbody) return;
@@ -225,21 +229,21 @@ function renderUsersTable(data = allUsers) {
     }
 
     tbody.innerHTML = data.map(u => {
-        // Map chuẩn với cột is_active trong Database (0/1 hoặc boolean)
-        const activeStatus = u.is_active === 1 || u.is_active === true;
+        // ĐÃ SỬA: Map chuẩn với cột isActive từ API Backend trả về
+        const activeStatus = u.isActive === true;
         
         return `
         <tr>
-            <td>${u.email}</td>
-            <td>${u.username}</td>
-            <td>${u.full_name || '-'}</td>
+            <td>${u.email || '-'}</td>
+            <td>${u.username || '-'}</td>
+            <td>${u.fullName || '-'}</td>
             <td><span class="badge ${u.role === 'admin' ? 'badge-admin' : 'badge-info'}">${(u.role || 'user').toUpperCase()}</span></td>
             <td>
                 <span class="badge ${activeStatus ? 'badge-success' : 'badge-danger'}">
                     ${activeStatus ? 'Hoạt động' : 'Bị khóa'}
                 </span>
             </td>
-            <td>${new Date(u.created_at).toLocaleDateString()}</td>
+            <td>${u.createdAt ? new Date(u.createdAt).toLocaleDateString() : 'N/A'}</td>
             <td>
                 <button class="btn btn-small ${activeStatus ? 'btn-danger' : 'btn-success'}" 
                         onclick="handleSuspendUser('${u.id}', ${activeStatus})">
@@ -253,7 +257,10 @@ function renderUsersTable(data = allUsers) {
 // Render System Logs theo đúng mapping của script.js
 function renderLogsTable() {
     const tbody = document.getElementById('systemLogsTableBody');
-    if (!tbody) return;
+    if (!tbody) {
+        console.warn("⚠️ Frontend Architect Alert: Không tìm thấy thẻ <tbody id='systemLogsTableBody'> trong file HTML!");
+        return;
+    }
 
     if (allLogs.length === 0) {
         tbody.innerHTML = '<tr><td colspan="7" class="text-center">Không có nhật ký nào</td></tr>';
@@ -262,14 +269,40 @@ function renderLogsTable() {
 
     tbody.innerHTML = allLogs.slice(0, 100).map(log => `
         <tr>
-            <td class="text-muted">${new Date(log.created_at).toLocaleString()}</td>
+            <td class="text-muted">${log.created_at ? new Date(log.created_at).toLocaleString() : '-'}</td>
             <td><span class="badge badge-${getSeverityClass(log.severity)}">${log.severity || 'info'}</span></td>
             <td>${log.event_type || '-'}</td>
             <td class="text-truncate" style="max-width: 300px;" title="${log.message || ''}">${log.message?.substring(0, 50) || '-'}</td>
-            <td>${log.user_id || 'System'}</td>
-            <td>${log.ip_address || '-'}</td>
+            <td>${log.actor_username || 'System'}</td> <td>${log.ip_address || '-'}</td>
             <td>${log.endpoint || '-'}</td>
         </tr>
+    `).join('');
+}
+
+// Render Activity Logs (Dạng danh sách feed)
+function renderActivityLogs(data = allLogs) {
+    const container = document.getElementById('logsContainer');
+    if (!container) return;
+
+    if (data.length === 0) {
+        container.innerHTML = '<p class="text-center">Chưa có hoạt động nào được ghi nhận.</p>';
+        return;
+    }
+
+    // Thiết kế giao diện từng dòng log cho đẹp mắt
+    container.innerHTML = data.slice(0, 50).map(log => `
+        <div style="padding: 12px; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center; background: #fff; margin-bottom: 8px; border-radius: 6px; box-shadow: 0 1px 2px rgba(0,0,0,0.05);">
+            <div>
+                <strong style="color: #2c3e50;">${log.event_type || 'System Event'}</strong> 
+                <span style="color: #64748b; margin-left: 8px;">${log.message || ''}</span>
+                <div style="margin-top: 4px; font-size: 0.85em; color: #94a3b8;">
+                    👤 Tác nhân: <b>${log.actor_username || 'System'}</b> | 🌐 IP: ${log.ip_address || 'N/A'}
+                </div>
+            </div>
+            <div style="font-size: 0.85em; color: #64748b; white-space: nowrap;">
+                🕒 ${log.created_at ? new Date(log.created_at).toLocaleString() : '-'}
+            </div>
+        </div>
     `).join('');
 }
 
@@ -579,6 +612,23 @@ function setupEventListeners() {
 
     const logFilter = document.getElementById('systemLogSeverityFilter');
     if (logFilter) logFilter.addEventListener('change', (e) => filterSystemLogs(e.target.value));
+
+    // Kích hoạt Filter cho Activity Logs
+    const logTypeFilter = document.getElementById('logTypeFilter');
+    if (logTypeFilter) {
+        logTypeFilter.addEventListener('change', (e) => {
+            const type = e.target.value;
+            if (!type) {
+                renderActivityLogs(allLogs); // Hiện tất cả
+            } else {
+                // Lọc không phân biệt hoa thường để khớp chuẩn với Database
+                const filtered = allLogs.filter(log => 
+                    (log.event_type || '').toLowerCase() === type.toLowerCase()
+                );
+                renderActivityLogs(filtered);
+            }
+        });
+    }
 
     // Nút Send Chat
     document.addEventListener('click', (e) => {

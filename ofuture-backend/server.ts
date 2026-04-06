@@ -153,6 +153,8 @@ app.use(
 app.use(metricsMiddleware);
 // Metrics endpoint — protected by METRICS_BEARER_TOKEN in production
 app.get('/metrics', metricsEndpoint);
+app.use('/uploads', express.static(path.join(__dirname, 'public/uploads')));
+
 
 // ────────────────────────────────────────────
 // 5. REQUEST ID (traceability)

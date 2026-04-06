@@ -21,6 +21,7 @@ import crypto from 'crypto';
 const redisClient = require('../utils/redisClient');
 import emailService from '../services/emailService';
 import { OAuth2Client } from 'google-auth-library';
+import { pool } from '../config/db';
 
 const googleClient = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
@@ -609,4 +610,43 @@ const googleLogin = async (req: AuthRequest, res: Response): Promise<any> => {
   }
 };
 
-export = { register, login, refreshToken, logout, getMe, verifyEmail, resendOtp, googleLogin };
+// ── Avatar & Trusted Devices Management ───────────────────────
+const trustedDeviceModel = require('../models/trustedDeviceModel');
+
+const uploadAvatar = async (req: AuthRequest, res: Response): Promise<any> => {
+  try {
+    if (!req.file) return res.status(400).json({ success: false, message: 'Chưa có file nào được tải lên.' });
+
+    // Multer lưu file vào public/uploads, ta chỉ cần lưu URL tương đối vào DB
+    const avatarUrl = '/uploads/' + req.file.filename;
+
+    await pool.execute('UPDATE users SET avatar_url = ? WHERE id = ?', [avatarUrl, req.user.id]);
+    res.status(200).json({ success: true, message: 'Cập nhật ảnh đại diện thành công.', data: { avatarUrl } });
+  } catch (err) {
+    logger.error('uploadAvatar error:', err);
+    res.status(500).json({ success: false, message: 'Lỗi khi lưu ảnh.' });
+  }
+};
+
+const getDevices = async (req: AuthRequest, res: Response): Promise<any> => {
+  try {
+    const devices = await trustedDeviceModel.findAllByUserId(req.user.id);
+    res.status(200).json({ success: true, data: devices });
+  } catch (err) {
+    logger.error('getDevices error:', err);
+    res.status(500).json({ success: false, message: 'Lỗi khi tải danh sách thiết bị.' });
+  }
+};
+
+const revokeDevice = async (req: AuthRequest, res: Response): Promise<any> => {
+  try {
+    const deviceId = req.params.id;
+    await trustedDeviceModel.revoke(deviceId);
+    res.status(200).json({ success: true, message: 'Đã xóa thiết bị khỏi danh sách tin cậy.' });
+  } catch (err) {
+    logger.error('revokeDevice error:', err);
+    res.status(500).json({ success: false, message: 'Lỗi khi xóa thiết bị.' });
+  }
+};
+
+export = { register, login, refreshToken, logout, getMe, verifyEmail, resendOtp, googleLogin, uploadAvatar, getDevices, revokeDevice };

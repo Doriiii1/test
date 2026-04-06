@@ -147,6 +147,8 @@ CREATE TABLE IF NOT EXISTS orders (
                     'refunded'
                   )               NOT NULL DEFAULT 'pending',
   shipping_address JSON           NULL,                      -- { street, city, country, zip }
+  carrier         VARCHAR(100)    NULL,
+  tracking_number VARCHAR(100)    NULL,
   notes           TEXT            NULL,
   cancelled_at    DATETIME        NULL,
   completed_at    DATETIME        NULL,

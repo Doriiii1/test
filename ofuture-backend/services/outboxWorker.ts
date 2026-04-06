@@ -55,6 +55,12 @@ async function processEvent(evt: OutboxEvent) {
         await conn.beginTransaction();
         await conn.execute(`UPDATE escrow_transactions SET transfer_id = ?, gateway = ?, status = 'released', released_at = NOW() WHERE id = ? AND status IN ('releasing')`, [res.transferId, res.gateway || 'simulated', aggregate_id]);
         await conn.execute(`UPDATE orders SET status = 'completed', completed_at = NOW() WHERE id = ?`, [data.orderId]);
+        
+        // --- THÊM ĐOẠN NÀY ĐỂ CẬP NHẬT TRANH CHẤP ---
+        if (data.disputeId) {
+          await conn.execute(`UPDATE disputes SET status = 'resolved_released', resolved_at = NOW() WHERE id = ?`, [data.disputeId]);
+        }
+        
         await conn.commit();
       } catch (err) { await conn.rollback().catch(() => {}); throw err; } finally { conn.release(); }
 

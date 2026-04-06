@@ -14,9 +14,10 @@ const storage = multer.diskStorage({
         cb(null, uploadDir);
     },
     filename: function (req, file, cb) {
-        // Đổi tên file để không bị trùng (vd: product-16892348-123.jpg)
         const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
-        cb(null, 'product-' + uniqueSuffix + path.extname(file.originalname));
+        // PHÂN LOẠI: Nếu fieldname là 'avatar' thì đặt tên avatar-, ngược lại là product-
+        const prefix = file.fieldname === 'avatar' ? 'avatar-' : 'product-';
+        cb(null, prefix + uniqueSuffix + path.extname(file.originalname));
     }
 });
 

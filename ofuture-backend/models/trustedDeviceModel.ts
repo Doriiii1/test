@@ -37,4 +37,15 @@ const revoke = async (id: string | number) => {
   await pool.execute(`UPDATE trusted_devices SET revoked = 1 WHERE id = ?`, [id]);
 };
 
-export = { create, findByFingerprint, markUsed, revoke };
+const findAllByUserId = async (userId: string) => {
+  const [rows]: any = await pool.execute(
+    `SELECT id, device_fingerprint, device_name, ip_address, remembered_until, last_used_at, created_at 
+     FROM trusted_devices 
+     WHERE user_id = ? AND revoked = 0 
+     ORDER BY last_used_at DESC`,
+    [userId]
+  );
+  return rows;
+};
+
+export = { create, findByFingerprint, markUsed, revoke, findAllByUserId };

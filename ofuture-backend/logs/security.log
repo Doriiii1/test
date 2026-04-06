@@ -1,0 +1,193 @@
+2026-04-06 14:55:23 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 14:55:23 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 14:55:23 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 14:55:23 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 14:55:23 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 14:55:23 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 14:55:23 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 14:55:23 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 14:55:23 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 15:02:32 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 15:02:32 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 15:02:32 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 15:02:32 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 15:02:32 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 15:02:32 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 15:02:32 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 15:02:32 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 15:02:32 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 15:03:20 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 15:03:20 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 15:03:20 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 15:03:20 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 15:03:20 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 15:03:20 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 15:03:20 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 15:03:20 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 15:03:20 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 15:10:53 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 15:10:53 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 15:10:53 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 15:10:53 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 15:10:53 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 15:10:53 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 15:10:53 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 15:10:53 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 15:10:53 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 15:22:35 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/products
+2026-04-06 15:22:35 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/reviews
+2026-04-06 15:22:35 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/ai-knowledge
+2026-04-06 15:22:35 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/chats
+2026-04-06 15:22:35 [warn]: Rate limit exceeded: IP=::1 PATH=/api/products
+2026-04-06 15:22:38 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/stats
+2026-04-06 15:22:38 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/chats
+2026-04-06 15:22:38 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/users
+2026-04-06 15:22:38 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/logs
+2026-04-06 15:22:38 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/escrow
+2026-04-06 15:22:38 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/payments
+2026-04-06 15:22:38 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/products
+2026-04-06 15:22:38 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/reviews
+2026-04-06 15:22:38 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/ai-knowledge
+2026-04-06 15:23:25 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/stats
+2026-04-06 15:23:25 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/products
+2026-04-06 15:23:25 [warn]: Rate limit exceeded: IP=::1 PATH=/api/orders/my
+2026-04-06 15:23:25 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/reviews
+2026-04-06 15:23:25 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/ai-knowledge
+2026-04-06 15:23:25 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/chats
+2026-04-06 15:23:25 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/users
+2026-04-06 15:23:25 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/logs
+2026-04-06 15:23:25 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/escrow
+2026-04-06 15:23:25 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/payments
+2026-04-06 15:23:38 [warn]: Rate limit exceeded: IP=::1 PATH=/api/orders/my
+2026-04-06 15:23:38 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/stats
+2026-04-06 15:23:38 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/payments
+2026-04-06 15:23:38 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/products
+2026-04-06 15:23:38 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/reviews
+2026-04-06 15:23:38 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/ai-knowledge
+2026-04-06 15:23:38 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/chats
+2026-04-06 15:23:38 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/users
+2026-04-06 15:23:38 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/logs
+2026-04-06 15:23:38 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/escrow
+2026-04-06 15:24:23 [warn]: Rate limit exceeded: IP=::1 PATH=/api/orders/my
+2026-04-06 15:24:23 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/stats
+2026-04-06 15:24:23 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/products
+2026-04-06 15:24:23 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/reviews
+2026-04-06 15:24:23 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/ai-knowledge
+2026-04-06 15:24:23 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/chats
+2026-04-06 15:24:23 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/users
+2026-04-06 15:24:23 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/logs
+2026-04-06 15:24:23 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/escrow
+2026-04-06 15:24:23 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/payments
+2026-04-06 15:24:28 [warn]: Rate limit exceeded: IP=::1 PATH=/api/orders/my
+2026-04-06 15:24:28 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/stats
+2026-04-06 15:24:28 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/payments
+2026-04-06 15:24:28 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/products
+2026-04-06 15:24:28 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/reviews
+2026-04-06 15:24:28 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/ai-knowledge
+2026-04-06 15:24:28 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/chats
+2026-04-06 15:24:28 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/users
+2026-04-06 15:24:28 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/logs
+2026-04-06 15:24:28 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/escrow
+2026-04-06 15:24:32 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/stats
+2026-04-06 15:24:32 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/escrow
+2026-04-06 15:24:32 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/payments
+2026-04-06 15:24:32 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/products
+2026-04-06 15:24:32 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/reviews
+2026-04-06 15:24:32 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/ai-knowledge
+2026-04-06 15:24:32 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/chats
+2026-04-06 15:24:32 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/users
+2026-04-06 15:24:32 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/logs
+2026-04-06 15:27:44 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 15:27:44 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 15:27:44 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 15:27:44 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 15:27:44 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 15:27:44 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 15:27:44 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 15:27:44 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 15:27:44 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 15:59:13 [warn]: RBAC denied: userId=2a4f4f3a-1f23-11f1-b252-9c2dcd0692eb role="seller" attempted action requiring [buyer|admin]
+2026-04-06 16:01:39 [warn]: RBAC denied: userId=2a4f4f3a-1f23-11f1-b252-9c2dcd0692eb role="seller" attempted action requiring [buyer|admin]
+2026-04-06 16:04:22 [warn]: RBAC denied: userId=2a4f4f3a-1f23-11f1-b252-9c2dcd0692eb role="seller" attempted action requiring [buyer|admin]
+2026-04-06 16:06:19 [warn]: RBAC denied: userId=2a4f4f3a-1f23-11f1-b252-9c2dcd0692eb role="seller" attempted action requiring [buyer|admin]
+2026-04-06 16:06:36 [warn]: RBAC denied: userId=2a4f4f3a-1f23-11f1-b252-9c2dcd0692eb role="seller" attempted action requiring [buyer|admin]
+2026-04-06 16:12:50 [warn]: RBAC denied: userId=2a4f4f3a-1f23-11f1-b252-9c2dcd0692eb role="seller" attempted action requiring [buyer|admin]
+2026-04-06 16:32:02 [warn]: RBAC denied: userId=2a4f4f3a-1f23-11f1-b252-9c2dcd0692eb role="seller" attempted action requiring [buyer|admin]
+2026-04-06 17:34:40 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 17:34:40 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 17:34:40 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 17:34:40 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 17:34:40 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 17:34:40 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 17:34:40 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 17:34:40 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 17:34:40 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 17:37:09 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 17:37:09 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 17:37:09 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 17:37:09 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 17:37:09 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 17:37:09 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 17:37:09 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 17:37:09 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 17:37:09 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 17:52:50 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 17:52:50 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 17:52:50 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 17:52:50 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 17:52:50 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 17:52:50 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 17:52:50 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 17:52:50 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 17:52:50 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 18:03:44 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 18:03:44 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 18:03:44 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 18:03:44 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 18:03:44 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 18:03:44 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 18:03:44 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 18:03:44 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 18:03:44 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 18:13:25 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 18:13:25 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 18:13:25 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 18:13:25 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 18:13:25 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 18:13:25 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 18:13:25 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 18:13:25 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 18:13:25 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 18:26:11 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 18:26:11 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 18:26:11 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 18:26:11 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 18:26:11 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 18:26:11 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 18:26:11 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 18:26:11 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 18:26:11 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-06 19:00:14 [error]: Error: Illegal arguments: string, undefined
+    at _async (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\bcryptjs\dist\bcrypt.js:286:46)
+    at C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\bcryptjs\dist\bcrypt.js:307:17
+    at new Promise (<anonymous>)
+    at Object.bcrypt.compare (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\bcryptjs\dist\bcrypt.js:306:20)
+    at Object.disableMfa (C:\Users\nguye\test Ofuture\test\ofuture-backend\services\mfaService.ts:230:31)
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async disable (C:\Users\nguye\test Ofuture\test\ofuture-backend\controllers\mfaController.ts:101:20)
+2026-04-06 19:00:36 [error]: Error: Illegal arguments: string, undefined
+    at _async (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\bcryptjs\dist\bcrypt.js:286:46)
+    at C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\bcryptjs\dist\bcrypt.js:307:17
+    at new Promise (<anonymous>)
+    at Object.bcrypt.compare (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\bcryptjs\dist\bcrypt.js:306:20)
+    at Object.disableMfa (C:\Users\nguye\test Ofuture\test\ofuture-backend\services\mfaService.ts:230:31)
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async disable (C:\Users\nguye\test Ofuture\test\ofuture-backend\controllers\mfaController.ts:101:20)
+2026-04-06 19:01:15 [error]: Error: Illegal arguments: string, undefined
+    at _async (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\bcryptjs\dist\bcrypt.js:286:46)
+    at C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\bcryptjs\dist\bcrypt.js:307:17
+    at new Promise (<anonymous>)
+    at Object.bcrypt.compare (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\bcryptjs\dist\bcrypt.js:306:20)
+    at Object.disableMfa (C:\Users\nguye\test Ofuture\test\ofuture-backend\services\mfaService.ts:230:31)
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async disable (C:\Users\nguye\test Ofuture\test\ofuture-backend\controllers\mfaController.ts:101:20)

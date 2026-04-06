@@ -10,8 +10,9 @@ import { Request, Response } from 'express';
 import { body } from 'express-validator';
 import bcrypt from 'bcryptjs';
 import UserModel from '../models/userModel';
+import { uploadImages } from '../middleware/upload';
 import { pool } from '../config/db';
-const { register, login, refreshToken, logout, getMe, verifyEmail, resendOtp, googleLogin } = require('../controllers/authController');
+const { register, login, refreshToken, logout, getMe, verifyEmail, resendOtp, googleLogin, uploadAvatar, getDevices, revokeDevice } = require('../controllers/authController');
 const { authenticate }     = require('../middleware/auth');
 const { noCache, autobanCheck } = require('../middleware/security');
 const { rotateCsrfToken } = require('../middleware/csrf');
@@ -133,5 +134,12 @@ router.post('/verify-email', otpLimiter, verifyEmail);
 router.post('/resend-otp', otpLimiter, resendOtp);
 
 router.post('/google-login', loginLimiter, noCache, autobanCheck, googleLogin);
+
+// ── Avatar & Devices ───────────────────────────────
+router.post('/avatar', authenticate, uploadImages.single('avatar'), uploadAvatar);
+
+router.get('/devices', authenticate, getDevices);
+
+router.delete('/devices/:id', authenticate, revokeDevice);
 
 export = router;
