@@ -1,0 +1,43 @@
+/* Toast Notifications */
+.toast {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    padding: 14px 24px;
+    background: var(--primary);
+    color: white;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+    z-index: 10000;
+}
+.toast.show { opacity: 1; transform: translateY(0); }
+.toast.error { background: var(--danger); }
+
+/* Custom Cart UI */
+.cart-item {
+    border-bottom: 1px solid var(--line);
+    padding: 20px 0;
+}
+.cart-item:last-child { border-bottom: none; }
+
+.qty-input {
+    width: 60px;
+    text-align: center;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 5px;
+    font-weight: 600;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 40px 0;
+}
+.empty-state img {
+    width: 150px;
+    margin-bottom: 20px;
+    opacity: 0.5;
+}

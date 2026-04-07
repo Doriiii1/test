@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>O'Future - Chi tiết đơn hàng</title>
+  <link rel="stylesheet" href="../shared/buyer.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="brand">O'<span>Future</span></div>
+      <nav class="nav">
+        <a href="../buyer-home/index.html">Dashboard</a>
+        <a href="../buyer-products/index.html">Products</a>
+        <a href="../buyer-cart/index.html">Cart</a>
+        <a href="../buyer-checkout/index.html">Checkout</a>
+        <a class="active" href="../buyer-orders/index.html">Orders</a>
+        <a href="../buyer-profile/index.html">Profile</a>
+      </nav>
+    </aside>
+
+    <main class="main">
+      <div class="topbar">
+        <div class="search-box"><input type="text" placeholder="Tìm kiếm..."></div>
+        <div class="top-actions">
+          <div class="icon-btn">🔔</div>
+          <div class="avatar" id="userAvatar">N</div>
+          <button id="logoutBtn" class="btn btn-outline" style="padding: 8px 14px; font-size: 14px;">Đăng xuất</button>
+        </div>
+      </div>
+
+      <button class="btn btn-outline" style="margin-bottom: 20px;" onclick="window.history.back()">← Quay lại</button>
+
+      <div class="page-header">
+        <h1>Chi tiết đơn hàng <span id="orderIdDisplay">#...</span></h1>
+        <p>Trạng thái hiện tại: <span id="orderStatusBadge" class="badge">Đang tải...</span></p>
+      </div>
+
+      <div class="grid grid-2">
+        <section class="card">
+          <h2 class="section-title">Sản phẩm đặt mua</h2>
+          
+          <div class="cart-item" style="border: 1px solid var(--line); padding: 16px; border-radius: 12px; margin-bottom: 20px; display: flex; gap: 16px; align-items: center;">
+            <div style="width: 80px; height: 80px; background: #f1f5f9; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 24px;">📦</div>
+            <div style="flex: 1;">
+              <h3 id="productName" style="font-size: 18px; margin-bottom: 4px;">Đang tải...</h3>
+              <p class="muted" style="font-size: 13px;">Nhà cung cấp: <strong id="sellerName">...</strong></p>
+            </div>
+            <div style="text-align: right;">
+              <p class="muted" style="font-size: 13px; margin-bottom: 4px;">Đơn giá x Số lượng</p>
+              <div><strong id="unitPrice">0đ</strong> x <strong id="quantity">0</strong></div>
+            </div>
+          </div>
+
+          <h2 class="section-title">Tóm tắt thanh toán</h2>
+          <div class="summary-box">
+            <div class="summary-item">
+              <span>Giá trị hàng hóa</span>
+              <strong id="subtotalAmount">0đ</strong>
+            </div>
+            <div class="summary-item">
+              <span>Trạng thái ký quỹ</span>
+              <strong id="escrowStatus" style="color: var(--primary);">...</strong>
+            </div>
+            <div class="summary-item total">
+              <span>Tổng thanh toán</span>
+              <strong id="totalAmount">0đ</strong>
+            </div>
+          </div>
+
+          <div style="margin-top: 20px;">
+            <strong>Ghi chú đơn hàng:</strong>
+            <p id="orderNotes" class="muted" style="margin-top: 8px; padding: 12px; background: #f8fafc; border-radius: 8px;">Không có ghi chú.</p>
+          </div>
+        </section>
+
+        <aside class="card">
+          <h2 class="section-title">Tiến trình giao hàng</h2>
+          
+          <div class="timeline" id="orderTimeline">
+            <p class="muted">Đang tải dữ liệu...</p>
+          </div>
+
+          <div id="actionContainer" style="margin-top: 30px; display: none;">
+            <p class="muted" style="margin-bottom: 12px; font-size: 13px;">Vui lòng kiểm tra kỹ hàng hóa trước khi xác nhận. Tiền ký quỹ sẽ được thanh toán cho người bán.</p>
+            <button id="confirmBtn" class="btn btn-primary" style="width: 100%; padding: 12px; margin-bottom: 10px;" onclick="confirmDelivery()">Xác nhận Đã nhận hàng</button>
+            <button class="btn btn-outline" style="width: 100%; padding: 12px; color: var(--danger); border-color: var(--danger);" onclick="window.location.href='../buyer-orders/index.html'">Gửi khiếu nại (Dispute)</button>
+          </div>
+        </aside>
+      </div>
+    </main>
+  </div>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="../shared/api.js"></script>
+  <script src="../shared/chat-widget.js"></script><script src="script.js"></script>
+</body>
+</html>

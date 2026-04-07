@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>O'Future - Dashboard Buyer</title>
+  <link rel="stylesheet" href="../shared/buyer.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="brand">O'<span>Future</span></div>
+      <nav class="nav">
+        <a class="active" href="index.html">Dashboard</a>
+        <a href="../buyer-products/index.html">Products</a>
+        <a href="../buyer-cart/index.html">Cart</a>
+        <a href="../buyer-checkout/index.html">Checkout</a>
+        <a href="../buyer-orders/index.html">Orders</a>
+        <a href="../buyer-profile/index.html">Profile</a>
+        <a href="../buyer-contact/index.html">Contact</a>       
+      </nav>
+    </aside>
+
+    <main class="main">
+      <div class="topbar">
+        <div class="search-box"><input type="text" placeholder="Tìm sản phẩm, nhà cung cấp..."></div>
+        <div class="top-actions">
+          <div class="icon-btn">🔔</div>
+          <div class="avatar" id="userAvatar">N</div>
+          <button id="logoutBtn" class="btn btn-outline" style="padding: 8px 14px; font-size: 14px;">Đăng xuất</button>
+        </div>
+      </div>
+
+      <section class="hero">
+        <h1>Chào mừng bạn quay lại, <span id="welcomeName">Buyer</span>!</h1>
+        <p>Hệ sinh thái phân phối hàng sỉ O'Future giúp bạn nhập hàng an toàn, minh bạch qua cơ chế ký quỹ Escrow.</p>
+        <div class="quick-links">
+          <a href="../buyer-products/index.html">📦 Xem sản phẩm mới</a>
+          <a href="../buyer-orders/index.html">📑 Kiểm tra đơn hàng</a>
+        </div>
+      </section>
+
+      <div class="grid grid-3" style="margin-bottom: 24px;">
+        <div class="card stat-card">
+          <div class="muted">Tổng chi tiêu</div>
+          <h2 id="statTotalSpent">0đ</h2>
+          <div class="badge badge-success">+12% tháng này</div>
+        </div>
+        <div class="card stat-card">
+          <div class="muted">Đơn hàng đang xử lý</div>
+          <h2 id="statActiveOrders">0</h2>
+          <span>Đang giao hoặc ký quỹ</span>
+        </div>
+        <div class="card stat-card">
+          <div class="muted">Tiền đang ký quỹ (Held)</div>
+          <h2 id="statEscrowHeld" style="color: var(--accent);">0đ</h2>
+          <span>An toàn trong hệ thống</span>
+        </div>
+      </div>
+
+      <div class="grid grid-2">
+        <section class="card">
+          <h2 class="section-title">Sản phẩm nổi bật</h2>
+          <div id="featuredProducts" class="featured-list">
+            <p class="muted">Đang tải sản phẩm...</p>
+          </div>
+          <a href="../buyer-products/index.html" class="btn btn-outline" style="width: 100%; margin-top: 15px; text-align: center;">Xem tất cả</a>
+        </section>
+
+        <section class="card">
+          <h2 class="section-title">Đơn hàng gần đây</h2>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Mã đơn</th>
+                <th>Giá trị</th>
+                <th>Trạng thái</th>
+              </tr>
+            </thead>
+            <tbody id="recentOrdersTable">
+              <tr><td colspan="3" class="muted" style="text-align: center;">Đang tải...</td></tr>
+            </tbody>
+          </table>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="../shared/api.js"></script>
+  <script src="../shared/chat-widget.js"></script><script src="script.js"></script>
+</body>
+</html>

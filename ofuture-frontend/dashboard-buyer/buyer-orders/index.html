@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>O'Future - Đơn hàng của tôi</title>
+  <link rel="stylesheet" href="../shared/buyer.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="brand">O'<span>Future</span></div>
+      <nav class="nav">
+        <a href="../buyer-home/index.html">Dashboard</a>
+        <a href="../buyer-products/index.html">Products</a>
+        <a href="../buyer-cart/index.html">Cart</a>
+        <a href="../buyer-checkout/index.html">Checkout</a>
+        <a class="active" href="index.html">Orders</a>
+        <a href="../buyer-profile/index.html">Profile</a>
+        <a href="../buyer-contact/index.html">Contact</a>
+      </nav>
+    </aside>
+
+    <main class="main">
+      <div class="topbar">
+        <div class="search-box"><input type="text" id="orderSearch" placeholder="Tìm mã đơn hàng..."></div>
+        <div class="top-actions">
+          <div class="icon-btn">🔔</div>
+          <div class="avatar" id="userAvatar">N</div>
+          <button id="logoutBtn" class="btn btn-outline" style="padding: 8px 14px; font-size: 14px;">Đăng xuất</button>
+        </div>
+      </div>
+
+      <div class="page-header">
+        <h1>Lịch sử đơn hàng</h1>
+        <p>Theo dõi và quản lý các giao dịch ký quỹ của bạn.</p>
+      </div>
+
+      <div class="filters">
+        <select id="statusFilter">
+          <option value="all">Tất cả trạng thái</option>
+          <option value="pending">Chờ thanh toán</option>
+          <option value="paid">Đã thanh toán (Ký quỹ)</option>
+          <option value="shipped">Đang giao hàng</option>
+          <option value="completed">Hoàn tất</option>
+          <option value="cancelled">Đã hủy</option>
+          <option value="refunded">Đã hoàn tiền</option>
+        </select>
+        <input type="date" id="dateFrom" title="Từ ngày">
+        <input type="date" id="dateTo" title="Đến ngày">
+      </div>
+
+      <section class="card">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Mã đơn</th>
+              <th>Ngày tạo</th>
+              <th>Nhà cung cấp</th>
+              <th>Giá trị</th>
+              <th>Trạng thái</th>
+              <th>Thao tác</th>
+            </tr>
+          </thead>
+          <tbody id="orderTableBody">
+            <tr><td colspan="6" style="text-align:center; padding:40px;">Đang tải danh sách đơn hàng...</td></tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+  </div>
+
+  <div id="disputeModal" class="modal">
+    <div class="modal-content">
+      <h2>Gửi Khiếu Nại</h2>
+      <p class="muted">Mô tả vấn đề bạn gặp phải với đơn hàng này.</p>
+      <textarea id="disputeReason" rows="5" placeholder="Lý do khiếu nại (sai hàng, thiếu hàng, hàng lỗi...)" style="width:100%; margin-top:15px; padding:12px; border-radius:8px; border:1px solid var(--line);"></textarea>
+      <div style="display:flex; gap:12px; margin-top:20px;">
+        <button onclick="submitDispute()" class="btn btn-danger" style="flex:1;">Gửi khiếu nại</button>
+        <button onclick="closeDisputeModal()" class="btn btn-outline" style="flex:1;">Hủy</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="modalOverlay" class="modal-overlay"></div>
+  <div id="toast" class="toast"></div>
+
+  <script src="../shared/api.js"></script>
+  <script src="../shared/chat-widget.js"></script><script src="script.js"></script>
+</body>
+</html>

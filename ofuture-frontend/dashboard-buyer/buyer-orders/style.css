@@ -1,0 +1,48 @@
+/* Badge Styles Mapping */
+.badge-pending { background: #fef3c7; color: #92400e; }    /* Warning */
+.badge-paid { background: #dbeafe; color: #1d4ed8; }       /* Info */
+.badge-shipped { background: #e0f2fe; color: #0369a1; }    /* Processing */
+.badge-completed { background: #dcfce7; color: #166534; }  /* Success */
+.badge-cancelled, .badge-refunded { background: #fee2e2; color: #991b1b; } /* Danger */
+
+/* Modal & Overlay */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 9998;
+}
+.modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--card);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    z-index: 9999;
+    width: 90%;
+    max-width: 500px;
+}
+
+/* Toast */
+.toast {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    padding: 14px 24px;
+    background: var(--primary);
+    color: white;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+    z-index: 10000;
+}
+.toast.show { opacity: 1; transform: translateY(0); }
+.toast.error { background: var(--danger); }
