@@ -1,5 +1,5 @@
 // ============================================================
-// O'Future Login Form Handler (Optimized API + Original Animations)
+// O'Future Login Form Handler (Refactored & Fully Preserved)
 // ============================================================
 
 // ── 1. Giao diện thông báo (Toast Notifications) ────────────
@@ -32,29 +32,33 @@ function ensureAnimations() {
   }
 }
 
-// ── 2. Xử lý Đăng nhập thông thường ────────────────────────
-// ── Khai báo biến toàn cục để lưu token MFA tạm thời ──
+// ── 2. Xử lý Đăng nhập & Điều hướng (Routing) ───────────────
 let currentMfaToken = null;
 
-// ── Hàm tiện ích: Xử lý sau khi đăng nhập/xác thực thành công ──
+// Điều hướng chuẩn theo kiến trúc thư mục mới
 function completeLoginFlow(userData) {
   if (userData.accessToken) localStorage.setItem('accessToken', userData.accessToken);
   if (userData.refreshToken) localStorage.setItem('refreshToken', userData.refreshToken);
   if (userData.user) localStorage.setItem('user', JSON.stringify(userData.user));
 
-  showNotification('Xác thực thành công! Đang chuyển hướng...', 'success');
+  showNotification('Xác thực thành công! Đang vào Dashboard...', 'success');
   
   const userRole = userData.user?.role;
   let redirectUrl = 'index.html'; 
 
-  if (userRole === 'admin') redirectUrl = 'dashboard-admin/indexAdmin.html';
-  else if (userRole === 'seller') redirectUrl = 'dashboard-seller/indexSeller.html';
-  else if (userRole === 'buyer' || userRole === 'user') redirectUrl = 'buyer-dashboard.html';
+  // Phân luồng User Access dựa vào Role
+  if (userRole === 'admin') {
+    redirectUrl = 'dashboard-admin/indexAdmin.html';
+  } else if (userRole === 'seller') {
+    redirectUrl = 'dashboard-seller/indexSeller.html';
+  } else {
+    // Mặc định cho buyer hoặc user
+    redirectUrl = 'dashboard-buyer/buyer-home/index.html';
+  }
   
-  setTimeout(() => { window.location.href = redirectUrl; }, 500);
+  setTimeout(() => { window.location.href = redirectUrl; }, 800);
 }
 
-// ── 2. Xử lý Đăng nhập thông thường ────────────────────────
 async function handleLoginSubmit(event) {
   event.preventDefault();
 
@@ -67,7 +71,6 @@ async function handleLoginSubmit(event) {
   try {
     loginBtn.disabled = true; loginBtn.textContent = 'Đang đăng nhập...';
 
-    // Dùng fetch thuần thay vì fetchAPI để bắt được payload mfaRequired khi HTTP Status = 403
     const response = await fetch(`${CONFIG.API_BASE_URL}/auth/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -80,19 +83,18 @@ async function handleLoginSubmit(event) {
     if (data.mfaRequired) {
       currentMfaToken = data.mfaToken || (data.data && data.data.mfaToken);
       
-      // Ẩn form đăng nhập thường, hiện form OTP
+      document.getElementById('form-inputs').style.display = 'none'; 
       loginBtn.style.display = 'none';
-      document.getElementById('google-signin-button').style.display = 'none';
-      document.querySelector('.switch-auth').style.display = 'none';
-      document.getElementById('mfaSection').style.display = 'block';
+      if(document.getElementById('google-signin-button')) document.getElementById('google-signin-button').style.display = 'none';
+      if(document.querySelector('.switch-auth')) document.querySelector('.switch-auth').style.display = 'none';
       
+      document.getElementById('mfaSection').style.display = 'block';
       showNotification('Vui lòng nhập mã bảo mật (OTP)', 'info');
       return;
     }
 
     if (!response.ok || !data.success) throw new Error(data.message || 'Sai Email hoặc Mật khẩu');
 
-    // Nếu không yêu cầu MFA, hoàn tất đăng nhập
     completeLoginFlow(data.data);
 
   } catch (error) {
@@ -128,7 +130,6 @@ async function handleVerifyMfa() {
   }
 }
 
-// ── Khởi tạo Form và Lắng nghe sự kiện ────────────────────
 function initializeLoginForm() {
   ensureAnimations();
   const loginForm = document.getElementById('loginForm');
@@ -140,13 +141,13 @@ function initializeLoginForm() {
   const cancelBtn = document.getElementById('cancelMfaBtn');
   if (cancelBtn) {
     cancelBtn.addEventListener('click', () => {
-      // Reset giao diện về lúc chưa đăng nhập
       document.getElementById('mfaSection').style.display = 'none';
+      document.getElementById('form-inputs').style.display = 'block';
       document.getElementById('loginBtn').style.display = 'block';
       document.getElementById('loginBtn').disabled = false;
       document.getElementById('loginBtn').textContent = 'Đăng nhập';
-      document.getElementById('google-signin-button').style.display = 'block';
-      document.querySelector('.switch-auth').style.display = 'block';
+      if(document.getElementById('google-signin-button')) document.getElementById('google-signin-button').style.display = 'block';
+      if(document.querySelector('.switch-auth')) document.querySelector('.switch-auth').style.display = 'block';
       document.getElementById('mfaCode').value = '';
       currentMfaToken = null;
     });
@@ -161,10 +162,10 @@ function initializeGoogleSignIn() {
     callback: handleGoogleSignIn
   });
 
-  google.accounts.id.renderButton(
-    document.getElementById('google-signin-button'),
-    { theme: 'outline', size: 'large' }
-  );
+  const btn = document.getElementById('google-signin-button');
+  if (btn) {
+    google.accounts.id.renderButton(btn, { theme: 'outline', size: 'large' });
+  }
 }
 
 async function handleGoogleSignIn(response) {
@@ -183,7 +184,7 @@ async function handleGoogleSignIn(response) {
 
     if (data.mfaRequired) {
       currentMfaToken = data.mfaToken || (data.data && data.data.mfaToken);
-      loginBtn.style.display = 'none';
+      if(loginBtn) loginBtn.style.display = 'none';
       document.getElementById('google-signin-button').style.display = 'none';
       document.querySelector('.switch-auth').style.display = 'none';
       document.getElementById('mfaSection').style.display = 'block';
@@ -202,7 +203,7 @@ async function handleGoogleSignIn(response) {
 }
 
 // ============================================================
-// Animation Script (Original) - GIỮ NGUYÊN 100%
+// Animation Script (Original)
 // ============================================================
 document.addEventListener('DOMContentLoaded', function(){
 	const target = document.getElementById('target');
@@ -213,7 +214,6 @@ document.addEventListener('DOMContentLoaded', function(){
 	let animating = false;
 
 	if(!target || !ball) {
-        // Nếu trang không có animation (đang test form thuần), vẫn phải gọi init auth
         initializeLoginForm();
         initializeGoogleSignIn();
         return;
@@ -289,10 +289,7 @@ document.addEventListener('DOMContentLoaded', function(){
 		requestAnimationFrame(step);
 	}
 
-	target.addEventListener('click', function(e){
-		fireBall();
-	});
-
+	target.addEventListener('click', function(e){ fireBall(); });
 	target.addEventListener('keydown', function(e){ if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); fireBall(); } });
 
 	setTimeout(()=>{
@@ -301,7 +298,6 @@ document.addEventListener('DOMContentLoaded', function(){
 		}
 	}, 360);
 
-	// Initialize form handlers
 	initializeLoginForm();
 	initializeGoogleSignIn();
 });

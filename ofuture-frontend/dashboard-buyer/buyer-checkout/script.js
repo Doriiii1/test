@@ -1,144 +1,207 @@
-let cart = JSON.parse(localStorage.getItem('checkoutCart')) || [];
-let currentOrderIds = [];
+// ============================================================
+// O'Future Checkout - E2E MO-MO & BANK QR INTEGRATION
+// ============================================================
+
+const currentUser = JSON.parse(localStorage.getItem('user')) || {};
+const CART_KEY = currentUser.id ? `cart_${currentUser.id}` : 'cart';
+
+let checkoutCart = JSON.parse(localStorage.getItem('checkoutCart')) || [];
+let totalPayAmount = 0;
 let currentPaymentId = null;
-let totalAmountToPay = 0;
 
-// Lấy orderIds từ URL
-const urlParams = new URLSearchParams(window.location.search);
-const ordersParam = urlParams.get('orders');
-if (ordersParam) {
-    currentOrderIds = ordersParam.split(',');
-}
-
-// ── UTILITIES ───────────────────────────────────────────────
+// ── 1. UTILITIES ──────────────────────────────────────────
 function showToast(message, type = 'success') {
-    const toast = document.getElementById('toast');
-    toast.textContent = message;
-    toast.className = `toast ${type} show`;
-    setTimeout(() => toast.classList.remove('show'), 3000);
+  const toast = document.getElementById('toast');
+  toast.textContent = message;
+  toast.className = `toast ${type} show`;
+  setTimeout(() => toast.classList.remove('show'), 3000);
 }
 
 function formatCurrency(amount) {
-    return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(amount);
+  return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(amount);
 }
 
-// ── LOAD USER DATA ──────────────────────────────────────────
-async function loadUserInfo() {
-    try {
-        const res = await fetchAPI('/auth/me');
-        document.getElementById('buyerName').value = res.data.fullName || 'Chưa cập nhật';
-        document.getElementById('buyerPhone').value = res.data.phone || 'Chưa cập nhật';
-        document.getElementById('buyerEmail').value = res.data.email || 'Chưa cập nhật';
-    } catch (e) {
-        console.warn("Không thể tải thông tin người dùng.");
-    }
-}
-
-// ── RENDER SUMMARY ──────────────────────────────────────────
-function renderSummary() {
-    const orderItemsList = document.getElementById('orderItemsList');
-    
-    if (cart.length === 0 || currentOrderIds.length === 0) {
-        orderItemsList.innerHTML = '<p class="muted">Không có dữ liệu đơn hàng để thanh toán.</p>';
-        document.getElementById('checkoutBtn').disabled = true;
-        return;
-    }
-
-    // Render danh sách sản phẩm (chỉ để xem lại)
-    orderItemsList.innerHTML = cart.map(item => `
-        <div class="checkout-item">
-            <img src="${item.img || 'https://picsum.photos/100/100'}" alt="product">
-            <div style="flex: 1;">
-                <h4 style="font-size: 15px; margin-bottom: 4px;">${item.name}</h4>
-                <div class="muted" style="font-size: 12px;">SL: ${item.quantity} | Cung cấp bởi: ${item.sellerName || 'Hệ thống'}</div>
-            </div>
-            <div style="font-weight: 700; color: var(--primary);">
-                ${formatCurrency(item.price * item.quantity)}
-            </div>
-        </div>
-    `).join('');
-
-    // Tính toán tiền
-    const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-    const platformFee = subtotal * 0.025; // 2.5% phí nền tảng
-    totalAmountToPay = subtotal + platformFee;
-
-    document.getElementById('subtotal').textContent = formatCurrency(subtotal);
-    document.getElementById('platformFee').textContent = formatCurrency(platformFee);
-    document.getElementById('totalAmount').textContent = formatCurrency(totalAmountToPay);
-}
-
-// ── PROCESS PAYMENT (GENERATE QR) ───────────────────────────
-async function processPayment() {
-    if (currentOrderIds.length === 0) return showToast("Lỗi: Không tìm thấy mã đơn hàng.", "error");
-
-    const btn = document.getElementById('checkoutBtn');
-    btn.disabled = true;
-    btn.textContent = "Đang kết nối cổng thanh toán...";
-
-    try {
-        // Dùng Order ID đầu tiên đại diện cho phiên thanh toán (theo logic cũ)
-        const orderId = currentOrderIds[0]; 
-        
-        // Gọi API tạo mã QR từ Backend
-        const response = await fetchAPI('/payments/qr', {
-            method: 'POST',
-            body: JSON.stringify({ orderId: orderId, amount: totalAmountToPay })
-        });
-
-        currentPaymentId = response.data.paymentId;
-        const qrImageBase64 = response.data.qrCodeImage || response.data.qrCode;
-
-        // Mở Modal và hiển thị QR
-        const qrContainer = document.getElementById('qrCodeContainer');
-        qrContainer.innerHTML = `<img src="${qrImageBase64}" alt="QR Code MoMo">`;
-        document.getElementById('qrModal').style.display = 'block';
-        document.getElementById('modalOverlay').style.display = 'block';
-
-    } catch (error) {
-        showToast(error.message || "Không thể tạo mã thanh toán", "error");
-    } finally {
-        btn.disabled = false;
-        btn.textContent = "Thanh toán Ký quỹ (Tạo QR)";
-    }
-}
-
-// ── CONFIRM PAYMENT ─────────────────────────────────────────
-async function confirmQRPayment() {
-    if (!currentPaymentId) return;
-
-    try {
-        // Gửi xác nhận cho backend xử lý cập nhật trạng thái đơn (Paid -> Escrow)
-        await fetchAPI(`/payments/qr/${currentPaymentId}/status`, {
-            method: 'PUT',
-            body: JSON.stringify({ success: true })
-        });
-
-        closeQRModal();
-        showToast('Thanh toán thành công! Hệ thống đã ghi nhận.');
-        
-        // Xóa giỏ hàng tạm sau khi thanh toán xong
-        localStorage.removeItem('checkoutCart');
-        localStorage.removeItem('currentOrderIds');
-        localStorage.removeItem('cart'); // Xóa luôn giỏ hàng chính
-
-        // Chuyển hướng sang trang theo dõi đơn hàng sau 1.5s
-        setTimeout(() => {
-            window.location.href = '../buyer-orders/index.html';
-        }, 1500);
-
-    } catch (error) {
-        showToast(error.message || 'Xác nhận thanh toán thất bại', 'error');
-    }
-}
-
-function closeQRModal() {
-    document.getElementById('qrModal').style.display = 'none';
-    document.getElementById('modalOverlay').style.display = 'none';
-}
-
-// ── INIT ────────────────────────────────────────────────────
+// ── 2. INITIALIZE UI ──────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
-    loadUserInfo();
-    renderSummary();
+  if (checkoutCart.length === 0) {
+    showToast('Không có sản phẩm nào để thanh toán', 'error');
+    setTimeout(() => window.location.href = '../buyer-cart/index.html', 1500);
+    return;
+  }
+
+  // Auto-fill thông tin người dùng
+  if(currentUser.fullName) document.getElementById('shipName').value = currentUser.fullName;
+  if(currentUser.phone) document.getElementById('shipPhone').value = currentUser.phone;
+
+  renderSummary();
 });
+
+function renderSummary() {
+  // Đã trỏ đúng vào ID orderSummaryList trong file HTML của bạn
+  const container = document.getElementById('orderSummaryList');
+
+  if (!container) {
+      console.warn("Không tìm thấy vùng chứa sản phẩm trên HTML");
+      return;
+  }
+
+  const subtotal = checkoutCart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+  const platformFee = subtotal * 0.025; // Phí 2.5% theo logic cũ
+  totalPayAmount = subtotal + platformFee;
+
+  container.innerHTML = checkoutCart.map(item => `
+    <div class="checkout-item" style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px dashed #eee;">
+      <span>${item.name} (x${item.quantity})</span>
+      <strong>${formatCurrency(item.price * item.quantity)}</strong>
+    </div>
+  `).join('');
+
+  document.getElementById('subtotal').textContent = formatCurrency(subtotal);
+  document.getElementById('platformFee').textContent = formatCurrency(platformFee);
+  document.getElementById('totalAmount').textContent = formatCurrency(totalPayAmount);
+}
+
+// ── 3. MAIN PAYMENT LOGIC ──────────────────────────────────
+document.getElementById('confirmCheckoutBtn').onclick = async function() {
+  const btn = this;
+  
+  const paymentMethodInput = document.querySelector('input[name="payMethod"]:checked');
+  if (!paymentMethodInput) {
+      return showToast('Vui lòng chọn phương thức thanh toán!', 'error');
+  }
+  const paymentMethod = paymentMethodInput.value;
+
+  const street = document.getElementById('shipStreet').value;
+  const city = document.getElementById('shipCity').value;
+  const country = document.getElementById('shipCountry').value;
+  const zip = document.getElementById('shipZip').value;
+
+  const shipData = {
+    name: document.getElementById('shipName').value,
+    phone: document.getElementById('shipPhone').value,
+    address: `${street}, ${city}, ${country}, ZIP: ${zip}`,
+    notes: document.getElementById('orderNotes') ? document.getElementById('orderNotes').value : ''
+  };
+
+  if (!shipData.name || !shipData.phone || !street || !city) {
+    return showToast('Vui lòng điền đầy đủ thông tin giao hàng', 'error');
+  }
+
+  try {
+    btn.disabled = true;
+    btn.textContent = "Đang xử lý...";
+
+    // ==========================================
+    // BƯỚC 1: TẠO ĐƠN HÀNG (SỬA LỖI 422 Ở ĐÂY)
+    // ==========================================
+    let firstOrderId = null;
+
+    // Lặp qua từng sản phẩm trong giỏ và gọi API chuẩn 1 Đơn = 1 Sản phẩm
+    for (const item of checkoutCart) {
+      const itemSubtotal = item.price * item.quantity;
+      const itemTotalAmount = itemSubtotal + (itemSubtotal * 0.025); // Giá + 2.5% phí
+
+      const payload = {
+        productId: item.id,
+        sellerId: item.sellerId || item.sellerUsername || null,
+        quantity: item.quantity,
+        unitPrice: item.price,
+        totalAmount: itemTotalAmount,
+        shippingAddress: shipData,
+        notes: shipData.notes
+      };
+
+      const res = await fetchAPI('/orders', {
+        method: 'POST',
+        body: JSON.stringify(payload)
+      });
+      
+      // Lấy Order ID của đơn hàng đầu tiên để gắn vào phiên thanh toán MoMo/QR
+      if (!firstOrderId) {
+        firstOrderId = res.data.id || res.data.orderId;
+      }
+    }
+
+    // ==========================================
+    // BƯỚC 2: GỌI THANH TOÁN MOMO HOẶC BANK QR
+    // ==========================================
+    if (paymentMethod === 'MOMO_QR') {
+      await handleMoMoPayment(firstOrderId, totalPayAmount);
+    } else {
+      await handleBankQRPayment(firstOrderId, totalPayAmount);
+    }
+
+  } catch (error) {
+    showToast(error.message || 'Lỗi xử lý đơn hàng: Validation Failed', 'error');
+    btn.disabled = false;
+    btn.textContent = "Xác nhận & Thanh Toán";
+  }
+};
+
+// ── 4. XỬ LÝ MOMO (REDIRECT E2E) ────────────────────────────
+async function handleMoMoPayment(orderId, amount) {
+  showToast('Đang kết nối cổng thanh toán MoMo...');
+  
+  try {
+    const response = await fetchAPI('/payments/momo/create', {
+      method: 'POST',
+      body: JSON.stringify({ orderId, amount })
+    });
+
+    // Chuyển hướng trình duyệt sang cổng thanh toán của MoMo
+    if (response.data && response.data.payUrl) {
+      window.location.href = response.data.payUrl;
+    } else {
+      throw new Error("Không nhận được link thanh toán từ MoMo");
+    }
+  } catch (error) {
+    throw error;
+  }
+}
+
+// ── 5. XỬ LÝ BANK QR (ESCROW) ───────────────────────────────
+async function handleBankQRPayment(orderId, amount) {
+  showToast('Đang tạo mã QR...');
+
+  try {
+    const response = await fetchAPI('/payments/qr/create', {
+      method: 'POST',
+      body: JSON.stringify({ orderId, amount })
+    });
+
+    currentPaymentId = response.data.paymentId;
+    const qrCodeData = response.data.qrCodeImage || response.data.qrCode;
+
+    // Bật Modal QR
+    const modal = document.getElementById('qrModal');
+    const qrImg = document.getElementById('qrCodeImg');
+    const title = document.getElementById('qrTitle');
+    
+    qrImg.src = qrCodeData;
+    title.textContent = "Quét mã thanh toán";
+    
+    document.getElementById('qrModalOverlay').style.display = 'block';
+    modal.style.display = 'block';
+
+    document.getElementById('finishPaymentBtn').onclick = async () => {
+      showToast('Đã ghi nhận! Vui lòng chờ hệ thống xác nhận tiền vào ví.', 'success');
+      
+      localStorage.removeItem('checkoutCart');
+      localStorage.setItem(CART_KEY, JSON.stringify([]));
+
+      setTimeout(() => {
+        window.location.href = '../buyer-orders/index.html';
+      }, 2000);
+    };
+
+  } catch (error) {
+    throw error;
+  }
+}
+
+window.closeQrModal = function() {
+  document.getElementById('qrModalOverlay').style.display = 'none';
+  document.getElementById('qrModal').style.display = 'none';
+  document.getElementById('confirmCheckoutBtn').disabled = false;
+  document.getElementById('confirmCheckoutBtn').textContent = "Xác nhận & Lấy Mã QR";
+};

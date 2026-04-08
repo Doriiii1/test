@@ -19,12 +19,13 @@
         <a href="../buyer-orders/index.html">Orders</a>
         <a href="../buyer-profile/index.html">Profile</a>
         <a href="../buyer-contact/index.html">Contact</a>
+        <a href="../buyer-reviews/index.html">Reviews</a>
       </nav>
     </aside>
 
     <main class="main">
       <div class="topbar">
-        <div class="search-box"><input type="text" placeholder="Tìm kiếm..."></div>
+        <div class="search-box"><input type="text" placeholder="Tìm sản phẩm trong giỏ..."></div>
         <div class="top-actions">
           <div class="icon-btn">🔔</div>
           <div class="avatar" id="userAvatar">N</div>
@@ -32,90 +33,114 @@
         </div>
       </div>
 
-      <div class="page-header">
-        <h1>Thanh toán & Ký quỹ</h1>
-        <p>Thanh toán an toàn qua hệ thống Escrow của O'Future. Tiền chỉ được chuyển khi bạn nhận đúng hàng.</p>
+      <div class="page-content">
+        <h1 class="page-title">Thanh toán Đơn hàng</h1>
+
+        <div class="checkout-layout">
+          <div class="checkout-left">
+            <div class="card mb-20">
+              <h2 class="card-title">1. Thông tin Giao hàng</h2>
+              <form id="shippingForm" class="form-grid">
+                <div class="form-group half-width">
+                  <label>Họ và tên người nhận *</label>
+                  <input type="text" id="shipName" class="form-control" required placeholder="VD: Nguyễn Văn A">
+                </div>
+                <div class="form-group half-width">
+                  <label>Số điện thoại *</label>
+                  <input type="tel" id="shipPhone" class="form-control" required placeholder="VD: 0912345678">
+                </div>
+                <div class="form-group full-width">
+                  <label>Địa chỉ cụ thể (Số nhà, Đường) *</label>
+                  <input type="text" id="shipStreet" class="form-control" required placeholder="VD: 123 Đường Lê Lợi, Phường Bến Thành">
+                </div>
+                <div class="form-group grid-3-col full-width">
+                  <div>
+                    <label>Tỉnh / Thành phố *</label>
+                    <input type="text" id="shipCity" class="form-control" required placeholder="Hồ Chí Minh">
+                  </div>
+                  <div>
+                    <label>Quốc gia *</label>
+                    <input type="text" id="shipCountry" class="form-control" value="Việt Nam" required>
+                  </div>
+                  <div>
+                    <label>Mã bưu chính (ZIP) *</label>
+                    <input type="text" id="shipZip" class="form-control" required placeholder="700000">
+                  </div>
+                </div>
+              </form>
+            </div>
+
+            <div class="card">
+              <h2 class="card-title">Tóm tắt sản phẩm</h2>
+              <div id="orderSummaryList" class="summary-list">
+                </div>
+            </div>
+          </div>
+
+          <div class="checkout-right">
+            <div class="card payment-card">
+              <h2 class="card-title">2. Phương thức Thanh toán</h2>
+              
+              <div class="payment-methods-split">
+                <div class="payment-box standard-pay">
+                  <div class="box-header">
+                    <h3>Thanh toán Trực tiếp</h3>
+                    <p class="muted">Chuyển thẳng tiền cho Nhà cung cấp. Khuyên dùng khi đã giao dịch nhiều lần.</p>
+                  </div>
+                  <div class="box-options">
+                    <label class="radio-label">
+                      <input type="radio" name="payMethod" value="MOMO_QR">
+                      <span class="radio-custom"></span> Quét mã MoMo
+                    </label>
+                    <label class="radio-label">
+                      <input type="radio" name="payMethod" value="BANK_QR">
+                      <span class="radio-custom"></span> Chuyển khoản Ngân hàng
+                    </label>
+                  </div>
+                </div>
+
+                <div class="payment-box escrow-pay">
+                  <div class="box-header">
+                    <div class="badge-safe">🛡️ An Toàn Nhất</div>
+                    <h3>Thanh toán Ký Quỹ (Escrow)</h3>
+                    <p class="muted">Hệ thống O'Future sẽ giữ tiền của bạn. Chỉ thanh toán cho Seller khi bạn <strong>xác nhận đã nhận hàng</strong>.</p>
+                  </div>
+                  <div class="box-options">
+                    <label class="radio-label">
+                      <input type="radio" name="payMethod" value="ESCROW_BANK" checked>
+                      <span class="radio-custom"></span> Ký quỹ qua Ngân hàng (QR)
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="checkout-total mt-20">
+                <div class="row"><span class="muted">Tạm tính:</span> <span id="subtotal">0đ</span></div>
+                <div class="row"><span class="muted">Phí nền tảng (2.5%):</span> <span id="platformFee">0đ</span></div>
+                <div class="row total"><span>Tổng thanh toán:</span> <span id="totalAmount" class="highlight">0đ</span></div>
+              </div>
+
+              <button id="confirmCheckoutBtn" class="btn btn-primary full-width mt-20" style="font-size: 16px; padding: 14px;">Xác nhận & Lấy Mã QR</button>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <button class="btn btn-outline" style="margin-bottom: 20px;" onclick="window.history.back()">← Quay lại Giỏ hàng</button>
-
-      <div class="grid grid-2">
-        <section>
-          <div class="card" style="margin-bottom: 24px;">
-            <h2 class="section-title">Thông tin giao hàng (Mặc định)</h2>
-            <div class="form-row">
-              <div class="form-group">
-                <label>Họ và tên người nhận</label>
-                <input type="text" id="buyerName" readonly style="background: #f1f5f9;">
-              </div>
-              <div class="form-group">
-                <label>Số điện thoại</label>
-                <input type="text" id="buyerPhone" readonly style="background: #f1f5f9;">
-              </div>
-            </div>
-            <div class="form-group">
-              <label>Địa chỉ Email</label>
-              <input type="email" id="buyerEmail" readonly style="background: #f1f5f9;">
-            </div>
-            <p class="muted" style="font-size: 13px; margin-top: 8px;">* Thông tin này được lấy từ hồ sơ cá nhân của bạn.</p>
-          </div>
-
-          <div class="card">
-            <h2 class="section-title">Sản phẩm đang thanh toán</h2>
-            <div id="orderItemsList">
-              <p class="muted">Đang tải dữ liệu sản phẩm...</p>
-            </div>
-          </div>
-        </section>
-
-        <aside class="card">
-          <h2 class="section-title">Chi tiết thanh toán</h2>
-          <div class="summary-box">
-            <div class="summary-item">
-              <span>Giá trị đơn hàng</span>
-              <strong id="subtotal">0đ</strong>
-            </div>
-            <div class="summary-item">
-              <span>Phí nền tảng (2.5%)</span>
-              <strong id="platformFee">0đ</strong>
-            </div>
-            <div class="summary-item total">
-              <span>Tổng thanh toán</span>
-              <strong id="totalAmount" style="color: var(--primary);">0đ</strong>
-            </div>
-          </div>
-
-          <p class="muted" style="margin-top:16px; font-size: 13px; line-height: 1.5;">
-            🔒 Bằng việc bấm nút thanh toán, bạn đồng ý chuyển tiền vào <strong>Ví Ký Quỹ O'Future</strong>. Chúng tôi sẽ giữ an toàn số tiền này cho đến khi bạn xác nhận nhận hàng thành công.
-          </p>
-
-          <button id="checkoutBtn" class="btn btn-primary" style="width:100%; margin-top:16px; padding: 14px; font-size: 16px;" onclick="processPayment()">
-            Thanh toán Ký quỹ (Tạo QR)
-          </button>
-        </aside>
+      <div id="qrModalOverlay" class="modal-overlay" style="display: none;"></div>
+      <div id="qrModal" class="modal-content card" style="display: none;">
+        <h2 id="qrTitle" style="text-align: center; color: var(--primary);">Quét mã thanh toán</h2>
+        <p id="qrDesc" style="text-align: center; color: #64748b; font-size: 14px; margin-bottom: 20px;">Vui lòng dùng App ngân hàng/MoMo để quét mã.</p>
+        <div id="qrImageContainer" style="text-align: center; margin-bottom: 20px;">
+          <img id="qrCodeImg" src="https://api.vietqr.io/image/970415-113366668888-jLzO02n.jpg?accountName=O FUTURE ESCROW&amount=0&addInfo=Thanh toan" alt="QR Code" style="width: 250px; border-radius: 12px; border: 1px solid #e2e8f0;">
+        </div>
+        <button id="finishPaymentBtn" class="btn btn-primary full-width">Tôi đã chuyển khoản xong</button>
+        <button class="btn btn-outline full-width mt-10" onclick="closeQrModal()">Hủy thanh toán</button>
       </div>
+
     </main>
   </div>
 
-  <div id="qrModal" class="modal">
-    <div class="modal-content" style="text-align: center;">
-      <h2 style="margin-bottom: 12px; font-size: 24px;">Thanh toán Đơn hàng</h2>
-      <p class="muted" style="margin-bottom: 20px;">Mở ứng dụng MoMo hoặc ứng dụng Ngân hàng để quét mã QR bên dưới.</p>
-      
-      <div id="qrCodeContainer" style="background: #f1f5f9; padding: 16px; border-radius: 16px; display: inline-block; margin-bottom: 24px;">
-        <div style="width: 250px; height: 250px; display: flex; align-items: center; justify-content: center; color: var(--muted);">Đang tạo mã QR...</div>
-      </div>
-
-      <div style="display: flex; gap: 12px;">
-        <button onclick="confirmQRPayment()" class="btn btn-primary" style="flex: 1; padding: 12px; font-size: 16px;">Tôi đã chuyển khoản</button>
-        <button onclick="closeQRModal()" class="btn btn-outline" style="flex: 1; padding: 12px; font-size: 16px;">Hủy giao dịch</button>
-      </div>
-    </div>
-  </div>
-
-  <div id="modalOverlay" class="modal-overlay"></div>
   <div id="toast" class="toast"></div>
-
   <script src="../shared/api.js"></script>
   <script src="../shared/chat-widget.js"></script><script src="script.js"></script>
 </body>

@@ -27,8 +27,8 @@ async function loadOrders() {
     const search = document.getElementById('orderSearch').value;
 
     try {
-        // Gọi API với query params trạng thái
-        const url = `/orders?status=${currentStatus === 'all' ? '' : currentStatus}&search=${search}`;
+        // [FIXED 403] Gọi API /orders/my dành cho Buyer thay vì /orders của Admin
+        const url = `/orders/my?status=${currentStatus === 'all' ? '' : currentStatus}&search=${search}`;
         const response = await fetchAPI(url);
         const orders = response.data;
 
@@ -39,17 +39,17 @@ async function loadOrders() {
 
         tbody.innerHTML = orders.map(order => `
             <tr>
-                <td><strong>#${order.id}</strong></td>
-                <td>${new Date(order.created_at).toLocaleDateString('vi-VN')}</td>
-                <td>${order.seller_name || 'Nhà cung cấp'}</td>
-                <td>${new Intl.NumberFormat('vi-VN').format(order.total_amount)}đ</td>
+                <td><strong>#${order.id.substring(0, 8)}</strong></td>
+                <td>${new Date(order.createdAt).toLocaleDateString('vi-VN')}</td>
+                <td>${order.sellerUsername || 'Nhà cung cấp'}</td>
+                <td>${new Intl.NumberFormat('vi-VN').format(order.totalAmount)}đ</td>
                 <td><span class="badge badge-${order.status}">${getStatusText(order.status)}</span></td>
                 <td>
                     <div style="display:flex; gap:8px;">
                         <a href="../buyer-order-detail/index.html?id=${order.id}" class="btn btn-outline" style="padding:6px 12px; font-size:13px;">Chi tiết</a>
                         ${order.status === 'shipped' ? `
-                            <button onclick="confirmDelivery(${order.id})" class="btn btn-primary" style="padding:6px 12px; font-size:13px;">Đã nhận hàng</button>
-                            <button onclick="openDisputeModal(${order.id})" class="btn btn-outline" style="padding:6px 12px; font-size:13px; color:var(--danger);">Khiếu nại</button>
+                            <button onclick="confirmDelivery('${order.id}')" class="btn btn-primary" style="padding:6px 12px; font-size:13px;">Đã nhận hàng</button>
+                            <button onclick="openDisputeModal('${order.id}')" class="btn btn-outline" style="padding:6px 12px; font-size:13px; color:var(--danger);">Khiếu nại</button>
                         ` : ''}
                     </div>
                 </td>

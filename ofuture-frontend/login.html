@@ -34,23 +34,34 @@
 		<section class="login-box" aria-label="Đăng nhập">
 			<div class="login-title">LOGIN</div>
 			<form id="loginForm">
-				<div class="input-group"><input type="email" id="email" name="email" placeholder="Email" autocomplete="email" required></div>
-				<div class="input-group"><input type="password" id="password" name="password" placeholder="Password" autocomplete="current-password" required></div>
-				<!-- CAPTCHA disabled temporarily -->
-				<button type="submit" id="loginBtn">Đăng nhập</button>
-
-				<div id="mfaSection" style="display: none; margin-top: 15px; border-top: 1px solid #e2e8f0; padding-top: 15px;">
-					<p style="font-size: 14px; margin-bottom: 10px; color: #ef4444; font-weight: bold; text-align: center;">Tài khoản yêu cầu xác minh 2 bước</p>
+				<div id="form-inputs">
 					<div class="input-group">
-						<input type="text" id="mfaCode" placeholder="Nhập mã OTP (6 số)" maxlength="6" autocomplete="off" style="text-align: center; letter-spacing: 2px; font-size: 18px; font-weight: bold;">
+						<input type="email" id="email" name="email" placeholder="Email" autocomplete="email" required>
 					</div>
-					<button type="button" id="verifyMfaBtn" style="background-color: #10b981; margin-bottom: 8px;">Xác nhận OTP</button>
-					<button type="button" id="cancelMfaBtn" style="background-color: #64748b;">Hủy / Quay lại</button>
+					<div class="input-group">
+						<input type="password" id="password" name="password" placeholder="Password" autocomplete="current-password" required>
+					</div>
 				</div>
 
-				<!-- Google Sign-In -->
-				<div id="google-signin-button" class="google-btn"></div>
-				<p class="switch-auth">Chua co tai khoan? <a href="register.html">Dang ky ngay</a></p>
+				<div id="mfaSection" style="display: none; text-align: center;">
+					<p style="margin-bottom: 15px; color: var(--muted); font-size: 14px;">
+						Nhập mã xác thực 6 số từ ứng dụng Authenticator của bạn.
+					</p>
+					<div class="input-group">
+						<input type="text" id="mfaCode" placeholder="000000" maxlength="6" 
+							style="text-align: center; font-size: 24px; letter-spacing: 8px;">
+					</div>
+					<div style="display: flex; gap: 10px; margin-top: 15px;">
+						<button type="button" id="verifyMfaBtn" class="login-btn" style="flex: 2;">Xác nhận OTP</button>
+						<button type="button" id="cancelMfaBtn" class="login-btn" style="flex: 1; background: #64748b;">Hủy</button>
+					</div>
+				</div>
+
+				<button type="submit" id="loginBtn" class="login-btn">Đăng nhập</button>
+
+				<div id="google-signin-button" class="google-btn" style="margin-top: 15px;"></div>
+				
+				<p class="switch-auth">Chưa có tài khoản? <a href="register.html">Đăng ký ngay</a></p>
 			</form>
 		</section>
 
@@ -74,7 +85,7 @@
 		
 		<!-- Google Sign-In script -->
 		<script src="https://accounts.google.com/gsi/client" async defer></script>
-		<script src="api.js"></script>
+		<script src="dashboard-buyer/shared/api.js"></script>
 	    <script src="login.js"></script>
 </body>
 </html>

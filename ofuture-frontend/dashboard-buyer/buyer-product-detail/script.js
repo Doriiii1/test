@@ -1,3 +1,6 @@
+const currentUser = JSON.parse(localStorage.getItem('user')) || {};
+const CART_KEY = currentUser.id ? `cart_${currentUser.id}` : 'cart';
+
 let currentProduct = null;
 
 // ── UTILITIES ───────────────────────────────────────────────
@@ -9,7 +12,7 @@ function showToast(message, type = 'success') {
 }
 
 function updateCartCount() {
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const cart = JSON.parse(localStorage.getItem(CART_KEY)) || [];
     const count = cart.reduce((sum, item) => sum + item.quantity, 0);
     document.getElementById('cartCount').textContent = count;
 }
@@ -116,14 +119,14 @@ document.getElementById('addToCartBtn')?.addEventListener('click', async functio
             });
 
             // 2. Fallback lưu LocalStorage để update UI icon giỏ hàng nhanh chóng
-            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cart = JSON.parse(localStorage.getItem(CART_KEY)) || [];
             const existIndex = cart.findIndex(i => i.id === currentProduct.id);
             if (existIndex >= 0) {
                 cart[existIndex].quantity += quantity;
             } else {
                 cart.push({ ...currentProduct, quantity });
             }
-            localStorage.setItem('cart', JSON.stringify(cart));
+            localStorage.setItem(CART_KEY, JSON.stringify(cart));
             updateCartCount();
 
             showToast("Đã thêm vào giỏ hàng thành công!");

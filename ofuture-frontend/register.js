@@ -1,5 +1,5 @@
 // ============================================================
-// O'Future Register Feature
+// O'Future Register Feature (Clean & Optimized)
 // ============================================================
 
 const appState = {
@@ -46,10 +46,6 @@ function validatePassword(pwd) {
   return results;
 }
 
-function isPasswordValid(pwd) {
-  return Object.values(validatePassword(pwd)).every((isValid) => isValid);
-}
-
 function updatePasswordRequirements() {
   const pwd = elements.password.value;
   const validation = validatePassword(pwd);
@@ -63,7 +59,7 @@ function updatePasswordRequirements() {
     }
   }
 
-  appState.isPasswordValid = isPasswordValid(pwd);
+  appState.isPasswordValid = Object.values(validation).every(Boolean);
   updateSubmitButton();
 }
 
@@ -78,7 +74,7 @@ function checkPasswordMatch() {
   }
 
   const isMatch = pwd === confirmPwd;
-  elements.confirmStatus.textContent = isMatch ? '✓ Passwords match' : '✗ Passwords do not match';
+  elements.confirmStatus.textContent = isMatch ? '✓ Mật khẩu khớp' : '✗ Mật khẩu không khớp';
   elements.confirmStatus.className = `password-match-status ${isMatch ? 'match' : 'mismatch'}`;
 
   return isMatch;
@@ -109,22 +105,10 @@ function showNotification(message, type = 'info') {
   setTimeout(() => {
     notification.style.animation = 'slideOut 0.3s ease-out';
     setTimeout(() => notification.remove(), 300);
-  }, 3500);
+  }, 4000);
 }
 
-function ensureAnimations() {
-  if (!document.getElementById('register-animations')) {
-    const style = document.createElement('style');
-    style.id = 'register-animations';
-    style.textContent = `
-      @keyframes slideIn { from { transform: translateX(400px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
-      @keyframes slideOut { from { transform: translateX(0); opacity: 1; } to { transform: translateX(400px); opacity: 0; } }
-    `;
-    document.head.appendChild(style);
-  }
-}
-
-// ── API Integration (Integration Phase) ────────────────────
+// ── API Integration ────────────────────────────────────────
 async function submitRegistration(event) {
   event.preventDefault();
 
@@ -133,33 +117,30 @@ async function submitRegistration(event) {
     return;
   }
 
-  // Khớp chính xác với payload mà authController.ts đang bóc tách
   const payload = {
     fullName: elements.fullName.value.trim(), 
     email: elements.email.value.trim(),
     username: elements.username.value.trim(),
     phone: elements.phone.value.trim() || undefined,
     password: elements.password.value,
-    role: elements.role.value,
+    role: elements.role ? elements.role.value : 'buyer', 
   };
 
   try {
     elements.submitBtn.disabled = true;
     elements.submitBtn.textContent = 'Đang xử lý...';
 
-    // Gọi API thông qua wrapper chung api.js
     const response = await fetchAPI('/auth/register', {
       method: 'POST',
       body: JSON.stringify(payload),
     });
 
     if (response.success) {
-      showNotification('Đăng ký thành công! Vui lòng kiểm tra Email để lấy mã OTP.', 'success');
+      showNotification('Đăng ký thành công! Vui lòng kiểm tra Email (có hiệu lực 5 phút) để lấy mã xác thực OTP.', 'success');
       
-      // Chuyển hướng về trang đăng nhập sau 2.5 giây để User kịp đọc thông báo
       setTimeout(() => {
         window.location.href = 'login.html';
-      }, 2500);
+      }, 3500);
     }
   } catch (error) {
     console.error('Lỗi đăng ký:', error);
@@ -172,11 +153,10 @@ async function submitRegistration(event) {
 
 // ── Initialization ────────────────────────────────────────
 function initializeRegisterForm() {
-  ensureAnimations();
-  
   elements.password.addEventListener('input', updatePasswordRequirements);
   elements.password.addEventListener('change', updatePasswordRequirements);
   elements.confirmPassword.addEventListener('input', () => { checkPasswordMatch(); updateSubmitButton(); });
+  
   elements.fullName.addEventListener('input', updateSubmitButton);
   elements.email.addEventListener('input', updateSubmitButton);
   elements.username.addEventListener('input', updateSubmitButton);

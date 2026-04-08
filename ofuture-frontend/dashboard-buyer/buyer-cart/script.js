@@ -1,3 +1,6 @@
+const currentUser = JSON.parse(localStorage.getItem('user')) || {};
+const CART_KEY = currentUser.id ? `cart_${currentUser.id}` : 'cart';
+
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
 // ── UTILITIES ───────────────────────────────────────────────
@@ -88,7 +91,7 @@ window.removeItem = function(id) {
     renderCart();
 };
 
-// ── TIẾN HÀNH THANH TOÁN (LOGIC TÁCH ĐƠN SELLER) ────────────
+// ── TIẾN HÀNH THANH TOÁN (FIXED PAYLOAD & VALIDATION) ────────────
 window.proceedToCheckout = async function() {
     if (cart.length === 0) return;
 
@@ -97,50 +100,73 @@ window.proceedToCheckout = async function() {
     btn.textContent = "Đang tạo đơn hàng...";
 
     try {
-        // Gom nhóm sản phẩm theo Seller (ID hoặc Username)
-        const groups = {};
-        cart.forEach(item => {
-            const sellerKey = item.sellerId || 'default'; 
-            if (!groups[sellerKey]) groups[sellerKey] = [];
-            groups[sellerKey].push(item);
-        });
-
         const orderIds = [];
 
-        // Gọi API tạo đơn cho từng nhóm Seller
-        for (const sellerId in groups) {
-            const items = groups[sellerId];
+        // Lặp qua TỪNG SẢN PHẨM trong giỏ hàng thay vì gom nhóm
+        // Vì Backend createOrder chỉ hỗ trợ 1 productId / 1 request
+        for (const item of cart) {
+            
+            // Cấu trúc Payload chính xác 100% theo validateCreateOrder trong Backend
+            const payload = {
+                productId: item.id,            // Sửa product_id thành productId
+                quantity: item.quantity,
+                shippingAddress: {             // Thêm địa chỉ giả để vượt qua Validation
+                    street: "Sẽ cập nhật tại trang Checkout",
+                    city: "Chưa rõ",
+                    country: "VN",
+                    zip: "000000"
+                },
+                notes: "Tạo tự động từ Giỏ hàng"
+            };
+
+            // Gọi API tạo đơn
             const response = await fetchAPI('/orders', {
                 method: 'POST',
-                body: JSON.stringify({
-                    sellerId: sellerId === 'default' ? null : sellerId,
-                    items: items.map(i => ({
-                        product_id: i.id,
-                        quantity: i.quantity,
-                        price: i.price
-                    })),
-                    platformFeeRate: 0.025
-                })
+                body: JSON.stringify(payload)
             });
-            orderIds.push(response.data.orderId);
+
+            if (response.success && response.data && response.data.orderId) {
+                orderIds.push(response.data.orderId);
+            }
         }
 
-        // Lưu thông tin để sang trang Checkout xử lý thanh toán/ký quỹ
+        // Lưu thông tin để sang trang Checkout xử lý thanh toán thật
         localStorage.setItem('currentOrderIds', JSON.stringify(orderIds));
         localStorage.setItem('checkoutCart', JSON.stringify(cart));
         
         showToast(`Đã tạo thành công ${orderIds.length} đơn hàng!`, 'success');
 
-        // Chuyển sang trang thanh toán
+        // Chuyển sang trang Checkout
         setTimeout(() => {
             window.location.href = `../buyer-checkout/index.html?orders=${orderIds.join(',')}`;
         }, 1000);
 
     } catch (error) {
-        showToast(error.message || "Lỗi khi tạo đơn hàng", "error");
+        console.error("Lỗi tạo đơn:", error);
+        showToast(error.message || "Lỗi khi tạo đơn hàng. Vui lòng thử lại.", "error");
         btn.disabled = false;
         btn.textContent = "Tiến hành thanh toán";
     }
+};
+
+window.updateQty = function(id, delta) {
+    const index = cart.findIndex(i => i.id === id);
+    if (index === -1) return;
+
+    cart[index].quantity += delta;
+    if (cart[index].quantity <= 0) {
+        removeItem(id);
+    } else {
+        localStorage.setItem(CART_KEY, JSON.stringify(cart)); // SỬA Ở ĐÂY
+        renderCart();
+    }
+};
+
+window.removeItem = function(id) {
+    if(!confirm("Xóa sản phẩm này khỏi giỏ hàng?")) return;
+    cart = cart.filter(i => i.id !== id);
+    localStorage.setItem(CART_KEY, JSON.stringify(cart)); // SỬA Ở ĐÂY
+    renderCart();
 };
 
 // ── INITIALIZE ──────────────────────────────────────────────

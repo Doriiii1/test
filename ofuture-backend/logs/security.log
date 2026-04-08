@@ -1,0 +1,55 @@
+2026-04-07 10:19:57 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-07 10:19:57 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-07 10:19:57 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-07 10:19:57 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-07 10:19:57 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-07 10:19:57 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-07 10:19:57 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-07 10:19:57 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-07 10:19:57 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-07 10:20:54 [warn]: RBAC denied: userId=1411bd0c-2ef9-11f1-87ff-9c2dcd0692eb role="buyer" attempted action requiring [admin]
+2026-04-07 10:21:13 [warn]: RBAC denied: userId=1411bd0c-2ef9-11f1-87ff-9c2dcd0692eb role="buyer" attempted action requiring [admin]
+2026-04-07 10:21:19 [warn]: RBAC denied: userId=1411bd0c-2ef9-11f1-87ff-9c2dcd0692eb role="buyer" attempted action requiring [admin]
+2026-04-07 10:21:25 [warn]: RBAC denied: userId=1411bd0c-2ef9-11f1-87ff-9c2dcd0692eb role="buyer" attempted action requiring [admin]
+2026-04-07 10:46:56 [warn]: RBAC denied: userId=1411bd0c-2ef9-11f1-87ff-9c2dcd0692eb role="buyer" attempted action requiring [admin]
+2026-04-07 10:47:02 [warn]: RBAC denied: userId=1411bd0c-2ef9-11f1-87ff-9c2dcd0692eb role="buyer" attempted action requiring [admin]
+2026-04-07 10:47:04 [warn]: RBAC denied: userId=1411bd0c-2ef9-11f1-87ff-9c2dcd0692eb role="buyer" attempted action requiring [admin]
+2026-04-07 10:52:03 [warn]: RBAC denied: userId=1411bd0c-2ef9-11f1-87ff-9c2dcd0692eb role="buyer" attempted action requiring [admin]
+2026-04-07 10:52:13 [warn]: RBAC denied: userId=1411bd0c-2ef9-11f1-87ff-9c2dcd0692eb role="buyer" attempted action requiring [admin]
+2026-04-07 10:53:43 [warn]: RBAC denied: userId=1411bd0c-2ef9-11f1-87ff-9c2dcd0692eb role="buyer" attempted action requiring [admin]
+2026-04-07 10:53:53 [warn]: Rate limit exceeded: IP=::1 PATH=/api/orders
+2026-04-07 10:53:54 [warn]: Rate limit exceeded: IP=::1 PATH=/api/reviews/my
+2026-04-07 10:54:10 [warn]: Rate limit exceeded: IP=::1 PATH=/api/orders
+2026-04-07 10:54:11 [warn]: Rate limit exceeded: IP=::1 PATH=/api/auth/me
+2026-04-07 10:54:18 [warn]: Rate limit exceeded: IP=::1 PATH=/api/reviews/my
+2026-04-07 10:54:23 [warn]: Rate limit exceeded: IP=::1 PATH=/api/auth/me
+2026-04-07 10:54:26 [warn]: Rate limit exceeded: IP=::1 PATH=/api/orders
+
+2026-04-07 18:00:55 [warn]: [redisClient] ioredis error — falling back to in-memory client. Error:
+2026-04-07 18:01:13 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-07 18:01:13 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-07 18:01:13 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-07 18:01:13 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-07 18:01:13 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-07 18:01:13 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-07 18:01:13 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-07 18:01:13 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-07 18:01:13 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-07 18:29:29 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-07 18:29:29 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-07 18:29:29 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-07 18:29:29 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-07 18:29:29 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-07 18:29:29 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-07 18:29:29 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-07 18:29:29 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-07 18:29:29 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-07 19:56:12 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-07 19:56:12 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-07 19:56:12 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-07 19:56:12 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-07 19:56:12 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-07 19:56:12 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-07 19:56:12 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-07 19:56:12 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-07 19:56:12 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:

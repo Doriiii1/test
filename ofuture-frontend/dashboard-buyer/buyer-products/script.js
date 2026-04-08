@@ -1,5 +1,8 @@
+const currentUser = JSON.parse(localStorage.getItem('user')) || {};
+const CART_KEY = currentUser.id ? `cart_${currentUser.id}` : 'cart';
+
 let products = [];
-let cart = JSON.parse(localStorage.getItem('cart')) || [];
+let cart = JSON.parse(localStorage.getItem(CART_KEY)) || [];
 let selectedProduct = null;
 let modalQuantity = 1;
 
@@ -127,7 +130,7 @@ function addToCartLogic(product, quantity) {
     } else {
         cart.push({ ...product, quantity });
     }
-    localStorage.setItem('cart', JSON.stringify(cart));
+    localStorage.setItem(CART_KEY, JSON.stringify(cart));
     updateCartCount();
 }
 
