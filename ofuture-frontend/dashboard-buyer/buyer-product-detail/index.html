@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>O'Future - Chi tiết sản phẩm</title>
+  <title>Chi tiết sản phẩm | O'Future</title>
   <link rel="stylesheet" href="../shared/buyer.css">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -13,100 +13,93 @@
       <div class="brand">O'<span>Future</span></div>
       <nav class="nav">
         <a href="../buyer-home/index.html">Dashboard</a>
-        <a class="active" href="../buyer-products/index.html">Products</a>
-        <a href="../buyer-cart/index.html">Cart</a>
-        <a href="../buyer-checkout/index.html">Checkout</a>
-        <a href="../buyer-orders/index.html">Orders</a>
-        <a href="../buyer-profile/index.html">Profile</a>
-        <a href="../buyer-contact/index.html">Contact</a>
-        <a href="../buyer-reviews/index.html">Reviews</a>
+        <a class="active" href="../buyer-products/index.html">Sản phẩm</a>
+        <a href="../buyer-cart/index.html">Giỏ hàng</a>
+        <a href="../buyer-checkout/index.html">Thanh toán</a>
+        <a href="../buyer-orders/index.html">Đơn hàng</a>
+        <a href="../buyer-profile/index.html">Tài khoản</a>
       </nav>
     </aside>
 
     <main class="main">
       <div class="topbar">
-        <div class="search-box">
-          <input type="text" placeholder="Tìm sản phẩm...">
-        </div>
+        <button class="btn btn-outline" onclick="window.history.back()" style="padding: 6px 12px; font-size: 14px;">← Quay lại</button>
         <div class="top-actions">
-          <div class="icon-btn" style="position: relative; cursor: pointer;" onclick="window.location.href='../buyer-cart/index.html'">
-            🛒<span class="cart-count" id="cartCount">0</span>
-          </div>
-          <div class="icon-btn">🔔</div>
-          <div class="avatar">N</div>
-          <button id="logoutBtn" class="btn btn-outline" style="padding: 8px 14px; font-size: 14px;">Đăng xuất</button>
+          <a href="../buyer-cart/index.html" class="cart-icon-wrapper" style="text-decoration: none; position: relative; margin-right: 15px; font-size: 24px;">
+            🛒 <span id="cartBadge" style="position: absolute; top: -8px; right: -12px; background: #ef4444; color: white; border-radius: 50%; padding: 2px 6px; font-size: 12px; font-weight: bold;">0</span>
+          </a>
+          <div class="avatar" id="userAvatar">U</div>
         </div>
       </div>
 
-      <button class="btn btn-outline" style="margin-bottom: 20px;" onclick="window.history.back()">← Quay lại</button>
-
-      <div class="grid grid-2">
-        <section class="card" id="productContent">
-          <img id="productImage" src="" alt="Ảnh sản phẩm" style="border-radius: 18px; margin-bottom: 18px; width: 100%; height: 400px; object-fit: cover; background: #f1f5f9;">
+      <div class="product-container card" id="productContainer" style="display: none;">
+        <div class="product-gallery">
+          <img id="mainImage" src="../../images/image.png" alt="Ảnh sản phẩm">
+        </div>
+        <div class="product-info">
+          <div class="seller-badge" id="sellerName">Cung cấp bởi: <span>...</span></div>
+          <h1 id="productName" class="product-title">Đang tải sản phẩm...</h1>
+          <div class="price-box">
+            <span id="productPrice" class="price">0 đ</span>
+          </div>
           
-          <h1 id="productName">Đang tải...</h1>
-          <p class="muted" style="margin: 8px 0 14px;">Nhà cung cấp: <span id="productSeller">...</span></p>
-          <div class="price" id="productPrice" style="font-size: 28px; color: var(--primary);">0đ</div>
-          
-          <p id="productDesc" style="margin: 16px 0; line-height: 1.6;">
-            Đang tải mô tả sản phẩm...
-          </p>
-
-          <div class="card" style="padding:16px; margin-top:16px; background: #f8fafc;">
-            <h3 style="margin-bottom:10px;">Chính sách sỉ</h3>
-            <p>Số lượng tối thiểu (MOQ): <strong id="productMoq">1</strong> sản phẩm</p>
-          </div>
-        </section>
-
-        <aside class="card">
-          <h2 class="section-title">Thông tin mua hàng</h2>
-
-          <div class="form-group">
-            <label>Số lượng</label>
-            <input type="number" id="cartQuantity" value="1" min="1">
-            <small class="muted" id="moqWarning" style="color: var(--danger); display: none; margin-top: 4px;">Số lượng chưa đạt MOQ!</small>
+          <div class="stock-info">
+            <p>Kho hàng: <strong id="productStock">0</strong> sản phẩm</p>
+            <p>Danh mục: <strong id="productCategory">...</strong></p>
           </div>
 
-          <div class="form-group">
-            <label>Yêu cầu mẫu thử</label>
-            <select id="sampleSelect">
-              <option value="NO">Không</option>
-              <option value="YES">Có (Nhận hàng mẫu trước)</option>
-            </select>
+          <div class="description">
+            <h3>Mô tả sản phẩm</h3>
+            <p id="productDesc">...</p>
           </div>
 
-          <div id="sampleForm" style="display: none; background: #f1f5f9; padding: 12px; border-radius: 12px; margin-bottom: 16px;">
-            <div class="form-group" style="margin-bottom: 10px;">
-              <label style="font-size: 14px;">Tiền cọc đề xuất (VNĐ)</label>
-              <input type="number" id="sampleDeposit" placeholder="VD: 50000" min="0">
+          <div class="actions-box">
+            <div class="qty-selector">
+              <button onclick="changeQty(-1)">-</button>
+              <input type="number" id="qtyInput" value="1" min="1">
+              <button onclick="changeQty(1)">+</button>
+            </div>
+            <div class="btn-group">
+              <button id="addCartBtn" class="btn btn-primary" onclick="handleAddToCart()">Thêm vào giỏ hàng</button>
+              <button id="requestSampleBtn" class="btn btn-outline" onclick="openSampleModal()">Xin hàng mẫu</button>
             </div>
           </div>
-
-          <div class="form-group">
-            <label>Ghi chú cho nhà cung cấp</label>
-            <textarea id="orderNotes" rows="4" placeholder="Ví dụ: cần giao trong 3 ngày, ưu tiên hàng mới..."></textarea>
-          </div>
-
-          <button id="addToCartBtn" class="btn btn-primary" style="width:100%; margin-bottom:10px; font-size: 16px; padding: 14px;">Thêm vào giỏ hàng</button>
-          
-          <div class="summary-box" style="margin-top:18px;">
-            <div class="summary-item">
-              <span>Ký quỹ hệ thống</span>
-              <strong>An toàn 100%</strong>
-            </div>
-            <div class="summary-item">
-              <span>Giao hàng</span>
-              <strong>2 - 5 ngày</strong>
-            </div>
-          </div>
-        </aside>
+        </div>
       </div>
+      
+      <div id="loadingIndicator" style="text-align: center; padding: 50px;">
+        <p class="muted">Đang tải thông tin sản phẩm...</p>
+      </div>
+
     </main>
   </div>
 
-  <div id="toast" class="toast"></div>
+  <div id="sampleModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Yêu cầu nhận hàng mẫu</h3>
+        <span class="close" onclick="closeSampleModal()">&times;</span>
+      </div>
+      <div class="modal-body">
+        <p class="muted" style="margin-bottom: 15px; font-size: 14px;">Thỏa thuận tiền cọc (Deposit) với người bán để nhận sản phẩm dùng thử. Tiền sẽ được hoàn lại hoặc cấn trừ vào đơn hàng lớn sau này.</p>
+        <div class="form-group">
+          <label>Đề xuất tiền cọc (VNĐ)</label>
+          <input type="number" id="sampleDeposit" class="form-control" placeholder="VD: 50000" min="0">
+        </div>
+        <div class="form-group" style="margin-top: 15px;">
+          <label>Ghi chú cho người bán</label>
+          <textarea id="sampleNotes" class="form-control" rows="3" placeholder="Ví dụ: Tôi muốn xin mẫu thử size M màu xanh..."></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" onclick="closeSampleModal()">Hủy</button>
+        <button class="btn btn-primary" id="submitSampleBtn" onclick="submitSampleRequest()">Gửi yêu cầu</button>
+      </div>
+    </div>
+  </div>
 
+  <div id="toast-container"></div>
   <script src="../shared/api.js"></script>
-  <script src="../shared/chat-widget.js"></script><script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>

@@ -1,173 +1,148 @@
-const currentUser = JSON.parse(localStorage.getItem('user')) || {};
-const CART_KEY = currentUser.id ? `cart_${currentUser.id}` : 'cart';
+// ============================================================
+// O'Future Buyer - Smart Cart Engine
+// Tính toán Offline & Điều hướng Checkout
+// ============================================================
 
-let cart = JSON.parse(localStorage.getItem('cart')) || [];
+let currentUser = null;
+let CART_KEY = 'cart';
+let cartItems = [];
 
-// ── UTILITIES ───────────────────────────────────────────────
-function showToast(message, type = 'success') {
-    const toast = document.getElementById('toast');
+// ── 1. Auth Guard & Khởi tạo ──────────────────────────────
+function checkAuth() {
+    const token = localStorage.getItem('accessToken');
+    const userStr = localStorage.getItem('user');
+    if (!token || !userStr) { window.location.href = '../../login.html'; return false; }
+
+    currentUser = JSON.parse(userStr);
+    if (currentUser.role !== 'buyer') { window.location.href = '../../login.html'; return false; }
+
+    CART_KEY = `cart_${currentUser.id}`;
+    document.getElementById('userAvatar').textContent = currentUser.fullName.charAt(0).toUpperCase();
+    return true;
+}
+
+function showToast(message, isError = false) {
+    const toast = document.createElement('div');
     toast.textContent = message;
-    toast.className = `toast ${type} show`;
-    setTimeout(() => toast.classList.remove('show'), 3000);
+    toast.style.cssText = `position:fixed; bottom:20px; right:20px; background:${isError ? '#ef4444' : '#10b981'}; color:white; padding:12px 24px; border-radius:8px; z-index:9999; font-weight: 500; box-shadow: 0 4px 12px rgba(0,0,0,0.1);`;
+    document.body.appendChild(toast);
+    setTimeout(() => toast.remove(), 2500);
 }
 
-function formatCurrency(amount) {
-    return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(amount);
-}
-
-// ── RENDER CART ─────────────────────────────────────────────
-function renderCart() {
-    const cartList = document.getElementById('cartList');
-    const checkoutBtn = document.getElementById('checkoutBtn');
-
-    if (cart.length === 0) {
-        cartList.innerHTML = `
-            <div class="empty-state">
-                <p class="muted">Giỏ hàng của bạn đang trống.</p>
-                <a href="../buyer-products/index.html" class="btn btn-primary" style="margin-top:15px;">Đi mua sắm ngay</a>
+// ── 2. Render Dữ liệu Giỏ hàng ────────────────────────────
+function loadCart() {
+    cartItems = JSON.parse(localStorage.getItem(CART_KEY)) || [];
+    const container = document.getElementById('cartList');
+    
+    if (cartItems.length === 0) {
+        container.innerHTML = `
+            <div class="empty-cart">
+                <h3 style="font-size: 20px;">Giỏ hàng của bạn đang trống</h3>
+                <p>Hãy khám phá hàng ngàn sản phẩm sỉ với giá tốt nhất.</p>
+                <a href="../buyer-products/index.html" class="btn btn-primary" style="display:inline-block; padding: 10px 24px;">Mua sắm ngay</a>
             </div>
         `;
-        if(checkoutBtn) checkoutBtn.disabled = true;
+        document.getElementById('checkoutBtn').disabled = true;
         updateSummary();
+        updateCartBadge();
         return;
     }
 
-    if(checkoutBtn) checkoutBtn.disabled = false;
-
-    cartList.innerHTML = cart.map(item => `
-        <div class="cart-item">
-          <div style="display: flex; gap: 20px; align-items: center;">
-            <img src="${item.img || 'https://picsum.photos/100/100'}" alt="${item.name}" style="width: 80px; height: 80px; object-fit: cover; border-radius: 12px;">
-            <div style="flex: 1;">
-              <h3 style="font-size: 16px; margin-bottom: 4px;">${item.name}</h3>
-              <p class="muted" style="font-size: 13px;">Nhà cung cấp: ${item.sellerName || 'Hệ thống'}</p>
-              <div style="margin-top: 8px; font-weight: 700; color: var(--primary);">${formatCurrency(item.price)}</div>
+    document.getElementById('checkoutBtn').disabled = false;
+    
+    container.innerHTML = cartItems.map((item, index) => {
+        const priceStr = parseInt(item.price).toLocaleString('vi-VN');
+        return `
+            <div class="cart-item">
+                <img src="${item.image || '../../images/image.png'}" alt="${item.name}" class="item-img">
+                <div class="item-info">
+                    <h3>${item.name}</h3>
+                    <div class="seller-name">Cung cấp bởi: ID Shop ${item.sellerId || 'Ẩn danh'}</div>
+                    <div class="price">${priceStr} đ</div>
+                    <div style="font-size: 13px; color: #64748b; margin-top: 4px;">Tồn kho: ${item.stock}</div>
+                </div>
+                <div class="item-controls">
+                    <div class="qty-control">
+                        <button onclick="changeQty('${item.id}', -1)">-</button>
+                        <input type="number" value="${item.quantity}" readonly>
+                        <button onclick="changeQty('${item.id}', 1)">+</button>
+                    </div>
+                    <button class="btn-delete" onclick="removeItem('${item.id}')">Xóa sản phẩm</button>
+                </div>
             </div>
-            <div style="display: flex; align-items: center; gap: 10px;">
-              <button class="btn btn-outline" style="padding: 5px 10px;" onclick="updateQty('${item.id}', -1)">-</button>
-              <input type="text" class="qty-input" value="${item.quantity}" readonly>
-              <button class="btn btn-outline" style="padding: 5px 10px;" onclick="updateQty('${item.id}', 1)">+</button>
-            </div>
-            <div style="width: 120px; text-align: right; font-weight: 800;">
-                ${formatCurrency(item.price * item.quantity)}
-            </div>
-            <button class="btn btn-outline" style="color: var(--danger); border: none;" onclick="removeItem('${item.id}')">✕</button>
-          </div>
-        </div>
-    `).join('');
+        `;
+    }).join('');
 
     updateSummary();
+    updateCartBadge();
 }
 
-// ── CẬP NHẬT SỐ TIỀN ────────────────────────────────────────
+// ── 3. Các hàm tương tác Giỏ hàng ─────────────────────────
+window.changeQty = function(id, delta) {
+    const item = cartItems.find(i => i.id === id);
+    if (!item) return;
+
+    let newQty = item.quantity + delta;
+    
+    if (newQty < 1) newQty = 1;
+    if (newQty > item.stock) {
+        showToast(`Bạn chỉ có thể mua tối đa ${item.stock} sản phẩm này!`, true);
+        newQty = item.stock;
+    }
+
+    item.quantity = newQty;
+    localStorage.setItem(CART_KEY, JSON.stringify(cartItems));
+    loadCart(); // Render lại
+}
+
+window.removeItem = function(id) {
+    if(!confirm("Bạn có chắc chắn muốn xóa sản phẩm này khỏi giỏ?")) return;
+    cartItems = cartItems.filter(i => i.id !== id);
+    localStorage.setItem(CART_KEY, JSON.stringify(cartItems));
+    loadCart();
+    showToast("Đã xóa sản phẩm khỏi giỏ.");
+}
+
+function updateCartBadge() {
+    const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+    const badge = document.getElementById('cartBadge');
+    if (badge) {
+        badge.textContent = totalItems;
+        badge.style.display = totalItems > 0 ? 'inline-block' : 'none';
+    }
+}
+
+// ── 4. Thuật toán tính toán (Pricing Engine) ──────────────
 function updateSummary() {
-    const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-    const platformFee = subtotal * 0.025; // 2.5% phí nền tảng theo logic cũ
+    // 1. Tính tổng tiền hàng (Subtotal)
+    const subtotal = cartItems.reduce((sum, item) => sum + (parseFloat(item.price) * item.quantity), 0);
+    
+    // 2. Tính phí nền tảng 2.5%
+    const platformFee = subtotal * 0.025;
+    
+    // 3. Tính tổng thanh toán
     const total = subtotal + platformFee;
 
-    document.getElementById('subtotal').textContent = formatCurrency(subtotal);
-    document.getElementById('platformFee').textContent = formatCurrency(platformFee);
-    document.getElementById('totalAmount').textContent = formatCurrency(total);
+    // Cập nhật lên UI
+    document.getElementById('subtotalPrice').textContent = subtotal.toLocaleString('vi-VN') + ' đ';
+    document.getElementById('platformFee').textContent = platformFee.toLocaleString('vi-VN') + ' đ';
+    document.getElementById('totalPrice').textContent = total.toLocaleString('vi-VN') + ' đ';
 }
 
-// ── THAY ĐỔI SỐ LƯỢNG ───────────────────────────────────────
-window.updateQty = function(id, delta) {
-    const index = cart.findIndex(i => i.id === id);
-    if (index === -1) return;
-
-    cart[index].quantity += delta;
-    if (cart[index].quantity <= 0) {
-        removeItem(id);
-    } else {
-        localStorage.setItem('cart', JSON.stringify(cart));
-        renderCart();
+// ── 5. Điều hướng Thanh toán (Checkout) ───────────────────
+window.proceedToCheckout = function() {
+    if (cartItems.length === 0) {
+        showToast("Giỏ hàng của bạn đang trống!", true);
+        return;
     }
-};
+    // CHUẨN LUỒNG MỚI: Chỉ đơn giản là chuyển sang trang Checkout
+    // Việc gọi API tạo đơn và kết nối MoMo sẽ thực hiện ở trang Checkout
+    window.location.href = '../buyer-checkout/index.html';
+}
 
-window.removeItem = function(id) {
-    if(!confirm("Xóa sản phẩm này khỏi giỏ hàng?")) return;
-    cart = cart.filter(i => i.id !== id);
-    localStorage.setItem('cart', JSON.stringify(cart));
-    renderCart();
-};
-
-// ── TIẾN HÀNH THANH TOÁN (FIXED PAYLOAD & VALIDATION) ────────────
-window.proceedToCheckout = async function() {
-    if (cart.length === 0) return;
-
-    const btn = document.getElementById('checkoutBtn');
-    btn.disabled = true;
-    btn.textContent = "Đang tạo đơn hàng...";
-
-    try {
-        const orderIds = [];
-
-        // Lặp qua TỪNG SẢN PHẨM trong giỏ hàng thay vì gom nhóm
-        // Vì Backend createOrder chỉ hỗ trợ 1 productId / 1 request
-        for (const item of cart) {
-            
-            // Cấu trúc Payload chính xác 100% theo validateCreateOrder trong Backend
-            const payload = {
-                productId: item.id,            // Sửa product_id thành productId
-                quantity: item.quantity,
-                shippingAddress: {             // Thêm địa chỉ giả để vượt qua Validation
-                    street: "Sẽ cập nhật tại trang Checkout",
-                    city: "Chưa rõ",
-                    country: "VN",
-                    zip: "000000"
-                },
-                notes: "Tạo tự động từ Giỏ hàng"
-            };
-
-            // Gọi API tạo đơn
-            const response = await fetchAPI('/orders', {
-                method: 'POST',
-                body: JSON.stringify(payload)
-            });
-
-            if (response.success && response.data && response.data.orderId) {
-                orderIds.push(response.data.orderId);
-            }
-        }
-
-        // Lưu thông tin để sang trang Checkout xử lý thanh toán thật
-        localStorage.setItem('currentOrderIds', JSON.stringify(orderIds));
-        localStorage.setItem('checkoutCart', JSON.stringify(cart));
-        
-        showToast(`Đã tạo thành công ${orderIds.length} đơn hàng!`, 'success');
-
-        // Chuyển sang trang Checkout
-        setTimeout(() => {
-            window.location.href = `../buyer-checkout/index.html?orders=${orderIds.join(',')}`;
-        }, 1000);
-
-    } catch (error) {
-        console.error("Lỗi tạo đơn:", error);
-        showToast(error.message || "Lỗi khi tạo đơn hàng. Vui lòng thử lại.", "error");
-        btn.disabled = false;
-        btn.textContent = "Tiến hành thanh toán";
+// ── Khởi chạy ─────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+    if (checkAuth()) {
+        loadCart();
     }
-};
-
-window.updateQty = function(id, delta) {
-    const index = cart.findIndex(i => i.id === id);
-    if (index === -1) return;
-
-    cart[index].quantity += delta;
-    if (cart[index].quantity <= 0) {
-        removeItem(id);
-    } else {
-        localStorage.setItem(CART_KEY, JSON.stringify(cart)); // SỬA Ở ĐÂY
-        renderCart();
-    }
-};
-
-window.removeItem = function(id) {
-    if(!confirm("Xóa sản phẩm này khỏi giỏ hàng?")) return;
-    cart = cart.filter(i => i.id !== id);
-    localStorage.setItem(CART_KEY, JSON.stringify(cart)); // SỬA Ở ĐÂY
-    renderCart();
-};
-
-// ── INITIALIZE ──────────────────────────────────────────────
-document.addEventListener('DOMContentLoaded', renderCart);
+});

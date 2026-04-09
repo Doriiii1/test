@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>O'Future - Hồ sơ Buyer</title>
+  <title>Tài khoản của tôi | O'Future</title>
   <link rel="stylesheet" href="../shared/buyer.css">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -13,191 +13,128 @@
       <div class="brand">O'<span>Future</span></div>
       <nav class="nav">
         <a href="../buyer-home/index.html">Dashboard</a>
-        <a href="../buyer-products/index.html">Products</a>
-        <a href="../buyer-cart/index.html">Cart</a>
-        <a href="../buyer-checkout/index.html">Checkout</a>
-        <a href="../buyer-orders/index.html">Orders</a>
-        <a class="active" href="index.html">Profile</a>
-        <a href="../buyer-contact/index.html">Contact</a>
-        <a href="../buyer-reviews/index.html">Reviews</a>
+        <a href="../buyer-products/index.html">Sản phẩm</a>
+        <a href="../buyer-cart/index.html">Giỏ hàng</a>
+        <a href="../buyer-checkout/index.html">Thanh toán</a>
+        <a href="../buyer-orders/index.html">Đơn hàng</a>
+        <a class="active" href="index.html">Tài khoản</a>
       </nav>
     </aside>
 
     <main class="main">
       <div class="topbar">
-        <div class="search-box"><input type="text" placeholder="Tìm kiếm..."></div>
+        <div class="search-box">
+          <input type="text" placeholder="Tìm kiếm trong cài đặt...">
+        </div>
         <div class="top-actions">
-          <div class="icon-btn">🔔</div>
-          <div class="avatar" id="topAvatar">N</div>
-          <button id="logoutBtn" class="btn btn-outline" style="padding: 8px 14px; font-size: 14px;">Đăng xuất</button>
+          <a href="../buyer-cart/index.html" class="cart-icon-wrapper" style="text-decoration: none; position: relative; margin-right: 15px; font-size: 24px;">
+            🛒 <span id="cartBadge" class="badge-cart">0</span>
+          </a>
+          <div class="avatar" id="headerAvatar">U</div>
+          <button id="logoutBtn" class="btn btn-outline">Đăng xuất</button>
         </div>
       </div>
 
-      <div class="page-header" style="display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 1px solid var(--line); padding-bottom: 16px; margin-bottom: 24px;">
-        <div style="cursor: pointer; width: 50%;" onclick="switchPanel('A')">
-          <h1 id="titleA" style="transition: 0.3s; font-size: 32px; color: var(--text);">Hồ sơ & Bảo mật</h1>
-          <p class="muted">Quản lý thông tin cá nhân và bảo mật tài khoản.</p>
+      <div class="profile-layout">
+        <div class="tabs-container">
+          <button class="tab-btn active" data-tab="info">Thông tin cá nhân</button>
+          <button class="tab-btn" data-tab="security">Mật khẩu</button>
+          <button class="tab-btn" data-tab="mfa">Bảo mật 2 lớp (MFA)</button>
+          <button class="tab-btn" data-tab="devices">Thiết bị tin cậy</button>
         </div>
-        <div style="cursor: pointer; width: 50%; text-align: right;" onclick="switchPanel('B')">
-          <h1 id="titleB" style="transition: 0.3s; font-size: 24px; color: var(--muted);">Hoàn thiện hồ sơ</h1>
-          <p class="muted">Thiết lập thông tin doanh nghiệp, kho bãi.</p>
-        </div>
-      </div>
 
-      <div class="slider-container">
-        <div class="slider-wrapper" id="sliderWrapper">
-          
-          <div class="slider-panel">
-            <div class="grid grid-2">
-              <div>
-                <section class="card" style="margin-bottom: 20px;">
-                  <h2 class="section-title">Thông tin cá nhân</h2>
-                  <div class="profile-box">
-                    <div class="avatar-container" onclick="document.getElementById('avatarInput').click()">
-                      <img id="avatarPreview" src="https://picsum.photos/120/120" alt="Avatar">
-                      <div class="avatar-overlay">Đổi ảnh</div>
-                    </div>
-                    <input type="file" id="avatarInput" accept="image/*" style="display:none;">
-
-                    <div style="flex: 1;">
-                      <div class="form-row">
-                        <div class="form-group">
-                          <label>Họ và tên *</label>
-                          <input type="text" id="fullName" placeholder="Nhập họ tên đầy đủ">
-                        </div>
-                        <div class="form-group">
-                          <label>Số điện thoại</label>
-                          <input type="tel" id="phone" placeholder="09xxxxxxx">
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label>Tài khoản / Email</label>
-                        <input type="text" id="username" disabled style="background: #f1f5f9; cursor: not-allowed; width: 100%;">
-                      </div>
-                      <button class="btn btn-primary" onclick="updateProfile()">Lưu cá nhân</button>
-                    </div>
-                  </div>
-                </section>
-
-                <section class="card">
-                  <h2 class="section-title">Đổi mật khẩu</h2>
-                  <div class="form-row">
-                    <div class="form-group">
-                      <label>Mật khẩu mới</label>
-                      <input type="password" id="newPassword" placeholder="Mật khẩu mới">
-                    </div>
-                    <div class="form-group">
-                      <label>Xác nhận mật khẩu</label>
-                      <input type="password" id="confirmPassword" placeholder="Nhập lại mật khẩu">
-                    </div>
-                  </div>
-                  <button onclick="updatePassword()" class="btn btn-outline">Cập nhật mật khẩu</button>
-                </section>
-              </div>
-
-              <div>
-                <section class="card" style="margin-bottom: 20px;">
-                  <h2 class="section-title">Bảo mật 2 lớp (MFA)</h2>
-                  <div style="display: flex; align-items: center; justify-content: space-between; background: #f8fafc; padding: 16px; border-radius: 12px; border: 1px solid var(--line);">
-                    <div id="mfaStatus" style="font-weight: 500;">Đang tải...</div>
-                    <button id="mfaToggleBtn" class="btn btn-outline">Đang tải...</button>
-                  </div>
-                </section>
-
-                <section class="card">
-                  <h2 class="section-title">Thiết bị tin cậy</h2>
-                  <div id="devicesList">
-                    <p class="muted">Đang tải danh sách thiết bị...</p>
-                  </div>
-                </section>
+        <div class="tab-content active" id="info">
+          <div class="card">
+            <h2>Hồ sơ cá nhân</h2>
+            <div class="avatar-upload-section">
+              <img id="avatarPreview" src="../../images/default-avatar.png" alt="Avatar">
+              <div class="upload-controls">
+                <input type="file" id="avatarInput" accept="image/*" style="display: none;">
+                <button class="btn btn-outline" onclick="document.getElementById('avatarInput').click()">Thay đổi ảnh</button>
+                <p class="muted">JPG, PNG hoặc GIF. Tối đa 2MB.</p>
               </div>
             </div>
-          </div>
-
-          <div class="slider-panel">
-            <section class="card" style="max-width: 800px; margin: 0 auto;">
-              <h2 class="section-title" style="margin-bottom: 8px;">Thông tin kinh doanh</h2>
-              <p class="muted" style="margin-bottom: 24px; font-size: 14px;">Hồ sơ kinh doanh giúp tăng độ uy tín khi làm việc với các nhà cung cấp sỉ.</p>
-              
-              <div class="form-row">
-                <div class="form-group">
-                  <label>Tên cửa hàng / Doanh nghiệp *</label>
-                  <input type="text" id="storeName" placeholder="VD: Tạp hóa Ngọc Anh">
-                </div>
-                <div class="form-group">
-                  <label>Lĩnh vực kinh doanh *</label>
-                  <select id="category">
-                    <option value="">Chọn lĩnh vực...</option>
-                    <option value="fashion">Thời trang & Phụ kiện</option>
-                    <option value="fmcg">Tiêu dùng nhanh (FMCG)</option>
-                    <option value="electronics">Điện tử & Gia dụng</option>
-                    <option value="others">Khác</option>
-                  </select>
-                </div>
-              </div>
-
-              <div class="form-row">
-                <div class="form-group">
-                  <label>Quy mô kinh doanh *</label>
-                  <select id="scale">
-                    <option value="">Chọn quy mô...</option>
-                    <option value="small">Cửa hàng nhỏ lẻ</option>
-                    <option value="medium">Chuỗi cửa hàng / Đại lý cấp 2</option>
-                    <option value="large">Đại lý phân phối cấp 1</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label>Tỉnh / Thành phố *</label>
-                  <select id="city">
-                    <option value="">Chọn tỉnh thành...</option>
-                    <option value="hcm">Hồ Chí Minh</option>
-                    <option value="hn">Hà Nội</option>
-                    <option value="dn">Đà Nẵng</option>
-                  </select>
-                </div>
-              </div>
-
+            <form id="profileForm" class="form-grid">
               <div class="form-group">
-                <label>Địa chỉ kho/cửa hàng chi tiết *</label>
-                <input type="text" id="address" placeholder="Số nhà, Tên đường, Phường/Xã, Quận/Huyện" style="width: 100%;">
+                <label>Username</label>
+                <input type="text" id="username" class="form-control" readonly>
               </div>
-
-              <div style="margin-top: 32px; text-align: right;">
-                <button class="btn btn-outline" style="margin-right: 12px;" onclick="switchPanel('A')">Quay lại</button>
-                <button class="btn btn-primary" onclick="submitBusinessProfile()">Lưu hồ sơ kinh doanh</button>
+              <div class="form-group">
+                <label>Email</label>
+                <input type="email" id="email" class="form-control" readonly>
               </div>
-            </section>
+              <div class="form-group">
+                <label>Họ và Tên *</label>
+                <input type="text" id="fullName" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label>Số điện thoại</label>
+                <input type="text" id="phone" class="form-control">
+              </div>
+              <button type="submit" class="btn btn-primary">Lưu thay đổi</button>
+            </form>
           </div>
+        </div>
 
+        <div class="tab-content" id="security">
+          <div class="card">
+            <h2>Đổi mật khẩu</h2>
+            <form id="passwordForm">
+              <div class="form-group">
+                <label>Mật khẩu hiện tại</label>
+                <input type="password" id="oldPassword" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label>Mật khẩu mới</label>
+                <input type="password" id="newPassword" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label>Xác nhận mật khẩu mới</label>
+                <input type="password" id="confirmPassword" class="form-control" required>
+              </div>
+              <button type="submit" class="btn btn-primary">Cập nhật mật khẩu</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="tab-content" id="mfa">
+          <div class="card">
+            <div class="mfa-header">
+              <h2>Xác thực 2 yếu tố (TOTP)</h2>
+              <span id="mfaStatus" class="status-badge">Chưa bật</span>
+            </div>
+            <p class="muted">Sử dụng ứng dụng như Google Authenticator hoặc Authy để quét mã và lấy mã bảo mật khi đăng nhập.</p>
+            <div id="mfaSetupArea">
+                <button onclick="setupMFA()" class="btn btn-primary">Bật bảo mật MFA</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-content" id="devices">
+          <div class="card">
+            <h2>Các thiết bị đang đăng nhập</h2>
+            <div id="devicesList" class="devices-list">
+              <p class="muted">Đang tải danh sách thiết bị...</p>
+            </div>
+          </div>
         </div>
       </div>
     </main>
   </div>
 
-  <div id="mfaSetupModal" class="modal">
-    <h3>Bật Bảo mật 2 lớp</h3>
-    <img id="mfaQrCode" src="" alt="QR" style="width:180px; margin: 16px auto; display:block;">
-    <input type="text" id="mfaConfirmCode" placeholder="000000" maxlength="6" style="width:100%; padding:12px; text-align:center; font-size:22px; letter-spacing:8px; margin-bottom:16px;">
-    <div style="display:flex; gap:10px;">
-      <button onclick="confirmMfaSetup()" class="btn btn-primary" style="flex:1;">Xác nhận</button>
-      <button onclick="closeModal('mfaSetupModal')" class="btn btn-outline" style="flex:1;">Hủy</button>
+  <div id="mfaModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Cấu hình MFA</h3>
+        <span class="close" onclick="closeMFAModal()">&times;</span>
+      </div>
+      <div class="modal-body" id="mfaModalBody">
+        </div>
     </div>
   </div>
 
-  <div id="mfaDisableModal" class="modal">
-    <h3>Tắt Bảo mật 2 lớp</h3>
-    <input type="password" id="mfaDisablePassword" placeholder="Mật khẩu" style="width:100%; padding:10px; margin-top: 16px;">
-    <input type="text" id="mfaDisableCode" placeholder="Mã OTP" maxlength="6" style="width:100%; padding:10px; margin: 16px 0;">
-    <div style="display:flex; gap:10px;">
-      <button onclick="confirmMfaDisable()" class="btn btn-danger" style="flex:1;">Tắt MFA</button>
-      <button onclick="closeModal('mfaDisableModal')" class="btn btn-outline" style="flex:1;">Hủy</button>
-    </div>
-  </div>
-
-  <div id="modalOverlay" class="modal-overlay" onclick="closeAllModals()"></div>
-  <div id="toast" class="toast"></div>
-
+  <div id="toast-container"></div>
   <script src="../shared/api.js"></script>
-  <script src="../shared/chat-widget.js"></script><script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>

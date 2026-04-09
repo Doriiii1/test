@@ -58,6 +58,35 @@ CREATE TABLE IF NOT EXISTS users (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ============================================================
+-- TABLE 2: user_profiles
+-- Lưu trữ thông tin chi tiết về doanh nghiệp/cá nhân sau bước đăng ký.
+-- Liên kết 1-1 với bảng users.
+-- ============================================================
+CREATE TABLE IF NOT EXISTS user_profiles (
+  user_id           CHAR(36)        NOT NULL,
+  
+  -- Thông tin kinh doanh (Dùng cho cả Seller và Wholesale Buyer)
+  store_name        VARCHAR(150)    NULL,      -- Tên cửa hàng/doanh nghiệp
+  category          VARCHAR(100)    NULL,      -- Ngành hàng (Thời trang, Điện tử...)
+  scale             ENUM('small', 'medium', 'large', 'enterprise') DEFAULT 'small', -- Quy mô
+  tax_code          VARCHAR(50)     NULL,      -- Mã số thuế (nếu có)
+  
+  -- Thông tin địa chỉ chi tiết (Dành cho vận chuyển và pháp lý)
+  address           VARCHAR(255)    NULL,      -- Địa chỉ cụ thể
+  city              VARCHAR(100)    NULL,      -- Tỉnh/Thành phố
+  zip_code          VARCHAR(20)     NULL,      -- Mã bưu điện
+  country           VARCHAR(100)    DEFAULT 'Việt Nam',
+
+  -- Thông tin thêm
+  bio               TEXT            NULL,      -- Giới thiệu ngắn
+  website           VARCHAR(255)    NULL,
+  
+  PRIMARY KEY (user_id),
+  CONSTRAINT fk_profiles_users FOREIGN KEY (user_id) 
+    REFERENCES users(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- ============================================================
 -- TABLE 2: refresh_tokens
 -- Stores hashed refresh tokens for JWT rotation.
 -- One user may have multiple active sessions (e.g. mobile + desktop).
@@ -498,7 +527,7 @@ INSERT IGNORE INTO users (
   UUID(),
   'admin@ofuture.com',
   'admin',
-  '$2b$12$LQv3c1yqBWVHxkd0LHAkCOYz6TtxMQJqhN8/LewdBPj/oM8bGe1Vy',
+  '$2b$12$jwjgOAebdQ5n6xyFXnotbu72QNsVUAKSMwfy9bX2UiqGKhZ/h5cX6',
   'admin',
   'System Administrator',
   1,

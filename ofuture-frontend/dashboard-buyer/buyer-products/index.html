@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>O'Future - Danh sách sản phẩm</title>
+  <title>Sản phẩm sỉ | O'Future</title>
   <link rel="stylesheet" href="../shared/buyer.css">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -13,98 +13,58 @@
       <div class="brand">O'<span>Future</span></div>
       <nav class="nav">
         <a href="../buyer-home/index.html">Dashboard</a>
-        <a class="active" href="index.html">Products</a>
-        <a href="../buyer-cart/index.html">Cart</a>
-        <a href="../buyer-checkout/index.html">Checkout</a>
-        <a href="../buyer-orders/index.html">Orders</a>
-        <a href="../buyer-profile/index.html">Profile</a>
-        <a href="../buyer-contact/index.html">Contact</a>
-        <a href="../buyer-reviews/index.html">Reviews</a>
+        <a class="active" href="index.html">Sản phẩm</a>
+        <a href="../buyer-cart/index.html">Giỏ hàng</a>
+        <a href="../buyer-checkout/index.html">Thanh toán</a>
+        <a href="../buyer-orders/index.html">Đơn hàng</a>
+        <a href="../buyer-profile/index.html">Tài khoản</a>
       </nav>
     </aside>
 
     <main class="main">
       <div class="topbar">
         <div class="search-box">
-          <input type="text" id="topSearchInput" placeholder="Tìm kiếm nhanh...">
+          <input type="text" id="searchInput" placeholder="Tìm kiếm sản phẩm, danh mục...">
         </div>
         <div class="top-actions">
-          <div class="icon-btn" style="position: relative; cursor: pointer;" onclick="window.location.href='../buyer-cart/index.html'">
-            🛒<span class="cart-count" id="cartCount">0</span>
-          </div>
-          <div class="icon-btn">🔔</div>
-          <div class="avatar" id="userAvatar">N</div>
-          <button id="logoutBtn" class="btn btn-outline" style="padding: 8px 14px; font-size: 14px;">Đăng xuất</button>
+          <a href="../buyer-cart/index.html" class="cart-icon-wrapper" style="text-decoration: none; position: relative; margin-right: 15px; font-size: 24px;">
+            🛒 <span id="cartBadge" style="position: absolute; top: -8px; right: -12px; background: #ef4444; color: white; border-radius: 50%; padding: 2px 6px; font-size: 12px; font-weight: bold;">0</span>
+          </a>
+          <div class="avatar" id="userAvatar">U</div>
+          <button id="logoutBtn" class="btn btn-outline" style="padding: 6px 12px; font-size: 14px;">Đăng xuất</button>
         </div>
       </div>
 
       <div class="page-header">
-        <h1>Danh sách sản phẩm</h1>
-        <p>Tìm kiếm, lọc và so sánh nguồn hàng phù hợp với nhu cầu kinh doanh của bạn.</p>
+        <h1>Nguồn hàng sỉ nội địa</h1>
+        <p>Khám phá hàng ngàn sản phẩm trực tiếp từ nhà cung cấp với giá tốt nhất.</p>
       </div>
 
-      <div class="filters">
-        <input type="text" id="filterName" placeholder="Tên sản phẩm">
-        <select id="filterCategory">
-          <option value="ALL">Tất cả danh mục</option>
-          <option value="FASHION">Thời trang</option>
-          <option value="SHIRT">Áo sơ mi</option>
-          <option value="CLOCK">Đồng hồ</option>
-          <option value="PERFUME">Nước hoa</option>
-        </select>
-        <select id="filterPrice">
-          <option value="ALL">Mọi khoảng giá</option>
-          <option value="UNDER_100">Dưới 100.000đ</option>
-          <option value="100_500">100.000đ - 500.000đ</option>
-          <option value="OVER_500">Trên 500.000đ</option>
-        </select>
-        <select id="filterSort">
-          <option value="NEWEST">Mới nhất</option>
-          <option value="PRICE_ASC">Giá: Thấp đến Cao</option>
-          <option value="PRICE_DESC">Giá: Cao đến Thấp</option>
-        </select>
+      <div class="filters-container card">
+        <div class="category-tabs" id="categoryTabs">
+          <button class="category-tab active" data-category="ALL">Tất cả</button>
+          <button class="category-tab" data-category="THOI_TRANG">Thời trang</button>
+          <button class="category-tab" data-category="DIEN_TU">Điện tử</button>
+          <button class="category-tab" data-category="GIA_DUNG">Gia dụng</button>
+          <button class="category-tab" data-category="KHAC">Khác</button>
+        </div>
+        <div class="sort-box">
+          <select id="sortSelect" class="form-control">
+            <option value="newest">Mới nhất</option>
+            <option value="price_asc">Giá: Thấp đến Cao</option>
+            <option value="price_desc">Giá: Cao đến Thấp</option>
+          </select>
+        </div>
       </div>
 
-      <div class="grid grid-3" id="productList">
+      <div class="product-grid" id="productGrid">
         <p class="muted">Đang tải sản phẩm...</p>
       </div>
     </main>
   </div>
 
-  <div class="modal" id="productModal">
-    <div class="modal-content">
-      <button class="modal-close" onclick="closeModal()">×</button>
-      <div class="modal-body">
-        <div>
-          <img id="modalImage" class="modal-image" src="" alt="">
-        </div>
-        <div class="modal-info">
-          <div class="badge badge-info" id="modalCategory" style="margin-bottom: 12px;">Danh mục</div>
-          <h2 id="modalName" style="font-size: 24px; margin-bottom: 8px;">Tên sản phẩm</h2>
-          <div class="price" id="modalPrice" style="font-size: 28px; margin-bottom: 16px;">0đ</div>
-          <p class="muted" id="modalDescription" style="margin-bottom: 24px; line-height: 1.6;">Mô tả sản phẩm...</p>
-
-          <div class="form-group">
-            <label>Số lượng:</label>
-            <div style="display: flex; gap: 10px; align-items: center;">
-              <button class="btn btn-outline" onclick="changeQuantity(-1)" style="padding: 8px 16px;">-</button>
-              <strong id="modalQuantity" style="font-size: 18px; min-width: 30px; text-align: center;">1</strong>
-              <button class="btn btn-outline" onclick="changeQuantity(1)" style="padding: 8px 16px;">+</button>
-            </div>
-          </div>
-
-          <button class="btn btn-primary" onclick="addModalToCart()" style="width: 100%; margin-top: 10px; font-size: 16px;">
-            Thêm vào giỏ hàng
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div id="modalOverlay" class="modal-overlay"></div>
-  <div id="toast" class="toast"></div>
-
+  <div id="toast-container"></div>
   <script src="../shared/api.js"></script>
-  <script src="../shared/chat-widget.js"></script><script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>

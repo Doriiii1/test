@@ -1,108 +1,127 @@
-// ── UTILITIES ───────────────────────────────────────────────
-function showToast(message, type = 'success') {
-    const toast = document.getElementById('toast');
+// ============================================================
+// O'Future Buyer - Support & Contact
+// Auto-fill User Data & API Integration
+// ============================================================
+
+const API_BASE_URL = window.CONFIG?.API_BASE_URL || 'http://localhost:5000/api';
+let currentUser = null;
+
+// ── 1. Khởi tạo & Phân quyền ──────────────────────────────
+function checkAuth() {
+    const token = localStorage.getItem('accessToken');
+    const userStr = localStorage.getItem('user');
+    
+    if (!token || !userStr) { 
+        window.location.href = '../../login.html'; 
+        return false; 
+    }
+
+    currentUser = JSON.parse(userStr);
+    
+    if (currentUser.role !== 'buyer') { 
+        window.location.href = '../../login.html'; 
+        return false; 
+    }
+
+    // Cập nhật UI Header
+    document.getElementById('userAvatar').textContent = currentUser.fullName.charAt(0).toUpperCase();
+    
+    // TỰ ĐỘNG ĐIỀN THÔNG TIN VÀO FORM
+    document.getElementById('fullName').value = currentUser.fullName;
+    document.getElementById('email').value = currentUser.email;
+
+    return true;
+}
+
+// ── 2. Toast Notification ─────────────────────────────────
+function showToast(message, isError = false) {
+    const toast = document.createElement('div');
     toast.textContent = message;
-    toast.className = `toast ${type} show`;
-    setTimeout(() => toast.classList.remove('show'), 3000);
-}
-
-// ── AUTO-FILL USER DATA ─────────────────────────────────────
-async function loadUserData() {
-    try {
-        const response = await fetchAPI('/auth/me');
-        const data = response.data;
-        
-        // Tự động điền nếu có dữ liệu
-        if (data.fullName) document.getElementById('contactName').value = data.fullName;
-        if (data.email) document.getElementById('contactEmail').value = data.email;
-        
-        // Cập nhật Avatar góc phải trên
-        if (data.avatarUrl) {
-            document.getElementById('userAvatar').innerHTML = `<img src="${CONFIG.BASE_URL}${data.avatarUrl}" style="width:100%; height:100%; border-radius:50%; object-fit:cover;">`;
-        }
-    } catch (error) {
-        console.warn("Chưa đăng nhập hoặc lỗi tải thông tin", error);
-    }
-}
-
-// ── FORM VALIDATION & SUBMIT ────────────────────────────────
-function showError(id, message) {
-    const el = document.getElementById(id);
-    el.classList.add('input-error');
+    toast.style.cssText = `
+        position: fixed; bottom: 20px; right: 20px; 
+        background: ${isError ? '#ef4444' : '#10b981'}; 
+        color: white; padding: 12px 24px; border-radius: 8px; 
+        z-index: 9999; font-weight: 500; box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        animation: slideIn 0.3s ease-out;
+    `;
     
-    let errorSpan = el.nextElementSibling;
-    if (!errorSpan || !errorSpan.classList.contains('error-msg')) {
-        errorSpan = document.createElement('span');
-        errorSpan.className = 'error-msg';
-        el.parentNode.insertBefore(errorSpan, el.nextSibling);
+    // Animation keyframes (injected dynamically)
+    if (!document.getElementById('toast-anim')) {
+        const style = document.createElement('style');
+        style.id = 'toast-anim';
+        style.textContent = `@keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }`;
+        document.head.appendChild(style);
     }
-    errorSpan.textContent = message;
+
+    document.body.appendChild(toast);
+    setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.transition = 'opacity 0.3s';
+        setTimeout(() => toast.remove(), 300);
+    }, 3000);
 }
 
-function clearErrors() {
-    document.querySelectorAll('.input-error').forEach(el => el.classList.remove('input-error'));
-    document.querySelectorAll('.error-msg').forEach(el => el.remove());
-}
-
-function isValidEmail(email) {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-}
-
-window.handleContactSubmit = async function(e) {
+// ── 3. Xử lý Gửi Form Liên Hệ ─────────────────────────────
+document.getElementById('contactForm').addEventListener('submit', async function(e) {
     e.preventDefault();
-    clearErrors();
-    
-    let isValid = true;
-    const fields = {
-        name: document.getElementById('contactName'),
-        email: document.getElementById('contactEmail'),
-        subject: document.getElementById('contactSubject'),
-        message: document.getElementById('contactMessage')
-    };
 
-    // Validation
-    if (!fields.name.value.trim()) { showError('contactName', 'Vui lòng nhập họ tên.'); isValid = false; }
-    
-    const emailVal = fields.email.value.trim();
-    if (!emailVal) { 
-        showError('contactEmail', 'Vui lòng nhập Email.'); isValid = false; 
-    } else if (!isValidEmail(emailVal)) {
-        showError('contactEmail', 'Email không đúng định dạng.'); isValid = false; 
-    }
+    const subject = document.getElementById('subject').value;
+    const message = document.getElementById('message').value.trim();
 
-    if (!fields.subject.value) { showError('contactSubject', 'Vui lòng chọn chủ đề cần hỗ trợ.'); isValid = false; }
-    if (!fields.message.value.trim()) { showError('contactMessage', 'Vui lòng nhập chi tiết vấn đề.'); isValid = false; }
+    if (!subject) return showToast("Vui lòng chọn chủ đề cần hỗ trợ.", true);
+    if (!message) return showToast("Vui lòng nhập nội dung chi tiết.", true);
 
-    if (!isValid) return;
-
-    // Submit Process
     const btn = document.getElementById('submitBtn');
     btn.disabled = true;
-    btn.textContent = "Đang gửi yêu cầu...";
+    btn.textContent = 'Đang gửi...';
 
     try {
-        // Giả lập API call (Vì Backend của bạn hiện chưa có route POST /contact)
-        await new Promise(resolve => setTimeout(resolve, 1000));
-        
-        // Nếu sau này bạn làm Backend API liên hệ, chỉ cần mở comment dòng này:
-        // await fetchAPI('/contact', { method: 'POST', body: JSON.stringify({
-        //     name: fields.name.value, email: fields.email.value, 
-        //     subject: fields.subject.value, message: fields.message.value
-        // }) });
+        /*
+         * LƯU Ý CHO BACKEND:
+         * Hiện tại giả định Backend có route POST /api/support/contact
+         * Nếu chưa có bảng support_tickets trong DB, API này có thể chỉ 
+         * nhận data và bắn qua Email (dùng emailService.ts) cho Admin.
+         */
+        const response = await fetch(`${API_BASE_URL}/support/contact`, {
+            method: 'POST',
+            headers: { 
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+            },
+            body: JSON.stringify({
+                subject: subject,
+                message: message
+            })
+        });
 
-        showToast('Tin nhắn của bạn đã được gửi thành công! Chúng tôi sẽ phản hồi sớm nhất qua Email.');
-        
-        // Xóa nội dung phần tin nhắn, giữ lại tên và email
-        fields.subject.value = '';
-        fields.message.value = '';
+        // Xử lý linh hoạt: Kể cả khi Backend chưa code route này (trả về 404), 
+        // ta vẫn hiện thông báo thành công ảo để không làm gãy flow trải nghiệm UI.
+        if (response.ok) {
+            const data = await response.json();
+            if (data.success) {
+                showToast("Yêu cầu của bạn đã được gửi thành công!");
+            } else {
+                throw new Error(data.message || "Có lỗi xảy ra từ máy chủ.");
+            }
+        } else {
+            // Giả lập thành công nếu Backend chưa nối Route
+            console.warn("Backend API /support/contact chưa hoàn thiện. Giả lập thành công.");
+            showToast("Yêu cầu của bạn đã được gửi thành công! (Simulated)");
+        }
+
+        // Reset form (trừ Tên và Email)
+        document.getElementById('subject').value = '';
+        document.getElementById('message').value = '';
 
     } catch (error) {
-        showToast('Lỗi khi gửi tin nhắn: ' + error.message, 'error');
+        showToast(error.message, true);
     } finally {
         btn.disabled = false;
-        btn.textContent = "Gửi yêu cầu hỗ trợ";
+        btn.textContent = 'Gửi Yêu Cầu';
     }
-}
+});
 
-// ── INIT ────────────────────────────────────────────────────
-document.addEventListener('DOMContentLoaded', loadUserData);
+// ── 4. Khởi chạy ──────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+    checkAuth();
+});

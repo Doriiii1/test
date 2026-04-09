@@ -1,44 +1,41 @@
-/* Hero Decoration */
-.hero {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-    color: white;
-    padding: 40px;
-    border-radius: 24px;
-    margin-bottom: 24px;
+/* Dashboard Buyer Specific Styles */
+.card {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e2e8f0;
 }
-.hero h1 { font-size: 28px; margin-bottom: 12px; }
-.hero p { color: #cbd5e1; margin-bottom: 24px; max-width: 600px; }
-.quick-links { display: flex; gap: 12px; }
-.quick-links a { background: rgba(255,255,255,0.1); padding: 10px 16px; border-radius: 12px; color: white; font-weight: 500; transition: 0.2s; }
-.quick-links a:hover { background: rgba(255,255,255,0.2); }
 
-/* Stats */
-.stat-card h2 { font-size: 26px; margin: 8px 0; }
-.stat-card span { font-size: 13px; color: var(--muted); }
-
-/* Featured List */
-.featured-item {
-    display: flex;
-    gap: 12px;
-    align-items: center;
-    padding: 12px 0;
-    border-bottom: 1px solid var(--line);
+.section-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #0f172a;
 }
-.featured-item:last-child { border-bottom: none; }
-.featured-item img { width: 50px; height: 50px; border-radius: 8px; object-fit: cover; }
-.featured-item .info { flex: 1; }
-.featured-item .price { font-weight: 700; color: var(--primary); }
 
-/* Badge mapping from orders.css */
-.badge-warning { background: #fef3c7; color: #92400e; }
-.badge-info { background: #dbeafe; color: #1d4ed8; }
-.badge-success { background: #dcfce7; color: #166534; }
-
-/* Toast */
-.toast {
-    position: fixed; bottom: 30px; right: 30px; padding: 14px 24px;
-    background: var(--primary); color: white; border-radius: 12px;
-    box-shadow: var(--shadow); opacity: 0; transform: translateY(20px);
-    transition: 0.3s; z-index: 10000;
+.product-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  transition: all 0.2s;
 }
-.toast.show { opacity: 1; transform: translateY(0); }
+
+.product-item:hover {
+  border-color: #4f46e5;
+  background: #f8fafc;
+}
+
+.product-info h4 {
+  margin: 0 0 4px 0;
+  color: #0f172a;
+}
+
+.product-info p {
+  margin: 0;
+  color: #ef4444;
+  font-weight: 600;
+}

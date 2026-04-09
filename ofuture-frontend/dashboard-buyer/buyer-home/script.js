@@ -1,69 +1,141 @@
-// ── UTILITIES ───────────────────────────────────────────────
-function showToast(message, type = 'success') {
-    const toast = document.getElementById('toast');
-    toast.textContent = message;
-    toast.className = `toast ${type} show`;
-    setTimeout(() => toast.classList.remove('show'), 3000);
+// ============================================================
+// O'Future Buyer Dashboard (Home)
+// Tích hợp API thật & Xử lý Giỏ hàng độc lập theo Tài khoản
+// ============================================================
+
+const API_BASE_URL = window.CONFIG?.API_BASE_URL || 'http://localhost:5000/api';
+let currentUser = null;
+let CART_KEY = 'cart'; // Key mặc định, sẽ bị ghi đè sau khi có user.id
+
+// ── 1. Auth Guard (Bảo vệ trang) ───────────────────────────
+function checkAuth() {
+    const token = localStorage.getItem('accessToken');
+    const userStr = localStorage.getItem('user');
+
+    if (!token || !userStr) {
+        alert('Vui lòng đăng nhập để truy cập trang này.');
+        window.location.href = '../../login.html';
+        return false;
+    }
+
+    currentUser = JSON.parse(userStr);
+    
+    // Nếu không phải Buyer, đuổi về đúng nhà
+    if (currentUser.role !== 'buyer') {
+        window.location.href = '../../login.html';
+        return false;
+    }
+
+    // TẠO KEY GIỎ HÀNG RIÊNG CHO TÀI KHOẢN NÀY (Khắc phục Lỗi 1)
+    CART_KEY = `cart_${currentUser.id}`;
+
+    // Update UI Header
+    document.getElementById('welcomeText').textContent = `Chào mừng, ${currentUser.fullName}!`;
+    document.getElementById('userAvatar').textContent = currentUser.fullName.charAt(0).toUpperCase();
+    
+    return true;
 }
 
-function formatCurrency(amount) {
-    return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(amount || 0);
-}
-
-// ── LOAD DASHBOARD DATA ─────────────────────────────────────
-async function loadDashboard() {
-    try {
-        // 1. Tải thông tin cá nhân
-        const userRes = await fetchAPI('/auth/me');
-        document.getElementById('welcomeName').textContent = userRes.data.fullName || userRes.data.username;
-
-        // 2. Tải Thống kê Ký quỹ (API cũ: /escrow/stats)
-        const statsRes = await fetchAPI('/escrow/stats');
-        const stats = statsRes.data;
-        document.getElementById('statTotalSpent').textContent = formatCurrency(stats.totalSpent);
-        document.getElementById('statActiveOrders').textContent = stats.activeOrdersCount || 0;
-        document.getElementById('statEscrowHeld').textContent = formatCurrency(stats.escrowHeldAmount);
-
-        // 3. Tải Sản phẩm Nổi bật (API: /products?limit=3)
-        const prodRes = await fetchAPI('/products?limit=3');
-        const products = prodRes.data;
-        const prodContainer = document.getElementById('featuredProducts');
-        
-        prodContainer.innerHTML = products.map(p => `
-            <div class="featured-item">
-                <img src="${p.imageUrls?.[0] ? CONFIG.BASE_URL + p.imageUrls[0] : 'https://picsum.photos/100/100'}" alt="prod">
-                <div class="info">
-                    <div style="font-weight:600; font-size:14px;">${p.name}</div>
-                    <div class="muted" style="font-size:12px;">SL tối thiểu: ${p.moq || 1}</div>
-                </div>
-                <div class="price">${formatCurrency(p.price)}</div>
-            </div>
-        `).join('');
-
-        // 4. Tải Đơn hàng Gần đây (API: /orders/my?limit=5)
-        const orderRes = await fetchAPI('/orders/my?limit=5');
-        const orders = orderRes.data;
-        const orderTable = document.getElementById('recentOrdersTable');
-
-        if (!orders || orders.length === 0) {
-            orderTable.innerHTML = '<tr><td colspan="3" class="muted" style="text-align:center;">Chưa có đơn hàng nào.</td></tr>';
-        } else {
-            const statusMap = { pending: 'warning', paid: 'info', shipped: 'info', completed: 'success' };
-            const statusText = { pending: 'Chờ thanh toán', paid: 'Đã ký quỹ', shipped: 'Đang giao', completed: 'Hoàn tất' };
-
-            orderTable.innerHTML = orders.map(o => `
-                <tr>
-                    <td><a href="../buyer-order-detail/index.html?id=${o.id}" style="font-weight:600;">#${o.id.substring(0, 8)}</a></td>
-                    <td><span class="badge badge-${statusMap[o.status] || 'warning'}">${statusText[o.status] || o.status}</span></td>
-                    <td>${formatCurrency(o.total_amount)}</td>
-                </tr>
-            `).join('');
-        }
-
-    } catch (error) {
-        showToast("Lỗi tải dữ liệu dashboard: " + error.message, "error");
+// ── 2. Xử lý Lỗi Badge Giỏ Hàng (Khắc phục Lỗi 2) ──────────
+function updateCartBadge() {
+    const cartData = JSON.parse(localStorage.getItem(CART_KEY)) || [];
+    // Tính tổng số lượng item trong giỏ
+    const totalItems = cartData.reduce((sum, item) => sum + item.quantity, 0);
+    
+    const badge = document.getElementById('cartBadge');
+    if (badge) {
+        badge.textContent = totalItems;
+        badge.style.display = totalItems > 0 ? 'inline-block' : 'none'; // Ẩn nếu giỏ trống
     }
 }
 
-// ── INITIALIZE ──────────────────────────────────────────────
-document.addEventListener('DOMContentLoaded', loadDashboard);
+// ── 3. Lấy dữ liệu Sản phẩm từ DB ─────────────────────────
+async function fetchFeaturedProducts() {
+    const container = document.getElementById('featuredProducts');
+    try {
+        // Lấy danh sách sản phẩm (chỉ lấy 3 cái hiển thị ngoài Home)
+        const response = await fetch(`${API_BASE_URL}/products?limit=3`, {
+            headers: { 'Authorization': `Bearer ${localStorage.getItem('accessToken')}` }
+        });
+        const data = await response.json();
+
+        if (data.success && data.data.length > 0) {
+            container.innerHTML = data.data.map(p => `
+                <div class="product-item">
+                    <div class="product-info">
+                        <h4>${p.name}</h4>
+                        <p>${parseInt(p.price).toLocaleString('vi-VN')} đ</p>
+                        <small class="muted">Tồn kho: ${p.stock_quantity}</small>
+                    </div>
+                    <button class="btn btn-primary" style="padding: 6px 12px; font-size: 13px;" 
+                        onclick="addToCart('${p.id}', '${p.name}', ${p.price}, ${p.stock_quantity})">
+                        + Vào giỏ
+                    </button>
+                </div>
+            `).join('');
+        } else {
+            container.innerHTML = '<p class="muted">Chưa có sản phẩm nào đang bán.</p>';
+        }
+    } catch (error) {
+        container.innerHTML = '<p style="color:red">Lỗi tải sản phẩm.</p>';
+    }
+}
+
+// ── 4. Thêm vào Giỏ hàng (Thông minh) ─────────────────────
+window.addToCart = function(id, name, price, stock) {
+    if (stock <= 0) {
+        alert('Sản phẩm đã hết hàng!'); return;
+    }
+
+    let cart = JSON.parse(localStorage.getItem(CART_KEY)) || [];
+    const existingItem = cart.find(item => item.id === id);
+
+    if (existingItem) {
+        if (existingItem.quantity >= stock) {
+            alert('Bạn đã thêm tối đa số lượng tồn kho của sản phẩm này!'); return;
+        }
+        existingItem.quantity += 1;
+    } else {
+        cart.push({ id, name, price, stock, quantity: 1 });
+    }
+
+    // Lưu lại bằng Key Độc quyền của User
+    localStorage.setItem(CART_KEY, JSON.stringify(cart));
+    
+    // Gọi hàm update ngay lập tức để icon nảy số
+    updateCartBadge();
+    
+    // Thông báo nhẹ nhàng
+    const toast = document.createElement('div');
+    toast.textContent = `Đã thêm ${name} vào giỏ!`;
+    toast.style.cssText = "position:fixed; bottom:20px; right:20px; background:#10b981; color:white; padding:10px 20px; border-radius:8px; z-index:9999;";
+    document.body.appendChild(toast);
+    setTimeout(() => toast.remove(), 2000);
+}
+
+// ── 5. Đăng xuất ──────────────────────────────────────────
+document.getElementById('logoutBtn').addEventListener('click', async () => {
+    try {
+        await fetch(`${API_BASE_URL}/auth/logout`, {
+            method: 'POST',
+            headers: { 
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+            },
+            body: JSON.stringify({ allDevices: false })
+        });
+    } catch (e) {} // Bỏ qua lỗi mạng nếu có
+    
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('refreshToken');
+    localStorage.removeItem('user');
+    window.location.href = '../../login.html';
+});
+
+// ── Khởi chạy ─────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+    if (checkAuth()) {
+        updateCartBadge(); // Gọi hàm này đầu tiên để sửa Lỗi 2
+        fetchFeaturedProducts();
+    }
+});
