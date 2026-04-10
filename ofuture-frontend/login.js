@@ -35,7 +35,7 @@ function completeLoginFlow(userData) {
   let redirectUrl = 'index.html'; 
 
   if (userData.isNewUser) {
-    redirectUrl = 'complete-profile/index.html';
+    redirectUrl = 'dashboard-buyer/complete-profile/index.html';
   } else {
   if (userRole === 'admin') redirectUrl = 'dashboard-admin/indexAdmin.html';
   else if (userRole === 'seller') redirectUrl = 'dashboard-seller/indexSeller.html';
@@ -107,7 +107,11 @@ async function handleVerifyMfa() {
     const response = await fetch(`${API_BASE_URL}/mfa/verify`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ mfaToken: currentMfaToken, code: code }),
+      body: JSON.stringify({
+          mfaToken: currentMfaToken, // Token nhận được từ bước đăng nhập
+          code: document.getElementById('mfaCode').value.trim(), // Mã 6 số
+          codeType: 'totp' // <--- BẮT BUỘC PHẢI THÊM DÒNG NÀY
+      })
     });
 
     const data = await response.json();

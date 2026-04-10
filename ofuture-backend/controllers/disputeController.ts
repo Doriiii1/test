@@ -171,9 +171,46 @@ const resolveDispute = async (req: AuthRequest, res: Response): Promise<any> => 
   }
 };
 
+// ─────────────────────────────────────────────
+// 5. Submit Evidence (Seller/Buyer nộp bằng chứng)
+// ─────────────────────────────────────────────
+const submitEvidence = async (req: AuthRequest, res: Response): Promise<any> => {
+  try {
+    const disputeId = req.params.id as string;
+    const { evidenceUrl, description } = req.body;
+    const userId = req.user.id;
+
+    const dispute = await DisputeModel.findById(disputeId);
+    if (!dispute) return res.status(404).json({ success: false, message: 'Không tìm thấy khiếu nại.' });
+
+    const order: any = await OrderModel.findById(dispute.order_id);
+    if (!order) return res.status(404).json({ success: false, message: 'Không tìm thấy đơn hàng.' });
+
+    // Xác định xem ai đang nộp bằng chứng
+    let columnToUpdate = '';
+    if (order.seller_id === userId) columnToUpdate = 'seller_evidence';
+    else if (order.buyer_id === userId) columnToUpdate = 'buyer_evidence';
+    else return res.status(403).json({ success: false, message: 'Từ chối truy cập.' });
+
+    // Đóng gói bằng chứng thành JSON
+    const evidenceData = JSON.stringify({ type: 'image', url: evidenceUrl, text: description });
+
+    await pool.execute(
+      `UPDATE disputes SET ${columnToUpdate} = ? WHERE id = ?`,
+      [evidenceData, disputeId]
+    );
+
+    res.status(200).json({ success: true, message: 'Nộp bằng chứng thành công.' });
+  } catch (error: any) {
+    logger.error('submitEvidence error:', error);
+    res.status(500).json({ success: false, message: 'Lỗi hệ thống khi nộp bằng chứng.' });
+  }
+};
+
 export = {
   createDispute,
   getMyDisputes,
   getAllDisputes,
-  resolveDispute
+  resolveDispute,
+  submitEvidence
 };

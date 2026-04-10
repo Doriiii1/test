@@ -384,6 +384,13 @@ const markShipped = async (req: OrderRequest, res: Response): Promise<any> => {
   const id = req.params.id as string;
   const { trackingNumber, carrier } = req.body;
 
+  if (!trackingNumber || !carrier) {
+    return res.status(400).json({ 
+      success: false, 
+      message: 'Bắt buộc phải nhập Mã vận đơn (trackingNumber) và Đơn vị vận chuyển (carrier).' 
+    });
+  }
+
   try {
     const order: any = await OrderModel.findById(id);
 

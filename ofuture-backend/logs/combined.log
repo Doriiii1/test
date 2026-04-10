@@ -248,3 +248,804 @@
 2026-04-09 23:29:15 [http]: ::1 - - [09/Apr/2026:16:29:15 +0000] "GET /api/products HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
 2026-04-09 23:29:15 [http]: ::1 - - [09/Apr/2026:16:29:15 +0000] "GET /api/products?limit=3 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
 2026-04-10 00:25:56 [http]: ::1 - - [09/Apr/2026:17:25:56 +0000] "GET /api/products?limit=3 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 00:26:21 [http]: ::1 - - [09/Apr/2026:17:26:21 +0000] "GET /api/products?limit=3 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 00:26:47 [http]: ::1 - - [09/Apr/2026:17:26:47 +0000] "GET /api/products?limit=3 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 00:29:35 [http]: ::1 - - [09/Apr/2026:17:29:35 +0000] "POST /api/auth/logout HTTP/1.1" 200 53 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 00:29:54 [info]: User logged in: admin@ofuture.com
+2026-04-10 00:29:54 [http]: ::1 - - [09/Apr/2026:17:29:54 +0000] "POST /api/auth/login HTTP/1.1" 200 677 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 00:29:56 [http]: ::1 - - [09/Apr/2026:17:29:56 +0000] "GET /api/admin/escrow?page=1&limit=15 HTTP/1.1" 200 26 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 00:29:56 [http]: ::1 - - [09/Apr/2026:17:29:56 +0000] "GET /api/admin/payments?page=1&limit=15 HTTP/1.1" 200 26 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 00:29:56 [http]: ::1 - - [09/Apr/2026:17:29:56 +0000] "GET /api/admin/reviews?page=1&limit=15 HTTP/1.1" 200 86 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 00:29:56 [http]: ::1 - - [09/Apr/2026:17:29:56 +0000] "GET /api/admin/stats HTTP/1.1" 200 833 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 00:29:56 [http]: ::1 - - [09/Apr/2026:17:29:56 +0000] "GET /api/admin/products?page=1&limit=15 HTTP/1.1" 200 86 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 00:29:56 [http]: ::1 - - [09/Apr/2026:17:29:56 +0000] "GET /api/admin/settings HTTP/1.1" 404 120 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 00:29:56 [http]: ::1 - - [09/Apr/2026:17:29:56 +0000] "GET /api/admin/users?page=1&limit=15&search= HTTP/1.1" 200 766 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 00:29:56 [http]: ::1 - - [09/Apr/2026:17:29:56 +0000] "GET /api/admin/logs?page=1&limit=30 HTTP/1.1" 200 5301 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 00:29:56 [http]: ::1 - - [09/Apr/2026:17:29:56 +0000] "GET /api/admin/ai-knowledge HTTP/1.1" 200 604 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 00:29:56 [http]: ::1 - - [09/Apr/2026:17:29:56 +0000] "GET /api/admin/chats?status=handoff_to_admin HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 00:29:58 [http]: ::1 - - [09/Apr/2026:17:29:58 +0000] "GET /api/admin/users?page=1&limit=15&search= HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 00:30:05 [http]: ::1 - - [09/Apr/2026:17:30:05 +0000] "GET /api/admin/payments?page=1&limit=15 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 00:30:06 [http]: ::1 - - [09/Apr/2026:17:30:06 +0000] "GET /api/admin/products?page=1&limit=15 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 00:30:08 [http]: ::1 - - [09/Apr/2026:17:30:08 +0000] "GET /api/admin/reviews?page=1&limit=15 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 00:30:17 [http]: ::1 - - [09/Apr/2026:17:30:17 +0000] "GET /api/admin/logs?page=1&limit=30 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 00:30:26 [http]: ::1 - - [09/Apr/2026:17:30:26 +0000] "GET /api/admin/settings HTTP/1.1" 404 120 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 00:30:30 [http]: ::1 - - [09/Apr/2026:17:30:30 +0000] "GET /api/admin/ai-knowledge HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 00:30:47 [http]: ::1 - - [09/Apr/2026:17:30:47 +0000] "GET /api/admin/chats?status=handoff_to_admin HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 00:30:51 [http]: ::1 - - [09/Apr/2026:17:30:51 +0000] "GET /api/admin/stats HTTP/1.1" 200 833 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 00:31:02 [http]: ::1 - - [09/Apr/2026:17:31:02 +0000] "GET /api/admin/users?page=1&limit=15&search= HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 00:33:27 [http]: ::1 - - [09/Apr/2026:17:33:27 +0000] "GET /api/admin/escrow?page=1&limit=15 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 00:33:27 [http]: ::1 - - [09/Apr/2026:17:33:27 +0000] "GET /api/admin/payments?page=1&limit=15 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 00:33:28 [http]: ::1 - - [09/Apr/2026:17:33:28 +0000] "GET /api/admin/payments?page=1&limit=15 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 00:33:29 [http]: ::1 - - [09/Apr/2026:17:33:29 +0000] "GET /api/admin/escrow?page=1&limit=15 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 00:33:29 [http]: ::1 - - [09/Apr/2026:17:33:29 +0000] "GET /api/admin/payments?page=1&limit=15 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 00:33:30 [http]: ::1 - - [09/Apr/2026:17:33:30 +0000] "GET /api/admin/products?page=1&limit=15 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 00:33:30 [http]: ::1 - - [09/Apr/2026:17:33:30 +0000] "GET /api/admin/reviews?page=1&limit=15 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 00:33:31 [http]: ::1 - - [09/Apr/2026:17:33:31 +0000] "GET /api/admin/payments?page=1&limit=15 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 00:33:31 [http]: ::1 - - [09/Apr/2026:17:33:31 +0000] "GET /api/admin/escrow?page=1&limit=15 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 00:33:32 [http]: ::1 - - [09/Apr/2026:17:33:32 +0000] "GET /api/admin/payments?page=1&limit=15 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 00:33:33 [http]: ::1 - - [09/Apr/2026:17:33:33 +0000] "GET /api/admin/escrow?page=1&limit=15 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 00:56:00 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 00:56:00 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 00:56:00 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 00:56:00 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 00:56:00 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 00:56:00 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 00:56:00 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 00:56:00 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 00:56:00 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 00:56:00 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 00:56:00 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 00:56:00 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 00:56:00 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 00:56:00 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 00:56:00 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 00:56:00 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 00:56:00 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 00:56:00 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 00:56:02 [info]: 🧪  RBAC test routes enabled (development only)
+2026-04-10 00:56:02 [info]: 🚀  O'Future API running on port 5000
+2026-04-10 00:56:02 [info]: 📍  Environment: development
+2026-04-10 00:56:02 [info]: 🔗  Health check: http://localhost:5000/health
+2026-04-10 00:56:02 [info]: [redisClient] ioredis ready — using real Redis client.
+2026-04-10 00:56:02 [http]: ::ffff:127.0.0.1 - - [09/Apr/2026:17:56:02 +0000] "GET /api/admin/users?page=1&limit=15&search= HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 00:56:02 [http]: ::ffff:127.0.0.1 - - [09/Apr/2026:17:56:02 +0000] "GET /api/admin/payments?page=1&limit=15 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 00:56:02 [http]: ::ffff:127.0.0.1 - - [09/Apr/2026:17:56:02 +0000] "GET /api/admin/escrow?page=1&limit=15 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 00:56:02 [http]: ::ffff:127.0.0.1 - - [09/Apr/2026:17:56:02 +0000] "GET /api/admin/logs?page=1&limit=30 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 00:56:41 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 00:56:41 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 00:56:41 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 00:56:41 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 00:56:41 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 00:56:41 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 00:56:41 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 00:56:41 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 00:56:41 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 00:56:41 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 00:56:41 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 00:56:41 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 00:56:41 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 00:56:41 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 00:56:41 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 00:56:41 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 00:56:41 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 00:56:41 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 00:56:43 [info]: 🧪  RBAC test routes enabled (development only)
+2026-04-10 00:56:43 [info]: 🚀  O'Future API running on port 5000
+2026-04-10 00:56:43 [info]: 📍  Environment: development
+2026-04-10 00:56:43 [info]: 🔗  Health check: http://localhost:5000/health
+2026-04-10 00:56:43 [info]: [redisClient] ioredis ready — using real Redis client.
+2026-04-10 00:56:43 [http]: ::1 - - [09/Apr/2026:17:56:43 +0000] "GET /api/admin/escrow?page=1&limit=15 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 00:56:43 [http]: ::1 - - [09/Apr/2026:17:56:43 +0000] "GET /api/admin/payments?page=1&limit=15 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 00:56:43 [http]: ::1 - - [09/Apr/2026:17:56:43 +0000] "GET /api/admin/logs?page=1&limit=30 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 00:56:43 [http]: ::1 - - [09/Apr/2026:17:56:43 +0000] "GET /api/admin/products?page=1&limit=15 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 00:57:21 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 00:57:21 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 00:57:21 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 00:57:21 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 00:57:21 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 00:57:21 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 00:57:21 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 00:57:21 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 00:57:21 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 00:57:21 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 00:57:21 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 00:57:21 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 00:57:21 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 00:57:21 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 00:57:21 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 00:57:21 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 00:57:21 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 00:57:21 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 00:57:23 [info]: 🧪  RBAC test routes enabled (development only)
+2026-04-10 00:57:23 [info]: 🚀  O'Future API running on port 5000
+2026-04-10 00:57:23 [info]: 📍  Environment: development
+2026-04-10 00:57:23 [info]: 🔗  Health check: http://localhost:5000/health
+2026-04-10 00:57:23 [info]: [redisClient] ioredis ready — using real Redis client.
+2026-04-10 00:57:23 [http]: ::1 - - [09/Apr/2026:17:57:23 +0000] "GET /api/admin/logs?page=1&limit=30 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 00:57:23 [http]: ::1 - - [09/Apr/2026:17:57:23 +0000] "GET /api/admin/escrow?page=1&limit=15 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 00:57:23 [http]: ::1 - - [09/Apr/2026:17:57:23 +0000] "GET /api/admin/payments?page=1&limit=15 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 00:57:23 [http]: ::1 - - [09/Apr/2026:17:57:23 +0000] "GET /api/admin/products?page=1&limit=15 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 00:58:24 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 00:58:24 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 00:58:24 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 00:58:24 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 00:58:24 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 00:58:24 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 00:58:24 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 00:58:24 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 00:58:24 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 00:58:24 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 00:58:24 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 00:58:24 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 00:58:24 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 00:58:24 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 00:58:24 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 00:58:24 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 00:58:24 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 00:58:24 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 00:58:26 [info]: 🧪  RBAC test routes enabled (development only)
+2026-04-10 00:58:26 [info]: 🚀  O'Future API running on port 5000
+2026-04-10 00:58:26 [info]: 📍  Environment: development
+2026-04-10 00:58:26 [info]: 🔗  Health check: http://localhost:5000/health
+2026-04-10 00:58:26 [info]: [redisClient] ioredis ready — using real Redis client.
+2026-04-10 00:58:26 [http]: ::1 - - [09/Apr/2026:17:58:26 +0000] "GET /api/admin/users?page=1&limit=15&search= HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 00:58:26 [http]: ::1 - - [09/Apr/2026:17:58:26 +0000] "GET /api/admin/logs?page=1&limit=30 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 00:58:26 [http]: ::1 - - [09/Apr/2026:17:58:26 +0000] "GET /api/admin/escrow?page=1&limit=15 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 00:58:26 [http]: ::1 - - [09/Apr/2026:17:58:26 +0000] "GET /api/admin/payments?page=1&limit=15 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 01:19:20 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 01:19:20 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 01:19:20 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 01:19:20 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 01:19:20 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 01:19:20 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 01:19:20 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 01:19:20 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 01:19:20 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 01:19:20 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 01:19:20 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 01:19:20 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 01:19:20 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 01:19:20 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 01:19:20 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 01:19:20 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 01:19:20 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 01:19:20 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 01:19:22 [info]: 🧪  RBAC test routes enabled (development only)
+2026-04-10 01:19:22 [info]: 🚀  O'Future API running on port 5000
+2026-04-10 01:19:22 [info]: 📍  Environment: development
+2026-04-10 01:19:22 [info]: 🔗  Health check: http://localhost:5000/health
+2026-04-10 01:19:22 [info]: [redisClient] ioredis ready — using real Redis client.
+2026-04-10 01:19:22 [http]: ::ffff:127.0.0.1 - - [09/Apr/2026:18:19:22 +0000] "GET /api/admin/settings HTTP/1.1" 404 120 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 01:19:22 [http]: ::ffff:127.0.0.1 - - [09/Apr/2026:18:19:22 +0000] "GET /api/admin/logs?page=1&limit=30 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 01:19:22 [http]: ::ffff:127.0.0.1 - - [09/Apr/2026:18:19:22 +0000] "GET /api/admin/ai-knowledge HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 01:19:22 [http]: ::ffff:127.0.0.1 - - [09/Apr/2026:18:19:22 +0000] "GET /api/admin/chats?status=handoff_to_admin HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 01:21:21 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 01:21:21 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 01:21:21 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 01:21:21 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 01:21:21 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 01:21:21 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 01:21:21 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 01:21:21 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 01:21:21 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 01:21:21 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 01:21:21 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 01:21:21 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 01:21:21 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 01:21:21 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 01:21:21 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 01:21:21 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 01:21:21 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 01:21:21 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 01:21:23 [info]: 🧪  RBAC test routes enabled (development only)
+2026-04-10 01:21:23 [info]: 🚀  O'Future API running on port 5000
+2026-04-10 01:21:23 [info]: 📍  Environment: development
+2026-04-10 01:21:23 [info]: 🔗  Health check: http://localhost:5000/health
+2026-04-10 01:21:23 [info]: [redisClient] ioredis ready — using real Redis client.
+2026-04-10 01:44:03 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 01:44:03 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 01:44:03 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 01:44:03 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 01:44:03 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 01:44:03 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 01:44:03 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 01:44:03 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 01:44:03 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 01:44:03 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 01:44:03 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 01:44:03 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 01:44:03 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 01:44:03 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 01:44:03 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 01:44:03 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 01:44:03 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 01:44:03 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 01:44:06 [info]: 🧪  RBAC test routes enabled (development only)
+2026-04-10 01:44:06 [info]: 🚀  O'Future API running on port 5000
+2026-04-10 01:44:06 [info]: 📍  Environment: development
+2026-04-10 01:44:06 [info]: 🔗  Health check: http://localhost:5000/health
+2026-04-10 01:44:06 [info]: [redisClient] ioredis ready — using real Redis client.
+2026-04-10 01:45:08 [info]: User logged in via Google: minhlq8575@ut.edu.vn
+2026-04-10 01:45:08 [http]: ::1 - - [09/Apr/2026:18:45:08 +0000] "POST /api/auth/google-login HTTP/1.1" 200 816 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 01:46:28 [info]: Successfully sent OTP email to nguyentrungkhoavx0859@gmail.com
+2026-04-10 01:46:28 [info]: New user registered: nguyentrungkhoavx0859@gmail.com (buyer)
+2026-04-10 01:46:28 [http]: ::1 - - [09/Apr/2026:18:46:28 +0000] "POST /api/auth/register HTTP/1.1" 201 265 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 01:46:50 [http]: ::1 - - [09/Apr/2026:18:46:50 +0000] "POST /api/auth/verify-email HTTP/1.1" 200 77 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 01:50:43 [http]: ::1 - - [09/Apr/2026:18:50:43 +0000] "POST /api/auth/register HTTP/1.1" 409 84 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 01:50:59 [info]: User logged in: nguyentrungkhoavx0859@gmail.com
+2026-04-10 01:50:59 [http]: ::1 - - [09/Apr/2026:18:50:59 +0000] "POST /api/auth/login HTTP/1.1" 200 699 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 01:51:00 [http]: ::1 - - [09/Apr/2026:18:51:00 +0000] "GET /api/products?limit=3 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 01:51:05 [http]: ::1 - - [09/Apr/2026:18:51:05 +0000] "GET /api/products HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 01:51:42 [http]: ::1 - - [09/Apr/2026:18:51:42 +0000] "POST /api/auth/logout HTTP/1.1" 200 53 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 01:51:54 [info]: User logged in via Google: minhlq8575@ut.edu.vn
+2026-04-10 01:51:54 [http]: ::1 - - [09/Apr/2026:18:51:54 +0000] "POST /api/auth/google-login HTTP/1.1" 200 817 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 01:51:56 [http]: ::1 - - [09/Apr/2026:18:51:56 +0000] "GET /api/products?limit=3 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 01:52:00 [http]: ::1 - - [09/Apr/2026:18:52:00 +0000] "POST /api/auth/logout HTTP/1.1" 200 53 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 01:52:38 [http]: ::1 - - [09/Apr/2026:18:52:38 +0000] "POST /api/auth/register HTTP/1.1" 422 153 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 01:53:03 [http]: ::1 - - [09/Apr/2026:18:53:03 +0000] "POST /api/auth/register HTTP/1.1" 422 153 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 01:53:20 [http]: ::1 - - [09/Apr/2026:18:53:20 +0000] "POST /api/auth/register HTTP/1.1" 422 153 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 01:53:26 [http]: ::1 - - [09/Apr/2026:18:53:26 +0000] "POST /api/auth/register HTTP/1.1" 422 153 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 01:54:14 [http]: ::1 - - [09/Apr/2026:18:54:14 +0000] "POST /api/auth/register HTTP/1.1" 422 153 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 01:54:24 [info]: Successfully sent OTP email to nguyentrungkhoavx0874@gmail.com
+2026-04-10 01:54:24 [info]: New user registered: nguyentrungkhoavx0874@gmail.com (buyer)
+2026-04-10 01:54:24 [http]: ::1 - - [09/Apr/2026:18:54:24 +0000] "POST /api/auth/register HTTP/1.1" 201 266 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 01:54:50 [http]: ::1 - - [09/Apr/2026:18:54:50 +0000] "POST /api/auth/verify-email HTTP/1.1" 200 77 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 02:10:58 [http]: ::1 - - [09/Apr/2026:19:10:58 +0000] "POST /api/auth/register HTTP/1.1" 422 153 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 02:11:17 [http]: ::1 - - [09/Apr/2026:19:11:17 +0000] "POST /api/auth/register HTTP/1.1" 409 84 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 02:11:33 [info]: Successfully sent OTP email to nguyentrungkhoavx0865@gmail.com
+2026-04-10 02:11:33 [info]: New user registered: nguyentrungkhoavx0865@gmail.com (buyer)
+2026-04-10 02:11:33 [http]: ::1 - - [09/Apr/2026:19:11:33 +0000] "POST /api/auth/register HTTP/1.1" 201 268 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 02:11:50 [http]: ::1 - - [09/Apr/2026:19:11:50 +0000] "POST /api/auth/verify-email HTTP/1.1" 200 77 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 02:38:45 [info]: User logged in via Google: minhlq8575@ut.edu.vn
+2026-04-10 02:38:45 [http]: ::1 - - [09/Apr/2026:19:38:45 +0000] "POST /api/auth/google-login HTTP/1.1" 200 816 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 02:41:48 [info]: User logged in via Google: minhlq8575@ut.edu.vn
+2026-04-10 02:41:48 [http]: ::1 - - [09/Apr/2026:19:41:48 +0000] "POST /api/auth/google-login HTTP/1.1" 200 816 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 02:42:32 [http]: ::1 - - [09/Apr/2026:19:42:32 +0000] "PUT /api/auth/profile HTTP/1.1" 200 45 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 02:44:25 [http]: ::1 - - [09/Apr/2026:19:44:25 +0000] "PUT /api/auth/profile HTTP/1.1" 200 45 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 02:44:27 [http]: ::1 - - [09/Apr/2026:19:44:27 +0000] "GET /api/products?limit=3 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 02:44:31 [http]: ::1 - - [09/Apr/2026:19:44:31 +0000] "GET /api/products HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 02:44:34 [http]: ::1 - - [09/Apr/2026:19:44:34 +0000] "GET /api/products?limit=3 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 02:44:35 [http]: ::1 - - [09/Apr/2026:19:44:35 +0000] "GET /api/auth/me HTTP/1.1" 200 399 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 02:44:37 [http]: ::1 - - [09/Apr/2026:19:44:37 +0000] "GET /api/products?limit=3 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 02:49:42 [http]: ::1 - - [09/Apr/2026:19:49:42 +0000] "POST /api/auth/logout HTTP/1.1" 200 53 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 05:08:40 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 05:08:40 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 05:08:40 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 05:08:40 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 05:08:40 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 05:08:40 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 05:08:40 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 05:08:40 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 05:08:40 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 05:08:40 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 05:08:40 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 05:08:40 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 05:08:40 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 05:08:40 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 05:08:40 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 05:08:40 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 05:08:40 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 05:08:40 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 05:08:43 [info]: 🧪  RBAC test routes enabled (development only)
+2026-04-10 05:08:43 [info]: 🚀  O'Future API running on port 5000
+2026-04-10 05:08:43 [info]: 📍  Environment: development
+2026-04-10 05:08:43 [info]: 🔗  Health check: http://localhost:5000/health
+2026-04-10 05:08:43 [info]: [redisClient] ioredis ready — using real Redis client.
+2026-04-10 05:11:39 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 05:11:39 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 05:11:39 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 05:11:39 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 05:11:39 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 05:11:39 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 05:11:39 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 05:11:39 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 05:11:39 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 05:11:39 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 05:11:39 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 05:11:39 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 05:11:39 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 05:11:39 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 05:11:39 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 05:11:39 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 05:11:39 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 05:11:39 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 05:11:40 [info]: 🧪  RBAC test routes enabled (development only)
+2026-04-10 05:11:40 [info]: 🚀  O'Future API running on port 5000
+2026-04-10 05:11:40 [info]: 📍  Environment: development
+2026-04-10 05:11:40 [info]: 🔗  Health check: http://localhost:5000/health
+2026-04-10 05:11:40 [info]: [redisClient] ioredis ready — using real Redis client.
+2026-04-10 05:48:26 [info]: User logged in via Google: minhlq8575@ut.edu.vn
+2026-04-10 05:48:26 [http]: ::1 - - [09/Apr/2026:22:48:26 +0000] "POST /api/auth/google-login HTTP/1.1" 200 816 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 05:49:02 [http]: ::1 - - [09/Apr/2026:22:49:02 +0000] "PUT /api/auth/profile HTTP/1.1" 200 104 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 05:49:04 [http]: ::1 - - [09/Apr/2026:22:49:04 +0000] "GET /api/products/seller/my?page=1&limit=10 HTTP/1.1" 200 86 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 05:49:04 [http]: ::1 - - [09/Apr/2026:22:49:04 +0000] "GET /api/seller/orders?page=1&limit=10 HTTP/1.1" 200 26 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 05:49:04 [http]: ::1 - - [09/Apr/2026:22:49:04 +0000] "GET /api/seller/samples?page=1&limit=10 HTTP/1.1" 200 26 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 05:49:04 [http]: ::1 - - [09/Apr/2026:22:49:04 +0000] "GET /api/seller/escrow?page=1&limit=10 HTTP/1.1" 200 86 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 05:49:04 [http]: ::1 - - [09/Apr/2026:22:49:04 +0000] "GET /api/seller/reviews?page=1&limit=10 HTTP/1.1" 200 86 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 05:49:04 [http]: ::1 - - [09/Apr/2026:22:49:04 +0000] "GET /api/seller/disputes?page=1&limit=10 HTTP/1.1" 200 86 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 05:52:48 [info]: Product created: "chuốii chiên nóngggg" id=d4d0fb31-3466-11f1-bc7e-e00af682e84e
+2026-04-10 05:52:48 [http]: ::1 - - [09/Apr/2026:22:52:48 +0000] "POST /api/products HTTP/1.1" 201 652 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 05:52:50 [http]: ::1 - - [09/Apr/2026:22:52:50 +0000] "GET /api/products/seller/my?page=1&limit=10 HTTP/1.1" 200 524 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 05:52:50 [http]: ::1 - - [09/Apr/2026:22:52:50 +0000] "GET /api/seller/orders?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 05:52:50 [http]: ::1 - - [09/Apr/2026:22:52:50 +0000] "GET /api/seller/samples?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 05:52:50 [http]: ::1 - - [09/Apr/2026:22:52:50 +0000] "GET /api/seller/escrow?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 05:52:50 [http]: ::1 - - [09/Apr/2026:22:52:50 +0000] "GET /api/seller/reviews?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 05:52:50 [http]: ::1 - - [09/Apr/2026:22:52:50 +0000] "GET /api/seller/disputes?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 05:53:06 [http]: ::1 - - [09/Apr/2026:22:53:06 +0000] "POST /api/auth/logout HTTP/1.1" 200 53 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 05:53:12 [http]: ::1 - - [09/Apr/2026:22:53:12 +0000] "POST /api/auth/google-login HTTP/1.1" 200 299 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 05:53:28 [http]: ::1 - - [09/Apr/2026:22:53:28 +0000] "POST /api/mfa/verify HTTP/1.1" 400 39 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 05:53:40 [http]: ::1 - - [09/Apr/2026:22:53:40 +0000] "POST /api/mfa/verify HTTP/1.1" 400 39 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 05:53:48 [http]: ::1 - - [09/Apr/2026:22:53:48 +0000] "POST /api/auth/google-login HTTP/1.1" 200 299 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 05:54:11 [http]: ::1 - - [09/Apr/2026:22:54:11 +0000] "POST /api/mfa/verify HTTP/1.1" 400 39 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 05:54:22 [http]: ::1 - - [09/Apr/2026:22:54:22 +0000] "POST /api/mfa/verify HTTP/1.1" 400 39 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 05:55:22 [http]: ::1 - - [09/Apr/2026:22:55:22 +0000] "POST /api/auth/google-login HTTP/1.1" 200 299 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 05:55:53 [info]: User logged in via Google: nguyentrungkhoavx0857@gmail.com
+2026-04-10 05:55:53 [http]: ::1 - - [09/Apr/2026:22:55:53 +0000] "POST /api/auth/google-login HTTP/1.1" 200 853 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 05:55:54 [http]: ::1 - - [09/Apr/2026:22:55:54 +0000] "GET /api/products?limit=3 HTTP/1.1" 200 523 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 05:56:15 [http]: ::1 - - [09/Apr/2026:22:56:15 +0000] "GET /api/auth/me HTTP/1.1" 200 434 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 05:56:16 [http]: ::1 - - [09/Apr/2026:22:56:16 +0000] "GET /api/products?limit=3 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 05:56:20 [http]: ::1 - - [09/Apr/2026:22:56:20 +0000] "GET /api/products HTTP/1.1" 200 524 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 05:56:22 [http]: ::1 - - [09/Apr/2026:22:56:22 +0000] "GET /api/products/d4d0fb31-3466-11f1-bc7e-e00af682e84e HTTP/1.1" 200 664 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 05:56:27 [http]: ::1 - - [09/Apr/2026:22:56:27 +0000] "GET /api/products?limit=3 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 05:56:29 [http]: ::1 - - [09/Apr/2026:22:56:29 +0000] "GET /api/products HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 05:56:30 [http]: ::1 - - [09/Apr/2026:22:56:30 +0000] "GET /api/products/d4d0fb31-3466-11f1-bc7e-e00af682e84e HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 05:56:39 [http]: ::1 - - [09/Apr/2026:22:56:39 +0000] "GET /api/products?limit=3 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 05:56:50 [http]: ::1 - - [09/Apr/2026:22:56:50 +0000] "GET /api/auth/me HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 05:56:54 [http]: ::1 - - [09/Apr/2026:22:56:54 +0000] "POST /api/mfa/setup HTTP/1.1" 200 3365 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 05:57:06 [http]: ::1 - - [09/Apr/2026:22:57:06 +0000] "POST /api/mfa/confirm HTTP/1.1" 200 171 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 05:57:07 [http]: ::1 - - [09/Apr/2026:22:57:07 +0000] "GET /api/auth/me HTTP/1.1" 200 433 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 05:57:09 [http]: ::1 - - [09/Apr/2026:22:57:09 +0000] "POST /api/auth/logout HTTP/1.1" 200 53 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 05:57:14 [http]: ::1 - - [09/Apr/2026:22:57:14 +0000] "POST /api/auth/google-login HTTP/1.1" 200 299 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 05:57:24 [http]: ::1 - - [09/Apr/2026:22:57:24 +0000] "POST /api/auth/google-login HTTP/1.1" 200 299 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 05:57:40 [http]: ::1 - - [09/Apr/2026:22:57:40 +0000] "POST /api/mfa/verify HTTP/1.1" 400 39 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 05:57:50 [http]: ::1 - - [09/Apr/2026:22:57:50 +0000] "POST /api/mfa/verify HTTP/1.1" 400 39 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 05:58:22 [http]: ::1 - - [09/Apr/2026:22:58:22 +0000] "POST /api/mfa/verify HTTP/1.1" 400 39 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 06:00:45 [info]: User logged in via Google: nguyentrungkhoavx0857@gmail.com
+2026-04-10 06:00:45 [http]: ::1 - - [09/Apr/2026:23:00:45 +0000] "POST /api/auth/google-login HTTP/1.1" 200 853 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 06:00:46 [http]: ::1 - - [09/Apr/2026:23:00:46 +0000] "GET /api/products?limit=3 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 06:00:48 [http]: ::1 - - [09/Apr/2026:23:00:48 +0000] "GET /api/auth/me HTTP/1.1" 200 434 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 06:00:50 [http]: ::1 - - [09/Apr/2026:23:00:50 +0000] "GET /api/auth/devices HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 06:00:52 [http]: ::1 - - [09/Apr/2026:23:00:52 +0000] "POST /api/mfa/setup HTTP/1.1" 200 3405 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 06:00:57 [warn]: [RateLimit] Hit: ip=::1 path=/confirm limit=10/15min
+2026-04-10 06:00:57 [http]: ::1 - - [09/Apr/2026:23:00:57 +0000] "POST /api/mfa/confirm HTTP/1.1" 429 94 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 06:18:43 [http]: ::1 - - [09/Apr/2026:23:18:43 +0000] "GET /api/auth/me HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 06:19:29 [http]: ::1 - - [09/Apr/2026:23:19:29 +0000] "GET /api/auth/me HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 06:19:46 [http]: ::1 - - [09/Apr/2026:23:19:46 +0000] "GET /api/auth/me HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 06:20:12 [http]: ::1 - - [09/Apr/2026:23:20:12 +0000] "POST /api/auth/avatar HTTP/1.1" 200 143 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 06:20:14 [http]: ::1 - - [09/Apr/2026:23:20:14 +0000] "GET /api/auth/me HTTP/1.1" 200 382 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 06:20:34 [http]: ::1 - - [09/Apr/2026:23:20:34 +0000] "GET /api/orders/my HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 06:20:37 [http]: ::1 - - [09/Apr/2026:23:20:37 +0000] "GET /api/products HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 06:20:39 [http]: ::1 - - [09/Apr/2026:23:20:39 +0000] "GET /api/products/d4d0fb31-3466-11f1-bc7e-e00af682e84e HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 12:22:05 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 12:22:05 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 12:22:05 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 12:22:05 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 12:22:05 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 12:22:05 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 12:22:05 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 12:22:05 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 12:22:05 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 12:22:05 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 12:22:05 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 12:22:05 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 12:22:05 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 12:22:05 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 12:22:05 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 12:22:05 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 12:22:05 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 12:22:05 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 12:22:07 [info]: 🧪  RBAC test routes enabled (development only)
+2026-04-10 12:22:07 [info]: 🚀  O'Future API running on port 5000
+2026-04-10 12:22:07 [info]: 📍  Environment: development
+2026-04-10 12:22:07 [info]: 🔗  Health check: http://localhost:5000/health
+2026-04-10 12:22:07 [info]: [redisClient] ioredis ready — using real Redis client.
+2026-04-10 12:23:09 [info]: User logged in via Google: nguyentrungkhoavx0857@gmail.com
+2026-04-10 12:23:09 [http]: ::1 - - [10/Apr/2026:05:23:09 +0000] "POST /api/auth/google-login HTTP/1.1" 200 853 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 12:23:10 [http]: ::1 - - [10/Apr/2026:05:23:10 +0000] "GET /api/products?limit=3 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 12:23:13 [http]: ::1 - - [10/Apr/2026:05:23:13 +0000] "GET /api/products HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 12:23:15 [http]: ::1 - - [10/Apr/2026:05:23:15 +0000] "GET /api/products HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 12:23:28 [http]: ::1 - - [10/Apr/2026:05:23:28 +0000] "GET /api/auth/me HTTP/1.1" 200 382 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 12:23:31 [http]: ::1 - - [10/Apr/2026:05:23:31 +0000] "POST /api/mfa/setup HTTP/1.1" 200 3277 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 12:24:40 [http]: ::1 - - [10/Apr/2026:05:24:40 +0000] "POST /api/mfa/confirm HTTP/1.1" 200 171 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 12:24:42 [http]: ::1 - - [10/Apr/2026:05:24:42 +0000] "GET /api/auth/me HTTP/1.1" 200 381 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 12:24:48 [http]: ::1 - - [10/Apr/2026:05:24:48 +0000] "POST /api/auth/logout HTTP/1.1" 200 53 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 12:24:54 [http]: ::1 - - [10/Apr/2026:05:24:54 +0000] "POST /api/auth/google-login HTTP/1.1" 200 299 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 12:28:04 [info]: User logged in via Google: nguyentrungkhoavx0858@gmail.com
+2026-04-10 12:28:04 [http]: ::1 - - [10/Apr/2026:05:28:04 +0000] "POST /api/auth/google-login HTTP/1.1" 200 850 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 12:28:23 [http]: ::1 - - [10/Apr/2026:05:28:23 +0000] "PUT /api/auth/profile HTTP/1.1" 200 104 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 12:28:25 [http]: ::1 - - [10/Apr/2026:05:28:25 +0000] "GET /api/products/seller/my?page=1&limit=10 HTTP/1.1" 200 86 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 12:28:25 [http]: ::1 - - [10/Apr/2026:05:28:25 +0000] "GET /api/seller/orders?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 12:28:25 [http]: ::1 - - [10/Apr/2026:05:28:25 +0000] "GET /api/seller/escrow?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 12:28:25 [http]: ::1 - - [10/Apr/2026:05:28:25 +0000] "GET /api/seller/samples?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 12:28:25 [http]: ::1 - - [10/Apr/2026:05:28:25 +0000] "GET /api/seller/reviews?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 12:28:25 [http]: ::1 - - [10/Apr/2026:05:28:25 +0000] "GET /api/seller/disputes?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 12:29:43 [info]: Product created: "áo khoác da lông cừu nè" id=475aeb95-349e-11f1-b1f5-e00af682e84e
+2026-04-10 12:29:43 [http]: ::1 - - [10/Apr/2026:05:29:43 +0000] "POST /api/products HTTP/1.1" 201 565 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 12:29:47 [http]: ::1 - - [10/Apr/2026:05:29:47 +0000] "GET /api/products/seller/my?page=1&limit=10 HTTP/1.1" - - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 12:29:47 [http]: ::1 - - [10/Apr/2026:05:29:47 +0000] "GET /api/products/seller/my?page=1&limit=10 HTTP/1.1" 200 495 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 12:29:47 [http]: ::1 - - [10/Apr/2026:05:29:47 +0000] "GET /api/seller/orders?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 12:29:47 [http]: ::1 - - [10/Apr/2026:05:29:47 +0000] "GET /api/seller/samples?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 12:29:47 [http]: ::1 - - [10/Apr/2026:05:29:47 +0000] "GET /api/seller/escrow?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 12:29:47 [http]: ::1 - - [10/Apr/2026:05:29:47 +0000] "GET /api/seller/reviews?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 12:29:47 [http]: ::1 - - [10/Apr/2026:05:29:47 +0000] "GET /api/seller/disputes?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 12:31:38 [info]: Product created: "Áo khoác Varsity" id=8c017b6f-349e-11f1-b1f5-e00af682e84e
+2026-04-10 12:31:38 [http]: ::1 - - [10/Apr/2026:05:31:38 +0000] "POST /api/products HTTP/1.1" 201 492 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 12:31:39 [http]: ::1 - - [10/Apr/2026:05:31:39 +0000] "GET /api/products/seller/my?page=1&limit=10 HTTP/1.1" 200 840 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 12:31:39 [http]: ::1 - - [10/Apr/2026:05:31:39 +0000] "GET /api/products/seller/my?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 12:31:39 [http]: ::1 - - [10/Apr/2026:05:31:39 +0000] "GET /api/seller/orders?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 12:31:39 [http]: ::1 - - [10/Apr/2026:05:31:39 +0000] "GET /api/seller/reviews?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 12:31:40 [http]: ::1 - - [10/Apr/2026:05:31:40 +0000] "GET /api/seller/samples?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 12:31:40 [http]: ::1 - - [10/Apr/2026:05:31:40 +0000] "GET /api/seller/escrow?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 12:31:40 [http]: ::1 - - [10/Apr/2026:05:31:40 +0000] "GET /api/seller/disputes?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 12:34:37 [info]: Product created: "Cân Điện Tử -" id=f685a843-349e-11f1-b1f5-e00af682e84e
+2026-04-10 12:34:37 [http]: ::1 - - [10/Apr/2026:05:34:37 +0000] "POST /api/products HTTP/1.1" 201 571 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 12:34:38 [http]: ::1 - - [10/Apr/2026:05:34:38 +0000] "GET /api/products/seller/my?page=1&limit=10 HTTP/1.1" 200 1229 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 12:34:38 [http]: ::1 - - [10/Apr/2026:05:34:38 +0000] "GET /api/products/seller/my?page=1&limit=10 HTTP/1.1" 200 1229 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 12:34:38 [http]: ::1 - - [10/Apr/2026:05:34:38 +0000] "GET /api/seller/orders?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 12:34:38 [http]: ::1 - - [10/Apr/2026:05:34:38 +0000] "GET /api/seller/escrow?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 12:34:38 [http]: ::1 - - [10/Apr/2026:05:34:38 +0000] "GET /api/seller/disputes?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 12:34:38 [http]: ::1 - - [10/Apr/2026:05:34:38 +0000] "GET /api/seller/samples?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 12:34:38 [http]: ::1 - - [10/Apr/2026:05:34:38 +0000] "GET /api/seller/reviews?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 12:34:43 [http]: ::1 - - [10/Apr/2026:05:34:43 +0000] "POST /api/auth/logout HTTP/1.1" 200 53 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 12:34:48 [http]: ::1 - - [10/Apr/2026:05:34:48 +0000] "POST /api/auth/google-login HTTP/1.1" 200 299 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 12:41:27 [http]: ::1 - - [10/Apr/2026:05:41:27 +0000] "POST /api/auth/google-login HTTP/1.1" 200 299 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 12:41:59 [info]: User logged in via Google: nguyentrungkhoavx0857@gmail.com
+2026-04-10 12:41:59 [http]: ::1 - - [10/Apr/2026:05:41:59 +0000] "POST /api/auth/google-login HTTP/1.1" 200 853 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 12:42:00 [http]: ::1 - - [10/Apr/2026:05:42:00 +0000] "GET /api/products?limit=3 HTTP/1.1" 200 1228 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 12:42:25 [http]: ::1 - - [10/Apr/2026:05:42:25 +0000] "GET /api/auth/me HTTP/1.1" 200 382 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 12:42:29 [http]: ::1 - - [10/Apr/2026:05:42:29 +0000] "POST /api/mfa/setup HTTP/1.1" 200 3353 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 12:43:06 [http]: ::1 - - [10/Apr/2026:05:43:06 +0000] "POST /api/mfa/confirm HTTP/1.1" 200 171 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 12:43:07 [http]: ::1 - - [10/Apr/2026:05:43:07 +0000] "GET /api/auth/me HTTP/1.1" 200 381 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 12:43:11 [http]: ::1 - - [10/Apr/2026:05:43:11 +0000] "POST /api/auth/logout HTTP/1.1" 200 53 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 12:43:18 [http]: ::1 - - [10/Apr/2026:05:43:18 +0000] "POST /api/auth/google-login HTTP/1.1" 200 299 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 12:43:34 [http]: ::1 - - [10/Apr/2026:05:43:34 +0000] "POST /api/mfa/verify HTTP/1.1" 200 450 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 12:43:49 [http]: ::1 - - [10/Apr/2026:05:43:49 +0000] "POST /api/auth/google-login HTTP/1.1" 200 299 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 12:44:03 [http]: ::1 - - [10/Apr/2026:05:44:03 +0000] "POST /api/mfa/verify HTTP/1.1" 200 450 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 12:47:16 [info]: User logged in via Google: nguyentrungkhoavx0858@gmail.com
+2026-04-10 12:47:16 [http]: ::1 - - [10/Apr/2026:05:47:16 +0000] "POST /api/auth/google-login HTTP/1.1" 200 853 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 12:47:17 [http]: ::1 - - [10/Apr/2026:05:47:17 +0000] "GET /api/products/seller/my?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 12:47:17 [http]: ::1 - - [10/Apr/2026:05:47:17 +0000] "GET /api/seller/orders?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 12:47:17 [http]: ::1 - - [10/Apr/2026:05:47:17 +0000] "GET /api/seller/reviews?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 12:47:17 [http]: ::1 - - [10/Apr/2026:05:47:17 +0000] "GET /api/seller/disputes?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 12:47:17 [http]: ::1 - - [10/Apr/2026:05:47:17 +0000] "GET /api/seller/samples?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 12:47:17 [http]: ::1 - - [10/Apr/2026:05:47:17 +0000] "GET /api/seller/escrow?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 12:50:02 [http]: ::1 - - [10/Apr/2026:05:50:02 +0000] "POST /api/auth/logout HTTP/1.1" 200 53 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 12:55:01 [info]: Successfully sent OTP email to nguyentrungkhoavx0859@gmail.com
+2026-04-10 12:55:01 [info]: New user registered: nguyentrungkhoavx0859@gmail.com (buyer)
+2026-04-10 12:55:01 [http]: ::1 - - [10/Apr/2026:05:55:01 +0000] "POST /api/auth/register HTTP/1.1" 201 276 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 12:55:17 [http]: ::1 - - [10/Apr/2026:05:55:17 +0000] "POST /api/auth/verify-email HTTP/1.1" 200 77 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 13:07:43 [http]: ::1 - - [10/Apr/2026:06:07:43 +0000] "PUT /api/auth/profile HTTP/1.1" 401 87 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 13:09:10 [http]: ::1 - - [10/Apr/2026:06:09:10 +0000] "PUT /api/auth/profile HTTP/1.1" 401 87 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 13:14:54 [http]: ::1 - - [10/Apr/2026:06:14:54 +0000] "POST /api/auth/google-login HTTP/1.1" 200 299 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 13:18:38 [info]: User logged in via Google: nguyentrungkhoavx0857@gmail.com
+2026-04-10 13:18:38 [http]: ::1 - - [10/Apr/2026:06:18:38 +0000] "POST /api/auth/google-login HTTP/1.1" 200 853 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 13:18:39 [http]: ::1 - - [10/Apr/2026:06:18:39 +0000] "GET /api/products?limit=3 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 13:18:41 [http]: ::1 - - [10/Apr/2026:06:18:41 +0000] "GET /api/products HTTP/1.1" 200 1668 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 13:18:43 [http]: ::1 - - [10/Apr/2026:06:18:43 +0000] "GET /api/products?limit=3 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 13:18:47 [http]: ::1 - - [10/Apr/2026:06:18:47 +0000] "GET /api/products HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 13:18:48 [http]: ::1 - - [10/Apr/2026:06:18:48 +0000] "GET /api/products/f685a843-349e-11f1-b1f5-e00af682e84e HTTP/1.1" 200 591 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 13:20:38 [http]: ::1 - - [10/Apr/2026:06:20:38 +0000] "GET /api/products HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 13:20:55 [http]: ::1 - - [10/Apr/2026:06:20:55 +0000] "GET /api/auth/me HTTP/1.1" 200 382 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 13:20:58 [http]: ::1 - - [10/Apr/2026:06:20:58 +0000] "POST /api/mfa/setup HTTP/1.1" 200 3381 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 13:21:12 [http]: ::1 - - [10/Apr/2026:06:21:12 +0000] "POST /api/mfa/confirm HTTP/1.1" 400 39 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 13:21:18 [http]: ::1 - - [10/Apr/2026:06:21:18 +0000] "POST /api/mfa/confirm HTTP/1.1" 400 39 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 13:21:41 [http]: ::1 - - [10/Apr/2026:06:21:41 +0000] "POST /api/mfa/confirm HTTP/1.1" 200 171 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 13:21:43 [http]: ::1 - - [10/Apr/2026:06:21:43 +0000] "GET /api/auth/me HTTP/1.1" 200 381 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 13:21:47 [http]: ::1 - - [10/Apr/2026:06:21:47 +0000] "GET /api/auth/devices HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 13:21:49 [http]: ::1 - - [10/Apr/2026:06:21:49 +0000] "POST /api/auth/logout HTTP/1.1" 200 53 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 13:22:21 [http]: ::1 - - [10/Apr/2026:06:22:21 +0000] "POST /api/auth/google-login HTTP/1.1" 200 299 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 13:22:35 [http]: ::1 - - [10/Apr/2026:06:22:35 +0000] "POST /api/mfa/verify HTTP/1.1" 200 450 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 13:23:33 [http]: ::1 - - [10/Apr/2026:06:23:33 +0000] "POST /api/auth/register HTTP/1.1" 409 84 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 13:24:17 [info]: User logged in: nguyentrungkhoavx0859@gmail.com
+2026-04-10 13:24:17 [http]: ::1 - - [10/Apr/2026:06:24:17 +0000] "POST /api/auth/login HTTP/1.1" 200 710 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 13:24:18 [http]: ::1 - - [10/Apr/2026:06:24:18 +0000] "GET /api/products?limit=3 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 13:25:02 [http]: ::1 - - [10/Apr/2026:06:25:02 +0000] "GET /api/products HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 13:25:07 [http]: ::1 - - [10/Apr/2026:06:25:07 +0000] "POST /api/auth/logout HTTP/1.1" 200 53 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 13:26:56 [info]: User logged in: nguyentrungkhoavx0859@gmail.com
+2026-04-10 13:26:56 [http]: ::1 - - [10/Apr/2026:06:26:56 +0000] "POST /api/auth/login HTTP/1.1" 200 710 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 13:26:57 [http]: ::1 - - [10/Apr/2026:06:26:57 +0000] "GET /api/products?limit=3 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 13:26:59 [http]: ::1 - - [10/Apr/2026:06:26:59 +0000] "GET /api/auth/me HTTP/1.1" 200 326 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 13:27:01 [http]: ::1 - - [10/Apr/2026:06:27:01 +0000] "GET /api/auth/devices HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 13:27:03 [http]: ::1 - - [10/Apr/2026:06:27:03 +0000] "POST /api/mfa/setup HTTP/1.1" 200 3325 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 13:27:23 [http]: ::1 - - [10/Apr/2026:06:27:23 +0000] "POST /api/mfa/confirm HTTP/1.1" 200 171 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 13:27:25 [http]: ::1 - - [10/Apr/2026:06:27:25 +0000] "GET /api/auth/me HTTP/1.1" 200 325 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 13:27:28 [http]: ::1 - - [10/Apr/2026:06:27:28 +0000] "POST /api/auth/logout HTTP/1.1" 200 53 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 13:27:51 [http]: ::1 - - [10/Apr/2026:06:27:51 +0000] "POST /api/auth/login HTTP/1.1" 200 299 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 13:28:07 [http]: ::1 - - [10/Apr/2026:06:28:07 +0000] "POST /api/mfa/verify HTTP/1.1" 200 450 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 13:28:37 [http]: ::1 - - [10/Apr/2026:06:28:37 +0000] "POST /api/auth/login HTTP/1.1" 200 299 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:20:28 [http]: ::1 - - [10/Apr/2026:11:20:28 +0000] "POST /api/auth/login HTTP/1.1" 401 104 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:27:01 [http]: ::1 - - [10/Apr/2026:11:27:01 +0000] "POST /api/auth/login HTTP/1.1" 401 104 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:27:39 [info]: User logged in via Google: nguyentrungkhoavx0858@gmail.com
+2026-04-10 18:27:39 [http]: ::1 - - [10/Apr/2026:11:27:39 +0000] "POST /api/auth/google-login HTTP/1.1" 200 853 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:27:40 [http]: ::1 - - [10/Apr/2026:11:27:40 +0000] "GET /api/seller/samples?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:27:40 [http]: ::1 - - [10/Apr/2026:11:27:40 +0000] "GET /api/products/seller/my?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:27:40 [http]: ::1 - - [10/Apr/2026:11:27:40 +0000] "GET /api/seller/orders?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:27:40 [http]: ::1 - - [10/Apr/2026:11:27:40 +0000] "GET /api/seller/escrow?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:27:40 [http]: ::1 - - [10/Apr/2026:11:27:40 +0000] "GET /api/seller/reviews?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:27:40 [http]: ::1 - - [10/Apr/2026:11:27:40 +0000] "GET /api/seller/disputes?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:28:32 [http]: ::1 - - [10/Apr/2026:11:28:32 +0000] "GET /api/products/seller/my?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:28:32 [http]: ::1 - - [10/Apr/2026:11:28:32 +0000] "GET /api/seller/orders?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:28:32 [http]: ::1 - - [10/Apr/2026:11:28:32 +0000] "GET /api/seller/samples?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:28:32 [http]: ::1 - - [10/Apr/2026:11:28:32 +0000] "GET /api/seller/reviews?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:28:32 [http]: ::1 - - [10/Apr/2026:11:28:32 +0000] "GET /api/seller/escrow?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:28:32 [http]: ::1 - - [10/Apr/2026:11:28:32 +0000] "GET /api/seller/disputes?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:28:49 [http]: ::1 - - [10/Apr/2026:11:28:49 +0000] "PUT /api/products/f685a843-349e-11f1-b1f5-e00af682e84e HTTP/1.1" 200 552 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:28:50 [http]: ::1 - - [10/Apr/2026:11:28:50 +0000] "GET /api/products/seller/my?page=1&limit=10 HTTP/1.1" 200 1183 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:28:50 [http]: ::1 - - [10/Apr/2026:11:28:50 +0000] "GET /api/products/seller/my?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:28:50 [http]: ::1 - - [10/Apr/2026:11:28:50 +0000] "GET /api/seller/samples?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:28:50 [http]: ::1 - - [10/Apr/2026:11:28:50 +0000] "GET /api/seller/orders?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:28:50 [http]: ::1 - - [10/Apr/2026:11:28:50 +0000] "GET /api/seller/escrow?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:28:50 [http]: ::1 - - [10/Apr/2026:11:28:50 +0000] "GET /api/seller/disputes?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:28:50 [http]: ::1 - - [10/Apr/2026:11:28:50 +0000] "GET /api/seller/reviews?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:29:24 [http]: ::1 - - [10/Apr/2026:11:29:24 +0000] "PUT /api/products/8c017b6f-349e-11f1-b1f5-e00af682e84e HTTP/1.1" 200 553 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:29:25 [http]: ::1 - - [10/Apr/2026:11:29:25 +0000] "GET /api/products/seller/my?page=1&limit=10 HTTP/1.1" 200 1182 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:29:25 [http]: ::1 - - [10/Apr/2026:11:29:25 +0000] "GET /api/products/seller/my?page=1&limit=10 HTTP/1.1" 200 1182 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:29:25 [http]: ::1 - - [10/Apr/2026:11:29:25 +0000] "GET /api/seller/orders?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:29:25 [http]: ::1 - - [10/Apr/2026:11:29:25 +0000] "GET /api/seller/samples?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:29:25 [http]: ::1 - - [10/Apr/2026:11:29:25 +0000] "GET /api/seller/escrow?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:29:25 [http]: ::1 - - [10/Apr/2026:11:29:25 +0000] "GET /api/seller/disputes?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:29:25 [http]: ::1 - - [10/Apr/2026:11:29:25 +0000] "GET /api/seller/reviews?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:31:28 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 18:31:28 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 18:31:28 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 18:31:28 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 18:31:28 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 18:31:28 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 18:31:28 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 18:31:28 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 18:31:28 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 18:31:28 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 18:31:28 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 18:31:28 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 18:31:28 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 18:31:28 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 18:31:28 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 18:31:28 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 18:31:28 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 18:31:28 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 18:31:31 [info]: 🧪  RBAC test routes enabled (development only)
+2026-04-10 18:31:31 [info]: 🚀  O'Future API running on port 5000
+2026-04-10 18:31:31 [info]: 📍  Environment: development
+2026-04-10 18:31:31 [info]: 🔗  Health check: http://localhost:5000/health
+2026-04-10 18:31:31 [info]: [redisClient] ioredis ready — using real Redis client.
+2026-04-10 18:32:34 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 18:32:34 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 18:32:34 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 18:32:34 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 18:32:34 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 18:32:34 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 18:32:34 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 18:32:34 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 18:32:34 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 18:32:34 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 18:32:34 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 18:32:34 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 18:32:34 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 18:32:34 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 18:32:34 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 18:32:34 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 18:32:34 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-10 18:32:34 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-10 18:32:36 [info]: 🧪  RBAC test routes enabled (development only)
+2026-04-10 18:32:36 [info]: 🚀  O'Future API running on port 5000
+2026-04-10 18:32:36 [info]: 📍  Environment: development
+2026-04-10 18:32:36 [info]: 🔗  Health check: http://localhost:5000/health
+2026-04-10 18:32:36 [info]: [redisClient] ioredis ready — using real Redis client.
+2026-04-10 18:32:37 [http]: ::ffff:127.0.0.1 - - [10/Apr/2026:11:32:37 +0000] "GET /api/seller/samples?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:32:37 [http]: ::ffff:127.0.0.1 - - [10/Apr/2026:11:32:37 +0000] "GET /api/seller/orders?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:32:37 [http]: ::ffff:127.0.0.1 - - [10/Apr/2026:11:32:37 +0000] "GET /api/seller/reviews?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:32:37 [http]: ::ffff:127.0.0.1 - - [10/Apr/2026:11:32:37 +0000] "GET /api/products/seller/my?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:32:37 [http]: ::ffff:127.0.0.1 - - [10/Apr/2026:11:32:37 +0000] "GET /api/seller/disputes?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:32:37 [http]: ::ffff:127.0.0.1 - - [10/Apr/2026:11:32:37 +0000] "GET /api/seller/escrow?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:33:55 [info]: User logged in via Google: nguyentrungkhoavx0858@gmail.com
+2026-04-10 18:33:55 [http]: ::1 - - [10/Apr/2026:11:33:55 +0000] "POST /api/auth/google-login HTTP/1.1" 200 853 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:33:56 [http]: ::1 - - [10/Apr/2026:11:33:56 +0000] "GET /api/seller/samples?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:33:56 [http]: ::1 - - [10/Apr/2026:11:33:56 +0000] "GET /api/seller/orders?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:33:56 [http]: ::1 - - [10/Apr/2026:11:33:56 +0000] "GET /api/seller/escrow?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:33:56 [http]: ::1 - - [10/Apr/2026:11:33:56 +0000] "GET /api/seller/reviews?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:33:56 [http]: ::1 - - [10/Apr/2026:11:33:56 +0000] "GET /api/seller/disputes?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:33:56 [http]: ::1 - - [10/Apr/2026:11:33:56 +0000] "GET /api/products/seller/my?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:34:05 [http]: ::1 - - [10/Apr/2026:11:34:05 +0000] "POST /api/auth/google-login HTTP/1.1" 200 299 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:34:24 [http]: ::1 - - [10/Apr/2026:11:34:24 +0000] "POST /api/mfa/verify HTTP/1.1" 200 645 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:34:26 [http]: ::1 - - [10/Apr/2026:11:34:26 +0000] "GET /api/products?limit=3 HTTP/1.1" 200 1181 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:34:43 [http]: ::1 - - [10/Apr/2026:11:34:43 +0000] "GET /api/products HTTP/1.1" 200 1621 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:34:44 [http]: ::1 - - [10/Apr/2026:11:34:44 +0000] "GET /api/products?limit=3 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:34:47 [http]: ::1 - - [10/Apr/2026:11:34:47 +0000] "GET /api/products HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:34:49 [http]: ::1 - - [10/Apr/2026:11:34:49 +0000] "GET /api/products HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:34:54 [http]: ::1 - - [10/Apr/2026:11:34:54 +0000] "GET /api/products?limit=3 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:34:56 [http]: ::1 - - [10/Apr/2026:11:34:56 +0000] "GET /api/orders/my HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:34:56 [http]: ::1 - - [10/Apr/2026:11:34:56 +0000] "GET /api/auth/me HTTP/1.1" 200 381 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:50:03 [http]: ::1 - - [10/Apr/2026:11:50:03 +0000] "GET /api/products HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:50:08 [http]: ::1 - - [10/Apr/2026:11:50:08 +0000] "GET /api/products HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:50:24 [info]: Order created: id=771b9551-34d3-11f1-b1f5-e00af682e84e buyer=f07ce30f-342b-11f1-bc7e-e00af682e84e
+2026-04-10 18:50:24 [http]: ::1 - - [10/Apr/2026:11:50:24 +0000] "POST /api/orders HTTP/1.1" 201 359 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:50:24 [error]: Error: MoMo API error [400]: {"responseTime":1775821825436,"message":"Chữ ký không hợp lệ. Vui lòng kiểm tra dữ liệu gốc trước khi mã hóa : accessKey=***&amount=30030&extraData=&ipnUrl=https://arseno-cathern-sadistically.ngrok-free.dev/api/payments/momo/callback&orderId=771b9551-34d3-11f1-b1f5-e00af682e84e&orderInfo=Thanh toan don hang 771b9551-34d3-11f1-b1f5-e00af682e84e&partnerCode=MOMO&redirectUrl=http://localhost:3000/payment/momo/callback&requestId=771b9551-34d3-11f1-b1f5-e00af682e84e_1775821824483&requestType=captureWallet.","resultCode":11007}
+    at MoMoClient.createPaymentRequest (C:\Users\nguye\test Ofuture\test\ofuture-backend\services\MoMoClient.ts:116:15)
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async Object.createMoMoPayment (C:\Users\nguye\test Ofuture\test\ofuture-backend\services\paymentService.ts:124:24)
+    at async createMoMo (C:\Users\nguye\test Ofuture\test\ofuture-backend\controllers\paymentController.ts:9:20)
+2026-04-10 18:50:24 [http]: ::1 - - [10/Apr/2026:11:50:24 +0000] "POST /api/payments/momo/create HTTP/1.1" 400 609 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:50:34 [info]: Order created: id=7d2bb59d-34d3-11f1-b1f5-e00af682e84e buyer=f07ce30f-342b-11f1-bc7e-e00af682e84e
+2026-04-10 18:50:34 [http]: ::1 - - [10/Apr/2026:11:50:34 +0000] "POST /api/orders HTTP/1.1" 201 359 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:50:34 [error]: Error: MoMo API error [400]: {"responseTime":1775821835526,"message":"Chữ ký không hợp lệ. Vui lòng kiểm tra dữ liệu gốc trước khi mã hóa : accessKey=***&amount=30030&extraData=&ipnUrl=https://arseno-cathern-sadistically.ngrok-free.dev/api/payments/momo/callback&orderId=7d2bb59d-34d3-11f1-b1f5-e00af682e84e&orderInfo=Thanh toan don hang 7d2bb59d-34d3-11f1-b1f5-e00af682e84e&partnerCode=MOMO&redirectUrl=http://localhost:3000/payment/momo/callback&requestId=7d2bb59d-34d3-11f1-b1f5-e00af682e84e_1775821834651&requestType=captureWallet.","resultCode":11007}
+    at MoMoClient.createPaymentRequest (C:\Users\nguye\test Ofuture\test\ofuture-backend\services\MoMoClient.ts:116:15)
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async Object.createMoMoPayment (C:\Users\nguye\test Ofuture\test\ofuture-backend\services\paymentService.ts:124:24)
+    at async createMoMo (C:\Users\nguye\test Ofuture\test\ofuture-backend\controllers\paymentController.ts:9:20)
+2026-04-10 18:50:34 [http]: ::1 - - [10/Apr/2026:11:50:34 +0000] "POST /api/payments/momo/create HTTP/1.1" 400 609 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:50:39 [info]: Order created: id=804c105d-34d3-11f1-b1f5-e00af682e84e buyer=f07ce30f-342b-11f1-bc7e-e00af682e84e
+2026-04-10 18:50:39 [http]: ::1 - - [10/Apr/2026:11:50:39 +0000] "POST /api/orders HTTP/1.1" 201 359 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:50:39 [error]: Error: MoMo API error [400]: {"responseTime":1775821840767,"message":"Chữ ký không hợp lệ. Vui lòng kiểm tra dữ liệu gốc trước khi mã hóa : accessKey=***&amount=30030&extraData=&ipnUrl=https://arseno-cathern-sadistically.ngrok-free.dev/api/payments/momo/callback&orderId=804c105d-34d3-11f1-b1f5-e00af682e84e&orderInfo=Thanh toan don hang 804c105d-34d3-11f1-b1f5-e00af682e84e&partnerCode=MOMO&redirectUrl=http://localhost:3000/payment/momo/callback&requestId=804c105d-34d3-11f1-b1f5-e00af682e84e_1775821839893&requestType=captureWallet.","resultCode":11007}
+    at MoMoClient.createPaymentRequest (C:\Users\nguye\test Ofuture\test\ofuture-backend\services\MoMoClient.ts:116:15)
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async Object.createMoMoPayment (C:\Users\nguye\test Ofuture\test\ofuture-backend\services\paymentService.ts:124:24)
+    at async createMoMo (C:\Users\nguye\test Ofuture\test\ofuture-backend\controllers\paymentController.ts:9:20)
+2026-04-10 18:50:39 [http]: ::1 - - [10/Apr/2026:11:50:39 +0000] "POST /api/payments/momo/create HTTP/1.1" 400 609 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:51:03 [info]: Order created: id=8e6854cf-34d3-11f1-b1f5-e00af682e84e buyer=f07ce30f-342b-11f1-bc7e-e00af682e84e
+2026-04-10 18:51:03 [http]: ::1 - - [10/Apr/2026:11:51:03 +0000] "POST /api/orders HTTP/1.1" 201 359 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:51:03 [error]: Error: MoMo API error [400]: {"responseTime":1775821864458,"message":"Chữ ký không hợp lệ. Vui lòng kiểm tra dữ liệu gốc trước khi mã hóa : accessKey=***&amount=30030&extraData=&ipnUrl=https://arseno-cathern-sadistically.ngrok-free.dev/api/payments/momo/callback&orderId=8e6854cf-34d3-11f1-b1f5-e00af682e84e&orderInfo=Thanh toan don hang 8e6854cf-34d3-11f1-b1f5-e00af682e84e&partnerCode=MOMO&redirectUrl=http://localhost:3000/payment/momo/callback&requestId=8e6854cf-34d3-11f1-b1f5-e00af682e84e_1775821863568&requestType=captureWallet.","resultCode":11007}
+    at MoMoClient.createPaymentRequest (C:\Users\nguye\test Ofuture\test\ofuture-backend\services\MoMoClient.ts:116:15)
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async Object.createMoMoPayment (C:\Users\nguye\test Ofuture\test\ofuture-backend\services\paymentService.ts:124:24)
+    at async createMoMo (C:\Users\nguye\test Ofuture\test\ofuture-backend\controllers\paymentController.ts:9:20)
+2026-04-10 18:51:03 [http]: ::1 - - [10/Apr/2026:11:51:03 +0000] "POST /api/payments/momo/create HTTP/1.1" 400 609 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:51:07 [info]: Order created: id=90da3f34-34d3-11f1-b1f5-e00af682e84e buyer=f07ce30f-342b-11f1-bc7e-e00af682e84e
+2026-04-10 18:51:07 [http]: ::1 - - [10/Apr/2026:11:51:07 +0000] "POST /api/orders HTTP/1.1" 201 359 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:51:07 [error]: Error: MoMo API error [400]: {"responseTime":1775821868553,"message":"Chữ ký không hợp lệ. Vui lòng kiểm tra dữ liệu gốc trước khi mã hóa : accessKey=***&amount=30030&extraData=&ipnUrl=https://arseno-cathern-sadistically.ngrok-free.dev/api/payments/momo/callback&orderId=90da3f34-34d3-11f1-b1f5-e00af682e84e&orderInfo=Thanh toan don hang 90da3f34-34d3-11f1-b1f5-e00af682e84e&partnerCode=MOMO&redirectUrl=http://localhost:3000/payment/momo/callback&requestId=90da3f34-34d3-11f1-b1f5-e00af682e84e_1775821867667&requestType=captureWallet.","resultCode":11007}
+    at MoMoClient.createPaymentRequest (C:\Users\nguye\test Ofuture\test\ofuture-backend\services\MoMoClient.ts:116:15)
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async Object.createMoMoPayment (C:\Users\nguye\test Ofuture\test\ofuture-backend\services\paymentService.ts:124:24)
+    at async createMoMo (C:\Users\nguye\test Ofuture\test\ofuture-backend\controllers\paymentController.ts:9:20)
+2026-04-10 18:51:07 [http]: ::1 - - [10/Apr/2026:11:51:07 +0000] "POST /api/payments/momo/create HTTP/1.1" 400 609 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:51:18 [http]: ::1 - - [10/Apr/2026:11:51:18 +0000] "GET /api/products HTTP/1.1" 200 1621 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:51:20 [http]: ::1 - - [10/Apr/2026:11:51:20 +0000] "GET /api/products?limit=3 HTTP/1.1" 200 1181 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:51:28 [http]: ::1 - - [10/Apr/2026:11:51:28 +0000] "GET /api/products HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:51:29 [http]: ::1 - - [10/Apr/2026:11:51:29 +0000] "GET /api/orders/my HTTP/1.1" 200 1435 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:51:30 [http]: ::1 - - [10/Apr/2026:11:51:30 +0000] "GET /api/auth/me HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:51:30 [http]: ::1 - - [10/Apr/2026:11:51:30 +0000] "GET /api/orders/my HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:51:31 [http]: ::1 - - [10/Apr/2026:11:51:31 +0000] "GET /api/orders/my HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:51:32 [http]: ::1 - - [10/Apr/2026:11:51:32 +0000] "GET /api/auth/me HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:51:35 [http]: ::1 - - [10/Apr/2026:11:51:35 +0000] "GET /api/auth/devices HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:51:50 [http]: ::1 - - [10/Apr/2026:11:51:50 +0000] "POST /api/auth/avatar HTTP/1.1" 200 143 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:51:51 [http]: ::1 - - [10/Apr/2026:11:51:51 +0000] "GET /api/auth/me HTTP/1.1" 200 381 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:51:54 [http]: ::1 - - [10/Apr/2026:11:51:54 +0000] "GET /api/auth/devices HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:51:54 [http]: ::1 - - [10/Apr/2026:11:51:54 +0000] "GET /api/auth/devices HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:52:18 [http]: ::1 - - [10/Apr/2026:11:52:18 +0000] "GET /api/auth/devices HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:52:21 [http]: ::1 - - [10/Apr/2026:11:52:21 +0000] "GET /api/auth/devices HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:52:23 [http]: ::1 - - [10/Apr/2026:11:52:23 +0000] "GET /api/orders/my HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:52:25 [http]: ::1 - - [10/Apr/2026:11:52:25 +0000] "GET /api/products HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:52:27 [http]: ::1 - - [10/Apr/2026:11:52:27 +0000] "GET /api/products HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:52:29 [http]: ::1 - - [10/Apr/2026:11:52:29 +0000] "GET /api/products?limit=3 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:52:37 [http]: ::1 - - [10/Apr/2026:11:52:37 +0000] "GET /api/products HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:52:42 [http]: ::1 - - [10/Apr/2026:11:52:42 +0000] "GET /api/orders/my HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:52:53 [http]: ::1 - - [10/Apr/2026:11:52:53 +0000] "GET /api/auth/me HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:53:02 [http]: ::1 - - [10/Apr/2026:11:53:02 +0000] "GET /api/products HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:53:03 [http]: ::1 - - [10/Apr/2026:11:53:03 +0000] "GET /api/orders/my HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:53:06 [http]: ::1 - - [10/Apr/2026:11:53:06 +0000] "GET /api/samples/my HTTP/1.1" 200 26 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:53:08 [http]: ::1 - - [10/Apr/2026:11:53:08 +0000] "GET /api/orders/my HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:53:10 [http]: ::1 - - [10/Apr/2026:11:53:10 +0000] "GET /api/products HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:53:11 [http]: ::1 - - [10/Apr/2026:11:53:11 +0000] "GET /api/products/f685a843-349e-11f1-b1f5-e00af682e84e HTTP/1.1" 200 510 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:53:47 [http]: ::1 - - [10/Apr/2026:11:53:47 +0000] "GET /api/products?limit=3 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:53:56 [http]: ::1 - - [10/Apr/2026:11:53:56 +0000] "GET /api/orders/my HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:53:56 [http]: ::1 - - [10/Apr/2026:11:53:56 +0000] "GET /api/auth/me HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:56:15 [http]: ::1 - - [10/Apr/2026:11:56:15 +0000] "GET /api/products HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:56:22 [http]: ::1 - - [10/Apr/2026:11:56:22 +0000] "GET /api/products?limit=3 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:56:30 [http]: ::1 - - [10/Apr/2026:11:56:30 +0000] "GET /api/products HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:56:32 [http]: ::1 - - [10/Apr/2026:11:56:32 +0000] "GET /api/products?limit=3 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:56:47 [http]: ::1 - - [10/Apr/2026:11:56:47 +0000] "GET /api/products HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:56:52 [http]: ::1 - - [10/Apr/2026:11:56:52 +0000] "GET /api/products HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:57:01 [http]: ::1 - - [10/Apr/2026:11:57:01 +0000] "GET /api/products/f685a843-349e-11f1-b1f5-e00af682e84e HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:57:31 [http]: ::1 - - [10/Apr/2026:11:57:31 +0000] "GET /api/orders/my HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:57:51 [http]: ::1 - - [10/Apr/2026:11:57:51 +0000] "GET /api/orders/my HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:57:52 [http]: ::1 - - [10/Apr/2026:11:57:52 +0000] "GET /api/auth/me HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:57:54 [http]: ::1 - - [10/Apr/2026:11:57:54 +0000] "GET /api/auth/devices HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:57:55 [http]: ::1 - - [10/Apr/2026:11:57:55 +0000] "GET /api/orders/my HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:58:09 [http]: ::1 - - [10/Apr/2026:11:58:09 +0000] "GET /api/products?limit=3 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:58:28 [http]: ::1 - - [10/Apr/2026:11:58:28 +0000] "GET /api/orders/my HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:58:47 [http]: ::1 - - [10/Apr/2026:11:58:47 +0000] "GET /api/orders/my HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:59:01 [http]: ::1 - - [10/Apr/2026:11:59:01 +0000] "GET /api/auth/me HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 18:59:02 [http]: ::1 - - [10/Apr/2026:11:59:02 +0000] "GET /api/orders/my HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:00:07 [http]: ::1 - - [10/Apr/2026:12:00:07 +0000] "GET /api/orders/my HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:00:08 [http]: ::1 - - [10/Apr/2026:12:00:08 +0000] "GET /api/auth/me HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:00:08 [http]: ::1 - - [10/Apr/2026:12:00:08 +0000] "GET /api/orders/my HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:00:27 [http]: ::1 - - [10/Apr/2026:12:00:27 +0000] "GET /api/products HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:01:31 [http]: ::1 - - [10/Apr/2026:12:01:31 +0000] "GET /api/products HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:03:21 [http]: ::1 - - [10/Apr/2026:12:03:21 +0000] "POST /api/auth/google-login HTTP/1.1" 200 299 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:03:33 [info]: User logged in via Google: nguyentrungkhoavx0858@gmail.com
+2026-04-10 19:03:33 [http]: ::1 - - [10/Apr/2026:12:03:33 +0000] "POST /api/auth/google-login HTTP/1.1" 200 853 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:03:34 [http]: ::1 - - [10/Apr/2026:12:03:34 +0000] "GET /api/products/seller/my?page=1&limit=10 HTTP/1.1" 200 1182 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:03:34 [http]: ::1 - - [10/Apr/2026:12:03:34 +0000] "GET /api/seller/orders?page=1&limit=10 HTTP/1.1" 200 1200 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:03:34 [http]: ::1 - - [10/Apr/2026:12:03:34 +0000] "GET /api/seller/samples?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:03:34 [http]: ::1 - - [10/Apr/2026:12:03:34 +0000] "GET /api/seller/escrow?page=1&limit=10 HTTP/1.1" 200 1720 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:03:34 [http]: ::1 - - [10/Apr/2026:12:03:34 +0000] "GET /api/seller/reviews?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:03:34 [http]: ::1 - - [10/Apr/2026:12:03:34 +0000] "GET /api/seller/disputes?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:03:55 [http]: ::1 - - [10/Apr/2026:12:03:55 +0000] "PUT /api/products/f685a843-349e-11f1-b1f5-e00af682e84e HTTP/1.1" 200 551 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:03:56 [http]: ::1 - - [10/Apr/2026:12:03:56 +0000] "GET /api/products/seller/my?page=1&limit=10 HTTP/1.1" 200 1181 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:03:56 [http]: ::1 - - [10/Apr/2026:12:03:56 +0000] "GET /api/products/seller/my?page=1&limit=10 HTTP/1.1" 200 1181 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:03:56 [http]: ::1 - - [10/Apr/2026:12:03:56 +0000] "GET /api/seller/orders?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:03:56 [http]: ::1 - - [10/Apr/2026:12:03:56 +0000] "GET /api/seller/escrow?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:03:56 [http]: ::1 - - [10/Apr/2026:12:03:56 +0000] "GET /api/seller/reviews?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:03:56 [http]: ::1 - - [10/Apr/2026:12:03:56 +0000] "GET /api/seller/samples?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:03:56 [http]: ::1 - - [10/Apr/2026:12:03:56 +0000] "GET /api/seller/disputes?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:04:42 [http]: ::1 - - [10/Apr/2026:12:04:42 +0000] "POST /api/auth/google-login HTTP/1.1" 200 299 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:04:59 [http]: ::1 - - [10/Apr/2026:12:04:59 +0000] "POST /api/mfa/verify HTTP/1.1" 200 645 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:05:00 [http]: ::1 - - [10/Apr/2026:12:05:00 +0000] "GET /api/products?limit=3 HTTP/1.1" 200 1180 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:05:05 [http]: ::1 - - [10/Apr/2026:12:05:05 +0000] "GET /api/products HTTP/1.1" 200 1620 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:05:08 [http]: ::1 - - [10/Apr/2026:12:05:08 +0000] "GET /api/auth/me HTTP/1.1" 200 381 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:05:12 [http]: ::1 - - [10/Apr/2026:12:05:12 +0000] "POST /api/auth/avatar HTTP/1.1" 200 143 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:05:13 [http]: ::1 - - [10/Apr/2026:12:05:13 +0000] "GET /api/auth/me HTTP/1.1" 200 381 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:05:38 [http]: ::1 - - [10/Apr/2026:12:05:38 +0000] "GET /api/auth/me HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:05:56 [http]: ::1 - - [10/Apr/2026:12:05:56 +0000] "POST /api/auth/google-login HTTP/1.1" 200 299 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:06:09 [http]: ::1 - - [10/Apr/2026:12:06:09 +0000] "POST /api/mfa/verify HTTP/1.1" 200 645 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:06:10 [http]: ::1 - - [10/Apr/2026:12:06:10 +0000] "GET /api/products?limit=3 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:06:25 [info]: User logged in via Google: nguyentrungkhoavx0858@gmail.com
+2026-04-10 19:06:25 [http]: ::1 - - [10/Apr/2026:12:06:25 +0000] "POST /api/auth/google-login HTTP/1.1" 200 853 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:06:27 [http]: ::1 - - [10/Apr/2026:12:06:27 +0000] "GET /api/products/seller/my?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:06:27 [http]: ::1 - - [10/Apr/2026:12:06:27 +0000] "GET /api/seller/orders?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:06:27 [http]: ::1 - - [10/Apr/2026:12:06:27 +0000] "GET /api/seller/escrow?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:06:27 [http]: ::1 - - [10/Apr/2026:12:06:27 +0000] "GET /api/seller/samples?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:06:27 [http]: ::1 - - [10/Apr/2026:12:06:27 +0000] "GET /api/seller/reviews?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:06:27 [http]: ::1 - - [10/Apr/2026:12:06:27 +0000] "GET /api/seller/disputes?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:08:53 [http]: ::1 - - [10/Apr/2026:12:08:53 +0000] "GET /api/auth/me HTTP/1.1" 200 381 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:09:00 [http]: ::1 - - [10/Apr/2026:12:09:00 +0000] "GET /api/auth/devices HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:09:02 [http]: ::1 - - [10/Apr/2026:12:09:02 +0000] "GET /api/auth/devices HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:09:15 [http]: ::1 - - [10/Apr/2026:12:09:15 +0000] "GET /api/auth/devices HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:20:57 [http]: ::1 - - [10/Apr/2026:12:20:57 +0000] "GET /api/seller/samples?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:20:57 [http]: ::1 - - [10/Apr/2026:12:20:57 +0000] "GET /api/seller/orders?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:20:57 [http]: ::1 - - [10/Apr/2026:12:20:57 +0000] "GET /api/seller/reviews?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:20:57 [http]: ::1 - - [10/Apr/2026:12:20:57 +0000] "GET /api/seller/disputes?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:20:57 [http]: ::1 - - [10/Apr/2026:12:20:57 +0000] "GET /api/seller/escrow?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:20:57 [http]: ::1 - - [10/Apr/2026:12:20:57 +0000] "GET /api/products/seller/my?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:20:57 [http]: ::1 - - [10/Apr/2026:12:20:57 +0000] "GET /api/seller/samples?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:20:57 [http]: ::1 - - [10/Apr/2026:12:20:57 +0000] "GET /api/seller/orders?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:20:57 [http]: ::1 - - [10/Apr/2026:12:20:57 +0000] "GET /api/products/seller/my?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:20:57 [http]: ::1 - - [10/Apr/2026:12:20:57 +0000] "GET /api/seller/escrow?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:20:57 [http]: ::1 - - [10/Apr/2026:12:20:57 +0000] "GET /api/seller/reviews?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:20:57 [http]: ::1 - - [10/Apr/2026:12:20:57 +0000] "GET /api/seller/disputes?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:20:57 [http]: ::1 - - [10/Apr/2026:12:20:57 +0000] "GET /api/auth/me HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:21:08 [http]: ::1 - - [10/Apr/2026:12:21:08 +0000] "GET /api/auth/me HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:21:08 [http]: ::1 - - [10/Apr/2026:12:21:08 +0000] "GET /api/products/seller/my?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:21:08 [http]: ::1 - - [10/Apr/2026:12:21:08 +0000] "GET /api/seller/orders?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:21:08 [http]: ::1 - - [10/Apr/2026:12:21:08 +0000] "GET /api/seller/escrow?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:21:08 [http]: ::1 - - [10/Apr/2026:12:21:08 +0000] "GET /api/seller/samples?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:21:08 [http]: ::1 - - [10/Apr/2026:12:21:08 +0000] "GET /api/seller/disputes?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:21:08 [http]: ::1 - - [10/Apr/2026:12:21:08 +0000] "GET /api/seller/reviews?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:21:31 [http]: ::1 - - [10/Apr/2026:12:21:31 +0000] "GET /api/products/seller/my?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:21:31 [http]: ::1 - - [10/Apr/2026:12:21:31 +0000] "GET /api/seller/orders?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:21:31 [http]: ::1 - - [10/Apr/2026:12:21:31 +0000] "GET /api/seller/samples?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:21:31 [http]: ::1 - - [10/Apr/2026:12:21:31 +0000] "GET /api/seller/reviews?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:21:31 [http]: ::1 - - [10/Apr/2026:12:21:31 +0000] "GET /api/seller/disputes?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:21:31 [http]: ::1 - - [10/Apr/2026:12:21:31 +0000] "GET /api/seller/escrow?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:21:31 [http]: ::1 - - [10/Apr/2026:12:21:31 +0000] "GET /api/seller/orders?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:21:31 [http]: ::1 - - [10/Apr/2026:12:21:31 +0000] "GET /api/products/seller/my?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:21:31 [http]: ::1 - - [10/Apr/2026:12:21:31 +0000] "GET /api/seller/samples?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:21:31 [http]: ::1 - - [10/Apr/2026:12:21:31 +0000] "GET /api/seller/escrow?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:21:31 [http]: ::1 - - [10/Apr/2026:12:21:31 +0000] "GET /api/seller/reviews?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:21:31 [http]: ::1 - - [10/Apr/2026:12:21:31 +0000] "GET /api/seller/disputes?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:21:32 [http]: ::1 - - [10/Apr/2026:12:21:32 +0000] "GET /api/seller/samples?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:21:32 [http]: ::1 - - [10/Apr/2026:12:21:32 +0000] "GET /api/seller/orders?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:21:32 [http]: ::1 - - [10/Apr/2026:12:21:32 +0000] "GET /api/products/seller/my?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:21:32 [http]: ::1 - - [10/Apr/2026:12:21:32 +0000] "GET /api/seller/escrow?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:21:32 [http]: ::1 - - [10/Apr/2026:12:21:32 +0000] "GET /api/seller/reviews?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:21:32 [http]: ::1 - - [10/Apr/2026:12:21:32 +0000] "GET /api/seller/disputes?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:21:32 [http]: ::1 - - [10/Apr/2026:12:21:32 +0000] "GET /api/products/seller/my?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:21:32 [http]: ::1 - - [10/Apr/2026:12:21:32 +0000] "GET /api/seller/samples?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:21:32 [http]: ::1 - - [10/Apr/2026:12:21:32 +0000] "GET /api/seller/orders?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:21:32 [http]: ::1 - - [10/Apr/2026:12:21:32 +0000] "GET /api/seller/disputes?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:21:32 [http]: ::1 - - [10/Apr/2026:12:21:32 +0000] "GET /api/seller/escrow?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:21:32 [http]: ::1 - - [10/Apr/2026:12:21:32 +0000] "GET /api/seller/reviews?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:21:32 [http]: ::1 - - [10/Apr/2026:12:21:32 +0000] "GET /api/auth/me HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:21:40 [http]: ::1 - - [10/Apr/2026:12:21:40 +0000] "GET /api/products/seller/my?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:21:40 [http]: ::1 - - [10/Apr/2026:12:21:40 +0000] "GET /api/seller/reviews?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:21:40 [http]: ::1 - - [10/Apr/2026:12:21:40 +0000] "GET /api/auth/me HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:21:40 [http]: ::1 - - [10/Apr/2026:12:21:40 +0000] "GET /api/seller/disputes?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:21:40 [http]: ::1 - - [10/Apr/2026:12:21:40 +0000] "GET /api/seller/samples?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:21:40 [http]: ::1 - - [10/Apr/2026:12:21:40 +0000] "GET /api/seller/orders?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:21:40 [http]: ::1 - - [10/Apr/2026:12:21:40 +0000] "GET /api/seller/escrow?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:21:50 [http]: ::1 - - [10/Apr/2026:12:21:50 +0000] "GET /api/products/seller/my?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:21:50 [http]: ::1 - - [10/Apr/2026:12:21:50 +0000] "GET /api/seller/orders?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:21:50 [http]: ::1 - - [10/Apr/2026:12:21:50 +0000] "GET /api/seller/samples?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:21:50 [http]: ::1 - - [10/Apr/2026:12:21:50 +0000] "GET /api/auth/me HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:21:50 [http]: ::1 - - [10/Apr/2026:12:21:50 +0000] "GET /api/seller/reviews?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:21:50 [http]: ::1 - - [10/Apr/2026:12:21:50 +0000] "GET /api/seller/disputes?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-10 19:21:50 [http]: ::1 - - [10/Apr/2026:12:21:50 +0000] "GET /api/seller/escrow?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"

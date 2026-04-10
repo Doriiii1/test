@@ -176,7 +176,7 @@ async function verifyOtp() {
 
       // CHUYỂN HƯỚNG BẺ LÁI THẲNG SANG HOÀN THIỆN HỒ SƠ
       setTimeout(() => { 
-        window.location.href = 'complete-profile/index.html'; 
+        window.location.href = 'dashboard-buyer/complete-profile/index.html'; 
       }, 1000);
     }
   } catch (error) {

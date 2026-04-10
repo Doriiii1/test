@@ -38,3 +38,28 @@
     at Object.disableMfa (C:\Users\nguye\test Ofuture\test\ofuture-backend\services\mfaService.ts:230:31)
     at processTicksAndRejections (node:internal/process/task_queues:104:5)
     at async disable (C:\Users\nguye\test Ofuture\test\ofuture-backend\controllers\mfaController.ts:101:20)
+2026-04-10 18:50:24 [error]: Error: MoMo API error [400]: {"responseTime":1775821825436,"message":"Chữ ký không hợp lệ. Vui lòng kiểm tra dữ liệu gốc trước khi mã hóa : accessKey=***&amount=30030&extraData=&ipnUrl=https://arseno-cathern-sadistically.ngrok-free.dev/api/payments/momo/callback&orderId=771b9551-34d3-11f1-b1f5-e00af682e84e&orderInfo=Thanh toan don hang 771b9551-34d3-11f1-b1f5-e00af682e84e&partnerCode=MOMO&redirectUrl=http://localhost:3000/payment/momo/callback&requestId=771b9551-34d3-11f1-b1f5-e00af682e84e_1775821824483&requestType=captureWallet.","resultCode":11007}
+    at MoMoClient.createPaymentRequest (C:\Users\nguye\test Ofuture\test\ofuture-backend\services\MoMoClient.ts:116:15)
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async Object.createMoMoPayment (C:\Users\nguye\test Ofuture\test\ofuture-backend\services\paymentService.ts:124:24)
+    at async createMoMo (C:\Users\nguye\test Ofuture\test\ofuture-backend\controllers\paymentController.ts:9:20)
+2026-04-10 18:50:34 [error]: Error: MoMo API error [400]: {"responseTime":1775821835526,"message":"Chữ ký không hợp lệ. Vui lòng kiểm tra dữ liệu gốc trước khi mã hóa : accessKey=***&amount=30030&extraData=&ipnUrl=https://arseno-cathern-sadistically.ngrok-free.dev/api/payments/momo/callback&orderId=7d2bb59d-34d3-11f1-b1f5-e00af682e84e&orderInfo=Thanh toan don hang 7d2bb59d-34d3-11f1-b1f5-e00af682e84e&partnerCode=MOMO&redirectUrl=http://localhost:3000/payment/momo/callback&requestId=7d2bb59d-34d3-11f1-b1f5-e00af682e84e_1775821834651&requestType=captureWallet.","resultCode":11007}
+    at MoMoClient.createPaymentRequest (C:\Users\nguye\test Ofuture\test\ofuture-backend\services\MoMoClient.ts:116:15)
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async Object.createMoMoPayment (C:\Users\nguye\test Ofuture\test\ofuture-backend\services\paymentService.ts:124:24)
+    at async createMoMo (C:\Users\nguye\test Ofuture\test\ofuture-backend\controllers\paymentController.ts:9:20)
+2026-04-10 18:50:39 [error]: Error: MoMo API error [400]: {"responseTime":1775821840767,"message":"Chữ ký không hợp lệ. Vui lòng kiểm tra dữ liệu gốc trước khi mã hóa : accessKey=***&amount=30030&extraData=&ipnUrl=https://arseno-cathern-sadistically.ngrok-free.dev/api/payments/momo/callback&orderId=804c105d-34d3-11f1-b1f5-e00af682e84e&orderInfo=Thanh toan don hang 804c105d-34d3-11f1-b1f5-e00af682e84e&partnerCode=MOMO&redirectUrl=http://localhost:3000/payment/momo/callback&requestId=804c105d-34d3-11f1-b1f5-e00af682e84e_1775821839893&requestType=captureWallet.","resultCode":11007}
+    at MoMoClient.createPaymentRequest (C:\Users\nguye\test Ofuture\test\ofuture-backend\services\MoMoClient.ts:116:15)
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async Object.createMoMoPayment (C:\Users\nguye\test Ofuture\test\ofuture-backend\services\paymentService.ts:124:24)
+    at async createMoMo (C:\Users\nguye\test Ofuture\test\ofuture-backend\controllers\paymentController.ts:9:20)
+2026-04-10 18:51:03 [error]: Error: MoMo API error [400]: {"responseTime":1775821864458,"message":"Chữ ký không hợp lệ. Vui lòng kiểm tra dữ liệu gốc trước khi mã hóa : accessKey=***&amount=30030&extraData=&ipnUrl=https://arseno-cathern-sadistically.ngrok-free.dev/api/payments/momo/callback&orderId=8e6854cf-34d3-11f1-b1f5-e00af682e84e&orderInfo=Thanh toan don hang 8e6854cf-34d3-11f1-b1f5-e00af682e84e&partnerCode=MOMO&redirectUrl=http://localhost:3000/payment/momo/callback&requestId=8e6854cf-34d3-11f1-b1f5-e00af682e84e_1775821863568&requestType=captureWallet.","resultCode":11007}
+    at MoMoClient.createPaymentRequest (C:\Users\nguye\test Ofuture\test\ofuture-backend\services\MoMoClient.ts:116:15)
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async Object.createMoMoPayment (C:\Users\nguye\test Ofuture\test\ofuture-backend\services\paymentService.ts:124:24)
+    at async createMoMo (C:\Users\nguye\test Ofuture\test\ofuture-backend\controllers\paymentController.ts:9:20)
+2026-04-10 18:51:07 [error]: Error: MoMo API error [400]: {"responseTime":1775821868553,"message":"Chữ ký không hợp lệ. Vui lòng kiểm tra dữ liệu gốc trước khi mã hóa : accessKey=***&amount=30030&extraData=&ipnUrl=https://arseno-cathern-sadistically.ngrok-free.dev/api/payments/momo/callback&orderId=90da3f34-34d3-11f1-b1f5-e00af682e84e&orderInfo=Thanh toan don hang 90da3f34-34d3-11f1-b1f5-e00af682e84e&partnerCode=MOMO&redirectUrl=http://localhost:3000/payment/momo/callback&requestId=90da3f34-34d3-11f1-b1f5-e00af682e84e_1775821867667&requestType=captureWallet.","resultCode":11007}
+    at MoMoClient.createPaymentRequest (C:\Users\nguye\test Ofuture\test\ofuture-backend\services\MoMoClient.ts:116:15)
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async Object.createMoMoPayment (C:\Users\nguye\test Ofuture\test\ofuture-backend\services\paymentService.ts:124:24)
+    at async createMoMo (C:\Users\nguye\test Ofuture\test\ofuture-backend\controllers\paymentController.ts:9:20)

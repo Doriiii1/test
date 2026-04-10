@@ -6,7 +6,8 @@ const {
   createDispute,
   getMyDisputes,
   getAllDisputes,
-  resolveDispute
+  resolveDispute,
+  submitEvidence
 } = require('../controllers/disputeController');
 
 const { authenticate } = require('../middleware/auth');
@@ -44,6 +45,13 @@ const validateResolveDispute = [
   validate
 ];
 
+const validateSubmitEvidence = [
+  param('id').isUUID().withMessage('Valid dispute ID is required.'),
+  body('evidenceUrl').isURL().withMessage('Evidence must be a valid URL.'),
+  body('description').optional().trim().escape(),
+  validate
+];
+
 // ─────────────────────────────────────────────
 // BUYER ROUTES
 // ─────────────────────────────────────────────
@@ -66,6 +74,20 @@ router.get(
   authorizeRoles('buyer'),
   validatePaginationQuery,
   getMyDisputes
+);
+
+// ─────────────────────────────────────────────
+// SHARED ROUTES (Buyer & Seller)
+// ─────────────────────────────────────────────
+// 2.5 Submit evidence for a dispute
+router.post(
+  '/:id/evidence',
+  authenticate,
+  riskScore,
+  authorizeRoles('buyer', 'seller'),
+  writeLimiter,
+  validateSubmitEvidence,
+  submitEvidence
 );
 
 // ─────────────────────────────────────────────
