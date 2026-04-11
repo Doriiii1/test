@@ -1,0 +1,901 @@
+2026-04-11 20:34:48 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-11 20:34:48 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-11 20:34:48 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-11 20:34:48 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-11 20:34:48 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-11 20:34:48 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-11 20:34:48 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-11 20:34:48 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-11 20:34:48 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-11 20:34:48 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-11 20:34:48 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-11 20:34:48 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-11 20:34:48 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-11 20:34:48 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-11 20:34:48 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-11 20:34:48 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-11 20:34:48 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-11 20:34:48 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-11 20:34:48 [info]: 🧪  RBAC test routes enabled (development only)
+2026-04-11 20:34:48 [info]: ✓ WebSocket (Socket.io) server initialized
+2026-04-11 20:34:48 [info]: 🚀  O'Future API running on port 5000
+2026-04-11 20:34:48 [info]: 📍  Environment: development
+2026-04-11 20:34:48 [info]: 🔗  Health check: http://localhost:5000/health
+2026-04-11 20:34:48 [info]: [redisClient] ioredis ready — using real Redis client.
+2026-04-11 20:34:50 [info]: ✓ User ea44d80c-35a4-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: h3nAeRw0MVGHB1jEAAAB)
+2026-04-11 20:34:50 [http]: ::1 - - [11/Apr/2026:13:34:50 +0000] "GET /api/products/seller/my?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:34:50 [http]: ::1 - - [11/Apr/2026:13:34:50 +0000] "GET /api/seller/orders?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:34:50 [http]: ::1 - - [11/Apr/2026:13:34:50 +0000] "GET /api/seller/escrow?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:34:50 [http]: ::1 - - [11/Apr/2026:13:34:50 +0000] "GET /api/seller/reviews?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:34:50 [error]: Error: Unknown column 'd.evidence_url' in 'field list'
+    at PromisePool.execute (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\mysql2\lib\promise\pool.js:54:22)
+    at C:\Users\nguye\test Ofuture\test\ofuture-backend\routes\sellerRoutes.ts:161:36
+    at Layer.handle [as handle_request] (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\express\lib\router\index.js:284:15
+    at router.process_params (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\express\lib\router\index.js:280:10)
+    at C:\Users\nguye\test Ofuture\test\ofuture-backend\middleware\role.ts:59:5
+2026-04-11 20:34:50 [http]: ::1 - - [11/Apr/2026:13:34:50 +0000] "GET /api/seller/disputes?page=1&limit=10 HTTP/1.1" 500 55 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:34:50 [http]: ::1 - - [11/Apr/2026:13:34:50 +0000] "GET /api/seller/samples?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:34:52 [info]: ✓ User ea44d80c-35a4-11f1-9eee-9c2dcd0692eb disconnected (socket: h3nAeRw0MVGHB1jEAAAB)
+2026-04-11 20:34:52 [http]: ::1 - - [11/Apr/2026:13:34:52 +0000] "GET /api/products/seller/my?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:34:52 [info]: ✓ User ea44d80c-35a4-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: 78VpvZ9j5MHhgFYrAAAD)
+2026-04-11 20:34:53 [http]: ::1 - - [11/Apr/2026:13:34:53 +0000] "GET /api/seller/orders?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:34:53 [http]: ::1 - - [11/Apr/2026:13:34:53 +0000] "GET /api/seller/escrow?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:34:53 [http]: ::1 - - [11/Apr/2026:13:34:53 +0000] "GET /api/seller/reviews?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:34:53 [error]: Error: Unknown column 'd.evidence_url' in 'field list'
+    at PromisePool.execute (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\mysql2\lib\promise\pool.js:54:22)
+    at C:\Users\nguye\test Ofuture\test\ofuture-backend\routes\sellerRoutes.ts:161:36
+    at Layer.handle [as handle_request] (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\express\lib\router\index.js:284:15
+    at router.process_params (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\express\lib\router\index.js:280:10)
+    at C:\Users\nguye\test Ofuture\test\ofuture-backend\middleware\role.ts:59:5
+2026-04-11 20:34:53 [http]: ::1 - - [11/Apr/2026:13:34:53 +0000] "GET /api/seller/disputes?page=1&limit=10 HTTP/1.1" 500 55 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:34:53 [http]: ::1 - - [11/Apr/2026:13:34:53 +0000] "GET /api/seller/samples?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:34:56 [info]: ✓ User e471ba07-35a3-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: UpkihUYRIUn86z4bAAAF)
+2026-04-11 20:34:56 [http]: ::1 - - [11/Apr/2026:13:34:56 +0000] "GET /api/products?limit=3 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:34:59 [info]: ✓ User e471ba07-35a3-11f1-9eee-9c2dcd0692eb disconnected (socket: UpkihUYRIUn86z4bAAAF)
+2026-04-11 20:34:59 [http]: ::1 - - [11/Apr/2026:13:34:59 +0000] "GET /api/products HTTP/1.1" 200 507 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:35:01 [info]: ✓ User e471ba07-35a3-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: S78KVQ_td5v2KOvJAAAH)
+2026-04-11 20:35:01 [http]: ::1 - - [11/Apr/2026:13:35:01 +0000] "GET /api/products?limit=3 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:35:06 [info]: ✓ User e471ba07-35a3-11f1-9eee-9c2dcd0692eb disconnected (socket: S78KVQ_td5v2KOvJAAAH)
+2026-04-11 20:35:06 [http]: ::1 - - [11/Apr/2026:13:35:06 +0000] "GET /api/products HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:35:08 [info]: ✓ User e471ba07-35a3-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: evRa-ssVzyc8QBkJAAAJ)
+2026-04-11 20:35:08 [http]: ::1 - - [11/Apr/2026:13:35:08 +0000] "GET /api/products?limit=3 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:35:09 [info]: ✓ User e471ba07-35a3-11f1-9eee-9c2dcd0692eb disconnected (socket: evRa-ssVzyc8QBkJAAAJ)
+2026-04-11 20:35:09 [http]: ::1 - - [11/Apr/2026:13:35:09 +0000] "GET /api/products HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:35:10 [info]: ✓ User e471ba07-35a3-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: F6kh2nGoyQ8KOZDJAAAL)
+2026-04-11 20:35:10 [http]: ::1 - - [11/Apr/2026:13:35:10 +0000] "GET /api/products?limit=3 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:35:15 [info]: ✓ User e471ba07-35a3-11f1-9eee-9c2dcd0692eb disconnected (socket: F6kh2nGoyQ8KOZDJAAAL)
+2026-04-11 20:35:15 [http]: ::1 - - [11/Apr/2026:13:35:15 +0000] "GET /api/products HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:35:15 [info]: ✓ User e471ba07-35a3-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: -9ELeCWV3SVGe2kyAAAN)
+2026-04-11 20:35:15 [http]: ::1 - - [11/Apr/2026:13:35:15 +0000] "GET /api/products?limit=3 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:35:17 [info]: ✓ User e471ba07-35a3-11f1-9eee-9c2dcd0692eb disconnected (socket: -9ELeCWV3SVGe2kyAAAN)
+2026-04-11 20:35:17 [http]: ::1 - - [11/Apr/2026:13:35:17 +0000] "GET /api/products HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:35:21 [info]: ✓ User e471ba07-35a3-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: K3jGGeD9cpKnswYgAAAP)
+2026-04-11 20:35:21 [http]: ::1 - - [11/Apr/2026:13:35:21 +0000] "GET /api/products?limit=3 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:38:20 [info]: ✓ User e471ba07-35a3-11f1-9eee-9c2dcd0692eb disconnected (socket: K3jGGeD9cpKnswYgAAAP)
+2026-04-11 20:38:20 [http]: ::1 - - [11/Apr/2026:13:38:20 +0000] "GET /api/products HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:38:21 [info]: ✓ User e471ba07-35a3-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: 3vw2XlNo-DuFze1zAAAR)
+2026-04-11 20:38:21 [http]: ::1 - - [11/Apr/2026:13:38:21 +0000] "GET /api/products?limit=3 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:38:28 [info]: ✓ User e471ba07-35a3-11f1-9eee-9c2dcd0692eb disconnected (socket: 3vw2XlNo-DuFze1zAAAR)
+2026-04-11 20:38:28 [http]: ::1 - - [11/Apr/2026:13:38:28 +0000] "GET /api/products HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:38:37 [info]: Order created: id=be76af07-35ab-11f1-9eee-9c2dcd0692eb buyer=e471ba07-35a3-11f1-9eee-9c2dcd0692eb
+2026-04-11 20:38:37 [http]: ::1 - - [11/Apr/2026:13:38:37 +0000] "POST /api/orders HTTP/1.1" 201 350 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:38:37 [error]: Error: MoMo API error [400]: {"responseTime":1775914718651,"message":"Chữ ký không hợp lệ. Vui lòng kiểm tra dữ liệu gốc trước khi mã hóa : accessKey=***&amount=30030&extraData=&ipnUrl=https://arseno-cathern-sadistically.ngrok-free.dev/api/payments/momo/callback&orderId=be76af07-35ab-11f1-9eee-9c2dcd0692eb&orderInfo=Thanh toan don hang be76af07-35ab-11f1-9eee-9c2dcd0692eb&partnerCode=MOMO&redirectUrl=http://localhost:3000/payment/momo/callback&requestId=be76af07-35ab-11f1-9eee-9c2dcd0692eb_1775914717651&requestType=captureWallet.","resultCode":11007}
+    at MoMoClient.createPaymentRequest (C:\Users\nguye\test Ofuture\test\ofuture-backend\services\MoMoClient.ts:116:15)
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async Object.createMoMoPayment (C:\Users\nguye\test Ofuture\test\ofuture-backend\services\paymentService.ts:125:24)
+    at async createMoMo (C:\Users\nguye\test Ofuture\test\ofuture-backend\controllers\paymentController.ts:9:20)
+2026-04-11 20:38:37 [http]: ::1 - - [11/Apr/2026:13:38:37 +0000] "POST /api/payments/momo/create HTTP/1.1" 400 609 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:38:43 [http]: ::1 - - [11/Apr/2026:13:38:43 +0000] "GET /api/products HTTP/1.1" 200 507 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:39:00 [http]: ::1 - - [11/Apr/2026:13:39:00 +0000] "GET /api/products HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:39:00 [info]: ✓ User e471ba07-35a3-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: mkALBI7GPBVzYF3zAAAT)
+2026-04-11 20:39:00 [http]: ::1 - - [11/Apr/2026:13:39:00 +0000] "GET /api/products?limit=3 HTTP/1.1" 200 506 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:39:03 [info]: ✓ User e471ba07-35a3-11f1-9eee-9c2dcd0692eb disconnected (socket: mkALBI7GPBVzYF3zAAAT)
+2026-04-11 20:39:03 [http]: ::1 - - [11/Apr/2026:13:39:03 +0000] "GET /api/auth/me HTTP/1.1" 200 420 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:39:04 [info]: ✓ User e471ba07-35a3-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: AO6Nc2UQkvDOYhGJAAAV)
+2026-04-11 20:39:04 [http]: ::1 - - [11/Apr/2026:13:39:04 +0000] "GET /api/orders/my HTTP/1.1" 200 298 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:39:06 [info]: ✓ User e471ba07-35a3-11f1-9eee-9c2dcd0692eb disconnected (socket: AO6Nc2UQkvDOYhGJAAAV)
+2026-04-11 20:39:11 [info]: Order created: id=d28882fa-35ab-11f1-9eee-9c2dcd0692eb buyer=e471ba07-35a3-11f1-9eee-9c2dcd0692eb
+2026-04-11 20:39:11 [http]: ::1 - - [11/Apr/2026:13:39:11 +0000] "POST /api/orders HTTP/1.1" 201 350 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:39:11 [http]: ::1 - - [11/Apr/2026:13:39:11 +0000] "POST /api/payments/qr/create HTTP/1.1" 200 343 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:40:37 [info]: ✓ User e471ba07-35a3-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: UzWFsemXv_1M8sSrAAAX)
+2026-04-11 20:40:37 [http]: ::1 - - [11/Apr/2026:13:40:37 +0000] "GET /api/orders/my HTTP/1.1" 200 571 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:41:54 [info]: ✓ User e471ba07-35a3-11f1-9eee-9c2dcd0692eb disconnected (socket: UzWFsemXv_1M8sSrAAAX)
+2026-04-11 20:41:54 [http]: ::1 - - [11/Apr/2026:13:41:54 +0000] "GET /api/auth/me HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:42:04 [http]: ::1 - - [11/Apr/2026:13:42:04 +0000] "POST /api/auth/avatar HTTP/1.1" 200 143 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:42:04 [info]: ✓ User ea44d80c-35a4-11f1-9eee-9c2dcd0692eb disconnected (socket: 78VpvZ9j5MHhgFYrAAAD)
+2026-04-11 20:42:04 [info]: ✓ User ea44d80c-35a4-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: 5pauMoW3A-Lld7-1AAAZ)
+2026-04-11 20:42:04 [http]: ::1 - - [11/Apr/2026:13:42:04 +0000] "GET /api/products/seller/my?page=1&limit=10 HTTP/1.1" 200 507 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:42:04 [http]: ::1 - - [11/Apr/2026:13:42:04 +0000] "GET /api/seller/orders?page=1&limit=10 HTTP/1.1" 200 477 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:42:04 [http]: ::1 - - [11/Apr/2026:13:42:04 +0000] "GET /api/seller/escrow?page=1&limit=10 HTTP/1.1" 200 739 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:42:04 [http]: ::1 - - [11/Apr/2026:13:42:04 +0000] "GET /api/seller/reviews?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:42:04 [error]: Error: Unknown column 'd.evidence_url' in 'field list'
+    at PromisePool.execute (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\mysql2\lib\promise\pool.js:54:22)
+    at C:\Users\nguye\test Ofuture\test\ofuture-backend\routes\sellerRoutes.ts:161:36
+    at Layer.handle [as handle_request] (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\express\lib\router\index.js:284:15
+    at router.process_params (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\express\lib\router\index.js:280:10)
+    at C:\Users\nguye\test Ofuture\test\ofuture-backend\middleware\role.ts:59:5
+2026-04-11 20:42:04 [http]: ::1 - - [11/Apr/2026:13:42:04 +0000] "GET /api/seller/disputes?page=1&limit=10 HTTP/1.1" 500 55 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:42:04 [http]: ::1 - - [11/Apr/2026:13:42:04 +0000] "GET /api/seller/samples?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:42:05 [http]: ::1 - - [11/Apr/2026:13:42:05 +0000] "GET /api/auth/me HTTP/1.1" 200 368 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:42:38 [http]: ::1 - - [11/Apr/2026:13:42:38 +0000] "GET /api/auth/devices HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:42:42 [info]: ✓ User e471ba07-35a3-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: yFdA5sfP5OJY-6LpAAAb)
+2026-04-11 20:42:42 [http]: ::1 - - [11/Apr/2026:13:42:42 +0000] "GET /api/orders/my HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:42:47 [info]: ✓ User e471ba07-35a3-11f1-9eee-9c2dcd0692eb disconnected (socket: yFdA5sfP5OJY-6LpAAAb)
+2026-04-11 20:42:52 [http]: ::1 - - [11/Apr/2026:13:42:52 +0000] "GET /api/products HTTP/1.1" 200 507 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:43:03 [http]: ::1 - - [11/Apr/2026:13:43:03 +0000] "GET /api/products HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:43:13 [http]: ::1 - - [11/Apr/2026:13:43:13 +0000] "GET /api/products HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:43:15 [http]: ::1 - - [11/Apr/2026:13:43:15 +0000] "GET /api/products HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:43:17 [http]: ::1 - - [11/Apr/2026:13:43:17 +0000] "GET /api/products/2ee47a49-35a5-11f1-9eee-9c2dcd0692eb HTTP/1.1" 200 589 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:43:21 [http]: ::1 - - [11/Apr/2026:13:43:21 +0000] "GET /api/products HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:43:22 [http]: ::1 - - [11/Apr/2026:13:43:22 +0000] "GET /api/products/2ee47a49-35a5-11f1-9eee-9c2dcd0692eb HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:43:23 [info]: ✓ User e471ba07-35a3-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: UQAnhuqXcWvLEjHZAAAd)
+2026-04-11 20:43:23 [http]: ::1 - - [11/Apr/2026:13:43:23 +0000] "GET /api/products?limit=3 HTTP/1.1" 200 506 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:43:27 [info]: ✓ User e471ba07-35a3-11f1-9eee-9c2dcd0692eb disconnected (socket: UQAnhuqXcWvLEjHZAAAd)
+2026-04-11 20:43:27 [http]: ::1 - - [11/Apr/2026:13:43:27 +0000] "GET /api/products HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:43:39 [http]: ::1 - - [11/Apr/2026:13:43:39 +0000] "POST /api/auth/logout HTTP/1.1" 200 53 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:43:39 [info]: ✓ User ea44d80c-35a4-11f1-9eee-9c2dcd0692eb disconnected (socket: 5pauMoW3A-Lld7-1AAAZ)
+2026-04-11 20:43:53 [info]: User logged in: admin@ofuture.com
+2026-04-11 20:43:53 [http]: ::1 - - [11/Apr/2026:13:43:53 +0000] "POST /api/auth/login HTTP/1.1" 200 677 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:43:54 [info]: ✓ User c075c104-35a3-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: R26UwWvYmFUUzlA3AAAf)
+2026-04-11 20:43:54 [http]: ::1 - - [11/Apr/2026:13:43:54 +0000] "GET /api/admin/settings HTTP/1.1" 404 120 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:43:54 [http]: ::1 - - [11/Apr/2026:13:43:54 +0000] "GET /api/admin/stats HTTP/1.1" 200 852 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:43:54 [http]: ::1 - - [11/Apr/2026:13:43:54 +0000] "GET /api/admin/payments?page=1&limit=15 HTTP/1.1" 200 258 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:43:54 [http]: ::1 - - [11/Apr/2026:13:43:54 +0000] "GET /api/admin/escrow?page=1&limit=15 HTTP/1.1" 200 829 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:43:54 [http]: ::1 - - [11/Apr/2026:13:43:54 +0000] "GET /api/admin/users?page=1&limit=15&search= HTTP/1.1" 200 1098 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:43:54 [http]: ::1 - - [11/Apr/2026:13:43:54 +0000] "GET /api/admin/logs?page=1&limit=30 HTTP/1.1" 200 4435 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:43:54 [http]: ::1 - - [11/Apr/2026:13:43:54 +0000] "GET /api/admin/products?page=1&limit=15 HTTP/1.1" 200 390 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:43:54 [http]: ::1 - - [11/Apr/2026:13:43:54 +0000] "GET /api/admin/reviews?page=1&limit=15 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:43:54 [http]: ::1 - - [11/Apr/2026:13:43:54 +0000] "GET /api/admin/ai-knowledge HTTP/1.1" 200 604 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:43:54 [http]: ::1 - - [11/Apr/2026:13:43:54 +0000] "GET /api/admin/chats?status=handoff_to_admin HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:43:56 [http]: ::1 - - [11/Apr/2026:13:43:56 +0000] "GET /api/admin/users?page=1&limit=15&search= HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:43:57 [http]: ::1 - - [11/Apr/2026:13:43:57 +0000] "GET /api/admin/escrow?page=1&limit=15 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:43:59 [http]: ::1 - - [11/Apr/2026:13:43:59 +0000] "GET /api/admin/payments?page=1&limit=15 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:44:00 [http]: ::1 - - [11/Apr/2026:13:44:00 +0000] "GET /api/admin/products?page=1&limit=15 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:44:00 [http]: ::1 - - [11/Apr/2026:13:44:00 +0000] "GET /api/admin/reviews?page=1&limit=15 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:44:01 [http]: ::1 - - [11/Apr/2026:13:44:01 +0000] "GET /api/admin/products?page=1&limit=15 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:44:05 [http]: ::1 - - [11/Apr/2026:13:44:05 +0000] "GET /api/admin/reviews?page=1&limit=15 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:44:05 [http]: ::1 - - [11/Apr/2026:13:44:05 +0000] "GET /api/admin/ai-knowledge HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:44:07 [http]: ::1 - - [11/Apr/2026:13:44:07 +0000] "GET /api/admin/reviews?page=1&limit=15 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:44:08 [http]: ::1 - - [11/Apr/2026:13:44:08 +0000] "GET /api/admin/chats?status=handoff_to_admin HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:44:08 [http]: ::1 - - [11/Apr/2026:13:44:08 +0000] "GET /api/admin/logs?page=1&limit=30 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:44:11 [http]: ::1 - - [11/Apr/2026:13:44:11 +0000] "GET /api/admin/settings HTTP/1.1" 404 120 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:44:13 [http]: ::1 - - [11/Apr/2026:13:44:13 +0000] "GET /api/admin/ai-knowledge HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:44:16 [http]: ::1 - - [11/Apr/2026:13:44:16 +0000] "GET /api/admin/reviews?page=1&limit=15 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:44:16 [http]: ::1 - - [11/Apr/2026:13:44:16 +0000] "GET /api/admin/products?page=1&limit=15 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:44:17 [http]: ::1 - - [11/Apr/2026:13:44:17 +0000] "GET /api/admin/payments?page=1&limit=15 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:44:21 [http]: ::1 - - [11/Apr/2026:13:44:21 +0000] "GET /api/admin/escrow?page=1&limit=15 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:44:21 [http]: ::1 - - [11/Apr/2026:13:44:21 +0000] "GET /api/admin/escrow?page=1&limit=15 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:44:28 [http]: ::1 - - [11/Apr/2026:13:44:28 +0000] "GET /api/admin/users?page=1&limit=15&search= HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:44:30 [http]: ::1 - - [11/Apr/2026:13:44:30 +0000] "GET /api/admin/stats HTTP/1.1" 200 852 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:44:34 [http]: ::1 - - [11/Apr/2026:13:44:34 +0000] "GET /api/admin/users?page=1&limit=15&search= HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:44:36 [http]: ::1 - - [11/Apr/2026:13:44:36 +0000] "GET /api/admin/escrow?page=1&limit=15 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:44:40 [http]: ::1 - - [11/Apr/2026:13:44:40 +0000] "GET /api/admin/users?page=1&limit=15&search= HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:45:29 [info]: ✓ User c075c104-35a3-11f1-9eee-9c2dcd0692eb disconnected (socket: R26UwWvYmFUUzlA3AAAf)
+2026-04-11 20:45:30 [http]: ::1 - - [11/Apr/2026:13:45:30 +0000] "GET /api/products HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:45:30 [info]: ✓ User c075c104-35a3-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: XNKwffIOGXMZ18O9AAAh)
+2026-04-11 20:45:30 [http]: ::1 - - [11/Apr/2026:13:45:30 +0000] "GET /api/admin/stats HTTP/1.1" 200 852 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:45:30 [http]: ::1 - - [11/Apr/2026:13:45:30 +0000] "GET /api/admin/reviews?page=1&limit=15 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:45:30 [http]: ::1 - - [11/Apr/2026:13:45:30 +0000] "GET /api/admin/ai-knowledge HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:45:30 [http]: ::1 - - [11/Apr/2026:13:45:30 +0000] "GET /api/admin/chats?status=handoff_to_admin HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:45:30 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/escrow
+2026-04-11 20:45:30 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/payments
+2026-04-11 20:45:30 [http]: ::1 - - [11/Apr/2026:13:45:30 +0000] "GET /api/admin/settings HTTP/1.1" 404 120 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:45:30 [http]: ::1 - - [11/Apr/2026:13:45:30 +0000] "GET /api/admin/users?page=1&limit=15&search= HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:45:30 [http]: ::1 - - [11/Apr/2026:13:45:30 +0000] "GET /api/admin/products?page=1&limit=15 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:45:30 [http]: ::1 - - [11/Apr/2026:13:45:30 +0000] "GET /api/admin/logs?page=1&limit=30 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:45:42 [warn]: Rate limit exceeded: IP=::1 PATH=/api/products
+2026-04-11 20:45:42 [info]: ✓ User c075c104-35a3-11f1-9eee-9c2dcd0692eb disconnected (socket: XNKwffIOGXMZ18O9AAAh)
+2026-04-11 20:45:42 [info]: ✓ User c075c104-35a3-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: 6bFaab-wk5oBb-70AAAj)
+2026-04-11 20:45:42 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/stats
+2026-04-11 20:45:42 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/reviews
+2026-04-11 20:45:42 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/ai-knowledge
+2026-04-11 20:45:42 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/chats
+2026-04-11 20:45:42 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/settings
+2026-04-11 20:45:42 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/users
+2026-04-11 20:45:42 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/logs
+2026-04-11 20:45:42 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/escrow
+2026-04-11 20:45:42 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/payments
+2026-04-11 20:45:42 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/products
+2026-04-11 20:45:46 [warn]: Rate limit exceeded: IP=::1 PATH=/api/products
+2026-04-11 20:45:48 [warn]: Rate limit exceeded: IP=::1 PATH=/api/products
+2026-04-11 20:45:52 [info]: ✓ User c075c104-35a3-11f1-9eee-9c2dcd0692eb disconnected (socket: 6bFaab-wk5oBb-70AAAj)
+2026-04-11 20:45:52 [warn]: Rate limit exceeded: IP=::1 PATH=/api/products
+2026-04-11 20:45:52 [info]: ✓ User c075c104-35a3-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: wwcH2qvGspiNCU2LAAAl)
+2026-04-11 20:45:52 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/stats
+2026-04-11 20:45:52 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/payments
+2026-04-11 20:45:52 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/products
+2026-04-11 20:45:52 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/reviews
+2026-04-11 20:45:52 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/ai-knowledge
+2026-04-11 20:45:52 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/chats
+2026-04-11 20:45:52 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/settings
+2026-04-11 20:45:52 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/users
+2026-04-11 20:45:52 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/logs
+2026-04-11 20:45:52 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/escrow
+2026-04-11 20:45:53 [warn]: Rate limit exceeded: IP=::1 PATH=/api/products
+2026-04-11 20:45:53 [info]: ✓ User c075c104-35a3-11f1-9eee-9c2dcd0692eb disconnected (socket: wwcH2qvGspiNCU2LAAAl)
+2026-04-11 20:45:53 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/stats
+2026-04-11 20:45:53 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/products
+2026-04-11 20:45:53 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/reviews
+2026-04-11 20:45:53 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/ai-knowledge
+2026-04-11 20:45:53 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/chats
+2026-04-11 20:45:53 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/settings
+2026-04-11 20:45:53 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/users
+2026-04-11 20:45:53 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/logs
+2026-04-11 20:45:53 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/escrow
+2026-04-11 20:45:53 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/payments
+2026-04-11 20:45:53 [info]: ✓ User c075c104-35a3-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: _GLmXIdOZqvzbpSqAAAn)
+2026-04-11 20:45:54 [info]: ✓ User c075c104-35a3-11f1-9eee-9c2dcd0692eb disconnected (socket: _GLmXIdOZqvzbpSqAAAn)
+2026-04-11 20:45:55 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/stats
+2026-04-11 20:45:55 [warn]: Rate limit exceeded: IP=::1 PATH=/api/products
+2026-04-11 20:45:55 [info]: ✓ User c075c104-35a3-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: Xc4-TCJxjvEQHHBTAAAp)
+2026-04-11 20:45:55 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/products
+2026-04-11 20:45:55 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/reviews
+2026-04-11 20:45:55 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/ai-knowledge
+2026-04-11 20:45:55 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/chats
+2026-04-11 20:45:55 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/settings
+2026-04-11 20:45:55 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/users
+2026-04-11 20:45:55 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/logs
+2026-04-11 20:45:55 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/escrow
+2026-04-11 20:45:55 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/payments
+2026-04-11 20:45:55 [info]: ✓ User c075c104-35a3-11f1-9eee-9c2dcd0692eb disconnected (socket: Xc4-TCJxjvEQHHBTAAAp)
+2026-04-11 20:45:55 [warn]: Rate limit exceeded: IP=::1 PATH=/api/products
+2026-04-11 20:45:56 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/stats
+2026-04-11 20:45:56 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/products
+2026-04-11 20:45:56 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/reviews
+2026-04-11 20:45:56 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/ai-knowledge
+2026-04-11 20:45:56 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/chats
+2026-04-11 20:45:56 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/settings
+2026-04-11 20:45:56 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/users
+2026-04-11 20:45:56 [info]: ✓ User c075c104-35a3-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: zOEZUZpETYURVCq8AAAr)
+2026-04-11 20:45:56 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/logs
+2026-04-11 20:45:56 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/escrow
+2026-04-11 20:45:56 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/payments
+2026-04-11 20:46:02 [info]: ✓ User c075c104-35a3-11f1-9eee-9c2dcd0692eb disconnected (socket: zOEZUZpETYURVCq8AAAr)
+2026-04-11 20:46:02 [warn]: Rate limit exceeded: IP=::1 PATH=/api/products
+2026-04-11 20:46:02 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/stats
+2026-04-11 20:46:02 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/products
+2026-04-11 20:46:02 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/reviews
+2026-04-11 20:46:02 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/ai-knowledge
+2026-04-11 20:46:02 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/chats
+2026-04-11 20:46:02 [info]: ✓ User c075c104-35a3-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: A_-4HS5-QhMG15cTAAAt)
+2026-04-11 20:46:02 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/settings
+2026-04-11 20:46:02 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/users
+2026-04-11 20:46:02 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/logs
+2026-04-11 20:46:02 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/escrow
+2026-04-11 20:46:02 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/payments
+2026-04-11 20:46:03 [info]: ✓ User c075c104-35a3-11f1-9eee-9c2dcd0692eb disconnected (socket: A_-4HS5-QhMG15cTAAAt)
+2026-04-11 20:46:03 [warn]: Rate limit exceeded: IP=::1 PATH=/api/products
+2026-04-11 20:46:03 [info]: ✓ User c075c104-35a3-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: nqSbX2-h9NPljIyQAAAv)
+2026-04-11 20:46:03 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/stats
+2026-04-11 20:46:03 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/payments
+2026-04-11 20:46:03 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/products
+2026-04-11 20:46:03 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/reviews
+2026-04-11 20:46:03 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/ai-knowledge
+2026-04-11 20:46:03 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/chats
+2026-04-11 20:46:03 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/settings
+2026-04-11 20:46:03 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/users
+2026-04-11 20:46:03 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/logs
+2026-04-11 20:46:03 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/escrow
+2026-04-11 20:46:13 [warn]: Rate limit exceeded: IP=::1 PATH=/api/products
+2026-04-11 20:46:15 [warn]: Rate limit exceeded: IP=::1 PATH=/api/products
+2026-04-11 20:46:18 [info]: ✓ User c075c104-35a3-11f1-9eee-9c2dcd0692eb disconnected (socket: nqSbX2-h9NPljIyQAAAv)
+2026-04-11 20:46:18 [warn]: Rate limit exceeded: IP=::1 PATH=/api/products
+2026-04-11 20:46:18 [info]: ✓ User c075c104-35a3-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: qxpI6TDmD5XZvx-FAAAx)
+2026-04-11 20:46:19 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/stats
+2026-04-11 20:46:19 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/products
+2026-04-11 20:46:19 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/reviews
+2026-04-11 20:46:19 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/ai-knowledge
+2026-04-11 20:46:19 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/chats
+2026-04-11 20:46:19 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/settings
+2026-04-11 20:46:19 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/users
+2026-04-11 20:46:19 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/logs
+2026-04-11 20:46:19 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/escrow
+2026-04-11 20:46:19 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/payments
+2026-04-11 20:46:38 [warn]: Rate limit exceeded: IP=::1 PATH=/api/products
+2026-04-11 20:46:43 [warn]: Rate limit exceeded: IP=::1 PATH=/api/products
+2026-04-11 20:46:47 [info]: ✓ User e471ba07-35a3-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: KG8MS8di6QgZbhAnAAAz)
+2026-04-11 20:46:47 [warn]: Rate limit exceeded: IP=::1 PATH=/api/products
+2026-04-11 20:46:47 [info]: ✓ User e471ba07-35a3-11f1-9eee-9c2dcd0692eb disconnected (socket: KG8MS8di6QgZbhAnAAAz)
+2026-04-11 20:46:48 [warn]: Rate limit exceeded: IP=::1 PATH=/api/products
+2026-04-11 20:46:50 [warn]: Rate limit exceeded: IP=::1 PATH=/api/products
+2026-04-11 20:46:51 [info]: ✓ User c075c104-35a3-11f1-9eee-9c2dcd0692eb disconnected (socket: qxpI6TDmD5XZvx-FAAAx)
+2026-04-11 20:46:51 [warn]: Rate limit exceeded: IP=::1 PATH=/api/products
+2026-04-11 20:46:51 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/stats
+2026-04-11 20:46:51 [info]: ✓ User c075c104-35a3-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: EPae-ZLKBmrYr5VLAAA1)
+2026-04-11 20:46:51 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/reviews
+2026-04-11 20:46:51 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/ai-knowledge
+2026-04-11 20:46:51 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/chats
+2026-04-11 20:46:51 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/settings
+2026-04-11 20:46:51 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/users
+2026-04-11 20:46:51 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/logs
+2026-04-11 20:46:51 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/escrow
+2026-04-11 20:46:51 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/payments
+2026-04-11 20:46:51 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/products
+2026-04-11 20:51:36 [info]: ✓ User c075c104-35a3-11f1-9eee-9c2dcd0692eb disconnected (socket: EPae-ZLKBmrYr5VLAAA1)
+2026-04-11 20:51:36 [info]: ✓ User c075c104-35a3-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: lFBLg01lWYFaMSTDAAA3)
+2026-04-11 20:51:36 [http]: ::1 - - [11/Apr/2026:13:51:36 +0000] "GET /api/admin/stats HTTP/1.1" 200 852 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:51:36 [http]: ::1 - - [11/Apr/2026:13:51:36 +0000] "GET /api/admin/escrow?page=1&limit=15 HTTP/1.1" 200 829 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:51:36 [http]: ::1 - - [11/Apr/2026:13:51:36 +0000] "GET /api/admin/payments?page=1&limit=15 HTTP/1.1" 200 258 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:51:36 [http]: ::1 - - [11/Apr/2026:13:51:36 +0000] "GET /api/admin/ai-knowledge HTTP/1.1" 200 604 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:51:36 [http]: ::1 - - [11/Apr/2026:13:51:36 +0000] "GET /api/admin/reviews?page=1&limit=15 HTTP/1.1" 200 86 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:51:36 [http]: ::1 - - [11/Apr/2026:13:51:36 +0000] "GET /api/admin/products?page=1&limit=15 HTTP/1.1" 200 390 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:51:36 [http]: ::1 - - [11/Apr/2026:13:51:36 +0000] "GET /api/admin/users?page=1&limit=15&search= HTTP/1.1" 200 1098 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:51:36 [http]: ::1 - - [11/Apr/2026:13:51:36 +0000] "GET /api/admin/chats?status=handoff_to_admin HTTP/1.1" 200 26 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:51:36 [http]: ::1 - - [11/Apr/2026:13:51:36 +0000] "GET /api/admin/settings HTTP/1.1" 404 120 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:51:36 [http]: ::1 - - [11/Apr/2026:13:51:36 +0000] "GET /api/admin/logs?page=1&limit=30 HTTP/1.1" 200 4435 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:53:45 [info]: ✓ User c075c104-35a3-11f1-9eee-9c2dcd0692eb disconnected (socket: lFBLg01lWYFaMSTDAAA3)
+2026-04-11 20:53:45 [info]: ✓ User c075c104-35a3-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: XFBQwt3T5yl6JERsAAA5)
+2026-04-11 20:53:45 [http]: ::1 - - [11/Apr/2026:13:53:45 +0000] "GET /api/admin/stats HTTP/1.1" 200 852 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:53:45 [http]: ::1 - - [11/Apr/2026:13:53:45 +0000] "GET /api/admin/payments?page=1&limit=15 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:53:45 [http]: ::1 - - [11/Apr/2026:13:53:45 +0000] "GET /api/admin/products?page=1&limit=15 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:53:45 [http]: ::1 - - [11/Apr/2026:13:53:45 +0000] "GET /api/admin/chats?status=handoff_to_admin HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:53:45 [http]: ::1 - - [11/Apr/2026:13:53:45 +0000] "GET /api/admin/settings HTTP/1.1" 404 120 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:53:45 [http]: ::1 - - [11/Apr/2026:13:53:45 +0000] "GET /api/admin/reviews?page=1&limit=15 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:53:45 [http]: ::1 - - [11/Apr/2026:13:53:45 +0000] "GET /api/admin/ai-knowledge HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:53:45 [http]: ::1 - - [11/Apr/2026:13:53:45 +0000] "GET /api/admin/users?page=1&limit=15&search= HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:53:45 [http]: ::1 - - [11/Apr/2026:13:53:45 +0000] "GET /api/admin/escrow?page=1&limit=15 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:53:45 [http]: ::1 - - [11/Apr/2026:13:53:45 +0000] "GET /api/admin/logs?page=1&limit=30 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:56:03 [info]: ✓ User c075c104-35a3-11f1-9eee-9c2dcd0692eb disconnected (socket: XFBQwt3T5yl6JERsAAA5)
+2026-04-11 20:56:03 [info]: ✓ User c075c104-35a3-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: 3gLyh6Y-JzCYGCfRAAA7)
+2026-04-11 20:56:03 [http]: ::1 - - [11/Apr/2026:13:56:03 +0000] "GET /api/admin/stats HTTP/1.1" 200 852 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:56:03 [http]: ::1 - - [11/Apr/2026:13:56:03 +0000] "GET /api/admin/payments?page=1&limit=15 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:56:03 [http]: ::1 - - [11/Apr/2026:13:56:03 +0000] "GET /api/admin/settings HTTP/1.1" 404 120 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:56:03 [http]: ::1 - - [11/Apr/2026:13:56:03 +0000] "GET /api/admin/ai-knowledge HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:56:03 [http]: ::1 - - [11/Apr/2026:13:56:03 +0000] "GET /api/admin/products?page=1&limit=15 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:56:03 [http]: ::1 - - [11/Apr/2026:13:56:03 +0000] "GET /api/admin/chats?status=handoff_to_admin HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:56:03 [http]: ::1 - - [11/Apr/2026:13:56:03 +0000] "GET /api/admin/reviews?page=1&limit=15 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:56:03 [http]: ::1 - - [11/Apr/2026:13:56:03 +0000] "GET /api/admin/users?page=1&limit=15&search= HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:56:03 [http]: ::1 - - [11/Apr/2026:13:56:03 +0000] "GET /api/admin/escrow?page=1&limit=15 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:56:03 [http]: ::1 - - [11/Apr/2026:13:56:03 +0000] "GET /api/admin/logs?page=1&limit=30 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:57:01 [info]: ✓ User c075c104-35a3-11f1-9eee-9c2dcd0692eb disconnected (socket: 3gLyh6Y-JzCYGCfRAAA7)
+2026-04-11 20:57:01 [info]: ✓ User c075c104-35a3-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: 8As_2eWRm3Ml4Sl_AAA9)
+2026-04-11 20:57:01 [http]: ::1 - - [11/Apr/2026:13:57:01 +0000] "GET /api/admin/stats HTTP/1.1" 200 852 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:57:01 [http]: ::1 - - [11/Apr/2026:13:57:01 +0000] "GET /api/admin/products?page=1&limit=15 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:57:01 [http]: ::1 - - [11/Apr/2026:13:57:01 +0000] "GET /api/admin/settings HTTP/1.1" 404 120 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:57:01 [http]: ::1 - - [11/Apr/2026:13:57:01 +0000] "GET /api/admin/chats?status=handoff_to_admin HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:57:01 [http]: ::1 - - [11/Apr/2026:13:57:01 +0000] "GET /api/admin/ai-knowledge HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:57:01 [http]: ::1 - - [11/Apr/2026:13:57:01 +0000] "GET /api/admin/reviews?page=1&limit=15 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:57:01 [http]: ::1 - - [11/Apr/2026:13:57:01 +0000] "GET /api/admin/users?page=1&limit=15&search= HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:57:01 [http]: ::1 - - [11/Apr/2026:13:57:01 +0000] "GET /api/admin/logs?page=1&limit=30 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:57:01 [http]: ::1 - - [11/Apr/2026:13:57:01 +0000] "GET /api/admin/payments?page=1&limit=15 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:57:01 [http]: ::1 - - [11/Apr/2026:13:57:01 +0000] "GET /api/admin/escrow?page=1&limit=15 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:58:30 [info]: ✓ User c075c104-35a3-11f1-9eee-9c2dcd0692eb disconnected (socket: 8As_2eWRm3Ml4Sl_AAA9)
+2026-04-11 20:58:30 [info]: ✓ User c075c104-35a3-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: PBz6o1ZN0EhbYovgAAA_)
+2026-04-11 20:58:30 [http]: ::1 - - [11/Apr/2026:13:58:30 +0000] "GET /api/admin/stats HTTP/1.1" 200 852 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:58:30 [http]: ::1 - - [11/Apr/2026:13:58:30 +0000] "GET /api/admin/users?page=1&limit=15&search= HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:58:30 [http]: ::1 - - [11/Apr/2026:13:58:30 +0000] "GET /api/admin/logs?page=1&limit=30 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:58:30 [http]: ::1 - - [11/Apr/2026:13:58:30 +0000] "GET /api/admin/payments?page=1&limit=15 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:58:30 [http]: ::1 - - [11/Apr/2026:13:58:30 +0000] "GET /api/admin/escrow?page=1&limit=15 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:58:30 [http]: ::1 - - [11/Apr/2026:13:58:30 +0000] "GET /api/admin/products?page=1&limit=15 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:58:30 [http]: ::1 - - [11/Apr/2026:13:58:30 +0000] "GET /api/admin/ai-knowledge HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:58:30 [http]: ::1 - - [11/Apr/2026:13:58:30 +0000] "GET /api/admin/chats?status=handoff_to_admin HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:58:30 [http]: ::1 - - [11/Apr/2026:13:58:30 +0000] "GET /api/admin/settings HTTP/1.1" 404 120 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:58:30 [http]: ::1 - - [11/Apr/2026:13:58:30 +0000] "GET /api/admin/reviews?page=1&limit=15 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:59:11 [info]: ✓ User c075c104-35a3-11f1-9eee-9c2dcd0692eb disconnected (socket: PBz6o1ZN0EhbYovgAAA_)
+2026-04-11 20:59:11 [info]: ✓ User c075c104-35a3-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: 2N_u14NzEaqGfhDrAABB)
+2026-04-11 20:59:11 [http]: ::1 - - [11/Apr/2026:13:59:11 +0000] "GET /api/admin/stats HTTP/1.1" 200 852 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:59:11 [http]: ::1 - - [11/Apr/2026:13:59:11 +0000] "GET /api/admin/escrow?page=1&limit=15 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:59:11 [http]: ::1 - - [11/Apr/2026:13:59:11 +0000] "GET /api/admin/payments?page=1&limit=15 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:59:11 [http]: ::1 - - [11/Apr/2026:13:59:11 +0000] "GET /api/admin/ai-knowledge HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:59:11 [http]: ::1 - - [11/Apr/2026:13:59:11 +0000] "GET /api/admin/reviews?page=1&limit=15 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:59:11 [http]: ::1 - - [11/Apr/2026:13:59:11 +0000] "GET /api/admin/products?page=1&limit=15 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:59:11 [http]: ::1 - - [11/Apr/2026:13:59:11 +0000] "GET /api/admin/chats?status=handoff_to_admin HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:59:11 [http]: ::1 - - [11/Apr/2026:13:59:11 +0000] "GET /api/admin/settings HTTP/1.1" 404 120 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:59:11 [http]: ::1 - - [11/Apr/2026:13:59:11 +0000] "GET /api/admin/users?page=1&limit=15&search= HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 20:59:11 [http]: ::1 - - [11/Apr/2026:13:59:11 +0000] "GET /api/admin/logs?page=1&limit=30 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:02:16 [info]: ✓ User c075c104-35a3-11f1-9eee-9c2dcd0692eb disconnected (socket: 2N_u14NzEaqGfhDrAABB)
+2026-04-11 21:02:16 [info]: ✓ User c075c104-35a3-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: 0If4PbwT7728Qz2oAABD)
+2026-04-11 21:02:16 [http]: ::1 - - [11/Apr/2026:14:02:16 +0000] "GET /api/admin/stats HTTP/1.1" 200 852 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:02:16 [http]: ::1 - - [11/Apr/2026:14:02:16 +0000] "GET /api/admin/payments?page=1&limit=15 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:02:16 [http]: ::1 - - [11/Apr/2026:14:02:16 +0000] "GET /api/admin/escrow?page=1&limit=15 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:02:16 [http]: ::1 - - [11/Apr/2026:14:02:16 +0000] "GET /api/admin/products?page=1&limit=15 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:02:16 [http]: ::1 - - [11/Apr/2026:14:02:16 +0000] "GET /api/admin/users?page=1&limit=15&search= HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:02:16 [http]: ::1 - - [11/Apr/2026:14:02:16 +0000] "GET /api/admin/reviews?page=1&limit=15 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:02:16 [http]: ::1 - - [11/Apr/2026:14:02:16 +0000] "GET /api/admin/logs?page=1&limit=30 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:02:16 [http]: ::1 - - [11/Apr/2026:14:02:16 +0000] "GET /api/admin/ai-knowledge HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:02:16 [http]: ::1 - - [11/Apr/2026:14:02:16 +0000] "GET /api/admin/chats?status=handoff_to_admin HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:02:16 [http]: ::1 - - [11/Apr/2026:14:02:16 +0000] "GET /api/admin/settings HTTP/1.1" 404 120 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:02:21 [info]: ✓ User c075c104-35a3-11f1-9eee-9c2dcd0692eb disconnected (socket: 0If4PbwT7728Qz2oAABD)
+2026-04-11 21:02:21 [info]: ✓ User c075c104-35a3-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: DVIDTlomueZp2QkBAABF)
+2026-04-11 21:02:21 [http]: ::1 - - [11/Apr/2026:14:02:21 +0000] "GET /api/admin/stats HTTP/1.1" 200 852 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:02:21 [http]: ::1 - - [11/Apr/2026:14:02:21 +0000] "GET /api/admin/products?page=1&limit=15 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:02:21 [http]: ::1 - - [11/Apr/2026:14:02:21 +0000] "GET /api/admin/settings HTTP/1.1" 404 120 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:02:21 [http]: ::1 - - [11/Apr/2026:14:02:21 +0000] "GET /api/admin/reviews?page=1&limit=15 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:02:21 [http]: ::1 - - [11/Apr/2026:14:02:21 +0000] "GET /api/admin/ai-knowledge HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:02:21 [http]: ::1 - - [11/Apr/2026:14:02:21 +0000] "GET /api/admin/chats?status=handoff_to_admin HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:02:21 [http]: ::1 - - [11/Apr/2026:14:02:21 +0000] "GET /api/admin/escrow?page=1&limit=15 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:02:21 [http]: ::1 - - [11/Apr/2026:14:02:21 +0000] "GET /api/admin/logs?page=1&limit=30 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:02:21 [http]: ::1 - - [11/Apr/2026:14:02:21 +0000] "GET /api/admin/payments?page=1&limit=15 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:02:21 [http]: ::1 - - [11/Apr/2026:14:02:21 +0000] "GET /api/admin/users?page=1&limit=15&search= HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:03:18 [http]: ::1 - - [11/Apr/2026:14:03:18 +0000] "GET /api/products HTTP/1.1" 200 507 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:03:37 [info]: ✓ User c075c104-35a3-11f1-9eee-9c2dcd0692eb disconnected (socket: DVIDTlomueZp2QkBAABF)
+2026-04-11 21:03:37 [http]: ::1 - - [11/Apr/2026:14:03:37 +0000] "GET /api/products HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:03:37 [info]: ✓ User c075c104-35a3-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: dmmHCpx0_fZsvk6ZAABH)
+2026-04-11 21:03:37 [http]: ::1 - - [11/Apr/2026:14:03:37 +0000] "GET /api/admin/stats HTTP/1.1" 200 852 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:03:37 [http]: ::1 - - [11/Apr/2026:14:03:37 +0000] "GET /api/admin/payments?page=1&limit=15 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:03:37 [http]: ::1 - - [11/Apr/2026:14:03:37 +0000] "GET /api/admin/settings HTTP/1.1" 404 120 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:03:37 [http]: ::1 - - [11/Apr/2026:14:03:37 +0000] "GET /api/admin/ai-knowledge HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:03:37 [http]: ::1 - - [11/Apr/2026:14:03:37 +0000] "GET /api/admin/reviews?page=1&limit=15 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:03:37 [http]: ::1 - - [11/Apr/2026:14:03:37 +0000] "GET /api/admin/products?page=1&limit=15 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:03:37 [http]: ::1 - - [11/Apr/2026:14:03:37 +0000] "GET /api/admin/chats?status=handoff_to_admin HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:03:37 [http]: ::1 - - [11/Apr/2026:14:03:37 +0000] "GET /api/admin/users?page=1&limit=15&search= HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:03:37 [http]: ::1 - - [11/Apr/2026:14:03:37 +0000] "GET /api/admin/escrow?page=1&limit=15 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:03:37 [http]: ::1 - - [11/Apr/2026:14:03:37 +0000] "GET /api/admin/logs?page=1&limit=30 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:03:44 [http]: ::1 - - [11/Apr/2026:14:03:44 +0000] "GET /api/products HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:03:44 [info]: ✓ User c075c104-35a3-11f1-9eee-9c2dcd0692eb disconnected (socket: dmmHCpx0_fZsvk6ZAABH)
+2026-04-11 21:03:44 [http]: ::1 - - [11/Apr/2026:14:03:44 +0000] "GET /api/products HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:03:44 [info]: ✓ User c075c104-35a3-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: lAEH0PTnXWxGNt6rAABJ)
+2026-04-11 21:03:44 [http]: ::1 - - [11/Apr/2026:14:03:44 +0000] "GET /api/admin/stats HTTP/1.1" 200 852 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:03:44 [http]: ::1 - - [11/Apr/2026:14:03:44 +0000] "GET /api/admin/ai-knowledge HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:03:44 [http]: ::1 - - [11/Apr/2026:14:03:44 +0000] "GET /api/admin/chats?status=handoff_to_admin HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:03:44 [http]: ::1 - - [11/Apr/2026:14:03:44 +0000] "GET /api/admin/settings HTTP/1.1" 404 120 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:03:44 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/logs
+2026-04-11 21:03:44 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/escrow
+2026-04-11 21:03:44 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/payments
+2026-04-11 21:03:44 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/products
+2026-04-11 21:03:44 [http]: ::1 - - [11/Apr/2026:14:03:44 +0000] "GET /api/admin/reviews?page=1&limit=15 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:03:44 [http]: ::1 - - [11/Apr/2026:14:03:44 +0000] "GET /api/admin/users?page=1&limit=15&search= HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:03:47 [warn]: Rate limit exceeded: IP=::1 PATH=/api/products
+2026-04-11 21:03:49 [warn]: Rate limit exceeded: IP=::1 PATH=/api/products
+2026-04-11 21:03:57 [info]: ✓ User e471ba07-35a3-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: nNiGBJbJxQWewtZ5AABL)
+2026-04-11 21:03:57 [warn]: Rate limit exceeded: IP=::1 PATH=/api/orders/my
+2026-04-11 21:03:57 [info]: ✓ User e471ba07-35a3-11f1-9eee-9c2dcd0692eb disconnected (socket: nNiGBJbJxQWewtZ5AABL)
+2026-04-11 21:03:57 [warn]: Rate limit exceeded: IP=::1 PATH=/api/products
+2026-04-11 21:03:58 [warn]: Rate limit exceeded: IP=::1 PATH=/api/orders/my
+2026-04-11 21:03:58 [info]: ✓ User e471ba07-35a3-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: b7kGGVIdC8FU8maHAABN)
+2026-04-11 21:04:00 [info]: ✓ User e471ba07-35a3-11f1-9eee-9c2dcd0692eb disconnected (socket: b7kGGVIdC8FU8maHAABN)
+2026-04-11 21:04:00 [warn]: Rate limit exceeded: IP=::1 PATH=/api/orders/my
+2026-04-11 21:04:00 [info]: ✓ User e471ba07-35a3-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: mgc7qGnEoSEyl0AIAABP)
+2026-04-11 21:04:03 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/escrow
+2026-04-11 21:04:03 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/users
+2026-04-11 21:04:03 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/users
+2026-04-11 21:04:05 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/stats
+2026-04-11 21:04:08 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/users
+2026-04-11 21:04:11 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/escrow
+2026-04-11 21:04:11 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/users
+2026-04-11 21:04:42 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-11 21:04:42 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-11 21:04:42 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-11 21:04:42 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-11 21:04:42 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-11 21:04:42 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-11 21:04:42 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-11 21:04:42 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-11 21:04:42 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-11 21:04:42 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-11 21:04:42 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-11 21:04:42 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-11 21:04:42 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-11 21:04:42 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-11 21:04:42 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-11 21:04:42 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-11 21:04:42 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-11 21:04:42 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-11 21:04:42 [info]: 🧪  RBAC test routes enabled (development only)
+2026-04-11 21:04:43 [info]: ✓ WebSocket (Socket.io) server initialized
+2026-04-11 21:04:43 [info]: 🚀  O'Future API running on port 5000
+2026-04-11 21:04:43 [info]: 📍  Environment: development
+2026-04-11 21:04:43 [info]: 🔗  Health check: http://localhost:5000/health
+2026-04-11 21:04:43 [info]: [redisClient] ioredis ready — using real Redis client.
+2026-04-11 21:04:51 [http]: ::1 - - [11/Apr/2026:14:04:51 +0000] "GET /favicon.ico HTTP/1.1" 404 113 "http://localhost:5000/health" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:09:04 [info]: User logged in via Google: nguyentrungkhoavx0857@gmail.com
+2026-04-11 21:09:04 [http]: ::1 - - [11/Apr/2026:14:09:04 +0000] "POST /api/auth/google-login HTTP/1.1" 200 853 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:09:06 [http]: ::1 - - [11/Apr/2026:14:09:06 +0000] "GET /api/products?limit=3 HTTP/1.1" 200 506 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:09:06 [info]: ✓ User e471ba07-35a3-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: X3mTqfraMradS8a9AAAB)
+2026-04-11 21:09:09 [info]: ✓ User e471ba07-35a3-11f1-9eee-9c2dcd0692eb disconnected (socket: X3mTqfraMradS8a9AAAB)
+2026-04-11 21:09:09 [http]: ::1 - - [11/Apr/2026:14:09:09 +0000] "GET /api/products HTTP/1.1" 200 507 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:09:09 [info]: User logged in via Google: nguyentrungkhoavx0858@gmail.com
+2026-04-11 21:09:09 [http]: ::1 - - [11/Apr/2026:14:09:09 +0000] "POST /api/auth/google-login HTTP/1.1" 200 853 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:09:10 [http]: ::1 - - [11/Apr/2026:14:09:10 +0000] "GET /api/products/seller/my?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:09:10 [info]: ✓ User ea44d80c-35a4-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: kxW7Vj8CjFZpCrQBAAAD)
+2026-04-11 21:09:10 [http]: ::1 - - [11/Apr/2026:14:09:10 +0000] "GET /api/seller/orders?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:09:11 [http]: ::1 - - [11/Apr/2026:14:09:11 +0000] "GET /api/seller/escrow?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:09:11 [http]: ::1 - - [11/Apr/2026:14:09:11 +0000] "GET /api/seller/reviews?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:09:11 [http]: ::1 - - [11/Apr/2026:14:09:11 +0000] "GET /api/seller/disputes?page=1&limit=10 HTTP/1.1" 200 86 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:09:11 [http]: ::1 - - [11/Apr/2026:14:09:11 +0000] "GET /api/seller/samples?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:09:12 [http]: ::1 - - [11/Apr/2026:14:09:12 +0000] "GET /api/products/2ee47a49-35a5-11f1-9eee-9c2dcd0692eb HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:11:04 [info]: ✓ User ea44d80c-35a4-11f1-9eee-9c2dcd0692eb disconnected (socket: kxW7Vj8CjFZpCrQBAAAD)
+2026-04-11 21:11:04 [http]: ::1 - - [11/Apr/2026:14:11:04 +0000] "GET /api/products/seller/my?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:11:04 [info]: ✓ User ea44d80c-35a4-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: 8ZOs2yRuisrZ5et4AAAF)
+2026-04-11 21:11:04 [http]: ::1 - - [11/Apr/2026:14:11:04 +0000] "GET /api/seller/orders?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:11:04 [http]: ::1 - - [11/Apr/2026:14:11:04 +0000] "GET /api/products/2ee47a49-35a5-11f1-9eee-9c2dcd0692eb HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:11:04 [http]: ::1 - - [11/Apr/2026:14:11:04 +0000] "GET /api/seller/escrow?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:11:04 [http]: ::1 - - [11/Apr/2026:14:11:04 +0000] "GET /api/seller/reviews?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:11:04 [http]: ::1 - - [11/Apr/2026:14:11:04 +0000] "GET /api/seller/disputes?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:11:04 [http]: ::1 - - [11/Apr/2026:14:11:04 +0000] "GET /api/seller/samples?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:11:12 [info]: ✓ User ea44d80c-35a4-11f1-9eee-9c2dcd0692eb disconnected (socket: 8ZOs2yRuisrZ5et4AAAF)
+2026-04-11 21:11:12 [http]: ::1 - - [11/Apr/2026:14:11:12 +0000] "GET /api/products/seller/my?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:11:12 [info]: ✓ User ea44d80c-35a4-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: ooQgt0NTIn3LjeRAAAAH)
+2026-04-11 21:11:12 [http]: ::1 - - [11/Apr/2026:14:11:12 +0000] "GET /api/seller/orders?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:11:12 [http]: ::1 - - [11/Apr/2026:14:11:12 +0000] "GET /api/seller/escrow?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:11:12 [http]: ::1 - - [11/Apr/2026:14:11:12 +0000] "GET /api/seller/reviews?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:11:12 [http]: ::1 - - [11/Apr/2026:14:11:12 +0000] "GET /api/seller/disputes?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:11:13 [http]: ::1 - - [11/Apr/2026:14:11:13 +0000] "GET /api/products/2ee47a49-35a5-11f1-9eee-9c2dcd0692eb HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:11:13 [http]: ::1 - - [11/Apr/2026:14:11:13 +0000] "GET /api/seller/samples?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:11:15 [http]: ::1 - - [11/Apr/2026:14:11:15 +0000] "GET /api/products/2ee47a49-35a5-11f1-9eee-9c2dcd0692eb HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:12:32 [info]: ✓ User e471ba07-35a3-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: tRcnzoECesd61Gz7AAAJ)
+2026-04-11 21:12:32 [http]: ::1 - - [11/Apr/2026:14:12:32 +0000] "GET /api/products?limit=3 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:13:26 [info]: ✓ User e471ba07-35a3-11f1-9eee-9c2dcd0692eb disconnected (socket: tRcnzoECesd61Gz7AAAJ)
+2026-04-11 21:13:26 [info]: ✓ User ea44d80c-35a4-11f1-9eee-9c2dcd0692eb disconnected (socket: ooQgt0NTIn3LjeRAAAAH)
+2026-04-11 21:13:26 [info]: ✓ User e471ba07-35a3-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: IJs7GpJD7iNP33-CAAAL)
+2026-04-11 21:13:26 [http]: ::1 - - [11/Apr/2026:14:13:26 +0000] "GET /api/products?limit=3 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:13:26 [info]: ✓ User ea44d80c-35a4-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: 2wSVNIZuByzQO_hWAAAN)
+2026-04-11 21:13:26 [http]: ::1 - - [11/Apr/2026:14:13:26 +0000] "GET /api/products/seller/my?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:13:26 [http]: ::1 - - [11/Apr/2026:14:13:26 +0000] "GET /api/seller/orders?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:13:26 [http]: ::1 - - [11/Apr/2026:14:13:26 +0000] "GET /api/seller/escrow?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:13:26 [http]: ::1 - - [11/Apr/2026:14:13:26 +0000] "GET /api/seller/reviews?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:13:26 [http]: ::1 - - [11/Apr/2026:14:13:26 +0000] "GET /api/seller/disputes?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:13:26 [http]: ::1 - - [11/Apr/2026:14:13:26 +0000] "GET /api/seller/samples?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:18:00 [info]: ✓ User e471ba07-35a3-11f1-9eee-9c2dcd0692eb disconnected (socket: IJs7GpJD7iNP33-CAAAL)
+2026-04-11 21:18:00 [info]: ✓ User e471ba07-35a3-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: m6gaNVUt6e3kfAeGAAAP)
+2026-04-11 21:18:00 [http]: ::1 - - [11/Apr/2026:14:18:00 +0000] "GET /api/orders/my HTTP/1.1" 200 571 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:18:00 [info]: ✓ User e471ba07-35a3-11f1-9eee-9c2dcd0692eb disconnected (socket: m6gaNVUt6e3kfAeGAAAP)
+2026-04-11 21:18:00 [http]: ::1 - - [11/Apr/2026:14:18:00 +0000] "GET /api/auth/me HTTP/1.1" 200 390 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:18:03 [http]: ::1 - - [11/Apr/2026:14:18:03 +0000] "POST /api/auth/avatar HTTP/1.1" 200 143 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:18:03 [info]: ✓ User ea44d80c-35a4-11f1-9eee-9c2dcd0692eb disconnected (socket: 2wSVNIZuByzQO_hWAAAN)
+2026-04-11 21:18:03 [http]: ::1 - - [11/Apr/2026:14:18:03 +0000] "GET /api/products/seller/my?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:18:03 [info]: ✓ User ea44d80c-35a4-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: nd1kmNIIdbV8NHLaAAAR)
+2026-04-11 21:18:03 [http]: ::1 - - [11/Apr/2026:14:18:03 +0000] "GET /api/seller/orders?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:18:03 [http]: ::1 - - [11/Apr/2026:14:18:03 +0000] "GET /api/seller/escrow?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:18:03 [http]: ::1 - - [11/Apr/2026:14:18:03 +0000] "GET /api/seller/reviews?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:18:03 [http]: ::1 - - [11/Apr/2026:14:18:03 +0000] "GET /api/seller/disputes?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:18:03 [http]: ::1 - - [11/Apr/2026:14:18:03 +0000] "GET /api/seller/samples?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:18:04 [http]: ::1 - - [11/Apr/2026:14:18:04 +0000] "GET /api/auth/me HTTP/1.1" 200 390 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:18:14 [http]: ::1 - - [11/Apr/2026:14:18:14 +0000] "POST /api/auth/avatar HTTP/1.1" 200 142 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:18:14 [info]: ✓ User ea44d80c-35a4-11f1-9eee-9c2dcd0692eb disconnected (socket: nd1kmNIIdbV8NHLaAAAR)
+2026-04-11 21:18:14 [http]: ::1 - - [11/Apr/2026:14:18:14 +0000] "GET /api/products/seller/my?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:18:14 [info]: ✓ User ea44d80c-35a4-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: LkZfxx5aNVwz6dyiAAAT)
+2026-04-11 21:18:14 [http]: ::1 - - [11/Apr/2026:14:18:14 +0000] "GET /api/seller/orders?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:18:14 [http]: ::1 - - [11/Apr/2026:14:18:14 +0000] "GET /api/seller/escrow?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:18:14 [http]: ::1 - - [11/Apr/2026:14:18:14 +0000] "GET /api/seller/reviews?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:18:14 [http]: ::1 - - [11/Apr/2026:14:18:14 +0000] "GET /api/seller/disputes?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:18:14 [http]: ::1 - - [11/Apr/2026:14:18:14 +0000] "GET /api/seller/samples?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:18:15 [http]: ::1 - - [11/Apr/2026:14:18:15 +0000] "GET /api/auth/me HTTP/1.1" 200 389 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:18:24 [http]: ::1 - - [11/Apr/2026:14:18:24 +0000] "POST /api/auth/avatar HTTP/1.1" 200 142 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:18:24 [info]: ✓ User ea44d80c-35a4-11f1-9eee-9c2dcd0692eb disconnected (socket: LkZfxx5aNVwz6dyiAAAT)
+2026-04-11 21:18:24 [info]: ✓ User ea44d80c-35a4-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: f-Z6SlwqdfHMHTPtAAAV)
+2026-04-11 21:18:24 [http]: ::1 - - [11/Apr/2026:14:18:24 +0000] "GET /api/products/seller/my?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:18:24 [http]: ::1 - - [11/Apr/2026:14:18:24 +0000] "GET /api/seller/orders?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:18:24 [http]: ::1 - - [11/Apr/2026:14:18:24 +0000] "GET /api/seller/escrow?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:18:24 [http]: ::1 - - [11/Apr/2026:14:18:24 +0000] "GET /api/seller/reviews?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:18:24 [http]: ::1 - - [11/Apr/2026:14:18:24 +0000] "GET /api/seller/disputes?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:18:24 [http]: ::1 - - [11/Apr/2026:14:18:24 +0000] "GET /api/seller/samples?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:18:25 [http]: ::1 - - [11/Apr/2026:14:18:25 +0000] "GET /api/auth/me HTTP/1.1" 200 389 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:18:30 [http]: ::1 - - [11/Apr/2026:14:18:30 +0000] "POST /api/auth/avatar HTTP/1.1" 200 142 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:18:30 [info]: ✓ User ea44d80c-35a4-11f1-9eee-9c2dcd0692eb disconnected (socket: f-Z6SlwqdfHMHTPtAAAV)
+2026-04-11 21:18:30 [info]: ✓ User ea44d80c-35a4-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: lGDI0DuqTFwP-5rvAAAX)
+2026-04-11 21:18:30 [http]: ::1 - - [11/Apr/2026:14:18:30 +0000] "GET /api/products/seller/my?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:18:30 [http]: ::1 - - [11/Apr/2026:14:18:30 +0000] "GET /api/seller/orders?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:18:30 [http]: ::1 - - [11/Apr/2026:14:18:30 +0000] "GET /api/seller/escrow?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:18:30 [http]: ::1 - - [11/Apr/2026:14:18:30 +0000] "GET /api/seller/reviews?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:18:30 [http]: ::1 - - [11/Apr/2026:14:18:30 +0000] "GET /api/seller/disputes?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:18:30 [http]: ::1 - - [11/Apr/2026:14:18:30 +0000] "GET /api/seller/samples?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:18:31 [http]: ::1 - - [11/Apr/2026:14:18:31 +0000] "GET /api/auth/me HTTP/1.1" 200 389 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:18:36 [http]: ::1 - - [11/Apr/2026:14:18:36 +0000] "POST /api/auth/avatar HTTP/1.1" 200 142 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:18:36 [info]: ✓ User ea44d80c-35a4-11f1-9eee-9c2dcd0692eb disconnected (socket: lGDI0DuqTFwP-5rvAAAX)
+2026-04-11 21:18:36 [http]: ::1 - - [11/Apr/2026:14:18:36 +0000] "GET /api/products/seller/my?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:18:36 [info]: ✓ User ea44d80c-35a4-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: G0PjYw5Y0mzHBXtVAAAZ)
+2026-04-11 21:18:36 [http]: ::1 - - [11/Apr/2026:14:18:36 +0000] "GET /api/seller/orders?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:18:36 [http]: ::1 - - [11/Apr/2026:14:18:36 +0000] "GET /api/seller/escrow?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:18:36 [http]: ::1 - - [11/Apr/2026:14:18:36 +0000] "GET /api/seller/reviews?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:18:36 [http]: ::1 - - [11/Apr/2026:14:18:36 +0000] "GET /api/seller/disputes?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:18:36 [http]: ::1 - - [11/Apr/2026:14:18:36 +0000] "GET /api/seller/samples?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:18:37 [http]: ::1 - - [11/Apr/2026:14:18:37 +0000] "GET /api/auth/me HTTP/1.1" 200 389 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:19:40 [http]: ::1 - - [11/Apr/2026:14:19:40 +0000] "GET /api/products HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:20:11 [info]: ✓ User ea44d80c-35a4-11f1-9eee-9c2dcd0692eb disconnected (socket: G0PjYw5Y0mzHBXtVAAAZ)
+2026-04-11 21:20:11 [http]: ::1 - - [11/Apr/2026:14:20:11 +0000] "GET /api/products HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:20:11 [http]: ::1 - - [11/Apr/2026:14:20:11 +0000] "GET /api/products/seller/my?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:20:11 [info]: ✓ User ea44d80c-35a4-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: s6Liz_9Z3pFU8fWaAAAb)
+2026-04-11 21:20:11 [http]: ::1 - - [11/Apr/2026:14:20:11 +0000] "GET /api/seller/orders?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:20:11 [http]: ::1 - - [11/Apr/2026:14:20:11 +0000] "GET /api/seller/escrow?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:20:11 [http]: ::1 - - [11/Apr/2026:14:20:11 +0000] "GET /api/seller/reviews?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:20:11 [http]: ::1 - - [11/Apr/2026:14:20:11 +0000] "GET /api/seller/disputes?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:20:11 [http]: ::1 - - [11/Apr/2026:14:20:11 +0000] "GET /api/seller/samples?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:21:15 [info]: ✓ User ea44d80c-35a4-11f1-9eee-9c2dcd0692eb disconnected (socket: s6Liz_9Z3pFU8fWaAAAb)
+2026-04-11 21:21:15 [http]: ::1 - - [11/Apr/2026:14:21:15 +0000] "GET /api/products HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:21:15 [http]: ::1 - - [11/Apr/2026:14:21:15 +0000] "GET /api/products/seller/my?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:21:15 [info]: ✓ User ea44d80c-35a4-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: 6jqvf724VHBF_Er6AAAd)
+2026-04-11 21:21:15 [http]: ::1 - - [11/Apr/2026:14:21:15 +0000] "GET /api/seller/orders?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:21:15 [http]: ::1 - - [11/Apr/2026:14:21:15 +0000] "GET /api/seller/escrow?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:21:15 [http]: ::1 - - [11/Apr/2026:14:21:15 +0000] "GET /api/seller/reviews?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:21:15 [http]: ::1 - - [11/Apr/2026:14:21:15 +0000] "GET /api/seller/disputes?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:21:15 [http]: ::1 - - [11/Apr/2026:14:21:15 +0000] "GET /api/seller/samples?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:22:07 [info]: ✓ User ea44d80c-35a4-11f1-9eee-9c2dcd0692eb disconnected (socket: 6jqvf724VHBF_Er6AAAd)
+2026-04-11 21:22:07 [http]: ::1 - - [11/Apr/2026:14:22:07 +0000] "GET /api/products HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:22:07 [info]: ✓ User ea44d80c-35a4-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: 8eP_l4A_1oIh9bVFAAAf)
+2026-04-11 21:22:07 [http]: ::1 - - [11/Apr/2026:14:22:07 +0000] "GET /api/products/seller/my?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:22:07 [http]: ::1 - - [11/Apr/2026:14:22:07 +0000] "GET /api/seller/orders?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:22:07 [http]: ::1 - - [11/Apr/2026:14:22:07 +0000] "GET /api/seller/escrow?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:22:07 [http]: ::1 - - [11/Apr/2026:14:22:07 +0000] "GET /api/seller/reviews?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:22:07 [http]: ::1 - - [11/Apr/2026:14:22:07 +0000] "GET /api/seller/disputes?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:22:07 [http]: ::1 - - [11/Apr/2026:14:22:07 +0000] "GET /api/seller/samples?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:23:03 [info]: ✓ User ea44d80c-35a4-11f1-9eee-9c2dcd0692eb disconnected (socket: 8eP_l4A_1oIh9bVFAAAf)
+2026-04-11 21:23:03 [info]: ✓ User ea44d80c-35a4-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: 1sXaARmrTLVvuJFsAAAh)
+2026-04-11 21:23:03 [http]: ::1 - - [11/Apr/2026:14:23:03 +0000] "GET /api/products/seller/my?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:23:03 [http]: ::1 - - [11/Apr/2026:14:23:03 +0000] "GET /api/seller/orders?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:23:03 [http]: ::1 - - [11/Apr/2026:14:23:03 +0000] "GET /api/seller/escrow?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:23:03 [http]: ::1 - - [11/Apr/2026:14:23:03 +0000] "GET /api/seller/reviews?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:23:03 [http]: ::1 - - [11/Apr/2026:14:23:03 +0000] "GET /api/seller/disputes?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:23:04 [http]: ::1 - - [11/Apr/2026:14:23:04 +0000] "GET /api/seller/samples?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:23:49 [info]: ✓ User ea44d80c-35a4-11f1-9eee-9c2dcd0692eb disconnected (socket: 1sXaARmrTLVvuJFsAAAh)
+2026-04-11 21:23:49 [http]: ::1 - - [11/Apr/2026:14:23:49 +0000] "GET /api/products HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:23:49 [info]: ✓ User ea44d80c-35a4-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: tCXMyzKt5rfOuFDjAAAj)
+2026-04-11 21:23:49 [http]: ::1 - - [11/Apr/2026:14:23:49 +0000] "GET /api/products/seller/my?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:23:49 [http]: ::1 - - [11/Apr/2026:14:23:49 +0000] "GET /api/seller/orders?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:23:49 [http]: ::1 - - [11/Apr/2026:14:23:49 +0000] "GET /api/seller/escrow?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:23:49 [http]: ::1 - - [11/Apr/2026:14:23:49 +0000] "GET /api/seller/reviews?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:23:49 [http]: ::1 - - [11/Apr/2026:14:23:49 +0000] "GET /api/seller/disputes?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:23:49 [http]: ::1 - - [11/Apr/2026:14:23:49 +0000] "GET /api/seller/samples?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:23:51 [info]: ✓ User ea44d80c-35a4-11f1-9eee-9c2dcd0692eb disconnected (socket: tCXMyzKt5rfOuFDjAAAj)
+2026-04-11 21:23:51 [http]: ::1 - - [11/Apr/2026:14:23:51 +0000] "GET /api/products HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:23:51 [http]: ::1 - - [11/Apr/2026:14:23:51 +0000] "GET /api/products/seller/my?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:23:51 [info]: ✓ User ea44d80c-35a4-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: 3HSPyEaowm4U97g8AAAl)
+2026-04-11 21:23:51 [http]: ::1 - - [11/Apr/2026:14:23:51 +0000] "GET /api/seller/orders?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:23:51 [http]: ::1 - - [11/Apr/2026:14:23:51 +0000] "GET /api/seller/escrow?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:23:51 [http]: ::1 - - [11/Apr/2026:14:23:51 +0000] "GET /api/seller/reviews?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:23:51 [http]: ::1 - - [11/Apr/2026:14:23:51 +0000] "GET /api/seller/disputes?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:23:51 [http]: ::1 - - [11/Apr/2026:14:23:51 +0000] "GET /api/seller/samples?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:24:58 [info]: ✓ User ea44d80c-35a4-11f1-9eee-9c2dcd0692eb disconnected (socket: 3HSPyEaowm4U97g8AAAl)
+2026-04-11 21:24:58 [http]: ::1 - - [11/Apr/2026:14:24:58 +0000] "GET /api/products HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:24:58 [info]: ✓ User ea44d80c-35a4-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: 9Ef3EweeARar3wqcAAAn)
+2026-04-11 21:24:58 [http]: ::1 - - [11/Apr/2026:14:24:58 +0000] "GET /api/products/seller/my?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:24:58 [http]: ::1 - - [11/Apr/2026:14:24:58 +0000] "GET /api/seller/orders?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:24:58 [http]: ::1 - - [11/Apr/2026:14:24:58 +0000] "GET /api/seller/escrow?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:24:58 [http]: ::1 - - [11/Apr/2026:14:24:58 +0000] "GET /api/seller/reviews?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:24:58 [http]: ::1 - - [11/Apr/2026:14:24:58 +0000] "GET /api/seller/disputes?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:24:58 [http]: ::1 - - [11/Apr/2026:14:24:58 +0000] "GET /api/seller/samples?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:25:01 [http]: ::1 - - [11/Apr/2026:14:25:01 +0000] "GET /api/products HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:25:26 [info]: ✓ User ea44d80c-35a4-11f1-9eee-9c2dcd0692eb disconnected (socket: 9Ef3EweeARar3wqcAAAn)
+2026-04-11 21:25:27 [info]: ✓ User ea44d80c-35a4-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: pMRCe3334SpbNXQDAAAp)
+2026-04-11 21:25:27 [http]: ::1 - - [11/Apr/2026:14:25:27 +0000] "GET /api/products/seller/my?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:25:27 [http]: ::1 - - [11/Apr/2026:14:25:27 +0000] "GET /api/seller/orders?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:25:27 [http]: ::1 - - [11/Apr/2026:14:25:27 +0000] "GET /api/seller/escrow?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:25:27 [http]: ::1 - - [11/Apr/2026:14:25:27 +0000] "GET /api/seller/reviews?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:25:27 [http]: ::1 - - [11/Apr/2026:14:25:27 +0000] "GET /api/products HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:25:27 [http]: ::1 - - [11/Apr/2026:14:25:27 +0000] "GET /api/seller/disputes?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:25:27 [http]: ::1 - - [11/Apr/2026:14:25:27 +0000] "GET /api/seller/samples?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:25:29 [http]: ::1 - - [11/Apr/2026:14:25:29 +0000] "GET /api/products HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:29:20 [info]: ✓ User ea44d80c-35a4-11f1-9eee-9c2dcd0692eb disconnected (socket: pMRCe3334SpbNXQDAAAp)
+2026-04-11 21:29:20 [http]: ::1 - - [11/Apr/2026:14:29:20 +0000] "GET /api/products HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:29:20 [http]: ::1 - - [11/Apr/2026:14:29:20 +0000] "GET /uploads/product-1775911899766-446511889.webp HTTP/1.1" 200 34928 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:29:20 [info]: ✓ User ea44d80c-35a4-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: PduOS1TbR2-QQbF5AAAr)
+2026-04-11 21:29:20 [http]: ::1 - - [11/Apr/2026:14:29:20 +0000] "GET /api/products/seller/my?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:29:20 [http]: ::1 - - [11/Apr/2026:14:29:20 +0000] "GET /api/seller/orders?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:29:20 [http]: ::1 - - [11/Apr/2026:14:29:20 +0000] "GET /api/seller/escrow?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:29:20 [http]: ::1 - - [11/Apr/2026:14:29:20 +0000] "GET /api/seller/reviews?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:29:20 [http]: ::1 - - [11/Apr/2026:14:29:20 +0000] "GET /api/seller/disputes?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:29:20 [http]: ::1 - - [11/Apr/2026:14:29:20 +0000] "GET /api/seller/samples?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:29:55 [info]: ✓ User ea44d80c-35a4-11f1-9eee-9c2dcd0692eb disconnected (socket: PduOS1TbR2-QQbF5AAAr)
+2026-04-11 21:29:55 [http]: ::1 - - [11/Apr/2026:14:29:55 +0000] "GET /api/products HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:29:55 [http]: ::1 - - [11/Apr/2026:14:29:55 +0000] "GET /uploads/product-1775911899766-446511889.webp HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:29:55 [http]: ::1 - - [11/Apr/2026:14:29:55 +0000] "GET /api/products/seller/my?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:29:55 [info]: ✓ User ea44d80c-35a4-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: Xx5206wHI90ZeGB6AAAt)
+2026-04-11 21:29:55 [http]: ::1 - - [11/Apr/2026:14:29:55 +0000] "GET /uploads/product-1775911899766-446511889.webp HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:29:55 [http]: ::1 - - [11/Apr/2026:14:29:55 +0000] "GET /api/seller/orders?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:29:55 [http]: ::1 - - [11/Apr/2026:14:29:55 +0000] "GET /api/seller/escrow?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:29:55 [http]: ::1 - - [11/Apr/2026:14:29:55 +0000] "GET /api/seller/reviews?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:29:55 [http]: ::1 - - [11/Apr/2026:14:29:55 +0000] "GET /api/seller/disputes?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:29:55 [http]: ::1 - - [11/Apr/2026:14:29:55 +0000] "GET /api/seller/samples?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:30:10 [http]: ::1 - - [11/Apr/2026:14:30:10 +0000] "GET /api/products/2ee47a49-35a5-11f1-9eee-9c2dcd0692eb HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:30:18 [http]: ::1 - - [11/Apr/2026:14:30:18 +0000] "GET /api/products HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:30:18 [http]: ::1 - - [11/Apr/2026:14:30:18 +0000] "GET /uploads/product-1775911899766-446511889.webp HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:30:20 [http]: ::1 - - [11/Apr/2026:14:30:20 +0000] "GET /uploads/product-1775911899766-446511889.webp HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:30:22 [http]: ::1 - - [11/Apr/2026:14:30:22 +0000] "GET /api/products HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:30:22 [http]: ::1 - - [11/Apr/2026:14:30:22 +0000] "GET /uploads/product-1775911899766-446511889.webp HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:30:22 [http]: ::1 - - [11/Apr/2026:14:30:22 +0000] "GET /api/products/2ee47a49-35a5-11f1-9eee-9c2dcd0692eb HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:36:13 [info]: Product created: "linh kiện điện tử" id=ca8281f3-35b3-11f1-9eee-9c2dcd0692eb
+2026-04-11 21:36:13 [http]: ::1 - - [11/Apr/2026:14:36:13 +0000] "POST /api/products HTTP/1.1" 201 596 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:36:14 [http]: ::1 - - [11/Apr/2026:14:36:14 +0000] "GET /api/products/2ee47a49-35a5-11f1-9eee-9c2dcd0692eb HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:36:15 [http]: ::1 - - [11/Apr/2026:14:36:15 +0000] "GET /api/products/seller/my?page=1&limit=10 HTTP/1.1" 200 956 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:36:15 [info]: ✓ User ea44d80c-35a4-11f1-9eee-9c2dcd0692eb disconnected (socket: Xx5206wHI90ZeGB6AAAt)
+2026-04-11 21:36:15 [info]: ✓ User ea44d80c-35a4-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: k2jz25kvhFNB9iRgAAAv)
+2026-04-11 21:36:15 [http]: ::1 - - [11/Apr/2026:14:36:15 +0000] "GET /api/products/seller/my?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:36:15 [http]: ::1 - - [11/Apr/2026:14:36:15 +0000] "GET /uploads/product-1775911899766-446511889.webp HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:36:15 [http]: ::1 - - [11/Apr/2026:14:36:15 +0000] "GET /uploads/product-1775918173805-774718415.png HTTP/1.1" 200 4884 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:36:15 [http]: ::1 - - [11/Apr/2026:14:36:15 +0000] "GET /api/seller/orders?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:36:15 [http]: ::1 - - [11/Apr/2026:14:36:15 +0000] "GET /api/seller/escrow?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:36:15 [http]: ::1 - - [11/Apr/2026:14:36:15 +0000] "GET /api/seller/reviews?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:36:15 [http]: ::1 - - [11/Apr/2026:14:36:15 +0000] "GET /api/seller/disputes?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:36:15 [http]: ::1 - - [11/Apr/2026:14:36:15 +0000] "GET /api/seller/samples?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:36:46 [info]: Product created: "Cân Điện Tử" id=dde7cbb2-35b3-11f1-9eee-9c2dcd0692eb
+2026-04-11 21:36:46 [http]: ::1 - - [11/Apr/2026:14:36:46 +0000] "POST /api/products HTTP/1.1" 201 531 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:36:46 [http]: ::1 - - [11/Apr/2026:14:36:46 +0000] "GET /api/products/2ee47a49-35a5-11f1-9eee-9c2dcd0692eb HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:36:47 [http]: ::1 - - [11/Apr/2026:14:36:47 +0000] "GET /api/products/seller/my?page=1&limit=10 HTTP/1.1" 200 1340 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:36:47 [info]: ✓ User ea44d80c-35a4-11f1-9eee-9c2dcd0692eb disconnected (socket: k2jz25kvhFNB9iRgAAAv)
+2026-04-11 21:36:47 [http]: ::1 - - [11/Apr/2026:14:36:47 +0000] "GET /api/products/seller/my?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:36:47 [info]: ✓ User ea44d80c-35a4-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: 2HTXkhez8yT9KD74AAAx)
+2026-04-11 21:36:47 [http]: ::1 - - [11/Apr/2026:14:36:47 +0000] "GET /uploads/product-1775918173805-774718415.png HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:36:47 [http]: ::1 - - [11/Apr/2026:14:36:47 +0000] "GET /uploads/product-1775911899766-446511889.webp HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:36:47 [http]: ::1 - - [11/Apr/2026:14:36:47 +0000] "GET /uploads/product-1775918206353-955925333.jpg HTTP/1.1" 200 18784 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:36:47 [http]: ::1 - - [11/Apr/2026:14:36:47 +0000] "GET /api/seller/orders?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:36:47 [http]: ::1 - - [11/Apr/2026:14:36:47 +0000] "GET /api/seller/escrow?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:36:47 [http]: ::1 - - [11/Apr/2026:14:36:47 +0000] "GET /api/seller/reviews?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:36:47 [http]: ::1 - - [11/Apr/2026:14:36:47 +0000] "GET /api/seller/disputes?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:36:47 [http]: ::1 - - [11/Apr/2026:14:36:47 +0000] "GET /api/seller/samples?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:37:25 [http]: ::1 - - [11/Apr/2026:14:37:25 +0000] "GET /api/products HTTP/1.1" 200 1340 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:37:25 [http]: ::1 - - [11/Apr/2026:14:37:25 +0000] "GET /uploads/product-1775918206353-955925333.jpg HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:37:25 [http]: ::1 - - [11/Apr/2026:14:37:25 +0000] "GET /uploads/product-1775918173805-774718415.png HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:37:25 [http]: ::1 - - [11/Apr/2026:14:37:25 +0000] "GET /uploads/product-1775911899766-446511889.webp HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:37:32 [http]: ::1 - - [11/Apr/2026:14:37:32 +0000] "GET /uploads/product-1775911899766-446511889.webp HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:37:32 [http]: ::1 - - [11/Apr/2026:14:37:32 +0000] "GET /uploads/product-1775918206353-955925333.jpg HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:37:32 [http]: ::1 - - [11/Apr/2026:14:37:32 +0000] "GET /uploads/product-1775918173805-774718415.png HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:37:48 [info]: Order created: id=02f5f1c1-35b4-11f1-9eee-9c2dcd0692eb buyer=e471ba07-35a3-11f1-9eee-9c2dcd0692eb
+2026-04-11 21:37:48 [http]: ::1 - - [11/Apr/2026:14:37:48 +0000] "POST /api/orders HTTP/1.1" 201 350 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:37:48 [info]: Order created: id=02f92952-35b4-11f1-9eee-9c2dcd0692eb buyer=e471ba07-35a3-11f1-9eee-9c2dcd0692eb
+2026-04-11 21:37:48 [http]: ::1 - - [11/Apr/2026:14:37:48 +0000] "POST /api/orders HTTP/1.1" 201 366 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:37:48 [info]: Order created: id=02fd1481-35b4-11f1-9eee-9c2dcd0692eb buyer=e471ba07-35a3-11f1-9eee-9c2dcd0692eb
+2026-04-11 21:37:48 [http]: ::1 - - [11/Apr/2026:14:37:48 +0000] "POST /api/orders HTTP/1.1" 201 364 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:37:48 [error]: Error: MoMo API error [400]: {"responseTime":1775918269561,"message":"Chữ ký không hợp lệ. Vui lòng kiểm tra dữ liệu gốc trước khi mã hóa : accessKey=***&amount=384680&extraData=&ipnUrl=https://arseno-cathern-sadistically.ngrok-free.dev/api/payments/momo/callback&orderId=02f5f1c1-35b4-11f1-9eee-9c2dcd0692eb&orderInfo=Thanh toan don hang 02f5f1c1-35b4-11f1-9eee-9c2dcd0692eb&partnerCode=MOMO&redirectUrl=http://localhost:3000/payment/momo/callback&requestId=02f5f1c1-35b4-11f1-9eee-9c2dcd0692eb_1775918268588&requestType=captureWallet.","resultCode":11007}
+    at MoMoClient.createPaymentRequest (C:\Users\nguye\test Ofuture\test\ofuture-backend\services\MoMoClient.ts:116:15)
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async Object.createMoMoPayment (C:\Users\nguye\test Ofuture\test\ofuture-backend\services\paymentService.ts:125:24)
+    at async createMoMo (C:\Users\nguye\test Ofuture\test\ofuture-backend\controllers\paymentController.ts:9:20)
+2026-04-11 21:37:48 [http]: ::1 - - [11/Apr/2026:14:37:48 +0000] "POST /api/payments/momo/create HTTP/1.1" 400 610 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:37:54 [info]: Order created: id=066b092f-35b4-11f1-9eee-9c2dcd0692eb buyer=e471ba07-35a3-11f1-9eee-9c2dcd0692eb
+2026-04-11 21:37:54 [http]: ::1 - - [11/Apr/2026:14:37:54 +0000] "POST /api/orders HTTP/1.1" 201 350 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:37:54 [info]: Order created: id=066dde4e-35b4-11f1-9eee-9c2dcd0692eb buyer=e471ba07-35a3-11f1-9eee-9c2dcd0692eb
+2026-04-11 21:37:54 [http]: ::1 - - [11/Apr/2026:14:37:54 +0000] "POST /api/orders HTTP/1.1" 201 366 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:37:54 [info]: Order created: id=06700a99-35b4-11f1-9eee-9c2dcd0692eb buyer=e471ba07-35a3-11f1-9eee-9c2dcd0692eb
+2026-04-11 21:37:54 [http]: ::1 - - [11/Apr/2026:14:37:54 +0000] "POST /api/orders HTTP/1.1" 201 364 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:37:54 [error]: Error: MoMo API error [400]: {"responseTime":1775918275311,"message":"Chữ ký không hợp lệ. Vui lòng kiểm tra dữ liệu gốc trước khi mã hóa : accessKey=***&amount=384680&extraData=&ipnUrl=https://arseno-cathern-sadistically.ngrok-free.dev/api/payments/momo/callback&orderId=066b092f-35b4-11f1-9eee-9c2dcd0692eb&orderInfo=Thanh toan don hang 066b092f-35b4-11f1-9eee-9c2dcd0692eb&partnerCode=MOMO&redirectUrl=http://localhost:3000/payment/momo/callback&requestId=066b092f-35b4-11f1-9eee-9c2dcd0692eb_1775918274369&requestType=captureWallet.","resultCode":11007}
+    at MoMoClient.createPaymentRequest (C:\Users\nguye\test Ofuture\test\ofuture-backend\services\MoMoClient.ts:116:15)
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async Object.createMoMoPayment (C:\Users\nguye\test Ofuture\test\ofuture-backend\services\paymentService.ts:125:24)
+    at async createMoMo (C:\Users\nguye\test Ofuture\test\ofuture-backend\controllers\paymentController.ts:9:20)
+2026-04-11 21:37:54 [http]: ::1 - - [11/Apr/2026:14:37:54 +0000] "POST /api/payments/momo/create HTTP/1.1" 400 610 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:37:58 [info]: Order created: id=092ad75b-35b4-11f1-9eee-9c2dcd0692eb buyer=e471ba07-35a3-11f1-9eee-9c2dcd0692eb
+2026-04-11 21:37:58 [http]: ::1 - - [11/Apr/2026:14:37:58 +0000] "POST /api/orders HTTP/1.1" 201 350 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:37:58 [info]: Order created: id=092d02d7-35b4-11f1-9eee-9c2dcd0692eb buyer=e471ba07-35a3-11f1-9eee-9c2dcd0692eb
+2026-04-11 21:37:58 [http]: ::1 - - [11/Apr/2026:14:37:58 +0000] "POST /api/orders HTTP/1.1" 201 366 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:37:58 [info]: Order created: id=092f2d5e-35b4-11f1-9eee-9c2dcd0692eb buyer=e471ba07-35a3-11f1-9eee-9c2dcd0692eb
+2026-04-11 21:37:58 [http]: ::1 - - [11/Apr/2026:14:37:58 +0000] "POST /api/orders HTTP/1.1" 201 364 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:37:59 [error]: Error: MoMo API error [400]: {"responseTime":1775918279918,"message":"Chữ ký không hợp lệ. Vui lòng kiểm tra dữ liệu gốc trước khi mã hóa : accessKey=***&amount=384680&extraData=&ipnUrl=https://arseno-cathern-sadistically.ngrok-free.dev/api/payments/momo/callback&orderId=092ad75b-35b4-11f1-9eee-9c2dcd0692eb&orderInfo=Thanh toan don hang 092ad75b-35b4-11f1-9eee-9c2dcd0692eb&partnerCode=MOMO&redirectUrl=http://localhost:3000/payment/momo/callback&requestId=092ad75b-35b4-11f1-9eee-9c2dcd0692eb_1775918278978&requestType=captureWallet.","resultCode":11007}
+    at MoMoClient.createPaymentRequest (C:\Users\nguye\test Ofuture\test\ofuture-backend\services\MoMoClient.ts:116:15)
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async Object.createMoMoPayment (C:\Users\nguye\test Ofuture\test\ofuture-backend\services\paymentService.ts:125:24)
+    at async createMoMo (C:\Users\nguye\test Ofuture\test\ofuture-backend\controllers\paymentController.ts:9:20)
+2026-04-11 21:37:59 [http]: ::1 - - [11/Apr/2026:14:37:59 +0000] "POST /api/payments/momo/create HTTP/1.1" 400 610 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:38:05 [info]: Order created: id=0cfda4cb-35b4-11f1-9eee-9c2dcd0692eb buyer=e471ba07-35a3-11f1-9eee-9c2dcd0692eb
+2026-04-11 21:38:05 [http]: ::1 - - [11/Apr/2026:14:38:05 +0000] "POST /api/orders HTTP/1.1" 201 350 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:38:05 [info]: Order created: id=0d008036-35b4-11f1-9eee-9c2dcd0692eb buyer=e471ba07-35a3-11f1-9eee-9c2dcd0692eb
+2026-04-11 21:38:05 [http]: ::1 - - [11/Apr/2026:14:38:05 +0000] "POST /api/orders HTTP/1.1" 201 366 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:38:05 [info]: Order created: id=0d026fa1-35b4-11f1-9eee-9c2dcd0692eb buyer=e471ba07-35a3-11f1-9eee-9c2dcd0692eb
+2026-04-11 21:38:05 [http]: ::1 - - [11/Apr/2026:14:38:05 +0000] "POST /api/orders HTTP/1.1" 201 364 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:38:05 [error]: Error: MoMo API error [400]: {"responseTime":1775918286340,"message":"Chữ ký không hợp lệ. Vui lòng kiểm tra dữ liệu gốc trước khi mã hóa : accessKey=***&amount=384680&extraData=&ipnUrl=https://arseno-cathern-sadistically.ngrok-free.dev/api/payments/momo/callback&orderId=0cfda4cb-35b4-11f1-9eee-9c2dcd0692eb&orderInfo=Thanh toan don hang 0cfda4cb-35b4-11f1-9eee-9c2dcd0692eb&partnerCode=MOMO&redirectUrl=http://localhost:3000/payment/momo/callback&requestId=0cfda4cb-35b4-11f1-9eee-9c2dcd0692eb_1775918285399&requestType=captureWallet.","resultCode":11007}
+    at MoMoClient.createPaymentRequest (C:\Users\nguye\test Ofuture\test\ofuture-backend\services\MoMoClient.ts:116:15)
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async Object.createMoMoPayment (C:\Users\nguye\test Ofuture\test\ofuture-backend\services\paymentService.ts:125:24)
+    at async createMoMo (C:\Users\nguye\test Ofuture\test\ofuture-backend\controllers\paymentController.ts:9:20)
+2026-04-11 21:38:05 [http]: ::1 - - [11/Apr/2026:14:38:05 +0000] "POST /api/payments/momo/create HTTP/1.1" 400 610 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:39:01 [info]: Order created: id=2ea9cb06-35b4-11f1-9eee-9c2dcd0692eb buyer=e471ba07-35a3-11f1-9eee-9c2dcd0692eb
+2026-04-11 21:39:01 [http]: ::1 - - [11/Apr/2026:14:39:01 +0000] "POST /api/orders HTTP/1.1" 201 350 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:39:01 [info]: Order created: id=2ead0cf9-35b4-11f1-9eee-9c2dcd0692eb buyer=e471ba07-35a3-11f1-9eee-9c2dcd0692eb
+2026-04-11 21:39:01 [http]: ::1 - - [11/Apr/2026:14:39:01 +0000] "POST /api/orders HTTP/1.1" 201 366 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:39:01 [info]: Order created: id=2eaf5b2f-35b4-11f1-9eee-9c2dcd0692eb buyer=e471ba07-35a3-11f1-9eee-9c2dcd0692eb
+2026-04-11 21:39:01 [http]: ::1 - - [11/Apr/2026:14:39:01 +0000] "POST /api/orders HTTP/1.1" 201 364 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:39:01 [error]: Error: MoMo API error [400]: {"responseTime":1775918342858,"message":"Chữ ký không hợp lệ. Vui lòng kiểm tra dữ liệu gốc trước khi mã hóa : accessKey=***&amount=384680&extraData=&ipnUrl=https://arseno-cathern-sadistically.ngrok-free.dev/api/payments/momo/callback&orderId=2ea9cb06-35b4-11f1-9eee-9c2dcd0692eb&orderInfo=Thanh toan don hang 2ea9cb06-35b4-11f1-9eee-9c2dcd0692eb&partnerCode=MOMO&redirectUrl=http://localhost:3000/payment/momo/callback&requestId=2ea9cb06-35b4-11f1-9eee-9c2dcd0692eb_1775918341903&requestType=captureWallet.","resultCode":11007}
+    at MoMoClient.createPaymentRequest (C:\Users\nguye\test Ofuture\test\ofuture-backend\services\MoMoClient.ts:116:15)
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async Object.createMoMoPayment (C:\Users\nguye\test Ofuture\test\ofuture-backend\services\paymentService.ts:125:24)
+    at async createMoMo (C:\Users\nguye\test Ofuture\test\ofuture-backend\controllers\paymentController.ts:9:20)
+2026-04-11 21:39:01 [http]: ::1 - - [11/Apr/2026:14:39:01 +0000] "POST /api/payments/momo/create HTTP/1.1" 400 610 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:39:10 [info]: Order created: id=339f7303-35b4-11f1-9eee-9c2dcd0692eb buyer=e471ba07-35a3-11f1-9eee-9c2dcd0692eb
+2026-04-11 21:39:10 [http]: ::1 - - [11/Apr/2026:14:39:10 +0000] "POST /api/orders HTTP/1.1" 201 350 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:39:10 [info]: Order created: id=33a1ddd3-35b4-11f1-9eee-9c2dcd0692eb buyer=e471ba07-35a3-11f1-9eee-9c2dcd0692eb
+2026-04-11 21:39:10 [http]: ::1 - - [11/Apr/2026:14:39:10 +0000] "POST /api/orders HTTP/1.1" 201 366 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:39:10 [info]: Order created: id=33a41ef8-35b4-11f1-9eee-9c2dcd0692eb buyer=e471ba07-35a3-11f1-9eee-9c2dcd0692eb
+2026-04-11 21:39:10 [http]: ::1 - - [11/Apr/2026:14:39:10 +0000] "POST /api/orders HTTP/1.1" 201 364 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:39:10 [error]: Error: MoMo API error [400]: {"responseTime":1775918351150,"message":"Chữ ký không hợp lệ. Vui lòng kiểm tra dữ liệu gốc trước khi mã hóa : accessKey=***&amount=384680&extraData=&ipnUrl=https://arseno-cathern-sadistically.ngrok-free.dev/api/payments/momo/callback&orderId=339f7303-35b4-11f1-9eee-9c2dcd0692eb&orderInfo=Thanh toan don hang 339f7303-35b4-11f1-9eee-9c2dcd0692eb&partnerCode=MOMO&redirectUrl=http://localhost:3000/payment/momo/callback&requestId=339f7303-35b4-11f1-9eee-9c2dcd0692eb_1775918350212&requestType=captureWallet.","resultCode":11007}
+    at MoMoClient.createPaymentRequest (C:\Users\nguye\test Ofuture\test\ofuture-backend\services\MoMoClient.ts:116:15)
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async Object.createMoMoPayment (C:\Users\nguye\test Ofuture\test\ofuture-backend\services\paymentService.ts:125:24)
+    at async createMoMo (C:\Users\nguye\test Ofuture\test\ofuture-backend\controllers\paymentController.ts:9:20)
+2026-04-11 21:39:10 [http]: ::1 - - [11/Apr/2026:14:39:10 +0000] "POST /api/payments/momo/create HTTP/1.1" 400 610 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:39:25 [info]: Order created: id=3cd6f72d-35b4-11f1-9eee-9c2dcd0692eb buyer=e471ba07-35a3-11f1-9eee-9c2dcd0692eb
+2026-04-11 21:39:25 [http]: ::1 - - [11/Apr/2026:14:39:25 +0000] "POST /api/orders HTTP/1.1" 201 350 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:39:25 [info]: Order created: id=3cd94bb5-35b4-11f1-9eee-9c2dcd0692eb buyer=e471ba07-35a3-11f1-9eee-9c2dcd0692eb
+2026-04-11 21:39:25 [http]: ::1 - - [11/Apr/2026:14:39:25 +0000] "POST /api/orders HTTP/1.1" 201 366 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:39:25 [info]: Order created: id=3cdb5cb1-35b4-11f1-9eee-9c2dcd0692eb buyer=e471ba07-35a3-11f1-9eee-9c2dcd0692eb
+2026-04-11 21:39:25 [http]: ::1 - - [11/Apr/2026:14:39:25 +0000] "POST /api/orders HTTP/1.1" 201 364 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:39:25 [http]: ::1 - - [11/Apr/2026:14:39:25 +0000] "POST /api/payments/qr/create HTTP/1.1" 200 344 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:39:29 [info]: ✓ User e471ba07-35a3-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: QbDCIIgqVSyLMsFYAAAz)
+2026-04-11 21:39:29 [http]: ::1 - - [11/Apr/2026:14:39:29 +0000] "GET /api/orders/my HTTP/1.1" 200 5701 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:39:36 [info]: ✓ User e471ba07-35a3-11f1-9eee-9c2dcd0692eb disconnected (socket: QbDCIIgqVSyLMsFYAAAz)
+2026-04-11 21:39:40 [http]: ::1 - - [11/Apr/2026:14:39:40 +0000] "GET /api/products HTTP/1.1" 200 1338 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:39:40 [http]: ::1 - - [11/Apr/2026:14:39:40 +0000] "GET /uploads/product-1775918206353-955925333.jpg HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:39:40 [http]: ::1 - - [11/Apr/2026:14:39:40 +0000] "GET /uploads/product-1775918173805-774718415.png HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:39:40 [http]: ::1 - - [11/Apr/2026:14:39:40 +0000] "GET /uploads/product-1775911899766-446511889.webp HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:39:43 [http]: ::1 - - [11/Apr/2026:14:39:43 +0000] "GET /uploads/product-1775918206353-955925333.jpg HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:40:03 [info]: Order created: id=5369e357-35b4-11f1-9eee-9c2dcd0692eb buyer=e471ba07-35a3-11f1-9eee-9c2dcd0692eb
+2026-04-11 21:40:03 [http]: ::1 - - [11/Apr/2026:14:40:03 +0000] "POST /api/orders HTTP/1.1" 201 366 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:40:03 [http]: ::1 - - [11/Apr/2026:14:40:03 +0000] "POST /api/payments/momo/create HTTP/1.1" 200 583 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:40:35 [info]: [MoMo] Payment Success. Order 5369e357-35b4-11f1-9eee-9c2dcd0692eb paid & funds held in escrow.
+2026-04-11 21:40:35 [info]: Wallet deposit: user=e471ba07-35a3-11f1-9eee-9c2dcd0692eb, amount=383625, method=momo
+2026-04-11 21:40:35 [http]: 118.69.210.244 - - [11/Apr/2026:14:40:35 +0000] "POST /api/payments/momo/callback HTTP/1.1" 204 - "-" "Apache-HttpClient/5.5 (Java/25)"
+2026-04-11 21:40:55 [info]: ✓ User e471ba07-35a3-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: wJaeOpaGi-uGwl2dAAA1)
+2026-04-11 21:40:55 [http]: ::1 - - [11/Apr/2026:14:40:55 +0000] "GET /api/orders/my HTTP/1.1" 200 5695 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:41:07 [info]: ✓ User ea44d80c-35a4-11f1-9eee-9c2dcd0692eb disconnected (socket: 2HTXkhez8yT9KD74AAAx)
+2026-04-11 21:41:07 [info]: ✓ User ea44d80c-35a4-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: Kn4GKiTtghKEyJYbAAA3)
+2026-04-11 21:41:07 [http]: ::1 - - [11/Apr/2026:14:41:07 +0000] "GET /api/products/seller/my?page=1&limit=10 HTTP/1.1" 200 1338 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:41:07 [http]: ::1 - - [11/Apr/2026:14:41:07 +0000] "GET /uploads/product-1775918206353-955925333.jpg HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:41:07 [http]: ::1 - - [11/Apr/2026:14:41:07 +0000] "GET /uploads/product-1775911899766-446511889.webp HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:41:07 [http]: ::1 - - [11/Apr/2026:14:41:07 +0000] "GET /uploads/product-1775918173805-774718415.png HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:41:07 [http]: ::1 - - [11/Apr/2026:14:41:07 +0000] "GET /api/seller/orders?page=1&limit=10 HTTP/1.1" 200 2396 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:41:07 [http]: ::1 - - [11/Apr/2026:14:41:07 +0000] "GET /api/seller/escrow?page=1&limit=10 HTTP/1.1" 200 3386 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:41:07 [http]: ::1 - - [11/Apr/2026:14:41:07 +0000] "GET /api/seller/reviews?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:41:07 [http]: ::1 - - [11/Apr/2026:14:41:07 +0000] "GET /api/seller/disputes?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:41:07 [http]: ::1 - - [11/Apr/2026:14:41:07 +0000] "GET /api/seller/samples?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:41:41 [info]: ✓ User e471ba07-35a3-11f1-9eee-9c2dcd0692eb disconnected (socket: wJaeOpaGi-uGwl2dAAA1)
+2026-04-11 21:41:46 [info]: ✓ User e471ba07-35a3-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: r2VespnAz-wlkX1EAAA5)
+2026-04-11 21:41:46 [http]: ::1 - - [11/Apr/2026:14:41:46 +0000] "GET /api/orders/my HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:41:53 [info]: ✓ User e471ba07-35a3-11f1-9eee-9c2dcd0692eb disconnected (socket: r2VespnAz-wlkX1EAAA5)
+2026-04-11 21:42:22 [info]: ✓ User e471ba07-35a3-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: MiNTNKWD9RehQduVAAA7)
+2026-04-11 21:42:22 [http]: ::1 - - [11/Apr/2026:14:42:22 +0000] "GET /api/orders/my HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:44:08 [info]: ✓ User ea44d80c-35a4-11f1-9eee-9c2dcd0692eb disconnected (socket: Kn4GKiTtghKEyJYbAAA3)
+2026-04-11 21:44:08 [info]: ✓ User e471ba07-35a3-11f1-9eee-9c2dcd0692eb disconnected (socket: MiNTNKWD9RehQduVAAA7)
+2026-04-11 21:44:08 [http]: ::1 - - [11/Apr/2026:14:44:08 +0000] "GET /api/products/seller/my?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:44:08 [http]: ::1 - - [11/Apr/2026:14:44:08 +0000] "GET /api/orders/my HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:44:08 [info]: ✓ User e471ba07-35a3-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: MhcAV96k0whvjAMFAAA-)
+2026-04-11 21:44:08 [info]: ✓ User ea44d80c-35a4-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: L6oK97QUFbsXt7mCAAA_)
+2026-04-11 21:44:08 [http]: ::1 - - [11/Apr/2026:14:44:08 +0000] "GET /uploads/product-1775918206353-955925333.jpg HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:44:08 [http]: ::1 - - [11/Apr/2026:14:44:08 +0000] "GET /uploads/product-1775918173805-774718415.png HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:44:08 [http]: ::1 - - [11/Apr/2026:14:44:08 +0000] "GET /uploads/product-1775911899766-446511889.webp HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:44:08 [http]: ::1 - - [11/Apr/2026:14:44:08 +0000] "GET /api/seller/orders?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:44:08 [http]: ::1 - - [11/Apr/2026:14:44:08 +0000] "GET /api/seller/escrow?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:44:08 [http]: ::1 - - [11/Apr/2026:14:44:08 +0000] "GET /api/seller/reviews?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:44:08 [http]: ::1 - - [11/Apr/2026:14:44:08 +0000] "GET /api/seller/disputes?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:44:08 [http]: ::1 - - [11/Apr/2026:14:44:08 +0000] "GET /api/seller/samples?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:44:37 [info]: ✓ User ea44d80c-35a4-11f1-9eee-9c2dcd0692eb disconnected (socket: L6oK97QUFbsXt7mCAAA_)
+2026-04-11 21:44:37 [info]: ✓ User e471ba07-35a3-11f1-9eee-9c2dcd0692eb disconnected (socket: MhcAV96k0whvjAMFAAA-)
+2026-04-11 21:44:37 [info]: ✓ User e471ba07-35a3-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: _nVqGJp-NQ1EV40SAABB)
+2026-04-11 21:44:37 [http]: ::1 - - [11/Apr/2026:14:44:37 +0000] "GET /api/orders/my HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:44:37 [info]: ✓ User ea44d80c-35a4-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: kMV5862E2oVTAqKqAABD)
+2026-04-11 21:44:37 [http]: ::1 - - [11/Apr/2026:14:44:37 +0000] "GET /api/products/seller/my?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:44:37 [http]: ::1 - - [11/Apr/2026:14:44:37 +0000] "GET /uploads/product-1775918206353-955925333.jpg HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:44:37 [http]: ::1 - - [11/Apr/2026:14:44:37 +0000] "GET /uploads/product-1775918173805-774718415.png HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:44:37 [http]: ::1 - - [11/Apr/2026:14:44:37 +0000] "GET /uploads/product-1775911899766-446511889.webp HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:44:37 [http]: ::1 - - [11/Apr/2026:14:44:37 +0000] "GET /api/seller/orders?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:44:37 [http]: ::1 - - [11/Apr/2026:14:44:37 +0000] "GET /api/seller/escrow?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:44:37 [http]: ::1 - - [11/Apr/2026:14:44:37 +0000] "GET /api/seller/reviews?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:44:37 [http]: ::1 - - [11/Apr/2026:14:44:37 +0000] "GET /api/seller/disputes?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:44:37 [http]: ::1 - - [11/Apr/2026:14:44:37 +0000] "GET /api/seller/samples?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:47:54 [info]: ✓ User ea44d80c-35a4-11f1-9eee-9c2dcd0692eb disconnected (socket: kMV5862E2oVTAqKqAABD)
+2026-04-11 21:47:54 [info]: ✓ User ea44d80c-35a4-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: tpY_V8P6dHoO9vzpAABF)
+2026-04-11 21:47:54 [http]: ::1 - - [11/Apr/2026:14:47:54 +0000] "GET /api/products/seller/my?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:47:54 [warn]: Rate limit exceeded: IP=::1 PATH=/uploads/product-1775918173805-774718415.png
+2026-04-11 21:47:54 [http]: ::1 - - [11/Apr/2026:14:47:54 +0000] "GET /uploads/product-1775918206353-955925333.jpg HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-11 21:47:54 [warn]: Rate limit exceeded: IP=::1 PATH=/api/seller/orders
+2026-04-11 21:47:54 [warn]: Rate limit exceeded: IP=::1 PATH=/uploads/product-1775911899766-446511889.webp
+2026-04-11 21:47:54 [warn]: Rate limit exceeded: IP=::1 PATH=/api/seller/escrow
+2026-04-11 21:47:54 [warn]: Rate limit exceeded: IP=::1 PATH=/api/seller/reviews
+2026-04-11 21:47:54 [warn]: Rate limit exceeded: IP=::1 PATH=/api/seller/disputes
+2026-04-11 21:47:54 [warn]: Rate limit exceeded: IP=::1 PATH=/api/seller/samples
+2026-04-11 21:48:17 [info]: ✓ User ea44d80c-35a4-11f1-9eee-9c2dcd0692eb disconnected (socket: tpY_V8P6dHoO9vzpAABF)
+2026-04-11 21:48:17 [info]: ✓ User ea44d80c-35a4-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: ndX4ii6HsBrgvO5rAABH)
+2026-04-11 21:48:17 [warn]: Rate limit exceeded: IP=::1 PATH=/api/products/seller/my
+2026-04-11 21:48:17 [warn]: Rate limit exceeded: IP=::1 PATH=/api/seller/orders
+2026-04-11 21:48:17 [warn]: Rate limit exceeded: IP=::1 PATH=/api/seller/escrow
+2026-04-11 21:48:17 [warn]: Rate limit exceeded: IP=::1 PATH=/api/seller/reviews
+2026-04-11 21:48:17 [warn]: Rate limit exceeded: IP=::1 PATH=/api/seller/disputes
+2026-04-11 21:48:17 [warn]: Rate limit exceeded: IP=::1 PATH=/api/seller/samples
+2026-04-11 21:48:31 [warn]: Rate limit exceeded: IP=::1 PATH=/api/auth/logout
+2026-04-11 21:48:31 [info]: ✓ User ea44d80c-35a4-11f1-9eee-9c2dcd0692eb disconnected (socket: ndX4ii6HsBrgvO5rAABH)
+2026-04-11 21:48:44 [warn]: Rate limit exceeded: IP=::1 PATH=/api/auth/google-login
+2026-04-11 21:51:27 [info]: ✓ User e471ba07-35a3-11f1-9eee-9c2dcd0692eb disconnected (socket: _nVqGJp-NQ1EV40SAABB)
+2026-04-11 21:51:27 [info]: ✓ User e471ba07-35a3-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: WxpYZM_RgOtSXY8rAABJ)
+2026-04-11 21:51:27 [http]: ::1 - - [11/Apr/2026:14:51:27 +0000] "GET /api/orders/my HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"

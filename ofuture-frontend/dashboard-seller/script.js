@@ -226,12 +226,32 @@ function renderProductsTable(products = allProducts) {
     if (!tbody) return;
 
     if (!products || products.length === 0) {
-        tbody.innerHTML = '<tr><td colspan="5" class="text-center">No products found. Click "Add New Product" to start.</td></tr>';
+        tbody.innerHTML = '<tr><td colspan="6" class="text-center">No products found. Click "Add New Product" to start.</td></tr>';
         return;
     }
 
-    tbody.innerHTML = products.map(product => `
+    tbody.innerHTML = products.map(product => {
+        // --- FIX ẢNH SELLER TẠI ĐÂY ---
+        let imgUrl = '../../images/image.png';
+        if (product.imageUrls) {
+            try {
+                const parsedImgs = typeof product.imageUrls === 'string' ? JSON.parse(product.imageUrls) : product.imageUrls;
+                if (Array.isArray(parsedImgs) && parsedImgs.length > 0) {
+                    let rawUrl = parsedImgs[0];
+                    if (rawUrl.startsWith('/uploads')) {
+                        // Kênh người bán mặc định dùng backend 5000
+                        const backendBaseUrl = API_BASE_URL.replace('/api', ''); 
+                        imgUrl = `${backendBaseUrl}${rawUrl}`;
+                    } else {
+                        imgUrl = rawUrl;
+                    }
+                }
+            } catch(e){}
+        }
+
+        return `
         <tr>
+            <td><img src="${imgUrl}" style="width: 45px; height: 45px; object-fit: cover; border-radius: 6px;"></td>
             <td>
                 <strong>${escapeHtml(product.name)}</strong><br>
                 <small style="color:#64748b;">${escapeHtml(product.category || 'General')}</small>
@@ -248,7 +268,7 @@ function renderProductsTable(products = allProducts) {
                 <button class="btn btn-small btn-danger" onclick="deleteProduct('${product.id}')">Delete</button>
             </td>
         </tr>
-    `).join('');
+    `}).join('');
 
     addBadgeStyles();
 }

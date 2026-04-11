@@ -20,7 +20,9 @@ function checkAuth() {
     if (currentUser.role !== 'buyer') { window.location.href = '../../login.html'; return false; }
 
     CART_KEY = `cart_${currentUser.id}`;
-    document.getElementById('userAvatar').textContent = currentUser.fullName.charAt(0).toUpperCase();
+    // FIX: Đọc an toàn tên người dùng tránh lỗi Crash
+    const nameToUse = currentUser.fullName || currentUser.full_name || currentUser.username || 'U';
+    document.getElementById('userAvatar').textContent = nameToUse.charAt(0).toUpperCase();
     return true;
 }
 
@@ -100,12 +102,21 @@ function renderProducts(products) {
         const price = parseInt(p.price).toLocaleString('vi-VN');
         const isOutOfStock = p.stock_quantity <= 0;
         
-        // Xử lý ảnh (mảng JSON từ DB)
+        // --- FIX ẢNH BUYER TẠI ĐÂY ---
         let imgUrl = '../../images/image.png'; // Ảnh mặc định
-        if (p.image_urls) {
+        if (p.imageUrls) {
             try {
-                const parsedImgs = typeof p.image_urls === 'string' ? JSON.parse(p.image_urls) : p.image_urls;
-                if (Array.isArray(parsedImgs) && parsedImgs.length > 0) imgUrl = parsedImgs[0];
+                const parsedImgs = typeof p.imageUrls === 'string' ? JSON.parse(p.imageUrls) : p.imageUrls;
+                if (Array.isArray(parsedImgs) && parsedImgs.length > 0) {
+                    let rawUrl = parsedImgs[0];
+                    // Nếu là đường dẫn tương đối từ backend, nối thêm base url của backend
+                    if (rawUrl.startsWith('/uploads')) {
+                        const backendBaseUrl = API_BASE_URL.replace('/api', ''); // Tách 'http://localhost:5000' từ API_BASE_URL
+                        imgUrl = `${backendBaseUrl}${rawUrl}`;
+                    } else {
+                        imgUrl = rawUrl; // Dành cho trường hợp link http ngoài (imgur, cloudinary...)
+                    }
+                }
             } catch (e) {}
         }
 

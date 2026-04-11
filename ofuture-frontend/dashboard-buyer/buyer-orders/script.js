@@ -18,7 +18,8 @@ function checkAuth() {
     currentUser = JSON.parse(userStr);
     if (currentUser.role !== 'buyer') { window.location.href = '../../login.html'; return false; }
 
-    document.getElementById('userAvatar').textContent = currentUser.fullName.charAt(0).toUpperCase();
+    const nameToUse = currentUser.fullName || currentUser.full_name || currentUser.username || 'U';
+    document.getElementById('userAvatar').textContent = nameToUse.charAt(0).toUpperCase();
     return true;
 }
 
@@ -120,7 +121,10 @@ function getStatusBadge(status) {
 function generateActionButtons(order) {
     let btns = '';
     
-    if (order.status === 'shipped') {
+    if (order.status === 'pending') {
+        btns += `<button class="btn btn-primary" onclick="window.location.href='../buyer-checkout/index.html?orderId=${order.id || order.sample_id}'">💳 Thanh toán ngay</button>`;
+    }
+    else if (order.status === 'shipped') {
         btns += `<button class="btn btn-primary" onclick="confirmDelivery('${order.id}')">✅ Đã nhận được hàng (Giải ngân)</button>`;
         btns += `<button class="btn btn-outline" style="color: #ef4444; border-color: #ef4444;" onclick="openDisputeModal('${order.id}')">⚠️ Hàng lỗi / Khiếu nại</button>`;
     } 

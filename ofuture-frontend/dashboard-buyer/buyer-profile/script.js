@@ -55,15 +55,19 @@ document.getElementById('avatarInput').addEventListener('change', async function
     formData.append('avatar', file);
 
     try {
-        const result = await fetchAPI('/auth/avatar', {
+        const token = localStorage.getItem('accessToken');
+        const response = await fetch(`${window.CONFIG?.API_BASE_URL || 'http://localhost:5000/api'}/auth/avatar`, {
             method: 'POST',
-            body: formData, // fetchAPI cần xử lý không set Content-Type nếu là FormData
-            isFormData: true 
+            headers: { 'Authorization': `Bearer ${token}` }, // Bắt buộc không setup Content-Type để trình duyệt tự chèn boundary
+            body: formData
         });
+        const result = await response.json();
 
         if (result.success) {
             document.getElementById('avatarPreview').src = result.data.avatarUrl;
             alert("Cập nhật ảnh đại diện thành công!");
+        } else {
+            alert("Lỗi: " + result.message);
         }
     } catch (err) { alert("Lỗi upload ảnh."); }
 });

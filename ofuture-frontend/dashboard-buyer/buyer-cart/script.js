@@ -17,7 +17,8 @@ function checkAuth() {
     if (currentUser.role !== 'buyer') { window.location.href = '../../login.html'; return false; }
 
     CART_KEY = `cart_${currentUser.id}`;
-    document.getElementById('userAvatar').textContent = currentUser.fullName.charAt(0).toUpperCase();
+    const nameToUse = currentUser.fullName || currentUser.full_name || currentUser.username || 'U';
+    document.getElementById('userAvatar').textContent = nameToUse.charAt(0).toUpperCase();
     return true;
 }
 
