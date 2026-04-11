@@ -172,9 +172,41 @@ async function processMoMo(orderId, amount) {
     
     const data = await response.json();
     if (response.ok && data.success) {
+        // Xóa giỏ hàng
         const remainingCart = JSON.parse(localStorage.getItem(CART_KEY)).filter(i => !i.selected);
         localStorage.setItem(CART_KEY, JSON.stringify(remainingCart));
-        window.location.href = data.data.payUrl;
+        
+        // Mở Popup thay vì redirect
+        const width = 600, height = 700;
+        const left = (window.innerWidth / 2) - (width / 2);
+        const top = (window.innerHeight / 2) - (height / 2);
+        const momoWindow = window.open(data.data.payUrl, 'MoMoPayment', `width=${width},height=${height},top=${top},left=${left}`);
+        
+        showToast("Vui lòng hoàn tất thanh toán ở cửa sổ MoMo...");
+
+        // Bắt đầu kiểm tra trạng thái đơn hàng liên tục (Mỗi 3 giây)
+        const checkInterval = setInterval(async () => {
+            if (momoWindow.closed) {
+                clearInterval(checkInterval);
+                alert("Cửa sổ thanh toán đã đóng. Đang chuyển về danh sách đơn hàng.");
+                window.location.href = '../buyer-orders/index.html';
+            }
+            
+            // Tách ID đầu tiên ra để check (vì nếu đơn combo thì chỉ cần 1 đơn đổi sang paid là hiểu tất cả đã paid)
+            const firstId = orderId.split('_')[0];
+            const checkRes = await fetch(`${API_BASE_URL}/orders/${firstId}`, {
+                headers: { 'Authorization': `Bearer ${localStorage.getItem('accessToken')}` }
+            });
+            const checkData = await checkRes.json();
+            
+            if (checkData.success && checkData.data.status === 'paid') {
+                clearInterval(checkInterval);
+                momoWindow.close();
+                alert("Thanh toán thành công!");
+                window.location.href = '../buyer-orders/index.html'; // Chuyển về trang đơn hàng
+            }
+        }, 3000);
+
     } else {
         throw new Error(data.message || "Không thể tạo giao dịch MoMo");
     }
@@ -182,27 +214,18 @@ async function processMoMo(orderId, amount) {
 
 // ── 5. Xử lý VietQR (Ký quỹ Bán tự động) ──────────────────
 async function processVietQR(orderId, amount) {
-    const response = await fetch(`${API_BASE_URL}/payments/qr/create`, {
-        method: 'POST',
-        headers: { 
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
-        },
-        body: JSON.stringify({ orderId, amount })
-    });
+    // Tạm thời bỏ qua việc gọi API QR nếu bị lỗi, dùng link cứng từ cấu hình
+    const staticQrLink = window.CONFIG?.DRIVE_QR_LINK || "https://drive.google.com/file/d/1ewMm6TtxpdOItVEyFhzM6RIZhS-KT1xD/view?usp=sharing"; 
     
-    const data = await response.json();
-    if (response.ok && data.success) {
-        // Xóa giỏ hàng
-        localStorage.removeItem(CART_KEY);
-        
-        // Hiện QR lên Modal
-        const qrImg = data.data.qrCodeImage || data.data.qrCode;
-        document.getElementById('qrCodeContainer').innerHTML = `<img src="${qrImg}" alt="Mã QR Ký quỹ" style="max-width: 100%; border-radius: 8px;">`;
-        document.getElementById('qrModal').style.display = 'flex';
-    } else {
-        throw new Error(data.message || "Không thể tạo mã VietQR");
-    }
+    // Xóa giỏ hàng
+    localStorage.removeItem(CART_KEY);
+    
+    // Hiện QR lên Modal
+    document.getElementById('qrCodeContainer').innerHTML = `
+        <img src="${staticQrLink}" alt="Mã QR Ký quỹ" style="max-width: 100%; border-radius: 8px;">
+        <p style="margin-top: 15px; color: #ef4444; font-weight: bold;">Nội dung chuyển khoản: ${orderId.substring(0,8)}</p>
+    `;
+    document.getElementById('qrModal').style.display = 'flex';
 }
 
 // ── 6. Hành động trên Modal VietQR ────────────────────────

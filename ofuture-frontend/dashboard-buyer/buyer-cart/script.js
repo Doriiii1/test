@@ -71,7 +71,7 @@ function loadCart() {
                 <div class="item-controls">
                     <div class="qty-control">
                         <button onclick="changeQty('${item.id}', -1)">-</button>
-                        <input type="number" value="${item.quantity}" readonly>
+                        <input type="number" value="${item.quantity}" min="1" onchange="updateQtyInput('${item.id}', this.value)">
                         <button onclick="changeQty('${item.id}', 1)">+</button>
                     </div>
                     <button class="btn-delete" onclick="removeItem('${item.id}')">Xóa</button>
@@ -120,6 +120,22 @@ window.removeItem = function(id) {
     localStorage.setItem(CART_KEY, JSON.stringify(cartItems));
     loadCart();
     showToast("Đã xóa sản phẩm khỏi giỏ.");
+}
+
+window.updateQtyInput = function(id, val) {
+    const item = cartItems.find(i => i.id === id);
+    if (!item) return;
+    
+    let newQty = parseInt(val);
+    if (isNaN(newQty) || newQty < 1) newQty = 1;
+    if (newQty > item.stock) {
+        showToast(`Chỉ còn ${item.stock} sản phẩm!`, true);
+        newQty = item.stock;
+    }
+    
+    item.quantity = newQty;
+    localStorage.setItem(CART_KEY, JSON.stringify(cartItems));
+    loadCart();
 }
 
 function updateCartBadge() {
