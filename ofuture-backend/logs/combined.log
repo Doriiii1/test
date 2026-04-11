@@ -24,3 +24,84 @@
 2026-04-12 00:06:45 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/escrow
 2026-04-12 00:06:45 [warn]: Rate limit exceeded: IP=::1 PATH=/api/admin/payments
 2026-04-12 00:06:45 [info]: ✓ User c075c104-35a3-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: JwBmwpkhPihOAjDXAAEJ)
+2026-04-12 02:13:54 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-12 02:13:54 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-12 02:13:54 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-12 02:13:54 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-12 02:13:54 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-12 02:13:54 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-12 02:13:54 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-12 02:13:54 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-12 02:13:54 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-12 02:13:54 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-12 02:13:54 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-12 02:13:54 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-12 02:13:54 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-12 02:13:54 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-12 02:13:54 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-12 02:13:54 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-12 02:13:54 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-12 02:13:54 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-12 02:13:55 [info]: 🧪  RBAC test routes enabled (development only)
+2026-04-12 02:13:55 [info]: ✓ WebSocket (Socket.io) server initialized
+2026-04-12 02:13:55 [info]: 🚀  O'Future API running on port 5000
+2026-04-12 02:13:55 [info]: 📍  Environment: development
+2026-04-12 02:13:55 [info]: 🔗  Health check: http://localhost:5000/health
+2026-04-12 02:13:55 [info]: [redisClient] ioredis ready — using real Redis client.
+2026-04-12 02:43:14 [info]: User logged in via Google: nguyentrungkhoavx0857@gmail.com
+2026-04-12 02:43:14 [http]: ::1 - - [11/Apr/2026:19:43:14 +0000] "POST /api/auth/google-login HTTP/1.1" 200 853 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-12 02:43:15 [info]: ✓ User e471ba07-35a3-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: sHsLrc0AtxD0yuPyAAAB)
+2026-04-12 02:43:15 [http]: ::1 - - [11/Apr/2026:19:43:15 +0000] "GET /api/products?limit=3 HTTP/1.1" 200 1337 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-12 02:43:19 [info]: ✓ User e471ba07-35a3-11f1-9eee-9c2dcd0692eb disconnected (socket: sHsLrc0AtxD0yuPyAAAB)
+2026-04-12 02:43:19 [http]: ::1 - - [11/Apr/2026:19:43:19 +0000] "GET /api/products HTTP/1.1" 200 1338 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-12 02:43:19 [http]: ::1 - - [11/Apr/2026:19:43:19 +0000] "GET /uploads/product-1775918206353-955925333.jpg HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-12 02:43:19 [http]: ::1 - - [11/Apr/2026:19:43:19 +0000] "GET /uploads/product-1775918173805-774718415.png HTTP/1.1" 200 4884 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-12 02:43:19 [http]: ::1 - - [11/Apr/2026:19:43:19 +0000] "GET /uploads/product-1775911899766-446511889.webp HTTP/1.1" 200 34928 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-12 02:43:31 [http]: ::1 - - [11/Apr/2026:19:43:31 +0000] "GET /api/products HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-12 02:43:31 [http]: ::1 - - [11/Apr/2026:19:43:31 +0000] "GET /uploads/product-1775918206353-955925333.jpg HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-12 02:43:31 [http]: ::1 - - [11/Apr/2026:19:43:31 +0000] "GET /uploads/product-1775918173805-774718415.png HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-12 02:43:31 [http]: ::1 - - [11/Apr/2026:19:43:31 +0000] "GET /uploads/product-1775911899766-446511889.webp HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-12 02:43:38 [http]: ::1 - - [11/Apr/2026:19:43:38 +0000] "GET /api/products HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-12 02:43:38 [http]: ::1 - - [11/Apr/2026:19:43:38 +0000] "GET /uploads/product-1775918206353-955925333.jpg HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-12 02:43:38 [http]: ::1 - - [11/Apr/2026:19:43:38 +0000] "GET /uploads/product-1775918173805-774718415.png HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-12 02:43:38 [http]: ::1 - - [11/Apr/2026:19:43:38 +0000] "GET /uploads/product-1775911899766-446511889.webp HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-12 02:43:42 [info]: ✓ User e471ba07-35a3-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: lSmmT5Cp4Lk1xgbuAAAD)
+2026-04-12 02:43:42 [http]: ::1 - - [11/Apr/2026:19:43:42 +0000] "GET /api/orders/my HTTP/1.1" 200 5701 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-12 02:43:43 [info]: ✓ User e471ba07-35a3-11f1-9eee-9c2dcd0692eb disconnected (socket: lSmmT5Cp4Lk1xgbuAAAD)
+2026-04-12 02:43:43 [http]: ::1 - - [11/Apr/2026:19:43:43 +0000] "GET /api/auth/me HTTP/1.1" 200 390 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-12 02:43:43 [http]: ::1 - - [11/Apr/2026:19:43:43 +0000] "GET /uploads/avatar-1775919851998-402467903.webp HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-12 02:43:56 [http]: ::1 - - [11/Apr/2026:19:43:56 +0000] "GET /api/auth/me HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-12 02:43:56 [http]: ::1 - - [11/Apr/2026:19:43:56 +0000] "GET /uploads/avatar-1775919851998-402467903.webp HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-12 02:44:30 [info]: ✓ User e471ba07-35a3-11f1-9eee-9c2dcd0692eb connected via WebSocket (socket: XfvtQhmmcpkxKfziAAAF)
+2026-04-12 02:44:30 [http]: ::1 - - [11/Apr/2026:19:44:30 +0000] "GET /api/products?limit=3 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-12 02:44:34 [error]: Error: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent: [403 Forbidden] Your API key was reported as leaked. Please use another API key.
+    at handleResponseNotOk (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:434:11)
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async makeRequest (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:403:9)
+    at async generateContent (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:867:22)
+    at async ChatSession.sendMessage (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:1210:9)
+    at async Object.processMessage (C:\Users\nguye\test Ofuture\test\ofuture-backend\services\aiChatService.ts:133:24)
+    at async sendMessage (C:\Users\nguye\test Ofuture\test\ofuture-backend\controllers\chatController.ts:107:22)
+2026-04-12 02:44:34 [http]: ::1 - - [11/Apr/2026:19:44:34 +0000] "POST /api/chat/send HTTP/1.1" 200 150 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-12 02:44:45 [error]: Error: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent: [403 Forbidden] Your API key was reported as leaked. Please use another API key.
+    at handleResponseNotOk (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:434:11)
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async makeRequest (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:403:9)
+    at async generateContent (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:867:22)
+    at async ChatSession.sendMessage (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:1210:9)
+    at async Object.processMessage (C:\Users\nguye\test Ofuture\test\ofuture-backend\services\aiChatService.ts:133:24)
+    at async sendMessage (C:\Users\nguye\test Ofuture\test\ofuture-backend\controllers\chatController.ts:107:22)
+2026-04-12 02:44:45 [http]: ::1 - - [11/Apr/2026:19:44:45 +0000] "POST /api/chat/send HTTP/1.1" 200 150 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-12 02:44:53 [info]: ✓ User e471ba07-35a3-11f1-9eee-9c2dcd0692eb disconnected (socket: XfvtQhmmcpkxKfziAAAF)
+2026-04-12 02:44:53 [http]: ::1 - - [11/Apr/2026:19:44:53 +0000] "GET /api/products HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-12 02:44:53 [http]: ::1 - - [11/Apr/2026:19:44:53 +0000] "GET /uploads/product-1775918206353-955925333.jpg HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-12 02:44:53 [http]: ::1 - - [11/Apr/2026:19:44:53 +0000] "GET /uploads/product-1775918173805-774718415.png HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-12 02:44:53 [http]: ::1 - - [11/Apr/2026:19:44:53 +0000] "GET /uploads/product-1775911899766-446511889.webp HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-12 02:49:31 [http]: ::1 - - [11/Apr/2026:19:49:31 +0000] "GET /api/products HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-12 02:49:31 [http]: ::1 - - [11/Apr/2026:19:49:31 +0000] "GET /uploads/product-1775918206353-955925333.jpg HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-12 02:49:31 [http]: ::1 - - [11/Apr/2026:19:49:31 +0000] "GET /uploads/product-1775918173805-774718415.png HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-12 02:49:31 [http]: ::1 - - [11/Apr/2026:19:49:31 +0000] "GET /uploads/product-1775911899766-446511889.webp HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-12 02:49:33 [http]: ::1 - - [11/Apr/2026:19:49:33 +0000] "GET /api/products HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-12 02:49:33 [http]: ::1 - - [11/Apr/2026:19:49:33 +0000] "GET /uploads/product-1775918206353-955925333.jpg HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-12 02:49:33 [http]: ::1 - - [11/Apr/2026:19:49:33 +0000] "GET /uploads/product-1775918173805-774718415.png HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-12 02:49:33 [http]: ::1 - - [11/Apr/2026:19:49:33 +0000] "GET /uploads/product-1775911899766-446511889.webp HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"

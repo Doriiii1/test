@@ -123,7 +123,7 @@ window.removeItem = function(id) {
 }
 
 function updateCartBadge() {
-    const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+    const totalItems = cartData.length;
     const badge = document.getElementById('cartBadge');
     if (badge) {
         badge.textContent = totalItems;

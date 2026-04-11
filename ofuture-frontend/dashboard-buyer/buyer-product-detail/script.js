@@ -23,7 +23,7 @@ function checkAuth() {
 
 function updateCartBadge() {
     const cartData = JSON.parse(localStorage.getItem(CART_KEY)) || [];
-    const totalItems = cartData.reduce((sum, item) => sum + item.quantity, 0);
+    const totalItems = cartData.length;
     const badge = document.getElementById('cartBadge');
     if (badge) {
         badge.textContent = totalItems;
@@ -77,12 +77,15 @@ function renderProduct(p) {
         try {
             const parsedImgs = typeof p.imageUrls === 'string' ? JSON.parse(p.imageUrls) : p.imageUrls;
             if (Array.isArray(parsedImgs) && parsedImgs.length > 0) {
-                let rawUrl = parsedImgs[0];
-                if (rawUrl.startsWith('/uploads')) {
-                    const backendBaseUrl = API_BASE_URL.replace('/api', '');
-                    imgUrl = `${backendBaseUrl}${rawUrl}`;
-                } else {
-                    imgUrl = rawUrl;
+                // 1. Cập nhật ảnh chính
+                document.getElementById('mainImage').src = parsedImgs[0];
+                
+                // 2. Tạo Gallery ảnh phụ (bạn cần thêm <div id="imageGallery"></div> vào file HTML)
+                const galleryContainer = document.getElementById('imageGallery');
+                if (galleryContainer) {
+                    galleryContainer.innerHTML = parsedImgs.map(img => 
+                        `<img src="${img}" width="60" style="cursor:pointer; margin: 5px; border: 1px solid #ccc;" onclick="document.getElementById('mainImage').src='${img}'">`
+                    ).join('');
                 }
             }
         } catch (e) {}

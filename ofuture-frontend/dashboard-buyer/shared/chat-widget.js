@@ -198,7 +198,7 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             // Tận dụng fetchAPI từ file api.js. 
             // Endpoint /chat/message được mapping từ file server.ts (app.use('/api/chat', chatRoutes))
-            const response = await fetchAPI('/chat/message', {
+            const response = await fetchAPI('/chat/send', {
                 method: 'POST',
                 body: JSON.stringify({ message: text })
             });

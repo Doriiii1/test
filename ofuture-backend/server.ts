@@ -53,7 +53,7 @@ const walletRoutes   = require('./routes/walletRoutes');    // Task 1: Wallet & 
 const sellerRoutes = require('./routes/sellerRoutes');
 // Disabled category/productVariant routes for now (broken TS/runtime) to allow server startup
 // const categoryRoutes = require('./routes/categoryRoutes');  // Task 3: Categories
-// const productVariantRoutes = require('./routes/productVariantRoutes');  // Task 3: Variants
+const productVariantRoutes = require('./routes/productVariantRoutes');  // Task 3: Variants
 const notificationRoutes = require('./routes/notificationRoutes');  // Task 5: Notifications
 const disputeRoutes = require('./routes/disputeRoutes');  // Task 4: Disputes
 
@@ -224,7 +224,7 @@ app.use('/api/products', normalizeRouter(productRoutes));     // Phase 5
 // Disabled categoryRoutes temporarily to allow dev server startup while debugging
 // app.use('/api/categories', normalizeRouter(categoryRoutes));  // Task 3: Categories
 // Disabled productVariantRoutes temporarily to allow dev server startup
-// app.use('/api/variants', normalizeRouter(productVariantRoutes));  // Task 3: Variants
+app.use('/api/variants', normalizeRouter(productVariantRoutes));  // Task 3: Variants
 
 // Dev-only: RBAC test harness (disable in production)
 if (process.env.NODE_ENV !== 'production') {

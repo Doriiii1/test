@@ -39,8 +39,7 @@ function checkAuth() {
 // ── 2. Xử lý Lỗi Badge Giỏ Hàng (Khắc phục Lỗi 2) ──────────
 function updateCartBadge() {
     const cartData = JSON.parse(localStorage.getItem(CART_KEY)) || [];
-    // Tính tổng số lượng item trong giỏ
-    const totalItems = cartData.reduce((sum, item) => sum + item.quantity, 0);
+    const totalItems = cartData.length;
     
     const badge = document.getElementById('cartBadge');
     if (badge) {

@@ -24,7 +24,7 @@ function checkAuth() {
 function updateCartBadge() {
     const cartKey = `cart_${currentUser.id}`;
     const cartData = JSON.parse(localStorage.getItem(cartKey)) || [];
-    const totalItems = cartData.reduce((sum, item) => sum + item.quantity, 0);
+    const totalItems = cartData.length;
     const badge = document.getElementById('cartBadge');
     if (badge) {
         badge.textContent = totalItems;

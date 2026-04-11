@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import ProductVariantController from '../controllers/productVariantController';
-import { authMiddleware } from '../middleware/auth';
+import { authenticate } from '../middleware/auth';
 
 const router = Router();
 
@@ -26,12 +26,12 @@ router.get('/sku/:sku', ProductVariantController.getBySku);
  * Seller routes (authenticated)
  */
 // Create variant for a product
-router.post('/product/:productId', authMiddleware, ProductVariantController.create);
+router.post('/product/:productId', authenticate, ProductVariantController.create);
 
 // Update variant
-router.put('/:id', authMiddleware, ProductVariantController.update);
+router.put('/:id', authenticate, ProductVariantController.update);
 
 // Delete variant
-router.delete('/:id', authMiddleware, ProductVariantController.delete);
+router.delete('/:id', authenticate, ProductVariantController.delete);
 
 export default router;
