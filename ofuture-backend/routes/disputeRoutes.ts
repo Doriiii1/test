@@ -7,7 +7,10 @@ const {
   getMyDisputes,
   getAllDisputes,
   resolveDispute,
-  submitEvidence
+  submitEvidence,
+  sendChatMessage,
+  getDisputeChat,
+  markChatAsRead
 } = require('../controllers/disputeController');
 
 const { authenticate } = require('../middleware/auth');
@@ -111,6 +114,39 @@ router.post(
   writeLimiter,
   validateResolveDispute,
   resolveDispute
+);
+
+// ─────────────────────────────────────────────
+// DISPUTE CHAT ROUTES (NEW)
+// ─────────────────────────────────────────────
+// 5. Send chat message in dispute
+router.post(
+  '/:disputeId/chat',
+  authenticate,
+  riskScore,
+  authorizeRoles('buyer', 'seller'),
+  writeLimiter,
+  body('message').trim().isLength({ min: 1, max: 5000 }).withMessage('Message must be between 1 and 5000 characters.').escape(),
+  body('attachments').optional().isArray().withMessage('Attachments must be an array.'),
+  validate,
+  sendChatMessage
+);
+
+// 6. Get dispute chat history
+router.get(
+  '/:disputeId/chat',
+  authenticate,
+  authorizeRoles('buyer', 'seller', 'admin'),
+  validatePaginationQuery,
+  getDisputeChat
+);
+
+// 7. Mark chat as read
+router.put(
+  '/:disputeId/chat/read',
+  authenticate,
+  authorizeRoles('buyer', 'seller'),
+  markChatAsRead
 );
 
 export = router;

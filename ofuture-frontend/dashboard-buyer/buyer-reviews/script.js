@@ -143,6 +143,22 @@ async function loadMyReviews() {
             container.innerHTML = reviews.map(r => {
                 const dateStr = new Date(r.created_at).toLocaleDateString('vi-VN');
                 const stars = '★'.repeat(r.rating) + '☆'.repeat(5 - r.rating);
+                
+                // Seller reply section (if exists)
+                let sellerReplyHtml = '';
+                if (r.seller_reply_text && !r.is_reply_hidden) {
+                    const replyDateStr = new Date(r.seller_reply_at).toLocaleDateString('vi-VN');
+                    sellerReplyHtml = `
+                        <div class="seller-reply-section">
+                            <div class="seller-reply-header">
+                                <span class="seller-reply-badge">Phản hồi từ Người bán</span>
+                                <span class="seller-reply-date">${replyDateStr}</span>
+                            </div>
+                            <div class="seller-reply-text">${r.seller_reply_text}</div>
+                        </div>
+                    `;
+                }
+                
                 return `
                     <div class="review-card">
                         <div class="review-header">
@@ -154,6 +170,8 @@ async function loadMyReviews() {
                         </div>
                         <div class="review-body">${r.comment || r.body || 'Không có nội dung'}</div>
                         <div class="review-meta" style="margin-bottom: 12px;">Đơn hàng: #${r.order_id}</div>
+                        
+                        ${sellerReplyHtml}
                         
                         <div class="review-actions">
                             <button class="btn-small btn-edit" onclick="openEditModal('${r.id}', ${r.rating}, '${(r.title || '').replace(/'/g,"\\'")}', '${(r.comment || r.body || '').replace(/'/g,"\\'")}')">Sửa</button>

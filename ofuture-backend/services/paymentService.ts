@@ -13,6 +13,7 @@ import { pool } from '../config/db';
 import PaymentModel from '../models/paymentModel';
 import MoMoClient, { MoMoCallbackData } from './MoMoClient';
 import QRCodeGenerator from './QRCodeGenerator';
+import WalletService from './walletService';
 
 // ═════════════════════════════════════════════
 // PHẦN 1: LOGIC GIẢ LẬP (CŨ) - DÀNH CHO ESCROW
@@ -164,6 +165,12 @@ const handleMoMoCallback = async (callbackData: MoMoCallbackData): Promise<void>
   try {
     await conn.beginTransaction();
 
+    // Get buyer ID from order
+    const [[order]]: any = await conn.execute(
+      'SELECT buyer_id, total_amount FROM orders WHERE id = ? LIMIT 1',
+      [callbackData.orderId]
+    );
+
     await conn.execute(
       `UPDATE payments SET status = ?, transaction_id = ? WHERE id = ?`,
       [newStatus, callbackData.transId || null, payment.id]
@@ -181,6 +188,22 @@ const handleMoMoCallback = async (callbackData: MoMoCallbackData): Promise<void>
     }
 
     await conn.commit();
+
+    // After transaction commits, update wallet (outside of transaction to avoid rollback)
+    if (isSuccess && order) {
+      try {
+        await WalletService.depositFromPayment(
+          order.buyer_id,
+          callbackData.amount,
+          payment.id,
+          'momo',
+          `MoMo payment for order ${callbackData.orderId}`
+        );
+      } catch (walletErr) {
+        logger.error('Wallet deposit failed:', walletErr);
+        // Don't fail the payment callback, just log it
+      }
+    }
   } catch (err) {
     await conn.rollback();
     logger.error('handleMoMoCallback transaction error:', err);

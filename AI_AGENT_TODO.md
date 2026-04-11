@@ -7,6 +7,7 @@
 1. **PRESERVE UI/UX EXACTLY:** Do NOT completely rewrite existing HTML structures or CSS files. You must keep the exact current layout, color scheme, and CSS conventions. When adding new features (e.g., a Wallet section or Variant dropdown), integrate them seamlessly into the existing design framework. Append, do not overwrite.
 2. **CURRENCY IS strictly VND:** All financial calculations, database fields, and UI displays MUST be in Vietnamese Dong (VND). Format dynamically where necessary (e.g., `100,000 đ` or `100.000 VNĐ`). No USD or decimal cents.
 3. **VIRTUAL MONEY FLOW:** The system operates on "Virtual Money" for now. Real bank withdrawals are not required. Ensure the logic flow is mathematically perfect.
+4. SERVER CONFIGURATION: The backend strictly runs on port 5000. Whenever running curl commands, API tests, or checking server health, YOU MUST explicitly use http://localhost:5000. NEVER assume port 3000.
 
 ---
 
@@ -49,6 +50,21 @@
 ### 6. Security & Performance Refactoring
 - **Failed Login Attempts:** Move the `failed_attempts` counter from MySQL to **Redis** to prevent database bottlenecks during Brute-force attacks.
 - **Audit Logs:** The `logs` table will grow too fast. Implement a mechanism to archive old logs or ensure the AI ignores fetching massive log payloads on general Admin dashboard loads.
+
+## [BUG TRACKER] Seller Dashboard & Synchronization Issues (Date: April 2026)
+
+### 1. Issue: Self-Inflicted DDoS (HTTP 429 Too Many Requests)
+* **Nguyên nhân:** Hàm `loadDashboardData()` trong `dashboard-seller/script.js` sử dụng `Promise.all()` để tải 6 luồng dữ liệu (Products, Orders, Escrow, Reviews, Disputes, Samples) cùng một lúc. Điều này ngay lập tức kích hoạt cơ chế phòng thủ `rateLimiter` của Backend (vượt quá số request cho phép trên 1 giây/phút).
+* **Ảnh hưởng phụ:** Khi API bị block (429), module `notifications.js` (polling) tiếp tục gửi request khiến lỗi lặp lại liên tục (vòng lặp vô tận trên Console).
+* **Giải pháp:** Chuyển từ "Tải song song" (`Promise.all`) sang "Tải tuần tự" (`await` từng dòng) ở Frontend, hoặc tăng ngưỡng giới hạn (limit) trong `middleware/rateLimiter.ts` của Backend.
+
+### 2. Issue: Sai đường dẫn CSS / Lỗi MIME Type (text/html)
+* **Nguyên nhân:** File `indexSeller.html` nhúng các file CSS (`buyer.css`, `notifications.css`) với đường dẫn sai. Hệ thống không tìm thấy file CSS nên trả về trang báo lỗi HTML (404 Not Found), khiến trình duyệt từ chối render vì sai MIME type.
+* **Giải pháp:** Sửa lại đường dẫn thành `../dashboard-buyer/shared/...` hoặc tách hẳn một thư mục `shared/` nằm ở gốc dự án để cả Buyer và Seller cùng dùng chung. Tuyệt đối không để Seller dùng `buyer.css` để tránh xung đột UI.
+
+### 3. Issue: Chưa đồng bộ Notification Component
+* **Nguyên nhân:** Luồng Notifications được thiết kế chủ yếu cho Buyer, khi mang sang Seller, module `ws-client.js` và `notifications.js` thiết lập WebSockets thành công nhưng polling API bị chặn bởi Rate Limit.
+* **Giải pháp:** Cần đồng bộ khoảng thời gian Polling (Interval) giãn ra (ví dụ 30-60 giây/lần) hoặc chuyển hoàn toàn sang WebSocket để tránh gọi API `/unread` liên tục.
 
 ---
 

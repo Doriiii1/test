@@ -7,6 +7,7 @@
 
 import { Request, Response } from 'express';
 import escrowService from '../services/escrowService';
+import NotificationService from '../services/notificationService';
 import logger from '../utils/logger';
 import { pool } from '../config/db';
 
@@ -59,7 +60,6 @@ const pay = async (req: EscrowRequest, res: Response): Promise<any> => {
   }
 };
 
-// ─────────────────────────────────────────────
 // POST /api/escrow/release
 // ─────────────────────────────────────────────
 const release = async (req: EscrowRequest, res: Response): Promise<any> => {
@@ -85,6 +85,24 @@ const release = async (req: EscrowRequest, res: Response): Promise<any> => {
         code    : result.code,
         message : result.message,
       });
+    }
+
+    // Notify seller that escrow has been released
+    try {
+      const [[order]]: any = await pool.execute(
+        `SELECT seller_id, total_amount, product_name FROM orders WHERE id = ?`,
+        [orderId]
+      );
+      if (order) {
+        NotificationService.notifyEscrowReleased({
+          orderId,
+          sellerId: order.seller_id,
+          productName: order.product_name,
+          amount: order.total_amount
+        }).catch(err => logger.error('Notification error:', err));
+      }
+    } catch (notifyErr) {
+      logger.error('Failed to send release notification:', notifyErr);
     }
 
     res.status(200).json({ success: true, data: result });
@@ -123,6 +141,25 @@ const refund = async (req: EscrowRequest, res: Response): Promise<any> => {
         code    : result.code,
         message : result.message,
       });
+    }
+
+    // Notify buyer that escrow has been refunded
+    try {
+      const [[order]]: any = await pool.execute(
+        `SELECT buyer_id, total_amount, product_name FROM orders WHERE id = ?`,
+        [orderId]
+      );
+      if (order) {
+        NotificationService.notifyEscrowRefunded({
+          orderId,
+          buyerId: order.buyer_id,
+          productName: order.product_name,
+          amount: order.total_amount,
+          reason
+        }).catch(err => logger.error('Notification error:', err));
+      }
+    } catch (notifyErr) {
+      logger.error('Failed to send refund notification:', notifyErr);
     }
 
     res.status(200).json({ success: true, data: result });

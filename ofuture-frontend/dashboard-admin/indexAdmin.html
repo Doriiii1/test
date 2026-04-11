@@ -6,6 +6,7 @@
     <title>Quản trị Hệ thống | O'Future Admin</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../dashboard-buyer/shared/notifications.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
@@ -40,6 +41,12 @@
             <header class="topbar">
                 <h2 id="pageTitle">Tổng quan (Dashboard)</h2>
                 <div class="topbar-right">
+                    <div id="adminNotificationBellWrapper" style="position: relative; display: none; margin-right: 20px;">
+                      <button id="adminNotificationBell" class="notification-bell" title="Thông báo" style="font-size: 24px; background: transparent; border: none; cursor: pointer; padding: 8px; border-radius: 8px;">🔔
+                        <span id="adminNotificationBadge" style="position: absolute; top: -4px; right: -4px; background: #ef4444; color: white; border-radius: 50%; padding: 2px 6px; font-size: 11px; font-weight: bold; display: none; border: 2px solid white;"></span>
+                      </button>
+                      <div id="adminNotificationDropdown" style="position: absolute; top: 100%; right: 0; background: white; border: 1px solid #e2e8f0; border-radius: 12px; box-shadow: 0 10px 32px rgba(15, 23, 42, 0.12); width: 380px; max-height: 500px; overflow-y: auto; z-index: 10000; margin-top: 8px; display: none;"></div>
+                    </div>
                     <span class="welcome-text">Xin chào, <strong id="username">Admin</strong></span>
                     <button id="logoutBtn" class="btn btn-outline btn-small">Đăng xuất</button>
                 </div>
@@ -269,6 +276,10 @@
     </div>
 
     <script src="../shared/api.js"></script>
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+    <script src="../dashboard-buyer/shared/notifications.js"></script>
+    <script src="../dashboard-buyer/shared/notification-visibility.js"></script>
+    <script src="../dashboard-buyer/shared/ws-client.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

@@ -101,16 +101,21 @@ function hideSpinner() {
 // Data Loading Functions (CÓ PHÂN TRANG)
 // ============================================================
 
+// ============================================================
+// Data Loading Functions (CÓ PHÂN TRANG)
+// ============================================================
+
 async function loadDashboardData() {
     try {
-        await Promise.all([
-            loadProducts(1),
-            loadOrders(1),
-            loadEscrow(1),
-            loadReviews(1),
-            loadDisputes(1),
-            loadSamples(1),
-        ]);
+        // TẢI TUẦN TỰ: Đợi tải xong cái này mới tải cái kia
+        // Giúp Backend không bị ngộp (tránh lỗi 429 Rate Limit)
+        await loadProducts(1);
+        await loadOrders(1);
+        await loadEscrow(1);
+        await loadReviews(1);
+        await loadDisputes(1);
+        await loadSamples(1);
+        
         updateDashboardStats();
         renderRevenueChart(); // Vẽ biểu đồ sau khi load xong
     } catch (error) {

@@ -134,3 +134,39 @@
 .close { font-size: 24px; cursor: pointer; color: #64748b; }
 .modal-body { padding: 24px; }
 .modal-footer { padding: 16px 24px; background: #f8fafc; border-top: 1px solid #e2e8f0; display: flex; justify-content: flex-end; gap: 12px;}
+
+/* Seller Reply Section */
+.seller-reply-section {
+  background: #f0fdf4;
+  border-left: 4px solid #10b981;
+  border-radius: 8px;
+  padding: 12px;
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.seller-reply-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.seller-reply-badge {
+  font-size: 12px;
+  font-weight: 700;
+  color: #065f46;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.seller-reply-date {
+  font-size: 11px;
+  color: #4b7c59;
+}
+
+.seller-reply-text {
+  font-size: 14px;
+  color: #1f2937;
+  line-height: 1.6;
+}
