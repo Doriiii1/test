@@ -29,7 +29,12 @@ async function loadProfile() {
             document.getElementById('headerAvatar').textContent = currentUser.fullName.charAt(0).toUpperCase();
             
             if (currentUser.avatarUrl) {
-                document.getElementById('avatarPreview').src = currentUser.avatarUrl;
+                let imgUrl = currentUser.avatarUrl;
+                if (imgUrl.startsWith('/uploads')) {
+                    const backendBaseUrl = (window.CONFIG?.API_BASE_URL || 'http://localhost:5000/api').replace('/api', '');
+                    imgUrl = backendBaseUrl + imgUrl;
+                }
+                document.getElementById('avatarPreview').src = imgUrl;
             }
 
             // Cập nhật trạng thái MFA

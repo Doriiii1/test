@@ -71,26 +71,34 @@ function renderProduct(p) {
     document.getElementById('loadingIndicator').style.display = 'none';
     document.getElementById('productContainer').style.display = 'grid';
 
-    // Xử lý ảnh
+    // Xử lý ảnh giống với trang danh sách sản phẩm
     let imgUrl = '../../images/image.png';
-    if (p.image_urls) {
+    if (p.imageUrls) {
         try {
-            const parsedImgs = typeof p.image_urls === 'string' ? JSON.parse(p.image_urls) : p.image_urls;
-            if (Array.isArray(parsedImgs) && parsedImgs.length > 0) imgUrl = parsedImgs[0];
+            const parsedImgs = typeof p.imageUrls === 'string' ? JSON.parse(p.imageUrls) : p.imageUrls;
+            if (Array.isArray(parsedImgs) && parsedImgs.length > 0) {
+                let rawUrl = parsedImgs[0];
+                if (rawUrl.startsWith('/uploads')) {
+                    const backendBaseUrl = API_BASE_URL.replace('/api', '');
+                    imgUrl = `${backendBaseUrl}${rawUrl}`;
+                } else {
+                    imgUrl = rawUrl;
+                }
+            }
         } catch (e) {}
     }
     document.getElementById('mainImage').src = imgUrl;
 
-    // Đổ dữ liệu text
+    // Đổ dữ liệu text (Đã sửa theo camelCase và cấu trúc seller)
     document.getElementById('productName').textContent = p.name;
     document.getElementById('productPrice').textContent = parseInt(p.price).toLocaleString('vi-VN') + ' đ';
-    document.getElementById('productStock').textContent = p.stock_quantity;
+    document.getElementById('productStock').textContent = p.stockQuantity;
     document.getElementById('productCategory').textContent = p.category;
     document.getElementById('productDesc').textContent = p.description || "Không có mô tả.";
-    document.querySelector('#sellerName span').textContent = p.seller_name || p.seller_username || "Nhà cung cấp ẩn danh";
+    document.querySelector('#sellerName span').textContent = p.seller?.name || p.seller?.username || "Nhà cung cấp ẩn danh";
 
     // Xử lý hết hàng
-    if (p.stock_quantity <= 0) {
+    if (p.stockQuantity <= 0) {
         const btn = document.getElementById('addCartBtn');
         btn.disabled = true;
         btn.textContent = "Đã hết hàng";
@@ -112,23 +120,31 @@ function changeQty(amount) {
 }
 
 window.handleAddToCart = function() {
-    if (!currentProduct || currentProduct.stock_quantity <= 0) return;
+    if (!currentProduct || currentProduct.stockQuantity <= 0) return;
     
     const qty = parseInt(document.getElementById('qtyInput').value);
     let cart = JSON.parse(localStorage.getItem(CART_KEY)) || [];
     const existingItem = cart.find(item => item.id === currentProduct.id);
 
     if (existingItem) {
-        if (existingItem.quantity + qty > currentProduct.stock_quantity) {
-            showToast(`Bạn chỉ có thể mua tối đa ${currentProduct.stock_quantity} sản phẩm này!`, true);
+        if (existingItem.quantity + qty > currentProduct.stockQuantity) {
+            showToast(`Bạn chỉ có thể mua tối đa ${currentProduct.stockQuantity} sản phẩm này!`, true);
             return;
         }
         existingItem.quantity += qty;
     } else {
         let imgUrl = '../../images/image.png';
         try {
-            const parsed = typeof currentProduct.image_urls === 'string' ? JSON.parse(currentProduct.image_urls) : currentProduct.image_urls;
-            if (parsed && parsed.length > 0) imgUrl = parsed[0];
+            const parsed = typeof currentProduct.imageUrls === 'string' ? JSON.parse(currentProduct.imageUrls) : currentProduct.imageUrls;
+            if (parsed && parsed.length > 0) {
+                let rawUrl = parsed[0];
+                if (rawUrl.startsWith('/uploads')) {
+                    const backendBaseUrl = API_BASE_URL.replace('/api', '');
+                    imgUrl = `${backendBaseUrl}${rawUrl}`;
+                } else {
+                    imgUrl = rawUrl;
+                }
+            }
         } catch(e) {}
 
         cart.push({
@@ -136,8 +152,8 @@ window.handleAddToCart = function() {
             name: currentProduct.name,
             price: currentProduct.price,
             image: imgUrl,
-            sellerId: currentProduct.seller_id,
-            stock: currentProduct.stock_quantity,
+            sellerId: currentProduct.seller?.id,
+            stock: currentProduct.stockQuantity,
             quantity: qty
         });
     }
@@ -177,7 +193,7 @@ window.submitSampleRequest = async function() {
     try {
         const payload = {
             productId: currentProduct.id,
-            sellerId: currentProduct.seller_id,
+            sellerId: currentProduct.seller?.id, // Đã sửa
             depositAmount: deposit,
             notes: notes
         };

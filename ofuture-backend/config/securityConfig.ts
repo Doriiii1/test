@@ -15,7 +15,7 @@ const SECURITY_CONFIG = {
     auth: {
       register : { windowMs: 60 * 60 * 1000, max: 5   },  // 5 / hr
       login    : { windowMs: 15 * 60 * 1000, max: 10  },  // 10 / 15 min
-      refresh  : { windowMs: 15 * 60 * 1000, max: 30  },  // 30 / 15 min
+      refresh  : { windowMs: 15 * 60 * 1000, max: 30000  },  // 30 / 15 min
       mfa      : { windowMs: 15 * 60 * 1000, max: 10  },  // 10 / 15 min
     },
     financial: {

@@ -33,34 +33,40 @@ function showToast(message, isError = false) {
 // ── 2. Render Dữ liệu Giỏ hàng ────────────────────────────
 function loadCart() {
     cartItems = JSON.parse(localStorage.getItem(CART_KEY)) || [];
+    // Mặc định chọn tất cả nếu chưa có trạng thái
+    cartItems.forEach(item => { if(item.selected === undefined) item.selected = true; });
+    localStorage.setItem(CART_KEY, JSON.stringify(cartItems));
+
     const container = document.getElementById('cartList');
     
     if (cartItems.length === 0) {
         container.innerHTML = `
             <div class="empty-cart">
                 <h3 style="font-size: 20px;">Giỏ hàng của bạn đang trống</h3>
-                <p>Hãy khám phá hàng ngàn sản phẩm sỉ với giá tốt nhất.</p>
-                <a href="../buyer-products/index.html" class="btn btn-primary" style="display:inline-block; padding: 10px 24px;">Mua sắm ngay</a>
-            </div>
-        `;
+                <a href="../buyer-products/index.html" class="btn btn-primary" style="display:inline-block; padding: 10px 24px; margin-top: 10px;">Mua sắm ngay</a>
+            </div>`;
         document.getElementById('checkoutBtn').disabled = true;
-        updateSummary();
-        updateCartBadge();
-        return;
+        updateSummary(); updateCartBadge(); return;
     }
 
-    document.getElementById('checkoutBtn').disabled = false;
-    
-    container.innerHTML = cartItems.map((item, index) => {
+    const allSelected = cartItems.length > 0 && cartItems.every(i => i.selected);
+    let html = `
+        <div style="margin-bottom: 15px; display: flex; align-items: center; gap: 10px; padding: 10px; background: white; border-radius: 8px;">
+            <input type="checkbox" id="selectAll" ${allSelected ? 'checked' : ''} onchange="toggleSelectAll(this.checked)" style="width:18px; height:18px; cursor:pointer;">
+            <label for="selectAll" style="font-weight:600; cursor:pointer;">Chọn tất cả (${cartItems.length} sản phẩm)</label>
+        </div>
+    `;
+
+    html += cartItems.map((item) => {
         const priceStr = parseInt(item.price).toLocaleString('vi-VN');
         return `
-            <div class="cart-item">
-                <img src="${item.image || '../../images/image.png'}" alt="${item.name}" class="item-img">
-                <div class="item-info">
+            <div class="cart-item" style="display:flex; align-items:center; gap: 15px;">
+                <input type="checkbox" class="item-checkbox" ${item.selected ? 'checked' : ''} onchange="toggleSelect('${item.id}', this.checked)" style="width:18px; height:18px; cursor:pointer;">
+                <img src="${item.image || '../../images/image.png'}" class="item-img" style="width:80px; height:80px; object-fit:cover; border-radius:8px;">
+                <div class="item-info" style="flex:1;">
                     <h3>${item.name}</h3>
-                    <div class="seller-name">Cung cấp bởi: ID Shop ${item.sellerId || 'Ẩn danh'}</div>
+                    <div class="seller-name">Shop ID: ${item.sellerId || 'Ẩn danh'}</div>
                     <div class="price">${priceStr} đ</div>
-                    <div style="font-size: 13px; color: #64748b; margin-top: 4px;">Tồn kho: ${item.stock}</div>
                 </div>
                 <div class="item-controls">
                     <div class="qty-control">
@@ -68,14 +74,26 @@ function loadCart() {
                         <input type="number" value="${item.quantity}" readonly>
                         <button onclick="changeQty('${item.id}', 1)">+</button>
                     </div>
-                    <button class="btn-delete" onclick="removeItem('${item.id}')">Xóa sản phẩm</button>
+                    <button class="btn-delete" onclick="removeItem('${item.id}')">Xóa</button>
                 </div>
-            </div>
-        `;
+            </div>`;
     }).join('');
 
-    updateSummary();
-    updateCartBadge();
+    container.innerHTML = html;
+    updateSummary(); updateCartBadge();
+}
+
+window.toggleSelect = function(id, isChecked) {
+    const item = cartItems.find(i => i.id === id);
+    if (item) item.selected = isChecked;
+    localStorage.setItem(CART_KEY, JSON.stringify(cartItems));
+    loadCart();
+}
+
+window.toggleSelectAll = function(isChecked) {
+    cartItems.forEach(i => i.selected = isChecked);
+    localStorage.setItem(CART_KEY, JSON.stringify(cartItems));
+    loadCart();
 }
 
 // ── 3. Các hàm tương tác Giỏ hàng ─────────────────────────
@@ -115,29 +133,25 @@ function updateCartBadge() {
 
 // ── 4. Thuật toán tính toán (Pricing Engine) ──────────────
 function updateSummary() {
-    // 1. Tính tổng tiền hàng (Subtotal)
-    const subtotal = cartItems.reduce((sum, item) => sum + (parseFloat(item.price) * item.quantity), 0);
-    
-    // 2. Tính phí nền tảng 2.5%
+    // Chỉ tính tiền các món được Check
+    const selectedItems = cartItems.filter(i => i.selected);
+    const subtotal = selectedItems.reduce((sum, item) => sum + (parseFloat(item.price) * item.quantity), 0);
     const platformFee = subtotal * 0.025;
-    
-    // 3. Tính tổng thanh toán
     const total = subtotal + platformFee;
 
-    // Cập nhật lên UI
     document.getElementById('subtotalPrice').textContent = subtotal.toLocaleString('vi-VN') + ' đ';
     document.getElementById('platformFee').textContent = platformFee.toLocaleString('vi-VN') + ' đ';
     document.getElementById('totalPrice').textContent = total.toLocaleString('vi-VN') + ' đ';
+    
+    const btn = document.getElementById('checkoutBtn');
+    btn.disabled = selectedItems.length === 0;
+    btn.textContent = `Tiến hành Thanh toán (${selectedItems.length})`;
 }
 
 // ── 5. Điều hướng Thanh toán (Checkout) ───────────────────
 window.proceedToCheckout = function() {
-    if (cartItems.length === 0) {
-        showToast("Giỏ hàng của bạn đang trống!", true);
-        return;
-    }
-    // CHUẨN LUỒNG MỚI: Chỉ đơn giản là chuyển sang trang Checkout
-    // Việc gọi API tạo đơn và kết nối MoMo sẽ thực hiện ở trang Checkout
+    const selectedItems = cartItems.filter(i => i.selected);
+    if (selectedItems.length === 0) return showToast("Vui lòng chọn ít nhất 1 sản phẩm để thanh toán!", true);
     window.location.href = '../buyer-checkout/index.html';
 }
 

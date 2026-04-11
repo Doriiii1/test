@@ -256,7 +256,7 @@ function renderProductsTable(products = allProducts) {
                 <strong>${escapeHtml(product.name)}</strong><br>
                 <small style="color:#64748b;">${escapeHtml(product.category || 'General')}</small>
             </td>
-            <td>$${parseFloat(product.price || 0).toFixed(2)}</td>
+            <td>${parseInt(product.price || 0).toLocaleString('vi-VN')} đ</td>
             <td>${product.stockQuantity ?? product.stock_quantity ?? 0}</td>
             <td>
                 <span class="badge ${product.status === 'active' ? 'badge-success' : 'badge-warning'}">
@@ -287,7 +287,7 @@ function renderOrdersTable() {
             <td>${order.id?.substring(0, 8).toUpperCase() || 'N/A'}</td>
             <td>${escapeHtml(order.buyer_username || order.buyerUsername || order.buyer?.username || 'Unknown')}</td>
             <td>${escapeHtml(order.product_name || order.productName || order.product?.name || 'Unknown')}</td>
-            <td>$${parseFloat(order.total_amount || order.totalAmount || 0).toFixed(2)}</td>
+            <td>${parseInt(order.total_amount || order.totalAmount || 0).toLocaleString('vi-VN')} đ</td>
             <td>
                 <span class="badge ${getStatusBadgeClass(order.status)}">
                     ${order.status || 'unknown'}
@@ -321,9 +321,9 @@ function renderEscrowTable() {
         return `
         <tr>
             <td>${(escrow.order_id || '').substring(0, 8).toUpperCase() || 'N/A'}</td>
-            <td>$${gross.toFixed(2)}</td>
-            <td style="color:#ef4444;">-$${fee.toFixed(2)}</td>
-            <td style="font-weight:600;color:#10b981;">$${net.toFixed(2)}</td>
+            <td>${parseInt(gross).toLocaleString('vi-VN')} đ</td>
+            <td style="color:#ef4444;">-${parseInt(fee).toLocaleString('vi-VN')} đ</td>
+            <td style="font-weight:600;color:#10b981;">${parseInt(net).toLocaleString('vi-VN')} đ</td>
             <td>
                 <span class="badge ${getStatusBadgeClass(escrow.status)}">
                     ${escrow.status || 'unknown'}
@@ -369,7 +369,7 @@ function renderSamplesTable(tbody) {
             <td>${(s.id || '').substring(0, 8).toUpperCase()}</td>
             <td>${escapeHtml(s.buyer_name || s.requestor?.username || 'Buyer')}</td>
             <td>${escapeHtml(s.product_name || s.product?.name || 'Product')}</td>
-            <td>$${parseFloat(s.deposit_amount || 0).toFixed(2)}</td>
+            <td>${parseInt(s.deposit_amount || 0).toLocaleString('vi-VN')} đ</td>
             <td><span class="badge ${getStatusBadgeClass(s.status)}">${s.status}</span></td>
             <td>
                 ${s.status === 'requested'
@@ -426,9 +426,9 @@ function updateDashboardStats() {
         .filter(e => e.status === 'released')
         .reduce((sum, e) => sum + parseFloat(e.net_amount || (parseFloat(e.amount) * 0.9) || 0), 0);
 
-    setEl('totalEscrow', `$${netHeld.toFixed(2)}`);
-    setEl('totalHeld', `$${netHeld.toFixed(2)}`);
-    setEl('totalReleased', `$${netReleased.toFixed(2)}`);
+    setEl('totalEscrow', `${parseInt(netHeld).toLocaleString('vi-VN')} đ`);
+    setEl('totalHeld', `${parseInt(netHeld).toLocaleString('vi-VN')} đ`);
+    setEl('totalReleased', `${parseInt(netReleased).toLocaleString('vi-VN')} đ`);
 
     const avgRating = allReviews.length > 0
         ? (allReviews.reduce((sum, r) => sum + (r.rating || 0), 0) / allReviews.length).toFixed(1)
@@ -479,7 +479,7 @@ function renderRevenueChart() {
         data: {
             labels: last7Days,
             datasets: [{
-                label: 'Revenue (USD)',
+                label: 'Doanh thu (VNĐ)',
                 data: data,
                 backgroundColor: '#2563eb',
                 borderRadius: 4

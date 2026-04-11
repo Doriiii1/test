@@ -2,6 +2,10 @@
 // O'Future Buyer - Checkout Engine (MoMo & VietQR Ký quỹ)
 // ============================================================
 
+const urlParams = new URLSearchParams(window.location.search);
+const pendingOrderId = urlParams.get('orderId');
+const pendingAmount = urlParams.get('amount');
+
 const API_BASE_URL = window.CONFIG?.API_BASE_URL || 'http://localhost:5000/api';
 let currentUser = null;
 let CART_KEY = 'cart';
@@ -33,8 +37,25 @@ function showToast(message, isError = false) {
 
 // ── 2. Render Tóm tắt Đơn hàng ────────────────────────────
 function loadCheckoutData() {
-    cartItems = JSON.parse(localStorage.getItem(CART_KEY)) || [];
-    
+    // Nếu có pendingOrderId -> Đang thanh toán lại đơn hàng cũ
+    if (pendingOrderId) {
+        document.getElementById('orderItems').innerHTML = `
+            <div class="summary-item">
+                <span class="summary-item-name">Thanh toán lại giao dịch</span>
+                <strong>#${pendingOrderId.substring(0, 8)}...</strong>
+            </div>
+        `;
+        finalTotalAmount = parseInt(pendingAmount) || 0;
+        document.getElementById('subtotalPrice').textContent = "---";
+        document.getElementById('platformFee').textContent = "---";
+        document.getElementById('totalPrice').textContent = finalTotalAmount.toLocaleString('vi-VN') + ' đ';
+        document.getElementById('qrTotalAmount').textContent = finalTotalAmount.toLocaleString('vi-VN') + ' đ';
+        return; // Dừng tại đây, KHÔNG kiểm tra giỏ hàng nữa
+    }
+
+    // Logic cũ: Xử lý giỏ hàng nếu đang tạo đơn mới
+    let allCart = JSON.parse(localStorage.getItem(CART_KEY)) || [];
+    cartItems = allCart.filter(item => item.selected === true);
     if (cartItems.length === 0) {
         alert("Giỏ hàng của bạn đang trống! Đang quay lại giỏ hàng.");
         window.location.href = '../buyer-cart/index.html';
@@ -67,28 +88,38 @@ function loadCheckoutData() {
 
 // ── 3. Thuật toán Xử lý Đặt hàng & Thanh toán ─────────────
 window.handlePlaceOrder = async function() {
-    // A. Validate Địa chỉ (Backend E-commerce cần 4 trường này)
-    const address = {
-        street: document.getElementById('addressStreet').value.trim(),
-        city: document.getElementById('addressCity').value.trim(),
-        zip: document.getElementById('addressZip').value.trim(),
-        country: document.getElementById('addressCountry').value.trim()
-    };
-
-    if (!address.street || !address.city || !address.zip) {
-        return showToast("Vui lòng điền đầy đủ thông tin địa chỉ giao hàng!", true);
-    }
-
     const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
     const btn = document.getElementById('placeOrderBtn');
     btn.disabled = true;
     btn.textContent = "Đang xử lý...";
 
     try {
+        // NẾU LÀ ĐƠN HÀNG CŨ: Gọi thẳng API thanh toán, không tạo order mới
+        if (pendingOrderId) {
+            if (paymentMethod === 'momo') {
+                await processMoMo(pendingOrderId, finalTotalAmount);
+            } else if (paymentMethod === 'qr') {
+                await processVietQR(pendingOrderId, finalTotalAmount);
+            }
+            return; 
+        }
+
+        // NẾU LÀ ĐƠN HÀNG MỚI: Bắt buộc nhập địa chỉ và tạo order
+        const address = {
+            street: document.getElementById('addressStreet').value.trim(),
+            city: document.getElementById('addressCity').value.trim(),
+            zip: document.getElementById('addressZip').value.trim(),
+            country: document.getElementById('addressCountry').value.trim()
+        };
+
+        if (!address.street || !address.city || !address.zip) {
+            btn.disabled = false;
+            btn.textContent = "Xác nhận Đặt hàng";
+            return showToast("Vui lòng điền đầy đủ thông tin địa chỉ giao hàng!", true);
+        }
+
         createdOrderIds = [];
 
-        // B. Tạo Đơn hàng (Order) vào Backend cho TỪNG sản phẩm trong Giỏ
-        // (Do validateCreateOrder yêu cầu truyền productId đơn lẻ)
         for (const item of cartItems) {
             const payload = {
                 productId: item.id,
@@ -113,8 +144,6 @@ window.handlePlaceOrder = async function() {
             }
         }
 
-        // C. Khởi tạo Giao dịch Thanh toán
-        // Sử dụng ID của đơn hàng đầu tiên làm đại diện giao dịch (Theo thiết kế Backend hiện tại)
         const representativeOrderId = createdOrderIds[0];
 
         if (paymentMethod === 'momo') {
@@ -143,9 +172,8 @@ async function processMoMo(orderId, amount) {
     
     const data = await response.json();
     if (response.ok && data.success) {
-        // Xóa giỏ hàng trước khi bay sang MoMo
-        localStorage.removeItem(CART_KEY);
-        // Chuyển hướng tới trang thanh toán của MoMo
+        const remainingCart = JSON.parse(localStorage.getItem(CART_KEY)).filter(i => !i.selected);
+        localStorage.setItem(CART_KEY, JSON.stringify(remainingCart));
         window.location.href = data.data.payUrl;
     } else {
         throw new Error(data.message || "Không thể tạo giao dịch MoMo");

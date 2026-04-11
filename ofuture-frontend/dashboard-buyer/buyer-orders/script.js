@@ -74,7 +74,7 @@ function renderOrders() {
     }
 
     container.innerHTML = filtered.map(order => {
-        const amount = order.total_amount || order.deposit_amount || 0;
+        const amount = order.totalAmount || order.total_amount || order.depositAmount || order.deposit_amount || 0;
         const dateStr = new Date(order.created_at || order.requested_at).toLocaleString('vi-VN');
         const badgeInfo = getStatusBadge(order.status);
         
@@ -122,7 +122,8 @@ function generateActionButtons(order) {
     let btns = '';
     
     if (order.status === 'pending') {
-        btns += `<button class="btn btn-primary" onclick="window.location.href='../buyer-checkout/index.html?orderId=${order.id || order.sample_id}'">💳 Thanh toán ngay</button>`;
+    const amount = order.totalAmount || order.total_amount || order.depositAmount || order.deposit_amount || 0;
+    btns += `<button class="btn btn-primary" onclick="window.location.href='../buyer-checkout/index.html?orderId=${order.id || order.sample_id}&amount=${amount}'">💳 Thanh toán ngay</button>`;
     }
     else if (order.status === 'shipped') {
         btns += `<button class="btn btn-primary" onclick="confirmDelivery('${order.id}')">✅ Đã nhận được hàng (Giải ngân)</button>`;
