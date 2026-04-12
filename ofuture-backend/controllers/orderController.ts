@@ -324,11 +324,17 @@ const cancelOrder = async (req: OrderRequest, res: Response): Promise<any> => {
       [reason ?? null, id]
     );
 
-    // Restore stock
-    await conn.execute(
-      'UPDATE products SET stock_quantity = stock_quantity + ? WHERE id = ?',
-      [order.quantity, order.product_id]
+    // Restore stock cho tất cả các item trong đơn hàng
+    const [orderItems]: any = await conn.execute(
+      'SELECT product_id, quantity FROM order_items WHERE order_id = ?',
+      [id]
     );
+    for (const item of orderItems) {
+      await conn.execute(
+        'UPDATE products SET stock_quantity = stock_quantity + ? WHERE id = ?',
+        [item.quantity, item.product_id]
+      );
+    }
 
     // Mark escrow for refund (if it was held)
     await conn.execute(
@@ -477,12 +483,17 @@ const confirmDelivery = async (req: OrderRequest, res: Response): Promise<any> =
 
     await conn.commit();
 
+    const [[firstItem]]: any = await conn.execute(
+      'SELECT p.name FROM order_items oi JOIN products p ON oi.product_id = p.id WHERE oi.order_id = ? LIMIT 1',
+      [id]
+    );
+
     // Notify seller that escrow has been released
     NotificationService.notifyEscrowReleased({
       orderId: id,
       sellerId: order.seller_id,
-      productName: order.product_name,
-      amount: order.total_amount
+      productName: firstItem ? firstItem.name : 'Đơn hàng của bạn', // Đã sửa
+      amount: order.final_total_amount || order.total_amount
     }).catch(err => logger.error('Notification error:', err));
 
     await LogModel.write({

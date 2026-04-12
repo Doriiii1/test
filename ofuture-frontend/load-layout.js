@@ -55,7 +55,9 @@ function setupAuthUI(basePath) {
 }
 
 window.logoutGlobal = function() {
-    localStorage.clear();
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('user');
+    localStorage.removeItem('refreshToken')
     const basePath = window.location.pathname.includes('ofuture-frontend') ? '/ofuture-frontend' : '';
     window.location.href = `${basePath}/login.html`;
 }
