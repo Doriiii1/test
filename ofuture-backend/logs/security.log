@@ -7,3 +7,18 @@
 2026-04-13 19:33:18 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
 2026-04-13 19:33:18 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
 2026-04-13 19:33:18 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-13 21:03:54 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-13 21:03:54 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-13 21:03:54 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-13 21:03:54 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-13 21:03:54 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-13 21:03:54 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-13 21:03:54 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-13 21:03:54 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-13 21:03:54 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-13 21:11:23 [warn]: Rate limit exceeded: IP=::1 PATH=/uploads/product-1776089153478-669185346.webp
+2026-04-13 21:11:23 [warn]: Rate limit exceeded: IP=::1 PATH=/api/seller/orders
+2026-04-13 21:11:23 [warn]: Rate limit exceeded: IP=::1 PATH=/api/seller/escrow
+2026-04-13 21:11:23 [warn]: Rate limit exceeded: IP=::1 PATH=/api/seller/reviews
+2026-04-13 21:11:23 [warn]: Rate limit exceeded: IP=::1 PATH=/api/seller/disputes
+2026-04-13 21:11:23 [warn]: Rate limit exceeded: IP=::1 PATH=/api/seller/samples

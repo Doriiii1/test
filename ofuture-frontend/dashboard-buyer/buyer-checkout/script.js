@@ -53,14 +53,14 @@ function loadCheckoutData() {
         return; // Dừng tại đây, KHÔNG kiểm tra giỏ hàng nữa
     }
 
-    // // Logic cũ: Xử lý giỏ hàng nếu đang tạo đơn mới
-    // let allCart = JSON.parse(localStorage.getItem(CART_KEY)) || [];
-    // cartItems = allCart.filter(item => item.selected === true);
-    // if (cartItems.length === 0) {
-    //     alert("Giỏ hàng của bạn đang trống! Đang quay lại giỏ hàng.");
-    //     window.location.href = '../buyer-cart/index.html';
-    //     return;
-    // }
+    // Logic cũ: Xử lý giỏ hàng nếu đang tạo đơn mới
+    let allCart = JSON.parse(localStorage.getItem(CART_KEY)) || [];
+    cartItems = allCart.filter(item => item.selected === true);
+    if (cartItems.length === 0) {
+        alert("Giỏ hàng của bạn đang trống! Đang quay lại giỏ hàng.");
+        window.location.href = '../buyer-cart/index.html';
+        return;
+    }
 
     const itemsContainer = document.getElementById('orderItems');
     let subtotal = 0;
