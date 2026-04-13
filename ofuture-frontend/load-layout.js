@@ -61,3 +61,15 @@ window.logoutGlobal = function() {
     const basePath = window.location.pathname.includes('ofuture-frontend') ? '/ofuture-frontend' : '';
     window.location.href = `${basePath}/login.html`;
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Xử lý menu dropdown
+    const orderMenuBtn = document.getElementById('orderMenuBtn');
+    if (orderMenuBtn) {
+        orderMenuBtn.addEventListener('click', function(e) {
+            e.preventDefault(); // Ngăn chuyển trang nếu chỉ muốn mở menu
+            const parentItem = this.parentElement;
+            parentItem.classList.toggle('open');
+        });
+    }
+});
