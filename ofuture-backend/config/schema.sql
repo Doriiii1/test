@@ -782,21 +782,15 @@ SELECT
   o.id            AS order_id,
   o.status        AS order_status,
   
-  -- Tính tổng số lượng của tất cả sản phẩm trong đơn hàng
   (SELECT SUM(quantity) FROM order_items WHERE order_id = o.id) AS quantity,
-  
-  -- Lấy giá của sản phẩm đầu tiên làm đại diện
   (SELECT unit_price FROM order_items WHERE order_id = o.id LIMIT 1) AS unit_price,
   
-  -- Sử dụng cột final_total_amount mới của bảng orders
   o.final_total_amount AS total_amount, 
-  
   o.created_at,
   b.username      AS buyer_username,
   b.email         AS buyer_email,
   s.username      AS seller_username,
   
-  -- Lấy tên và ID của sản phẩm đầu tiên trong giỏ hàng làm đại diện
   (SELECT p.name FROM order_items oi JOIN products p ON oi.product_id = p.id WHERE oi.order_id = o.id ORDER BY oi.created_at ASC LIMIT 1) AS product_name,
   (SELECT product_id FROM order_items WHERE order_id = o.id ORDER BY created_at ASC LIMIT 1) AS product_id,
   
