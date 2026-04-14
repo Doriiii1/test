@@ -86,3 +86,100 @@
 2026-04-14 13:07:09 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
 2026-04-14 13:07:09 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
 2026-04-14 13:07:09 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-14 15:00:13 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-14 15:00:13 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-14 15:00:13 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-14 15:00:13 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-14 15:00:13 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-14 15:00:13 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-14 15:00:13 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-14 15:00:13 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-14 15:00:13 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-14 15:09:18 [error]: Error: Payment record not found
+    at Object.handleMoMoCallback (C:\Users\nguye\test Ofuture\test\ofuture-backend\services\paymentService.ts:163:23)
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async momoCallback (C:\Users\nguye\test Ofuture\test\ofuture-backend\controllers\paymentController.ts:20:5)
+2026-04-14 15:10:47 [error]: Error: Payment record not found
+    at Object.handleMoMoCallback (C:\Users\nguye\test Ofuture\test\ofuture-backend\services\paymentService.ts:163:23)
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async momoCallback (C:\Users\nguye\test Ofuture\test\ofuture-backend\controllers\paymentController.ts:20:5)
+2026-04-14 15:34:17 [error]: Error: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent: [403 Forbidden] Your API key was reported as leaked. Please use another API key.
+    at handleResponseNotOk (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:434:11)
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async makeRequest (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:403:9)
+    at async generateContent (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:867:22)
+    at async ChatSession.sendMessage (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:1210:9)
+    at async Object.processMessage (C:\Users\nguye\test Ofuture\test\ofuture-backend\services\aiChatService.ts:130:24)
+    at async sendMessage (C:\Users\nguye\test Ofuture\test\ofuture-backend\controllers\chatController.ts:107:22)
+2026-04-14 15:35:16 [error]: Error: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent: [403 Forbidden] Your API key was reported as leaked. Please use another API key.
+    at handleResponseNotOk (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:434:11)
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async makeRequest (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:403:9)
+    at async generateContent (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:867:22)
+    at async ChatSession.sendMessage (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:1210:9)
+    at async Object.processMessage (C:\Users\nguye\test Ofuture\test\ofuture-backend\services\aiChatService.ts:130:24)
+    at async sendMessage (C:\Users\nguye\test Ofuture\test\ofuture-backend\controllers\chatController.ts:107:22)
+2026-04-14 15:35:23 [error]: Error: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent: [403 Forbidden] Your API key was reported as leaked. Please use another API key.
+    at handleResponseNotOk (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:434:11)
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async makeRequest (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:403:9)
+    at async generateContent (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:867:22)
+    at async ChatSession.sendMessage (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:1210:9)
+    at async Object.processMessage (C:\Users\nguye\test Ofuture\test\ofuture-backend\services\aiChatService.ts:130:24)
+    at async sendMessage (C:\Users\nguye\test Ofuture\test\ofuture-backend\controllers\chatController.ts:107:22)
+2026-04-14 15:35:38 [error]: Error: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent: [403 Forbidden] Your API key was reported as leaked. Please use another API key.
+    at handleResponseNotOk (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:434:11)
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async makeRequest (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:403:9)
+    at async generateContent (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:867:22)
+    at async ChatSession.sendMessage (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:1210:9)
+    at async Object.processMessage (C:\Users\nguye\test Ofuture\test\ofuture-backend\services\aiChatService.ts:130:24)
+    at async sendMessage (C:\Users\nguye\test Ofuture\test\ofuture-backend\controllers\chatController.ts:107:22)
+2026-04-14 15:36:09 [error]: Error: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent: [403 Forbidden] Your API key was reported as leaked. Please use another API key.
+    at handleResponseNotOk (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:434:11)
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async makeRequest (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:403:9)
+    at async generateContent (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:867:22)
+    at async ChatSession.sendMessage (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:1210:9)
+    at async Object.processMessage (C:\Users\nguye\test Ofuture\test\ofuture-backend\services\aiChatService.ts:130:24)
+    at async sendMessage (C:\Users\nguye\test Ofuture\test\ofuture-backend\controllers\chatController.ts:107:22)
+2026-04-14 15:36:14 [error]: Error: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent: [403 Forbidden] Your API key was reported as leaked. Please use another API key.
+    at handleResponseNotOk (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:434:11)
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async makeRequest (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:403:9)
+    at async generateContent (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:867:22)
+    at async ChatSession.sendMessage (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:1210:9)
+    at async Object.processMessage (C:\Users\nguye\test Ofuture\test\ofuture-backend\services\aiChatService.ts:130:24)
+    at async sendMessage (C:\Users\nguye\test Ofuture\test\ofuture-backend\controllers\chatController.ts:107:22)
+2026-04-14 15:36:17 [error]: Error: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent: [403 Forbidden] Your API key was reported as leaked. Please use another API key.
+    at handleResponseNotOk (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:434:11)
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async makeRequest (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:403:9)
+    at async generateContent (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:867:22)
+    at async ChatSession.sendMessage (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:1210:9)
+    at async Object.processMessage (C:\Users\nguye\test Ofuture\test\ofuture-backend\services\aiChatService.ts:130:24)
+    at async sendMessage (C:\Users\nguye\test Ofuture\test\ofuture-backend\controllers\chatController.ts:107:22)
+2026-04-14 15:36:21 [error]: Error: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent: [403 Forbidden] Your API key was reported as leaked. Please use another API key.
+    at handleResponseNotOk (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:434:11)
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async makeRequest (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:403:9)
+    at async generateContent (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:867:22)
+    at async ChatSession.sendMessage (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:1210:9)
+    at async Object.processMessage (C:\Users\nguye\test Ofuture\test\ofuture-backend\services\aiChatService.ts:130:24)
+    at async sendMessage (C:\Users\nguye\test Ofuture\test\ofuture-backend\controllers\chatController.ts:107:22)
+2026-04-14 15:36:27 [error]: Error: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent: [403 Forbidden] Your API key was reported as leaked. Please use another API key.
+    at handleResponseNotOk (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:434:11)
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async makeRequest (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:403:9)
+    at async generateContent (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:867:22)
+    at async ChatSession.sendMessage (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:1210:9)
+    at async Object.processMessage (C:\Users\nguye\test Ofuture\test\ofuture-backend\services\aiChatService.ts:130:24)
+    at async sendMessage (C:\Users\nguye\test Ofuture\test\ofuture-backend\controllers\chatController.ts:107:22)
+2026-04-14 15:36:33 [error]: Error: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent: [403 Forbidden] Your API key was reported as leaked. Please use another API key.
+    at handleResponseNotOk (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:434:11)
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async makeRequest (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:403:9)
+    at async generateContent (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:867:22)
+    at async ChatSession.sendMessage (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:1210:9)
+    at async Object.processMessage (C:\Users\nguye\test Ofuture\test\ofuture-backend\services\aiChatService.ts:130:24)
+    at async sendMessage (C:\Users\nguye\test Ofuture\test\ofuture-backend\controllers\chatController.ts:107:22)

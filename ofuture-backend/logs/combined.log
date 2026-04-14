@@ -967,3 +967,214 @@
 2026-04-14 14:31:38 [http]: ::1 - - [14/Apr/2026:07:31:38 +0000] "POST /api/auth/register HTTP/1.1" 201 261 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
 2026-04-14 14:32:14 [http]: ::1 - - [14/Apr/2026:07:32:14 +0000] "POST /api/auth/verify-email HTTP/1.1" 200 77 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
 2026-04-14 14:32:21 [http]: ::1 - - [14/Apr/2026:07:32:21 +0000] "PUT /api/auth/profile HTTP/1.1" 401 87 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-14 15:00:13 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-14 15:00:13 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-14 15:00:13 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-14 15:00:13 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-14 15:00:13 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-14 15:00:13 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-14 15:00:13 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-14 15:00:13 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-14 15:00:13 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-14 15:00:13 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-14 15:00:13 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-14 15:00:13 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-14 15:00:13 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-14 15:00:13 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-14 15:00:13 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-14 15:00:13 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-14 15:00:13 [debug]: [RateLimiter] Using ioredis client for rate-limit-redis adapter.
+2026-04-14 15:00:13 [warn]: [RateLimiter] rate-limit-redis adapter failed to init, falling back:
+2026-04-14 15:00:14 [info]: 🧪  RBAC test routes enabled (development only)
+2026-04-14 15:00:14 [info]: ✓ WebSocket (Socket.io) server initialized
+2026-04-14 15:00:14 [info]: 🚀  O'Future API running on port 5000
+2026-04-14 15:00:14 [info]: 📍  Environment: development
+2026-04-14 15:00:14 [info]: 🔗  Health check: http://localhost:5000/health
+2026-04-14 15:00:14 [info]: [redisClient] ioredis ready — using real Redis client.
+2026-04-14 15:08:38 [info]: Successfully sent OTP email to nguyentrungkhoavx0858@gmail.com
+2026-04-14 15:08:38 [info]: New user registered: nguyentrungkhoavx0858@gmail.com (buyer)
+2026-04-14 15:08:38 [http]: ::1 - - [14/Apr/2026:08:08:38 +0000] "POST /api/auth/register HTTP/1.1" 201 261 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-14 15:08:56 [http]: ::1 - - [14/Apr/2026:08:08:56 +0000] "POST /api/auth/verify-email HTTP/1.1" 200 706 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-14 15:09:18 [error]: Error: Payment record not found
+    at Object.handleMoMoCallback (C:\Users\nguye\test Ofuture\test\ofuture-backend\services\paymentService.ts:163:23)
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async momoCallback (C:\Users\nguye\test Ofuture\test\ofuture-backend\controllers\paymentController.ts:20:5)
+2026-04-14 15:09:18 [http]: 118.69.210.244 - - [14/Apr/2026:08:09:18 +0000] "POST /api/payments/momo/callback HTTP/1.1" 400 54 "-" "Apache-HttpClient/5.5 (Java/25.0.2)"
+2026-04-14 15:10:47 [error]: Error: Payment record not found
+    at Object.handleMoMoCallback (C:\Users\nguye\test Ofuture\test\ofuture-backend\services\paymentService.ts:163:23)
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async momoCallback (C:\Users\nguye\test Ofuture\test\ofuture-backend\controllers\paymentController.ts:20:5)
+2026-04-14 15:10:47 [http]: 118.69.210.244 - - [14/Apr/2026:08:10:47 +0000] "POST /api/payments/momo/callback HTTP/1.1" 400 54 "-" "Apache-HttpClient/5.5 (Java/25.0.2)"
+2026-04-14 15:12:57 [http]: ::1 - - [14/Apr/2026:08:12:57 +0000] "PUT /api/auth/profile HTTP/1.1" 200 104 "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-14 15:12:59 [info]: ✓ User 2222c5cf-37d9-11f1-9428-9c2dcd0692eb connected via WebSocket (socket: 4s4fDqK8Jvi9MoCsAAAB)
+2026-04-14 15:12:59 [http]: ::1 - - [14/Apr/2026:08:12:59 +0000] "GET /api/notifications?limit=10&page=1 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-14 15:12:59 [http]: ::1 - - [14/Apr/2026:08:12:59 +0000] "GET /api/products/seller/my?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-14 15:12:59 [http]: ::1 - - [14/Apr/2026:08:12:59 +0000] "GET /api/seller/orders?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-14 15:12:59 [http]: ::1 - - [14/Apr/2026:08:12:59 +0000] "GET /api/seller/escrow?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-14 15:12:59 [http]: ::1 - - [14/Apr/2026:08:12:59 +0000] "GET /api/seller/reviews?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-14 15:12:59 [http]: ::1 - - [14/Apr/2026:08:12:59 +0000] "GET /api/seller/disputes?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-14 15:12:59 [http]: ::1 - - [14/Apr/2026:08:12:59 +0000] "GET /api/seller/samples?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-14 15:23:08 [info]: ✓ User 2222c5cf-37d9-11f1-9428-9c2dcd0692eb disconnected (socket: 4s4fDqK8Jvi9MoCsAAAB)
+2026-04-14 15:23:08 [info]: ✓ User 2222c5cf-37d9-11f1-9428-9c2dcd0692eb connected via WebSocket (socket: cefD6-osN5p8ZBH1AAAD)
+2026-04-14 15:23:08 [http]: ::1 - - [14/Apr/2026:08:23:08 +0000] "GET /api/products/seller/my?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-14 15:23:08 [http]: ::1 - - [14/Apr/2026:08:23:08 +0000] "GET /api/notifications?limit=10&page=1 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-14 15:23:08 [http]: ::1 - - [14/Apr/2026:08:23:08 +0000] "GET /api/seller/orders?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-14 15:23:08 [http]: ::1 - - [14/Apr/2026:08:23:08 +0000] "GET /api/seller/escrow?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-14 15:23:08 [http]: ::1 - - [14/Apr/2026:08:23:08 +0000] "GET /api/seller/reviews?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-14 15:23:08 [http]: ::1 - - [14/Apr/2026:08:23:08 +0000] "GET /api/seller/disputes?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-14 15:23:08 [http]: ::1 - - [14/Apr/2026:08:23:08 +0000] "GET /api/seller/samples?page=1&limit=10 HTTP/1.1" 304 - "http://127.0.0.1:5500/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-14 15:24:35 [info]: User logged in via Google: nguyentrungkhoavx0857@gmail.com
+2026-04-14 15:24:35 [http]: ::1 - - [14/Apr/2026:08:24:35 +0000] "POST /api/auth/google-login HTTP/1.1" 200 827 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-14 15:24:36 [http]: ::1 - - [14/Apr/2026:08:24:36 +0000] "GET /api/products?limit=3 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-14 15:24:36 [http]: ::1 - - [14/Apr/2026:08:24:36 +0000] "GET /api/notifications?limit=10&page=1 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-14 15:24:36 [info]: ✓ User 4ad78691-374e-11f1-9eb6-9c2dcd0692eb connected via WebSocket (socket: HpeZ_fxD9gKzaB-_AAAF)
+2026-04-14 15:24:54 [info]: ✓ User 4ad78691-374e-11f1-9eb6-9c2dcd0692eb disconnected (socket: HpeZ_fxD9gKzaB-_AAAF)
+2026-04-14 15:24:54 [http]: ::1 - - [14/Apr/2026:08:24:54 +0000] "GET /api/products HTTP/1.1" 200 86 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-14 15:25:04 [http]: ::1 - - [14/Apr/2026:08:25:04 +0000] "GET /api/reviews HTTP/1.1" 404 113 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-14 15:25:12 [http]: ::1 - - [14/Apr/2026:08:25:12 +0000] "GET /api/reviews HTTP/1.1" 404 113 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-14 15:25:13 [http]: ::1 - - [14/Apr/2026:08:25:13 +0000] "GET /api/auth/me HTTP/1.1" 200 363 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-14 15:25:13 [http]: ::1 - - [14/Apr/2026:08:25:13 +0000] "GET /uploads/avatar-1776094627380-73083429.webp HTTP/1.1" 200 26390 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-14 15:25:24 [http]: ::1 - - [14/Apr/2026:08:25:24 +0000] "GET /api/disputes/my HTTP/1.1" 200 26 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-14 15:25:25 [info]: ✓ User 4ad78691-374e-11f1-9eb6-9c2dcd0692eb connected via WebSocket (socket: gNMdP8DVT5FyIUwtAAAH)
+2026-04-14 15:25:25 [http]: ::1 - - [14/Apr/2026:08:25:25 +0000] "GET /api/notifications?limit=10&page=1 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-14 15:25:25 [http]: ::1 - - [14/Apr/2026:08:25:25 +0000] "GET /api/orders/my HTTP/1.1" 200 26 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-14 15:25:27 [info]: ✓ User 4ad78691-374e-11f1-9eb6-9c2dcd0692eb disconnected (socket: gNMdP8DVT5FyIUwtAAAH)
+2026-04-14 15:25:28 [http]: ::1 - - [14/Apr/2026:08:25:28 +0000] "GET /api/products HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-14 15:25:32 [info]: ✓ User 4ad78691-374e-11f1-9eb6-9c2dcd0692eb connected via WebSocket (socket: QxEa2fG2YqhgDgpyAAAJ)
+2026-04-14 15:25:32 [http]: ::1 - - [14/Apr/2026:08:25:32 +0000] "GET /api/products?limit=3 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-14 15:25:32 [http]: ::1 - - [14/Apr/2026:08:25:32 +0000] "GET /api/notifications?limit=10&page=1 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-14 15:25:38 [info]: ✓ User 4ad78691-374e-11f1-9eb6-9c2dcd0692eb disconnected (socket: QxEa2fG2YqhgDgpyAAAJ)
+2026-04-14 15:25:38 [http]: ::1 - - [14/Apr/2026:08:25:38 +0000] "GET /api/auth/me HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-14 15:25:38 [http]: ::1 - - [14/Apr/2026:08:25:38 +0000] "GET /uploads/avatar-1776094627380-73083429.webp HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-14 15:27:00 [http]: ::1 - - [14/Apr/2026:08:27:00 +0000] "GET /api/auth/me HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-14 15:27:00 [http]: ::1 - - [14/Apr/2026:08:27:00 +0000] "GET /uploads/avatar-1776094627380-73083429.webp HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-14 15:27:14 [http]: ::1 - - [14/Apr/2026:08:27:14 +0000] "POST /api/mfa/setup HTTP/1.1" 200 3345 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-14 15:32:44 [http]: ::1 - - [14/Apr/2026:08:32:44 +0000] "GET /api/disputes/my HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-14 15:32:45 [info]: ✓ User 4ad78691-374e-11f1-9eb6-9c2dcd0692eb connected via WebSocket (socket: TW4Wa7wtvP9iIvGCAAAL)
+2026-04-14 15:32:45 [http]: ::1 - - [14/Apr/2026:08:32:45 +0000] "GET /api/notifications?limit=10&page=1 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-14 15:32:45 [http]: ::1 - - [14/Apr/2026:08:32:45 +0000] "GET /api/orders/my HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-14 15:32:46 [info]: ✓ User 4ad78691-374e-11f1-9eb6-9c2dcd0692eb disconnected (socket: TW4Wa7wtvP9iIvGCAAAL)
+2026-04-14 15:32:47 [http]: ::1 - - [14/Apr/2026:08:32:47 +0000] "GET /api/orders/my HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-14 15:32:47 [http]: ::1 - - [14/Apr/2026:08:32:47 +0000] "GET /api/notifications?limit=10&page=1 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-14 15:32:47 [info]: ✓ User 4ad78691-374e-11f1-9eb6-9c2dcd0692eb connected via WebSocket (socket: rr8dFrAabQm8qmUgAAAN)
+2026-04-14 15:32:48 [info]: ✓ User 4ad78691-374e-11f1-9eb6-9c2dcd0692eb disconnected (socket: rr8dFrAabQm8qmUgAAAN)
+2026-04-14 15:32:48 [http]: ::1 - - [14/Apr/2026:08:32:48 +0000] "GET /api/products HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-14 15:32:57 [info]: ✓ User 4ad78691-374e-11f1-9eb6-9c2dcd0692eb connected via WebSocket (socket: CV4mIyEwWugza6pTAAAP)
+2026-04-14 15:32:57 [http]: ::1 - - [14/Apr/2026:08:32:57 +0000] "GET /api/products?limit=3 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-14 15:32:57 [http]: ::1 - - [14/Apr/2026:08:32:57 +0000] "GET /api/notifications?limit=10&page=1 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-14 15:32:59 [info]: ✓ User 4ad78691-374e-11f1-9eb6-9c2dcd0692eb disconnected (socket: CV4mIyEwWugza6pTAAAP)
+2026-04-14 15:32:59 [http]: ::1 - - [14/Apr/2026:08:32:59 +0000] "GET /api/reviews HTTP/1.1" 404 113 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-14 15:33:01 [http]: ::1 - - [14/Apr/2026:08:33:01 +0000] "GET /api/auth/me HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-14 15:33:01 [http]: ::1 - - [14/Apr/2026:08:33:01 +0000] "GET /uploads/avatar-1776094627380-73083429.webp HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-14 15:33:01 [http]: ::1 - - [14/Apr/2026:08:33:01 +0000] "GET /api/disputes/my HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-14 15:33:06 [http]: ::1 - - [14/Apr/2026:08:33:06 +0000] "GET /api/disputes/my HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-14 15:34:17 [error]: Error: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent: [403 Forbidden] Your API key was reported as leaked. Please use another API key.
+    at handleResponseNotOk (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:434:11)
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async makeRequest (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:403:9)
+    at async generateContent (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:867:22)
+    at async ChatSession.sendMessage (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:1210:9)
+    at async Object.processMessage (C:\Users\nguye\test Ofuture\test\ofuture-backend\services\aiChatService.ts:130:24)
+    at async sendMessage (C:\Users\nguye\test Ofuture\test\ofuture-backend\controllers\chatController.ts:107:22)
+2026-04-14 15:34:17 [http]: ::1 - - [14/Apr/2026:08:34:17 +0000] "POST /api/chat/send HTTP/1.1" 200 150 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-14 15:35:16 [error]: Error: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent: [403 Forbidden] Your API key was reported as leaked. Please use another API key.
+    at handleResponseNotOk (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:434:11)
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async makeRequest (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:403:9)
+    at async generateContent (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:867:22)
+    at async ChatSession.sendMessage (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:1210:9)
+    at async Object.processMessage (C:\Users\nguye\test Ofuture\test\ofuture-backend\services\aiChatService.ts:130:24)
+    at async sendMessage (C:\Users\nguye\test Ofuture\test\ofuture-backend\controllers\chatController.ts:107:22)
+2026-04-14 15:35:16 [http]: ::1 - - [14/Apr/2026:08:35:16 +0000] "POST /api/chat/send HTTP/1.1" 200 150 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-14 15:35:23 [error]: Error: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent: [403 Forbidden] Your API key was reported as leaked. Please use another API key.
+    at handleResponseNotOk (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:434:11)
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async makeRequest (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:403:9)
+    at async generateContent (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:867:22)
+    at async ChatSession.sendMessage (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:1210:9)
+    at async Object.processMessage (C:\Users\nguye\test Ofuture\test\ofuture-backend\services\aiChatService.ts:130:24)
+    at async sendMessage (C:\Users\nguye\test Ofuture\test\ofuture-backend\controllers\chatController.ts:107:22)
+2026-04-14 15:35:23 [http]: ::1 - - [14/Apr/2026:08:35:23 +0000] "POST /api/chat/send HTTP/1.1" 200 150 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-14 15:35:38 [error]: Error: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent: [403 Forbidden] Your API key was reported as leaked. Please use another API key.
+    at handleResponseNotOk (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:434:11)
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async makeRequest (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:403:9)
+    at async generateContent (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:867:22)
+    at async ChatSession.sendMessage (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:1210:9)
+    at async Object.processMessage (C:\Users\nguye\test Ofuture\test\ofuture-backend\services\aiChatService.ts:130:24)
+    at async sendMessage (C:\Users\nguye\test Ofuture\test\ofuture-backend\controllers\chatController.ts:107:22)
+2026-04-14 15:35:38 [http]: ::1 - - [14/Apr/2026:08:35:38 +0000] "POST /api/chat/send HTTP/1.1" 200 150 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-14 15:35:58 [http]: ::1 - - [14/Apr/2026:08:35:58 +0000] "GET /api/disputes/my HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-14 15:36:04 [info]: ✓ User 4ad78691-374e-11f1-9eb6-9c2dcd0692eb connected via WebSocket (socket: aNJvHS-tpqK8O7baAAAR)
+2026-04-14 15:36:04 [http]: ::1 - - [14/Apr/2026:08:36:04 +0000] "GET /api/orders/my HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-14 15:36:04 [http]: ::1 - - [14/Apr/2026:08:36:04 +0000] "GET /api/notifications?limit=10&page=1 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-14 15:36:09 [error]: Error: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent: [403 Forbidden] Your API key was reported as leaked. Please use another API key.
+    at handleResponseNotOk (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:434:11)
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async makeRequest (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:403:9)
+    at async generateContent (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:867:22)
+    at async ChatSession.sendMessage (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:1210:9)
+    at async Object.processMessage (C:\Users\nguye\test Ofuture\test\ofuture-backend\services\aiChatService.ts:130:24)
+    at async sendMessage (C:\Users\nguye\test Ofuture\test\ofuture-backend\controllers\chatController.ts:107:22)
+2026-04-14 15:36:09 [http]: ::1 - - [14/Apr/2026:08:36:09 +0000] "POST /api/chat/send HTTP/1.1" 200 150 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-14 15:36:11 [info]: ✓ User 4ad78691-374e-11f1-9eb6-9c2dcd0692eb disconnected (socket: aNJvHS-tpqK8O7baAAAR)
+2026-04-14 15:36:14 [error]: Error: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent: [403 Forbidden] Your API key was reported as leaked. Please use another API key.
+    at handleResponseNotOk (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:434:11)
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async makeRequest (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:403:9)
+    at async generateContent (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:867:22)
+    at async ChatSession.sendMessage (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:1210:9)
+    at async Object.processMessage (C:\Users\nguye\test Ofuture\test\ofuture-backend\services\aiChatService.ts:130:24)
+    at async sendMessage (C:\Users\nguye\test Ofuture\test\ofuture-backend\controllers\chatController.ts:107:22)
+2026-04-14 15:36:14 [http]: ::1 - - [14/Apr/2026:08:36:14 +0000] "POST /api/chat/send HTTP/1.1" 200 150 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-14 15:36:15 [http]: ::1 - - [14/Apr/2026:08:36:15 +0000] "GET /api/products HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-14 15:36:17 [error]: Error: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent: [403 Forbidden] Your API key was reported as leaked. Please use another API key.
+    at handleResponseNotOk (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:434:11)
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async makeRequest (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:403:9)
+    at async generateContent (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:867:22)
+    at async ChatSession.sendMessage (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:1210:9)
+    at async Object.processMessage (C:\Users\nguye\test Ofuture\test\ofuture-backend\services\aiChatService.ts:130:24)
+    at async sendMessage (C:\Users\nguye\test Ofuture\test\ofuture-backend\controllers\chatController.ts:107:22)
+2026-04-14 15:36:17 [http]: ::1 - - [14/Apr/2026:08:36:17 +0000] "POST /api/chat/send HTTP/1.1" 200 150 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-14 15:36:19 [info]: ✓ User 4ad78691-374e-11f1-9eb6-9c2dcd0692eb connected via WebSocket (socket: jJ4iiMXsnMlVjCQqAAAT)
+2026-04-14 15:36:19 [http]: ::1 - - [14/Apr/2026:08:36:19 +0000] "GET /api/products?limit=3 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-14 15:36:19 [http]: ::1 - - [14/Apr/2026:08:36:19 +0000] "GET /api/notifications?limit=10&page=1 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-14 15:36:21 [error]: Error: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent: [403 Forbidden] Your API key was reported as leaked. Please use another API key.
+    at handleResponseNotOk (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:434:11)
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async makeRequest (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:403:9)
+    at async generateContent (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:867:22)
+    at async ChatSession.sendMessage (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:1210:9)
+    at async Object.processMessage (C:\Users\nguye\test Ofuture\test\ofuture-backend\services\aiChatService.ts:130:24)
+    at async sendMessage (C:\Users\nguye\test Ofuture\test\ofuture-backend\controllers\chatController.ts:107:22)
+2026-04-14 15:36:22 [http]: ::1 - - [14/Apr/2026:08:36:22 +0000] "POST /api/chat/send HTTP/1.1" 200 150 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-14 15:36:23 [info]: ✓ User 4ad78691-374e-11f1-9eb6-9c2dcd0692eb disconnected (socket: jJ4iiMXsnMlVjCQqAAAT)
+2026-04-14 15:36:23 [http]: ::1 - - [14/Apr/2026:08:36:23 +0000] "GET /api/disputes/my HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-14 15:36:24 [http]: ::1 - - [14/Apr/2026:08:36:24 +0000] "GET /api/auth/me HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-14 15:36:24 [http]: ::1 - - [14/Apr/2026:08:36:24 +0000] "GET /uploads/avatar-1776094627380-73083429.webp HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-14 15:36:27 [error]: Error: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent: [403 Forbidden] Your API key was reported as leaked. Please use another API key.
+    at handleResponseNotOk (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:434:11)
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async makeRequest (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:403:9)
+    at async generateContent (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:867:22)
+    at async ChatSession.sendMessage (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:1210:9)
+    at async Object.processMessage (C:\Users\nguye\test Ofuture\test\ofuture-backend\services\aiChatService.ts:130:24)
+    at async sendMessage (C:\Users\nguye\test Ofuture\test\ofuture-backend\controllers\chatController.ts:107:22)
+2026-04-14 15:36:27 [http]: ::1 - - [14/Apr/2026:08:36:27 +0000] "POST /api/chat/send HTTP/1.1" 200 150 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-14 15:36:33 [error]: Error: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent: [403 Forbidden] Your API key was reported as leaked. Please use another API key.
+    at handleResponseNotOk (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:434:11)
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async makeRequest (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:403:9)
+    at async generateContent (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:867:22)
+    at async ChatSession.sendMessage (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\@google\generative-ai\dist\index.js:1210:9)
+    at async Object.processMessage (C:\Users\nguye\test Ofuture\test\ofuture-backend\services\aiChatService.ts:130:24)
+    at async sendMessage (C:\Users\nguye\test Ofuture\test\ofuture-backend\controllers\chatController.ts:107:22)
+2026-04-14 15:36:33 [http]: ::1 - - [14/Apr/2026:08:36:33 +0000] "POST /api/chat/send HTTP/1.1" 200 150 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-14 15:36:34 [http]: ::1 - - [14/Apr/2026:08:36:34 +0000] "GET /api/reviews HTTP/1.1" 404 113 "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-14 15:36:37 [http]: ::1 - - [14/Apr/2026:08:36:37 +0000] "GET /api/disputes/my HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-14 15:36:37 [info]: ✓ User 4ad78691-374e-11f1-9eb6-9c2dcd0692eb connected via WebSocket (socket: BjXFwnBZG3u9tC_MAAAV)
+2026-04-14 15:36:37 [http]: ::1 - - [14/Apr/2026:08:36:37 +0000] "GET /api/orders/my HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-14 15:36:37 [http]: ::1 - - [14/Apr/2026:08:36:37 +0000] "GET /api/notifications?limit=10&page=1 HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
+2026-04-14 15:36:39 [info]: ✓ User 4ad78691-374e-11f1-9eb6-9c2dcd0692eb disconnected (socket: BjXFwnBZG3u9tC_MAAAV)
+2026-04-14 15:36:40 [http]: ::1 - - [14/Apr/2026:08:36:40 +0000] "GET /api/products HTTP/1.1" 304 - "http://127.0.0.1:5501/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0"
