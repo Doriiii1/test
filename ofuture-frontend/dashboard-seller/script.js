@@ -47,6 +47,7 @@ const pageState = {
     reviews:  { page: 1, limit: 10, totalPages: 1 }
 };
 let revenueChartInstance = null;
+let statusChartInstance = null;
 
 // ============================================================
 // Authentication & Initialization
@@ -479,25 +480,37 @@ function renderReviews() {
 function updateDashboardStats() {
     const setEl = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
 
-    setEl('totalProducts', pageState.products.totalPages > 1 ? allProducts.length + '+' : allProducts.length);
-    setEl('totalOrders', pageState.orders.totalPages > 1 ? allOrders.length + '+' : allOrders.length);
+    // Tổng đơn hàng
+    const totalOrdersCount = allOrders.length;
+    setEl('totalOrders', pageState.orders.totalPages > 1 ? totalOrdersCount + '+' : totalOrdersCount);
 
-    const netHeld = allEscrow
-        .filter(e => e.status === 'held' || e.status === 'processing')
-        .reduce((sum, e) => sum + parseFloat(e.net_amount || (parseFloat(e.amount) * 0.975) || 0), 0);
-        
+    // Tính toán doanh thu và ký quỹ từ Escrow (đã trừ phí sàn)
     const netReleased = allEscrow
         .filter(e => e.status === 'released')
         .reduce((sum, e) => sum + parseFloat(e.net_amount || (parseFloat(e.amount) * 0.975) || 0), 0);
+        
+    const netHeld = allEscrow
+        .filter(e => e.status === 'held' || e.status === 'processing')
+        .reduce((sum, e) => sum + parseFloat(e.net_amount || (parseFloat(e.amount) * 0.975) || 0), 0);
 
-    setEl('totalEscrow', formatVND(parseInt(netHeld)));
+    setEl('totalRevenue', formatVND(parseInt(netReleased)));
     setEl('totalHeld', formatVND(parseInt(netHeld)));
-    setEl('totalReleased', formatVND(parseInt(netReleased)));
 
+    // Tính đánh giá trung bình
     const avgRating = allReviews.length > 0
         ? (allReviews.reduce((sum, r) => sum + (r.rating || 0), 0) / allReviews.length).toFixed(1)
         : '0';
-    setEl('avgRating', avgRating + (allReviews.length ? ' ⭐' : ''));
+    setEl('avgRating', avgRating + ' ⭐');
+
+    // Gom dữ liệu Trạng thái đơn hàng cho Biểu đồ tròn
+    const statusCount = { 'pending': 0, 'paid': 0, 'shipped': 0, 'completed': 0, 'cancelled': 0 };
+    allOrders.forEach(o => {
+        if (statusCount[o.status] !== undefined) statusCount[o.status]++;
+    });
+    renderStatusChart(statusCount);
+
+    // Hiển thị danh sách Đơn hàng chờ giao (Paid)
+    renderUrgentOrders();
 }
 
 
@@ -517,39 +530,134 @@ function renderPagination(containerId, stateObj, loadFunc) {
     if(!window[loadFunc.name]) window[loadFunc.name] = loadFunc;
 }
 
+function renderUrgentOrders() {
+    const container = document.getElementById('urgentOrdersList');
+    if (!container) return;
+
+    // Lọc các đơn hàng có trạng thái "paid" (Đã thanh toán, chờ seller ship hàng)
+    const urgentOrders = allOrders.filter(o => o.status === 'paid').slice(0, 5);
+
+    if (urgentOrders.length === 0) {
+        container.innerHTML = '<p style="color: #64748b; font-size: 14px; text-align: center; margin-top: 20px;">Tuyệt vời! Không có đơn hàng nào tồn đọng.</p>';
+        return;
+    }
+
+    container.innerHTML = urgentOrders.map(o => `
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px; background: #f8fafc; border-radius: 8px; border: 1px solid #e2e8f0;">
+            <div>
+                <strong style="font-size: 13px; color: #0f172a;">Mã: ${(o.id || '').substring(0,8).toUpperCase()}</strong>
+                <p style="margin: 4px 0 0; font-size: 12px; color: #64748b; max-width: 150px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" title="${escapeHtml(o.product_name)}">${escapeHtml(o.product_name || 'Sản phẩm')}</p>
+            </div>
+            <button class="btn btn-small btn-primary" onclick="shipOrder('${o.id}')" style="font-size: 11px;">Giao ngay</button>
+        </div>
+    `).join('');
+}
+
+// Gọi khi người dùng đổi Select Box (7 ngày / 30 ngày)
+window.updateRevenueChartData = function() {
+    renderRevenueChart(); 
+};
+
 function renderRevenueChart() {
     if (typeof Chart === 'undefined') return;
     const ctx = document.getElementById('revenueChart');
     if (!ctx) return;
 
-    // Tính toán giả lập từ danh sách đơn hàng trang hiện tại
-    const last7Days = Array.from({length: 7}, (_, i) => {
-        const d = new Date(); d.setDate(d.getDate() - (6 - i));
-        return d.toLocaleDateString('vi-VN');
+    const daysToFilter = parseInt(document.getElementById('revenueFilter')?.value || '7', 10);
+    
+    // Tạo labels cho trục X
+    const labels = Array.from({length: daysToFilter}, (_, i) => {
+        const d = new Date(); d.setDate(d.getDate() - ((daysToFilter - 1) - i));
+        return d.toLocaleDateString('vi-VN', { day: '2-digit', month: '2-digit' });
     });
 
-    const data = [0, 0, 0, 0, 0, 0, 0];
+    const data = new Array(daysToFilter).fill(0);
+    
+    // Tính khoảng thời gian hợp lệ
+    const now = new Date();
+    now.setHours(23, 59, 59, 999);
+    const pastDate = new Date();
+    pastDate.setDate(now.getDate() - daysToFilter);
+
+    // Đổ dữ liệu thật từ allOrders vào Chart
     allOrders.forEach(o => {
-        const oDate = new Date(o.created_at || o.createdAt).toLocaleDateString('vi-VN');
-        const index = last7Days.indexOf(oDate);
-        if (index > -1 && o.status !== 'cancelled' && o.status !== 'refunded') {
-            data[index] += parseFloat(o.total_amount || o.totalAmount || 0);
+        const oDate = new Date(o.created_at || o.createdAt);
+        if (oDate >= pastDate && oDate <= now && o.status !== 'cancelled' && o.status !== 'refunded') {
+            const dateStr = oDate.toLocaleDateString('vi-VN', { day: '2-digit', month: '2-digit' });
+            const index = labels.indexOf(dateStr);
+            if (index > -1) {
+                // Tính Gross Sales
+                data[index] += parseFloat(o.total_amount || o.totalAmount || 0);
+            }
         }
     });
 
     if (revenueChartInstance) revenueChartInstance.destroy();
     revenueChartInstance = new Chart(ctx, {
-        type: 'bar',
+        type: 'line',
         data: {
-            labels: last7Days,
+            labels: labels,
             datasets: [{
-                label: 'Doanh thu (Đ)',
+                label: 'Doanh thu (VNĐ)',
                 data: data,
-                backgroundColor: '#2563eb',
-                borderRadius: 4
+                borderColor: '#2563eb',
+                backgroundColor: 'rgba(37, 99, 235, 0.1)',
+                borderWidth: 2,
+                pointBackgroundColor: '#2563eb',
+                fill: true,
+                tension: 0.3 // Làm cong đường đồ thị
             }]
         },
-        options: { responsive: true, maintainAspectRatio: false }
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { display: false },
+                tooltip: {
+                    callbacks: { label: (context) => formatVND(context.raw) }
+                }
+            },
+            scales: {
+                y: { beginAtZero: true, ticks: { callback: (value) => formatVND(value).replace(' Đ','') } }
+            }
+        }
+    });
+}
+
+function renderStatusChart(statusCount) {
+    if (typeof Chart === 'undefined') return;
+    const ctx = document.getElementById('statusChart');
+    if (!ctx) return;
+
+    if (statusChartInstance) statusChartInstance.destroy();
+
+    const dataValues = [
+        statusCount['pending'] || 0,
+        statusCount['paid'] || 0,
+        statusCount['shipped'] || 0,
+        statusCount['completed'] || 0,
+        statusCount['cancelled'] || 0
+    ];
+
+    statusChartInstance = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Chờ thanh toán', 'Chờ giao hàng (Paid)', 'Đang giao (Shipped)', 'Hoàn thành', 'Đã hủy'],
+            datasets: [{
+                data: dataValues,
+                backgroundColor: ['#f59e0b', '#3b82f6', '#8b5cf6', '#10b981', '#ef4444'],
+                borderWidth: 0,
+                hoverOffset: 6
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            cutout: '75%',
+            plugins: {
+                legend: { position: 'right', labels: { boxWidth: 12, font: { size: 11 } } }
+            }
+        }
     });
 }
 

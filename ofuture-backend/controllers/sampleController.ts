@@ -4,6 +4,7 @@ import { SampleModel } from '../models/sampleModel';
 import ProductModel from '../models/productModel';
 import OrderModel from '../models/orderModel';
 import logger from '../utils/logger';
+import WalletService from '../services/walletService';
 
 interface AuthRequest extends Request {
   user?: any;
@@ -104,6 +105,16 @@ const updateSampleStatus = async (req: AuthRequest, res: Response): Promise<any>
     const validStatuses = ['approved', 'rejected', 'shipped', 'cancelled', 'returned'];
     if (!validStatuses.includes(status as string)) {
       return res.status(400).json({ success: false, message: 'Invalid status provided.' });
+    }
+
+    if (status === 'rejected') {
+      await WalletService.depositFromPayment(
+        sample.buyer_id,
+        parseFloat(sample.deposit_amount as any),
+        sample.id,
+        'cod', // Có thể để dạng adjustment
+        `Hoàn tiền cọc do người bán từ chối yêu cầu mẫu ${sampleId}`
+      );
     }
 
     await SampleModel.updateStatus(sampleId, status as string);

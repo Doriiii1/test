@@ -1,0 +1,16 @@
+2026-04-16 01:12:01 [error]: Error: Unknown column 'product_name' in 'field list'
+    at PromisePool.execute (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\mysql2\lib\promise\pool.js:54:22)
+    at release (C:\Users\nguye\test Ofuture\test\ofuture-backend\controllers\escrowController.ts:92:41)
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+2026-04-16 01:12:03 [error]: Error: Unknown column 'product_name' in 'field list'
+    at PromisePool.execute (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\mysql2\lib\promise\pool.js:54:22)
+    at release (C:\Users\nguye\test Ofuture\test\ofuture-backend\controllers\escrowController.ts:92:41)
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+2026-04-16 01:12:11 [error]: Error: Unknown column 'product_name' in 'field list'
+    at PromisePool.execute (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\mysql2\lib\promise\pool.js:54:22)
+    at release (C:\Users\nguye\test Ofuture\test\ofuture-backend\controllers\escrowController.ts:92:41)
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+2026-04-16 01:12:14 [error]: Error: Unknown column 'product_name' in 'field list'
+    at PromisePool.execute (C:\Users\nguye\test Ofuture\test\ofuture-backend\node_modules\mysql2\lib\promise\pool.js:54:22)
+    at release (C:\Users\nguye\test Ofuture\test\ofuture-backend\controllers\escrowController.ts:92:41)
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)

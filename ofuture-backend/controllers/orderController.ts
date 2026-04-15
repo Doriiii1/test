@@ -506,8 +506,6 @@ const confirmDelivery = async (req: OrderRequest, res: Response): Promise<any> =
       [id]
     );
 
-    await conn.commit(); // Commit DB state first, then sync wallet
-
     // 4. CHUYỂN TIỀN VÀO VÍ SELLER
     if (escrow) {
       try {
@@ -516,8 +514,10 @@ const confirmDelivery = async (req: OrderRequest, res: Response): Promise<any> =
           parseFloat(escrow.net_amount), // Chuyển số tiền thực nhận (đã trừ phí)
           escrow.id,
           id,
-          `Tiền bán hàng từ đơn ${id}`
+          `Tiền bán hàng từ đơn ${id}`,
+          conn
         );
+
         // Tùy chọn: Ghi nhận phí nền tảng hiển thị trong lịch sử ví Seller
         await WalletService.applyPlatformFee(
           order.seller_id,
@@ -529,6 +529,8 @@ const confirmDelivery = async (req: OrderRequest, res: Response): Promise<any> =
         logger.error('Wallet release to seller failed:', walletErr);
       }
     }
+
+    await conn.commit(); 
 
     const [[firstItem]]: any = await conn.execute(
       'SELECT p.name FROM order_items oi JOIN products p ON oi.product_id = p.id WHERE oi.order_id = ? LIMIT 1',
