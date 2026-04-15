@@ -4,6 +4,7 @@
 // ============================================================
 
 const API_BASE_URL = 'http://localhost:5000/api';
+const formatVND = (value) => `${Number(value || 0).toLocaleString('vi-VN')} Đ`;
 
 // Store data
 let currentUser = null;
@@ -15,6 +16,26 @@ let allDisputes = [];
 let allSamples = [];
 let activeRequests = 0;
 let editingProductId = null;
+let mfaEnabled = false;
+let profileEditMode = false;
+
+const CATEGORY_OPTION_PRESETS = {
+    Fashion: [
+        { key: 'size', label: 'Size (S, M, L...)' },
+        { key: 'color', label: 'Color (Đỏ, Đen...)' },
+        { key: 'material', label: 'Material (Cotton, Denim...)' }
+    ],
+    Electronics: [
+        { key: 'model', label: 'Model (Pro, Plus...)' },
+        { key: 'storage', label: 'Storage (128GB, 256GB...)' },
+        { key: 'color', label: 'Color' }
+    ],
+    Beauty: [
+        { key: 'volume', label: 'Volume (30ml, 100ml...)' },
+        { key: 'skin_type', label: 'Skin Type (Dry, Oily...)' },
+        { key: 'tone', label: 'Tone/Shade' }
+    ]
+};
 
 // ── THÊM MỚI: Trạng thái Phân trang & Biểu đồ ──
 const pageState = {
@@ -45,7 +66,7 @@ async function initializeDashboard() {
 
         // Check if user is seller
         if (currentUser.role !== 'seller' && currentUser.role !== 'admin') {
-            alert('Only sellers can access this dashboard');
+            alert('Chỉ tài khoản người bán mới được truy cập khu vực này.');
             window.location.href = '../index.html';
             return;
         }
@@ -61,7 +82,7 @@ async function initializeDashboard() {
         setupEventListeners();
     } catch (error) {
         console.error('Error initializing dashboard:', error);
-        alert('Error loading dashboard. Please login again.');
+        alert('Không thể tải bảng điều khiển. Vui lòng đăng nhập lại.');
         localStorage.clear();
         window.location.href = '../login.html';
     }
@@ -115,12 +136,55 @@ async function loadDashboardData() {
         await loadReviews(1);
         await loadDisputes(1);
         await loadSamples(1);
+        await loadProfileData();
         
         updateDashboardStats();
         renderRevenueChart(); // Vẽ biểu đồ sau khi load xong
     } catch (error) {
         console.error('Error loading dashboard data:', error);
     }
+}
+
+async function loadProfileData() {
+    try {
+        const meRes = await apiCall('/auth/me');
+        const me = meRes.data || {};
+
+        const fullNameEl = document.getElementById('profileFullName');
+        const phoneEl = document.getElementById('profilePhone');
+        if (fullNameEl) fullNameEl.value = me.fullName || '';
+        if (phoneEl) phoneEl.value = me.phone || '';
+        const storeNameEl = document.getElementById('profileStoreName');
+        const categoryEl = document.getElementById('profileCategory');
+        if (storeNameEl) storeNameEl.value = currentUser?.store_name || '';
+        if (categoryEl) categoryEl.value = currentUser?.category || '';
+
+        const mfaRes = await apiCall('/mfa/status');
+        mfaEnabled = Boolean(mfaRes.data?.mfaEnabled);
+        updateMfaStatusUI(mfaEnabled);
+    } catch (error) {
+        const mfaStatusText = document.getElementById('mfaStatusText');
+        if (mfaStatusText) mfaStatusText.textContent = 'Không tải được';
+    }
+}
+
+function updateMfaStatusUI(enabled) {
+    const statusEl = document.getElementById('mfaStatusText');
+    const setupBtn = document.getElementById('setupMfaBtn');
+    const disableBtn = document.getElementById('disableMfaBtn');
+    if (statusEl) statusEl.textContent = enabled ? 'Đang bật' : 'Đang tắt';
+    if (setupBtn) setupBtn.disabled = enabled;
+    if (disableBtn) disableBtn.disabled = !enabled;
+}
+
+function setProfileFieldsDisabled(disabled) {
+    ['profileFullName', 'profilePhone', 'profileStoreName', 'profileCategory', 'profileCity', 'profileAddress']
+        .forEach((id) => {
+            const el = document.getElementById(id);
+            if (el) el.disabled = disabled;
+        });
+    const submitBtn = document.getElementById('submitProfileRequestBtn');
+    if (submitBtn) submitBtn.disabled = disabled;
 }
 
 async function loadProducts(page = 1) {
@@ -133,7 +197,7 @@ async function loadProducts(page = 1) {
         renderProductsTable();
         renderPagination('productsPagination', pageState.products, loadProducts);
     } catch (error) {
-        document.getElementById('productsTableBody').innerHTML = `<tr><td colspan="5" class="text-center" style="color:red;">Error loading products: ${error.message}</td></tr>`;
+        document.getElementById('productsTableBody').innerHTML = `<tr><td colspan="5" class="text-center" style="color:red;">Lỗi tải sản phẩm: ${error.message}</td></tr>`;
     }
 }
 
@@ -148,7 +212,7 @@ async function loadOrders(page = 1) {
         renderPagination('ordersPagination', pageState.orders, loadOrders);
         if(page === 1) renderRevenueChart(); // Cập nhật biểu đồ nếu ở trang 1
     } catch (error) {
-        document.getElementById('ordersTableBody').innerHTML = `<tr><td colspan="6" class="text-center" style="color:red;">Error loading orders: ${error.message}</td></tr>`;
+        document.getElementById('ordersTableBody').innerHTML = `<tr><td colspan="6" class="text-center" style="color:red;">Lỗi tải đơn hàng: ${error.message}</td></tr>`;
     }
 }
 
@@ -162,7 +226,7 @@ async function loadEscrow(page = 1) {
         renderEscrowTable();
         renderPagination('escrowPagination', pageState.escrow, loadEscrow);
     } catch (error) {
-        document.getElementById('escrowTableBody').innerHTML = `<tr><td colspan="6" class="text-center" style="color:red;">Error loading escrow: ${error.message}</td></tr>`;
+        document.getElementById('escrowTableBody').innerHTML = `<tr><td colspan="6" class="text-center" style="color:red;">Lỗi tải ký quỹ: ${error.message}</td></tr>`;
     }
 }
 
@@ -176,7 +240,7 @@ async function loadReviews(page = 1) {
         renderReviews();
         renderPagination('reviewsPagination', pageState.reviews, loadReviews);
     } catch (error) {
-        document.getElementById('reviewsContainer').innerHTML = `<p class="text-center" style="color:red;">Error loading reviews: ${error.message}</p>`;
+        document.getElementById('reviewsContainer').innerHTML = `<p class="text-center" style="color:red;">Lỗi tải đánh giá: ${error.message}</p>`;
     }
 }
 
@@ -194,7 +258,7 @@ async function loadDisputes(page = 1) {
         }
     } catch (err) {
         const tbody = document.getElementById('disputesTableBody');
-        if (tbody) tbody.innerHTML = `<tr><td colspan="6" class="text-center" style="color:red;">Error loading disputes: ${err.message}</td></tr>`;
+        if (tbody) tbody.innerHTML = `<tr><td colspan="6" class="text-center" style="color:red;">Lỗi tải khiếu nại: ${err.message}</td></tr>`;
     }
 }
 
@@ -213,7 +277,7 @@ async function loadSamples(page = 1) {
         }
     } catch (err) {
         const tbody = document.getElementById('samplesTableBody');
-        if (tbody) tbody.innerHTML = `<tr><td colspan="6" class="text-center" style="color:red;">Error loading samples: ${err.message}</td></tr>`;
+        if (tbody) tbody.innerHTML = `<tr><td colspan="6" class="text-center" style="color:red;">Lỗi tải yêu cầu mẫu: ${err.message}</td></tr>`;
     }
 }
 
@@ -226,7 +290,7 @@ function renderProductsTable(products = allProducts) {
     if (!tbody) return;
 
     if (!products || products.length === 0) {
-        tbody.innerHTML = '<tr><td colspan="6" class="text-center">No products found. Click "Add New Product" to start.</td></tr>';
+        tbody.innerHTML = '<tr><td colspan="6" class="text-center">Chưa có sản phẩm. Bấm "Thêm sản phẩm mới" để bắt đầu.</td></tr>';
         return;
     }
 
@@ -254,9 +318,9 @@ function renderProductsTable(products = allProducts) {
             <td><img src="${imgUrl}" style="width: 45px; height: 45px; object-fit: cover; border-radius: 6px;"></td>
             <td>
                 <strong>${escapeHtml(product.name)}</strong><br>
-                <small style="color:#64748b;">${escapeHtml(product.category || 'General')}</small>
+                <small style="color:#64748b;">${escapeHtml(product.category || 'Khác')}</small>
             </td>
-            <td>${parseInt(product.price || 0).toLocaleString('vi-VN')} đ</td>
+            <td>${formatVND(parseInt(product.price || 0))}</td>
             <td>${product.stockQuantity ?? product.stock_quantity ?? 0}</td>
             <td>
                 <span class="badge ${product.status === 'active' ? 'badge-success' : 'badge-warning'}">
@@ -264,8 +328,8 @@ function renderProductsTable(products = allProducts) {
                 </span>
             </td>
             <td>
-                <button class="btn btn-small btn-secondary" onclick="editProduct('${product.id}')">Edit</button>
-                <button class="btn btn-small btn-danger" onclick="deleteProduct('${product.id}')">Delete</button>
+                <button class="btn btn-small btn-secondary" onclick="editProduct('${product.id}')">Sửa</button>
+                <button class="btn btn-small btn-danger" onclick="deleteProduct('${product.id}')">Xóa</button>
             </td>
         </tr>
     `}).join('');
@@ -278,16 +342,16 @@ function renderOrdersTable() {
     if (!tbody) return;
 
     if (allOrders.length === 0) {
-        tbody.innerHTML = '<tr><td colspan="6" class="text-center">No orders found</td></tr>';
+        tbody.innerHTML = '<tr><td colspan="6" class="text-center">Chưa có đơn hàng nào</td></tr>';
         return;
     }
 
     tbody.innerHTML = allOrders.map(order => `
         <tr>
             <td>${order.id?.substring(0, 8).toUpperCase() || 'N/A'}</td>
-            <td>${escapeHtml(order.buyer_username || order.buyerUsername || order.buyer?.username || 'Unknown')}</td>
-            <td>${escapeHtml(order.product_name || order.productName || order.product?.name || 'Unknown')}</td>
-            <td>${parseInt(order.total_amount || order.totalAmount || 0).toLocaleString('vi-VN')} đ</td>
+            <td>${escapeHtml(order.buyer_username || order.buyerUsername || order.buyer?.username || 'Không rõ')}</td>
+            <td>${escapeHtml(order.product_name || order.productName || order.product?.name || 'Không rõ')}</td>
+            <td>${formatVND(parseInt(order.total_amount || order.totalAmount || 0))}</td>
             <td>
                 <span class="badge ${getStatusBadgeClass(order.status)}">
                     ${order.status || 'unknown'}
@@ -295,7 +359,7 @@ function renderOrdersTable() {
             </td>
             <td>
                 ${order.status === 'paid' 
-                    ? `<button class="btn btn-small btn-success" onclick="shipOrder('${order.id}')">Confirm Shipping</button>` 
+                    ? `<button class="btn btn-small btn-success" onclick="shipOrder('${order.id}')">Xác nhận giao hàng</button>`
                     : '-'}
             </td>
         </tr>
@@ -309,21 +373,21 @@ function renderEscrowTable() {
     if (!tbody) return;
 
     if (!allEscrow || allEscrow.length === 0) {
-        tbody.innerHTML = '<tr><td colspan="6" class="text-center">No escrow records found</td></tr>';
+        tbody.innerHTML = '<tr><td colspan="6" class="text-center">Chưa có bản ghi ký quỹ</td></tr>';
         return;
     }
 
     tbody.innerHTML = allEscrow.map(escrow => {
         const gross = parseFloat(escrow.amount || 0);
-        const fee = parseFloat(escrow.platform_fee || escrow.fee || gross * 0.10);
+        const fee = parseFloat(escrow.platform_fee || escrow.fee || gross * 0.025);
         const net = parseFloat(escrow.net_amount || gross - fee);
 
         return `
         <tr>
             <td>${(escrow.order_id || '').substring(0, 8).toUpperCase() || 'N/A'}</td>
-            <td>${parseInt(gross).toLocaleString('vi-VN')} đ</td>
-            <td style="color:#ef4444;">-${parseInt(fee).toLocaleString('vi-VN')} đ</td>
-            <td style="font-weight:600;color:#10b981;">${parseInt(net).toLocaleString('vi-VN')} đ</td>
+            <td>${formatVND(parseInt(gross))}</td>
+            <td style="color:#ef4444;">-${formatVND(parseInt(fee))}</td>
+            <td style="font-weight:600;color:#10b981;">${formatVND(parseInt(net))}</td>
             <td>
                 <span class="badge ${getStatusBadgeClass(escrow.status)}">
                     ${escrow.status || 'unknown'}
@@ -338,21 +402,21 @@ function renderEscrowTable() {
 
 function renderDisputesTable(tbody) {
     if (!allDisputes.length) {
-        tbody.innerHTML = '<tr><td colspan="6" class="text-center">No disputes filed against your orders.</td></tr>';
+        tbody.innerHTML = '<tr><td colspan="6" class="text-center">Chưa có khiếu nại nào với đơn hàng của bạn.</td></tr>';
         return;
     }
     tbody.innerHTML = allDisputes.map(d => `
         <tr>
             <td>${(d.id || '').substring(0, 8).toUpperCase()}</td>
             <td>${(d.order_id || '').substring(0, 8).toUpperCase()}</td>
-            <td>${escapeHtml(d.complainant_username || d.buyer?.username || 'Buyer')}</td>
+            <td>${escapeHtml(d.complainant_username || d.buyer?.username || 'Người mua')}</td>
             <td style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="${escapeHtml(d.reason || d.issue || '')}">
                 ${escapeHtml(d.reason || d.issue || '')}
             </td>
             <td><span class="badge ${getStatusBadgeClass(d.status)}">${d.status}</span></td>
             <td>
                 ${d.status === 'pending' 
-                    ? `<button class="btn btn-small btn-warning" onclick="submitEvidence('${d.id}')">Submit Evidence</button>` 
+                    ? `<button class="btn btn-small btn-warning" onclick="submitEvidence('${d.id}')">Gửi bằng chứng</button>`
                     : '—'}
             </td>
         </tr>
@@ -361,20 +425,20 @@ function renderDisputesTable(tbody) {
 
 function renderSamplesTable(tbody) {
     if (!allSamples.length) {
-        tbody.innerHTML = '<tr><td colspan="6" class="text-center">No sample requests yet.</td></tr>';
+        tbody.innerHTML = '<tr><td colspan="6" class="text-center">Chưa có yêu cầu hàng mẫu.</td></tr>';
         return;
     }
     tbody.innerHTML = allSamples.map(s => `
         <tr>
             <td>${(s.id || '').substring(0, 8).toUpperCase()}</td>
-            <td>${escapeHtml(s.buyer_name || s.requestor?.username || 'Buyer')}</td>
-            <td>${escapeHtml(s.product_name || s.product?.name || 'Product')}</td>
-            <td>${parseInt(s.deposit_amount || 0).toLocaleString('vi-VN')} đ</td>
+            <td>${escapeHtml(s.buyer_name || s.requestor?.username || 'Người mua')}</td>
+            <td>${escapeHtml(s.product_name || s.product?.name || 'Sản phẩm')}</td>
+            <td>${formatVND(parseInt(s.deposit_amount || 0))}</td>
             <td><span class="badge ${getStatusBadgeClass(s.status)}">${s.status}</span></td>
             <td>
                 ${s.status === 'requested'
-                    ? `<button class="btn btn-small btn-primary" onclick="handleSample('${s.id}', 'approved')">Approve</button>
-                       <button class="btn btn-small btn-danger" onclick="handleSample('${s.id}', 'rejected')">Reject</button>`
+                    ? `<button class="btn btn-small btn-primary" onclick="handleSample('${s.id}', 'approved')">Duyệt</button>
+                       <button class="btn btn-small btn-danger" onclick="handleSample('${s.id}', 'rejected')">Từ chối</button>`
                     : '—'}
             </td>
         </tr>
@@ -386,7 +450,7 @@ function renderReviews() {
     if (!container) return;
 
     if (allReviews.length === 0) {
-        container.innerHTML = '<p class="text-center" style="color:#64748b;">No reviews yet.</p>';
+        container.innerHTML = '<p class="text-center" style="color:#64748b;">Chưa có đánh giá nào.</p>';
         return;
     }
 
@@ -394,19 +458,19 @@ function renderReviews() {
         <div class="review-card">
             <div class="review-rating">${'⭐'.repeat(review.rating || 0)}</div>
             <div class="review-product">
-                <strong>${escapeHtml(review.product_name || review.product?.name || 'Unknown Product')}</strong>
-                <small style="color:#64748b;"> — ${escapeHtml(review.buyer_username || 'Buyer')}</small>
+                <strong>${escapeHtml(review.product_name || review.product?.name || 'Sản phẩm không xác định')}</strong>
+                <small style="color:#64748b;"> — ${escapeHtml(review.buyer_username || 'Người mua')}</small>
             </div>
-            <div class="review-comment">"${escapeHtml(review.body || review.title || 'No comment')}"</div>
+            <div class="review-comment">"${escapeHtml(review.body || review.title || 'Không có nội dung')}"</div>
             <div style="font-size:12px;color:#94a3b8;margin-top:8px;margin-bottom:8px;">
                 ${new Date(review.created_at).toLocaleDateString()}
             </div>
             <div class="review-actions">
-                <button class="btn btn-small btn-secondary" onclick="showReplyRow('${review.id}')">Reply</button>
+                <button class="btn btn-small btn-secondary" onclick="showReplyRow('${review.id}')">Trả lời</button>
             </div>
             <div id="reply-row-${review.id}" class="reply-row" style="display:none; margin-top: 10px;">
-                <input id="reply-input-${review.id}" class="reply-input" placeholder="Write a reply..." style="padding:5px; width:70%; margin-right:5px;" />
-                <button class="btn btn-small btn-primary reply-send" onclick="sendReviewReply('${review.id}')">Send</button>
+                <input id="reply-input-${review.id}" class="reply-input" placeholder="Nhập phản hồi..." style="padding:5px; width:70%; margin-right:5px;" />
+                <button class="btn btn-small btn-primary reply-send" onclick="sendReviewReply('${review.id}')">Gửi</button>
             </div>
         </div>
     `).join('');
@@ -420,15 +484,15 @@ function updateDashboardStats() {
 
     const netHeld = allEscrow
         .filter(e => e.status === 'held' || e.status === 'processing')
-        .reduce((sum, e) => sum + parseFloat(e.net_amount || (parseFloat(e.amount) * 0.9) || 0), 0);
+        .reduce((sum, e) => sum + parseFloat(e.net_amount || (parseFloat(e.amount) * 0.975) || 0), 0);
         
     const netReleased = allEscrow
         .filter(e => e.status === 'released')
-        .reduce((sum, e) => sum + parseFloat(e.net_amount || (parseFloat(e.amount) * 0.9) || 0), 0);
+        .reduce((sum, e) => sum + parseFloat(e.net_amount || (parseFloat(e.amount) * 0.975) || 0), 0);
 
-    setEl('totalEscrow', `${parseInt(netHeld).toLocaleString('vi-VN')} đ`);
-    setEl('totalHeld', `${parseInt(netHeld).toLocaleString('vi-VN')} đ`);
-    setEl('totalReleased', `${parseInt(netReleased).toLocaleString('vi-VN')} đ`);
+    setEl('totalEscrow', formatVND(parseInt(netHeld)));
+    setEl('totalHeld', formatVND(parseInt(netHeld)));
+    setEl('totalReleased', formatVND(parseInt(netReleased)));
 
     const avgRating = allReviews.length > 0
         ? (allReviews.reduce((sum, r) => sum + (r.rating || 0), 0) / allReviews.length).toFixed(1)
@@ -445,9 +509,9 @@ function renderPagination(containerId, stateObj, loadFunc) {
 
     container.innerHTML = `
         <div style="display:flex; justify-content:center; align-items:center; gap:15px; padding:15px; margin-top:10px;">
-            <button class="btn btn-small btn-secondary" ${stateObj.page <= 1 ? 'disabled' : ''} onclick="window.${loadFunc.name}(${stateObj.page - 1})">Prev</button>
-            <span style="font-size:13px; font-weight:bold; color:#475569;">Page ${stateObj.page} / ${stateObj.totalPages}</span>
-            <button class="btn btn-small btn-secondary" ${stateObj.page >= stateObj.totalPages ? 'disabled' : ''} onclick="window.${loadFunc.name}(${stateObj.page + 1})">Next</button>
+            <button class="btn btn-small btn-secondary" ${stateObj.page <= 1 ? 'disabled' : ''} onclick="window.${loadFunc.name}(${stateObj.page - 1})">Trước</button>
+            <span style="font-size:13px; font-weight:bold; color:#475569;">Trang ${stateObj.page} / ${stateObj.totalPages}</span>
+            <button class="btn btn-small btn-secondary" ${stateObj.page >= stateObj.totalPages ? 'disabled' : ''} onclick="window.${loadFunc.name}(${stateObj.page + 1})">Sau</button>
         </div>
     `;
     if(!window[loadFunc.name]) window[loadFunc.name] = loadFunc;
@@ -479,7 +543,7 @@ function renderRevenueChart() {
         data: {
             labels: last7Days,
             datasets: [{
-                label: 'Doanh thu (VNĐ)',
+                label: 'Doanh thu (Đ)',
                 data: data,
                 backgroundColor: '#2563eb',
                 borderRadius: 4
@@ -504,7 +568,7 @@ async function addProduct(e) {
     const imageInput = document.getElementById('productImages');
 
     if (!name || !category || !price || stock < 0) {
-        alert('Please fill in all required fields (Name, Category, Price, Stock).');
+        alert('Vui lòng điền đầy đủ các trường bắt buộc (Tên, Danh mục, Giá, Tồn kho).');
         return;
     }
 
@@ -523,53 +587,124 @@ async function addProduct(e) {
 
     try {
         const submitBtn = document.querySelector('#productForm button[type="submit"]');
-        if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Saving...'; }
+        if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Đang lưu...'; }
 
         if (editingProductId) {
             await apiCall(`/products/${editingProductId}`, { method: 'PUT', body: fd });
             editingProductId = null;
-            document.getElementById('productFormTitle').textContent = 'Add New Product';
+            document.getElementById('productFormTitle').textContent = 'Thêm sản phẩm mới';
         } else {
-            await apiCall('/products', { method: 'POST', body: fd });
+            const createRes = await apiCall('/products', { method: 'POST', body: fd });
+            const createdProductId = createRes?.data?.id;
+            if (createdProductId) {
+                await createCategoryVariants(createdProductId, name, parseInt(stock || '0', 10));
+            }
         }
 
-        alert('Product saved successfully!');
+        alert('Lưu sản phẩm thành công!');
         closeProductForm();
         await loadProducts(pageState.products.page);
     } catch (error) {
-        alert(`Failed to save product: ${error.message}`);
+        alert(`Lưu sản phẩm thất bại: ${error.message}`);
     } finally {
         const submitBtn = document.querySelector('#productForm button[type="submit"]');
-        if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Save Product'; }
+        if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Lưu sản phẩm'; }
     }
 }
 
+function parseCsvValues(rawValue) {
+    return String(rawValue || '')
+        .split(',')
+        .map(v => v.trim())
+        .filter(Boolean);
+}
+
+async function createCategoryVariants(productId, productName, stockQty) {
+    const category = document.getElementById('productCategory')?.value;
+    const preset = CATEGORY_OPTION_PRESETS[category];
+    if (!preset || !preset.length) return;
+
+    const requests = [];
+    preset.forEach((field, fieldIdx) => {
+        const input = document.getElementById(`category_option_${field.key}`);
+        if (!input) return;
+        const values = parseCsvValues(input.value);
+
+        values.forEach((val, idx) => {
+            const skuBase = String(productName || 'SKU').replace(/\s+/g, '').toUpperCase().slice(0, 6) || 'SKU';
+            const sku = `${skuBase}-${field.key.toUpperCase().slice(0, 3)}-${fieldIdx + 1}${idx + 1}`;
+            requests.push(
+                apiCall(`/variants/product/${productId}`, {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        attribute_name: field.key,
+                        attribute_value: val,
+                        sku,
+                        stock_quantity: Math.max(0, stockQty || 0),
+                        price_adjustment: 0
+                    })
+                })
+            );
+        });
+    });
+
+    if (!requests.length) return;
+
+    const results = await Promise.allSettled(requests);
+    const failedCount = results.filter(r => r.status === 'rejected').length;
+    if (failedCount > 0) {
+        alert(`Đã tạo sản phẩm, nhưng có ${failedCount} biến thể chưa lưu được.`);
+    }
+}
+
+function renderCategoryOptionFields(category) {
+    const container = document.getElementById('categoryOptionsContainer');
+    const fields = document.getElementById('categoryOptionsFields');
+    if (!container || !fields) return;
+
+    const preset = CATEGORY_OPTION_PRESETS[category];
+    if (!preset || !preset.length) {
+        container.style.display = 'none';
+        fields.innerHTML = '';
+        return;
+    }
+
+    container.style.display = 'block';
+    fields.innerHTML = preset.map(item => `
+        <div>
+            <label>${item.label}</label>
+            <input id="category_option_${item.key}" class="form-control" type="text" placeholder="Nhập giá trị, cách nhau bằng dấu phẩy">
+        </div>
+    `).join('');
+}
+
 async function deleteProduct(productId) {
-    const ok = await showConfirm('Are you sure you want to delete this product?');
+    const ok = await showConfirm('Bạn có chắc muốn xóa sản phẩm này?');
     if (!ok) return;
 
     try {
         await apiCall(`/products/${productId}`, { method: 'DELETE' });
-        alert('Product deleted.');
+        alert('Đã xóa sản phẩm.');
         await loadProducts(pageState.products.page);
     } catch (error) {
-        alert('Error deleting product: ' + error.message);
+        alert('Lỗi xóa sản phẩm: ' + error.message);
     }
 }
 
 function editProduct(productId) {
     const product = allProducts.find((p) => p.id === productId);
-    if (!product) return alert('Product not found');
+    if (!product) return alert('Không tìm thấy sản phẩm');
 
     editingProductId = productId;
     const titleEl = document.getElementById('productFormTitle');
-    if(titleEl) titleEl.textContent = 'Edit Product';
+    if(titleEl) titleEl.textContent = 'Chỉnh sửa sản phẩm';
     
     document.getElementById('productName').value = product.name || '';
     document.getElementById('productDesc').value = product.description || '';
     document.getElementById('productPrice').value = product.price || '';
     document.getElementById('productStock').value = product.stockQuantity ?? product.stock_quantity ?? 0;
     if (document.getElementById('productCategory')) document.getElementById('productCategory').value = product.category || 'default';
+    renderCategoryOptionFields(product.category || '');
     
     document.getElementById('addProductForm').style.display = 'flex';
 }
@@ -577,8 +712,8 @@ function editProduct(productId) {
 // ── ĐÃ CẬP NHẬT: Dùng Multi-Prompt để nhập Mã Vận Đơn ──
 window.shipOrder = async function(orderId) {
     const result = await showMultiPrompt('Shipping Information', [
-        { id: 'carrier', label: 'Carrier (e.g. UPS, FedEx, VNPost)', type: 'text', required: true },
-        { id: 'tracking', label: 'Tracking Number', type: 'text', required: true }
+        { id: 'carrier', label: 'Đơn vị vận chuyển (VD: GHTK, GHN, VNPost)', type: 'text', required: true },
+        { id: 'tracking', label: 'Mã vận đơn', type: 'text', required: true }
     ]);
 
     if (!result) return;
@@ -588,18 +723,18 @@ window.shipOrder = async function(orderId) {
             method: 'POST',
             body: JSON.stringify({ trackingNumber: result.tracking, carrier: result.carrier }),
         });
-        alert('Order marked as shipped!');
+        alert('Đã xác nhận giao hàng!');
         await loadOrders(pageState.orders.page);
     } catch (error) {
-        alert(`Failed to update order: ${error.message}`);
+        alert(`Cập nhật đơn hàng thất bại: ${error.message}`);
     }
 }
 
 // ── THÊM MỚI: Nộp bằng chứng bảo vệ Dispute ──
 window.submitEvidence = async function(disputeId) {
-    const result = await showMultiPrompt('Submit Evidence for Dispute', [
-        { id: 'url', label: 'Image/Video URL (Google Drive, Imgur...)', type: 'url', required: true },
-        { id: 'desc', label: 'Detailed Explanation', type: 'text', required: true }
+    const result = await showMultiPrompt('Gửi bằng chứng khiếu nại', [
+        { id: 'url', label: 'Link ảnh/video bằng chứng (Drive, Imgur...)', type: 'url', required: true },
+        { id: 'desc', label: 'Mô tả chi tiết', type: 'text', required: true }
     ]);
 
     if (!result) return;
@@ -609,17 +744,17 @@ window.submitEvidence = async function(disputeId) {
             method: 'POST',
             body: JSON.stringify({ evidenceUrl: result.url, description: result.desc })
         });
-        alert('Evidence submitted successfully. Pending Admin review.');
+        alert('Đã gửi bằng chứng thành công. Đang chờ Admin xử lý.');
         await loadDisputes(pageState.disputes.page);
     } catch (error) {
-        alert(`Failed to submit evidence: ${error.message}`);
+        alert(`Gửi bằng chứng thất bại: ${error.message}`);
     }
 }
 
 // ── ĐÃ CẬP NHẬT: Gộp chung Approve & Reject ──
 window.handleSample = async function(sampleId, status) {
-    const actionName = status === 'approved' ? 'Approve' : 'Reject';
-    const ok = await showConfirm(`Are you sure you want to ${actionName} this sample request?`);
+    const actionName = status === 'approved' ? 'duyệt' : 'từ chối';
+    const ok = await showConfirm(`Bạn có chắc muốn ${actionName} yêu cầu hàng mẫu này?`);
     if (!ok) return;
 
     try {
@@ -627,10 +762,10 @@ window.handleSample = async function(sampleId, status) {
             method: 'PUT',
             body: JSON.stringify({ status: status }),
         });
-        alert(`Sample request ${status}!`);
+        alert(`Đã cập nhật yêu cầu hàng mẫu: ${status === 'approved' ? 'Duyệt' : 'Từ chối'}.`);
         await loadSamples(pageState.samples.page);
     } catch (error) {
-        alert(`Failed to update sample: ${error.message}`);
+        alert(`Cập nhật yêu cầu mẫu thất bại: ${error.message}`);
     }
 }
 
@@ -644,7 +779,7 @@ async function sendReviewReply(reviewId) {
     const input = document.getElementById(`reply-input-${reviewId}`);
     if (!input) return;
     const text = input.value.trim();
-    if (!text) return alert('Please enter a reply');
+    if (!text) return alert('Vui lòng nhập nội dung phản hồi');
     try {
         await apiCall(`/reviews/${reviewId}/reply`, {
             method: 'POST',
@@ -653,9 +788,9 @@ async function sendReviewReply(reviewId) {
         input.value = '';
         showReplyRow(reviewId);
         await loadReviews(pageState.reviews.page);
-        alert('Reply sent!');
+        alert('Đã gửi phản hồi!');
     } catch (err) {
-        alert('Error sending reply: ' + err.message);
+        alert('Lỗi gửi phản hồi: ' + err.message);
     }
 }
 
@@ -723,9 +858,10 @@ function addBadgeStyles() {
 function closeProductForm() {
     document.getElementById('addProductForm').style.display = 'none';
     document.getElementById('productForm').reset();
+    renderCategoryOptionFields('');
     editingProductId = null;
     const titleEl = document.getElementById('productFormTitle');
-    if(titleEl) titleEl.textContent = 'Add New Product';
+    if(titleEl) titleEl.textContent = 'Thêm sản phẩm mới';
 }
 
 function showConfirm(message) {
@@ -738,8 +874,8 @@ function showConfirm(message) {
             modal.innerHTML = `<div class="confirm-box" style="background:#fff; padding:20px; border-radius:8px; text-align:center;">
                 <div id="confirmMessage" style="margin-bottom:20px; font-weight:bold;"></div>
                 <div class="confirm-actions">
-                    <button id="confirmNo" class="btn btn-secondary" style="margin-right:10px;">No</button>
-                    <button id="confirmYes" class="btn btn-primary">Yes</button>
+                    <button id="confirmNo" class="btn btn-secondary" style="margin-right:10px;">Không</button>
+                    <button id="confirmYes" class="btn btn-primary">Đồng ý</button>
                 </div>
             </div>`;
             modal.style.cssText = "position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); display:flex; align-items:center; justify-content:center; z-index:9999;";
@@ -775,7 +911,7 @@ function showMultiPrompt(title, fields) {
         let inputsHtml = fields.map(f => `
             <div style="margin-bottom:15px; text-align:left;">
                 <label style="display:block; margin-bottom:5px; font-weight:600; font-size:13px; color:#475569;">${f.label}</label>
-                <input type="${f.type}" id="prompt_input_${f.id}" class="form-control" placeholder="Enter ${f.label.toLowerCase()}" style="width:100%; padding:8px; border-radius:6px; border:1px solid #cbd5e1;" ${f.required?'required':''}>
+                <input type="${f.type}" id="prompt_input_${f.id}" class="form-control" placeholder="Nhập ${f.label.toLowerCase()}" style="width:100%; padding:8px; border-radius:6px; border:1px solid #cbd5e1;" ${f.required?'required':''}>
             </div>
         `).join('');
 
@@ -784,8 +920,8 @@ function showMultiPrompt(title, fields) {
                 <h3 style="margin-bottom:20px; font-size:18px; color:#0f172a;">${title}</h3>
                 ${inputsHtml}
                 <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:25px;">
-                    <button id="multiPromptCancel" class="btn btn-secondary">Cancel</button>
-                    <button id="multiPromptOk" class="btn btn-primary">Confirm</button>
+                    <button id="multiPromptCancel" class="btn btn-secondary">Hủy</button>
+                    <button id="multiPromptOk" class="btn btn-primary">Xác nhận</button>
                 </div>
             </div>
         `;
@@ -800,7 +936,7 @@ function showMultiPrompt(title, fields) {
             let result = {};
             for(let f of fields) {
                 const val = document.getElementById(`prompt_input_${f.id}`).value.trim();
-                if(f.required && !val) return alert(`Required field: ${f.label}`);
+                if(f.required && !val) return alert(`Trường bắt buộc: ${f.label}`);
                 result[f.id] = val;
             }
             clean(); resolve(result);
@@ -832,6 +968,10 @@ function setupEventListeners() {
 
     const prodForm = document.getElementById('productForm');
     if (prodForm) prodForm.addEventListener('submit', addProduct);
+    const categoryEl = document.getElementById('productCategory');
+    if (categoryEl) {
+        categoryEl.addEventListener('change', (e) => renderCategoryOptionFields(e.target.value));
+    }
 
     const search = document.getElementById('productSearch');
     if (search) {
@@ -866,6 +1006,120 @@ function setupEventListeners() {
             window.location.href = '../login.html';
         });
     }
+
+    const enableProfileEditBtn = document.getElementById('enableProfileEditBtn');
+    if (enableProfileEditBtn) {
+        enableProfileEditBtn.addEventListener('click', () => {
+            profileEditMode = true;
+            setProfileFieldsDisabled(false);
+            enableProfileEditBtn.textContent = 'Đang soạn yêu cầu...';
+            enableProfileEditBtn.disabled = true;
+        });
+    }
+
+    const profileForm = document.getElementById('sellerProfileForm');
+    if (profileForm) {
+        profileForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            if (!profileEditMode) return;
+            try {
+                await apiCall('/auth/profile-change-request', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        fullName: document.getElementById('profileFullName')?.value?.trim(),
+                        phone: document.getElementById('profilePhone')?.value?.trim(),
+                        store_name: document.getElementById('profileStoreName')?.value?.trim(),
+                        category: document.getElementById('profileCategory')?.value?.trim(),
+                        city: document.getElementById('profileCity')?.value?.trim(),
+                        address: document.getElementById('profileAddress')?.value?.trim(),
+                    })
+                });
+                alert('Đã gửi yêu cầu thay đổi hồ sơ. Chờ Admin duyệt.');
+                profileEditMode = false;
+                setProfileFieldsDisabled(true);
+                if (enableProfileEditBtn) {
+                    enableProfileEditBtn.textContent = 'Tạo yêu cầu thay đổi';
+                    enableProfileEditBtn.disabled = false;
+                }
+                await loadProfileData();
+            } catch (err) {
+                alert(`Gửi yêu cầu thất bại: ${err.message}`);
+            }
+        });
+    }
+
+    const passwordForm = document.getElementById('sellerPasswordForm');
+    if (passwordForm) {
+        passwordForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            try {
+                await apiCall('/auth/change-password', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        currentPassword: document.getElementById('currentPassword')?.value,
+                        newPassword: document.getElementById('newPassword')?.value
+                    })
+                });
+                alert('Đổi mật khẩu thành công. Vui lòng đăng nhập lại nếu cần.');
+                passwordForm.reset();
+            } catch (err) {
+                alert(`Đổi mật khẩu thất bại: ${err.message}`);
+            }
+        });
+    }
+
+    const setupMfaBtn = document.getElementById('setupMfaBtn');
+    if (setupMfaBtn) {
+        setupMfaBtn.addEventListener('click', async () => {
+            try {
+                const setupRes = await apiCall('/mfa/setup', { method: 'POST' });
+                const setupData = setupRes.data || {};
+                const codeInput = prompt(
+                    `Quét QR trong app Authenticator.\nSecret: ${setupData.secret || 'N/A'}\nNhập mã 6 số để xác nhận MFA:`
+                );
+                if (!codeInput) return;
+                await apiCall('/mfa/confirm', {
+                    method: 'POST',
+                    body: JSON.stringify({ code: codeInput.trim() })
+                });
+                mfaEnabled = true;
+                updateMfaStatusUI(true);
+                alert('Kích hoạt MFA thành công.');
+            } catch (err) {
+                alert(`Kích hoạt MFA thất bại: ${err.message}`);
+            }
+        });
+    }
+
+    const disableMfaBtn = document.getElementById('disableMfaBtn');
+    if (disableMfaBtn) {
+        disableMfaBtn.addEventListener('click', async () => {
+            try {
+                const password = prompt('Nhập mật khẩu hiện tại để tắt MFA:');
+                if (!password) return;
+                const code = prompt('Nhập mã xác thực 6 số từ app Authenticator:');
+                if (!code) return;
+                await apiCall('/mfa/disable', {
+                    method: 'POST',
+                    body: JSON.stringify({ password, code: code.trim() })
+                });
+                mfaEnabled = false;
+                updateMfaStatusUI(false);
+                alert('Đã tắt MFA.');
+            } catch (err) {
+                alert(`Tắt MFA thất bại: ${err.message}`);
+            }
+        });
+    }
+
+    const adBtn = document.getElementById('buyAdPackageBtn');
+    if (adBtn) {
+        adBtn.addEventListener('click', () => {
+            alert('Demo: Gói quảng cáo sẽ được mở ở phiên bản tiếp theo (Standard/Pro/Premium).');
+        });
+    }
+
+    setProfileFieldsDisabled(true);
 }
 
 function showSection(sectionName, menuItem) {
@@ -877,13 +1131,14 @@ function showSection(sectionName, menuItem) {
     if (section) section.classList.add('active');
 
     const titles = {
-        dashboard: 'Dashboard',
-        products: 'Products',
-        orders: 'Orders',
-        escrow: 'Escrow Tracking',
-        disputes: 'Disputes',
-        samples: 'Sample Requests',
-        reviews: 'Reviews',
+        dashboard: 'Tổng quan',
+        products: 'Sản phẩm',
+        orders: 'Đơn hàng',
+        escrow: 'Theo dõi ký quỹ',
+        disputes: 'Khiếu nại',
+        samples: 'Yêu cầu hàng mẫu',
+        reviews: 'Đánh giá',
+        profile: 'Hồ sơ & Bảo mật',
     };
     const titleEl = document.getElementById('pageTitle');
     if (titleEl) titleEl.textContent = titles[sectionName] || 'Dashboard';

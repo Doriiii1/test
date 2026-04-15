@@ -22,21 +22,22 @@
                 <p class="badge badge-warning" style="margin-top: 5px;">Kênh Người Bán</p>
             </div>
             <nav class="sidebar-menu">
-                <a href="#" class="menu-item active" data-section="dashboard">📊 Tổng quan (Dashboard)</a>
+                <a href="#" class="menu-item active" data-section="dashboard">📊 Tổng quan</a>
                 <p class="menu-label">QUẢN LÝ BÁN HÀNG</p>
                 <a href="#" class="menu-item" data-section="products">📦 Sản phẩm của tôi</a>
-                <a href="#" class="menu-item" data-section="orders">🛒 Đơn hàng (Orders)</a>
+                <a href="#" class="menu-item" data-section="orders">🛒 Đơn hàng</a>
                 <a href="#" class="menu-item" data-section="samples">🎁 Yêu cầu Hàng mẫu</a>
                 <p class="menu-label">TÀI CHÍNH & CSKH</p>
                 <a href="#" class="menu-item" data-section="escrow">💰 Ví Ký quỹ (Escrow)</a>
                 <a href="#" class="menu-item" data-section="disputes">⚖️ Khiếu nại (Disputes)</a>
-                <a href="#" class="menu-item" data-section="reviews">⭐ Đánh giá (Reviews)</a>
+                <a href="#" class="menu-item" data-section="reviews">⭐ Đánh giá</a>
+                <a href="#" class="menu-item" data-section="profile">👤 Hồ sơ & Bảo mật</a>
             </nav>
         </aside>
 
         <main class="main-content">
             <header class="topbar">
-                <h2 id="pageTitle">Tổng quan (Dashboard)</h2>
+                <h2 id="pageTitle">Tổng quan</h2>
                 <div class="topbar-right">
                     <div id="sellerNotificationBellWrapper" style="position: relative; display: none; margin-right: 20px;">
                       <button id="sellerNotificationBell" class="notification-bell" title="Thông báo" style="font-size: 24px; background: transparent; border: none; cursor: pointer; padding: 8px; border-radius: 8px;">🔔
@@ -63,16 +64,16 @@
                         </div>
                         <div class="stat-card">
                             <h3>Tiền đang giữ (Held)</h3>
-                            <p id="totalHeld" style="color: #f59e0b;">$0.00</p>
+                            <p id="totalHeld" style="color: #f59e0b;">0 Đ</p>
                         </div>
                         <div class="stat-card">
                             <h3>Tiền thực nhận (Released)</h3>
-                            <p id="totalReleased" style="color: #10b981;">$0.00</p>
+                            <p id="totalReleased" style="color: #10b981;">0 Đ</p>
                         </div>
                     </div>
                     
                     <div class="card" style="margin-top: 24px;">
-                        <h3>Biểu đồ Doanh thu (7 ngày qua)</h3>
+                        <h3>Biểu đồ doanh thu (7 ngày qua)</h3>
                         <div style="height: 300px; width: 100%; margin-top: 15px;">
                             <canvas id="revenueChart"></canvas>
                         </div>
@@ -205,6 +206,81 @@
                     </div>
                 </section>
 
+                <section id="profile-section" class="section">
+                    <div class="card">
+                        <h3 style="margin-bottom: 16px;">Thông tin tài khoản người bán</h3>
+                        <form id="sellerProfileForm" style="display:grid; grid-template-columns:1fr 1fr; gap: 14px;">
+                            <div class="form-group">
+                                <label>Họ và tên</label>
+                                <input id="profileFullName" class="form-control" type="text" required disabled>
+                            </div>
+                            <div class="form-group">
+                                <label>Số điện thoại</label>
+                                <input id="profilePhone" class="form-control" type="tel" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label>Tên cửa hàng</label>
+                                <input id="profileStoreName" class="form-control" type="text" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label>Ngành hàng chính</label>
+                                <input id="profileCategory" class="form-control" type="text" placeholder="Fashion / Electronics / Beauty..." disabled>
+                            </div>
+                            <div class="form-group">
+                                <label>Thành phố</label>
+                                <input id="profileCity" class="form-control" type="text" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label>Địa chỉ</label>
+                                <input id="profileAddress" class="form-control" type="text" disabled>
+                            </div>
+                            <div style="grid-column: 1 / -1;">
+                                <p style="color:#64748b; margin-bottom:10px;">
+                                    Thông tin seller là cố định. Muốn thay đổi bạn phải gửi yêu cầu để Admin kiểm duyệt.
+                                </p>
+                                <div style="display:flex; gap:10px; justify-content:flex-end;">
+                                    <button type="button" id="enableProfileEditBtn" class="btn btn-outline">Tạo yêu cầu thay đổi</button>
+                                    <button type="submit" id="submitProfileRequestBtn" class="btn btn-primary" disabled>Gửi yêu cầu duyệt</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="card">
+                        <h3 style="margin-bottom: 16px;">Bảo mật tài khoản</h3>
+                        <div style="display:grid; grid-template-columns:1fr 1fr; gap: 20px;">
+                            <form id="sellerPasswordForm">
+                                <label>Mật khẩu hiện tại</label>
+                                <input id="currentPassword" class="form-control" type="password" required>
+                                <label style="margin-top:10px;">Mật khẩu mới</label>
+                                <input id="newPassword" class="form-control" type="password" minlength="8" required>
+                                <button type="submit" class="btn btn-secondary" style="margin-top: 12px;">Đổi mật khẩu</button>
+                            </form>
+                            <div>
+                                <p style="margin-bottom: 10px; color:#64748b;">Trạng thái MFA: <strong id="mfaStatusText">Đang tải...</strong></p>
+                                <div style="display:flex; gap: 10px; flex-wrap: wrap;">
+                                    <button id="setupMfaBtn" type="button" class="btn btn-primary">Kích hoạt MFA</button>
+                                    <button id="disableMfaBtn" type="button" class="btn btn-outline">Tắt MFA</button>
+                                </div>
+                                <small style="display:block; margin-top: 10px; color:#64748b;">
+                                    MFA giúp bảo vệ tài khoản seller trước các giao dịch tài chính quan trọng.
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3 style="margin-bottom: 12px;">Ví cá nhân & Gói quảng cáo</h3>
+                        <div style="display:flex; gap:12px; flex-wrap: wrap;">
+                            <a class="btn btn-outline" href="./seller-wallet/index.html">Mở ví người bán</a>
+                            <button id="buyAdPackageBtn" type="button" class="btn btn-primary">Mua gói quảng cáo</button>
+                        </div>
+                        <p style="margin-top:10px; color:#64748b;">
+                            Demo: chức năng quảng cáo hiện hiển thị luồng đăng ký gói, có thể nối thanh toán ví ở bước tiếp theo.
+                        </p>
+                    </div>
+                </section>
+
             </div>
         </main>
     </div>
@@ -230,9 +306,17 @@
                     </select>
                 </div>
 
+                <div id="categoryOptionsContainer" class="form-group" style="margin-bottom: 15px; display:none;">
+                    <label>Thuộc tính theo danh mục (tuỳ chọn)</label>
+                    <div id="categoryOptionsFields" style="display:grid; gap: 10px;"></div>
+                    <small style="color:#64748b;">
+                        Nhập nhiều giá trị bằng dấu phẩy. Ví dụ: S, M, L hoặc Đỏ, Đen, Trắng.
+                    </small>
+                </div>
+
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
                     <div class="form-group">
-                        <label>Giá bán ($) *</label>
+                        <label>Giá bán (VNĐ) *</label>
                         <input type="number" id="productPrice" class="form-control" step="0.01" min="0.01" required>
                     </div>
                     <div class="form-group">

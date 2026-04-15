@@ -9,14 +9,14 @@ const SECURITY_CONFIG = {
   // ── Rate Limiting ──────────────────────────
   rateLimits: {
     global: {
-      windowMs : 15 * 60 * 1000,   // 15 min
+      windowMs : 1 * 60 * 1000,   // 15 min
       max      : 300,               // requests per window
     },
     auth: {
-      register : { windowMs: 60 * 60 * 1000, max: 5   },  // 5 / hr
-      login    : { windowMs: 15 * 60 * 1000, max: 10  },  // 10 / 15 min
-      refresh  : { windowMs: 15 * 60 * 1000, max: 30  },  // 30 / 15 min
-      mfa      : { windowMs: 15 * 60 * 1000, max: 10  },  // 10 / 15 min
+      register : { windowMs: 1 * 60 * 1000, max: 500   },  // 5 / hr
+      login    : { windowMs: 1 * 60 * 1000, max: 1000  },  // 10 / 15 min
+      refresh  : { windowMs: 1 * 60 * 1000, max: 3000  },  // 30 / 15 min
+      mfa      : { windowMs: 15 * 60 * 1000, max: 1000  },  // 10 / 15 min
     },
     financial: {
       windowMs : 15 * 60 * 1000,
@@ -39,7 +39,7 @@ const SECURITY_CONFIG = {
   // ── IP Block List ──────────────────────────
   ipBlock: {
     autobanThreshold : 20,
-    autobanWindowMs  : 10 * 60 * 1000,   // 10 min
+    autobanWindowMs  : 1 * 60 * 1000,   // 10 min
     banDurationMs    : 60 * 60 * 1000,   // 1 hr ban
   },
 
@@ -69,7 +69,7 @@ const SECURITY_CONFIG = {
 
   // ── JWT ────────────────────────────────────
   jwt: {
-    accessExpiresIn  : '15m',
+    accessExpiresIn  : '15d',
     refreshExpiresIn : '7d',
     algorithm        : 'HS256',
     issuer           : 'ofuture-api',
