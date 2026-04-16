@@ -131,7 +131,6 @@ function renderOrders() {
                     </div>
                     <div style="display: flex; gap: 8px; align-items: center;">
                         <div class="order-date">${dateStr}</div>
-                        <div class="badge ${badgeInfo.class}">${badgeInfo.text}</div>
                     </div>
                 </div>
                 <div class="order-body">
