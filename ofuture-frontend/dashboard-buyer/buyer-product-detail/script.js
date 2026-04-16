@@ -3,6 +3,7 @@
 // ============================================================
 
 const API_BASE_URL = window.CONFIG?.API_BASE_URL || 'http://localhost:5000/api';
+const BACKEND_BASE_URL = API_BASE_URL.replace('/api', '') || 'http://localhost:5000';
 let currentUser = null;
 let CART_KEY = 'cart';
 let currentProduct = null;
@@ -81,7 +82,7 @@ function renderProduct(p) {
             const parsedImgs = typeof p.imageUrls === 'string' ? JSON.parse(p.imageUrls) : p.imageUrls;
             if (Array.isArray(parsedImgs) && parsedImgs.length > 0) {
                 // Hàm nối domain cho ảnh
-                const getFullUrl = (url) => url.startsWith('/uploads') ? `${backendBaseUrl}${url}` : url;
+                const getFullUrl = (url) => url.startsWith('/uploads') ? `${BACKEND_BASE_URL}${url}` : url;
                 
                 mainImgSrc = getFullUrl(parsedImgs[0]);
                 
@@ -150,8 +151,7 @@ window.handleAddToCart = function() {
             if (parsed && parsed.length > 0) {
                 let rawUrl = parsed[0];
                 if (rawUrl.startsWith('/uploads')) {
-                    const backendBaseUrl = API_BASE_URL.replace('/api', '');
-                    imgUrl = `${backendBaseUrl}${rawUrl}`;
+                    imgUrl = `${BACKEND_BASE_URL}${rawUrl}`;
                 } else {
                     imgUrl = rawUrl;
                 }

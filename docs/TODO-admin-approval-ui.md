@@ -47,7 +47,17 @@
      - Mở modal nhập lý do.
      - Update status yêu cầu thành 'rejected' kèm `admin_note`.
 
+# Chính sách đổi mật khẩu của Người bán (Seller)
+
+- **Quy định:** Người bán (Seller) không được phép tự do đổi mật khẩu trực tiếp trên Dashboard để tăng cường bảo mật và kiểm soát luồng tài khoản doanh nghiệp/cửa hàng.
+- **Quy trình xử lý:** Phần đổi mật khẩu này sẽ được Admin thay đổi trong quản lý Người dùng (User Management) khi có yêu cầu hợp lý từ Seller (thông qua luồng ticket hỗ trợ hoặc liên hệ trực tiếp).
+
+### 3. Tích hợp Real-time Notification cho Admin Dashboard
+- **Mục đích:** Rút ngắn SLA xử lý hỗ trợ. Khi Seller (hoặc Buyer) gửi một Yêu cầu (Đổi Profile, Báo cáo, Dispute), Admin phải nhận được thông báo ngay lập tức mà không cần F5 (refresh) trang.
+- **Kỹ thuật đề xuất:** - Tái sử dụng `socketClientTrigger.js` và `webSocketService.ts` hiện có ở Backend.
+  - Khi có Record mới chèn vào bảng `requests` hoặc `notifications`, Backend bắn event `admin_alert`.
+  - Ở `indexAdmin.html`, bắt event này để update `badge` chuông thông báo và hiện Toast UI góc phải màn hình.
+
 ## Ghi chú nghiệp vụ
 - Seller không được sửa trực tiếp hồ sơ qua `PUT /api/auth/profile`.
 - Seller chỉ được gửi yêu cầu qua `POST /api/auth/profile-change-request`.
-- Mật khẩu vẫn cho đổi trực tiếp qua `POST /api/auth/change-password`.

@@ -10,6 +10,8 @@ const CONFIG = {
     : 'https://your-production-api.com/api'
 };
 
+window.CONFIG = CONFIG;
+
 async function fetchAPI(endpoint, options = {}) {
   const token = localStorage.getItem('accessToken');
   

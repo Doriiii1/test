@@ -13,7 +13,10 @@ export const startAutoReleaseWorker = () => {
       const [expiredOrders]: any = await conn.execute(
         `SELECT id FROM orders 
          WHERE status = 'shipped' 
-         AND updated_at < DATE_SUB(NOW(), INTERVAL 7 DAY)`
+         AND updated_at < DATE_SUB(NOW(), INTERVAL 7 DAY)
+         AND id NOT IN (
+            SELECT order_id FROM disputes WHERE status IN ('pending', 'processing')
+         )`
       );
 
       for (const order of expiredOrders) {

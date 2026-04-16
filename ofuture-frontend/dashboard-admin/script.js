@@ -4,6 +4,7 @@
 // ============================================================
 
 const API_BASE_URL = window.CONFIG?.API_BASE_URL || 'http://localhost:5000/api';
+const BACKEND_BASE_URL = API_BASE_URL.replace('/api', '') || 'http://localhost:5000';
 
 // ── 1. GLOBAL STATE & DATA ────────────────────────────────────
 let currentAdmin = null;

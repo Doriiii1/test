@@ -4,6 +4,7 @@
 // ============================================================
 
 const API_BASE_URL = 'http://localhost:5000/api';
+const BACKEND_BASE_URL = API_BASE_URL.replace('/api', '') || 'http://localhost:5000';
 const formatVND = (value) => `${Number(value || 0).toLocaleString('vi-VN')} Đ`;
 
 // Store data
@@ -160,12 +161,35 @@ async function loadProfileData() {
         if (storeNameEl) storeNameEl.value = currentUser?.store_name || '';
         if (categoryEl) categoryEl.value = currentUser?.category || '';
 
-        const mfaRes = await apiCall('/mfa/status');
-        mfaEnabled = Boolean(mfaRes.data?.mfaEnabled);
-        updateMfaStatusUI(mfaEnabled);
+        // Cập nhật UI MFA
+        const mfaStatus = document.getElementById('mfaStatus');
+        const mfaArea = document.getElementById('mfaSetupArea');
+        if (me.mfaEnabled || me.mfa_enabled) {
+            if(mfaStatus) {
+                mfaStatus.textContent = "Đã bật an toàn";
+                mfaStatus.className = "badge badge-success";
+            }
+            if(mfaArea) {
+                mfaArea.innerHTML = `<button onclick="confirmDisableMFA()" class="btn btn-danger">Tắt bảo mật MFA</button>`;
+            }
+        }
+
+        // Lấy số dư ví thực tế (Dòng tiền web đã chuyển vào)
+        try {
+            const walletRes = await apiCall('/wallet/balance');
+            if (walletRes.success && walletRes.data) {
+                const totalRevenueEl = document.getElementById('totalRevenue');
+                if (totalRevenueEl) {
+                    totalRevenueEl.textContent = walletRes.data.formattedBalance || `${Number(walletRes.data.balance).toLocaleString('vi-VN')} Đ`;
+                    totalRevenueEl.previousElementSibling.textContent = "Số dư Ví (Tiền đã nhận)";
+                }
+            }
+        } catch (walletErr) {
+            console.error("Không thể lấy số dư ví:", walletErr);
+        }
+
     } catch (error) {
-        const mfaStatusText = document.getElementById('mfaStatusText');
-        if (mfaStatusText) mfaStatusText.textContent = 'Không tải được';
+        console.error("Lỗi load profile:", error);
     }
 }
 
@@ -304,9 +328,7 @@ function renderProductsTable(products = allProducts) {
                 if (Array.isArray(parsedImgs) && parsedImgs.length > 0) {
                     let rawUrl = parsedImgs[0];
                     if (rawUrl.startsWith('/uploads')) {
-                        // Kênh người bán mặc định dùng backend 5000
-                        const backendBaseUrl = API_BASE_URL.replace('/api', ''); 
-                        imgUrl = `${backendBaseUrl}${rawUrl}`;
+                        imgUrl = `${BACKEND_BASE_URL}${rawUrl}`;
                     } else {
                         imgUrl = rawUrl;
                     }
@@ -1156,70 +1178,6 @@ function setupEventListeners() {
         });
     }
 
-    const passwordForm = document.getElementById('sellerPasswordForm');
-    if (passwordForm) {
-        passwordForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            try {
-                await apiCall('/auth/change-password', {
-                    method: 'POST',
-                    body: JSON.stringify({
-                        currentPassword: document.getElementById('currentPassword')?.value,
-                        newPassword: document.getElementById('newPassword')?.value
-                    })
-                });
-                alert('Đổi mật khẩu thành công. Vui lòng đăng nhập lại nếu cần.');
-                passwordForm.reset();
-            } catch (err) {
-                alert(`Đổi mật khẩu thất bại: ${err.message}`);
-            }
-        });
-    }
-
-    const setupMfaBtn = document.getElementById('setupMfaBtn');
-    if (setupMfaBtn) {
-        setupMfaBtn.addEventListener('click', async () => {
-            try {
-                const setupRes = await apiCall('/mfa/setup', { method: 'POST' });
-                const setupData = setupRes.data || {};
-                const codeInput = prompt(
-                    `Quét QR trong app Authenticator.\nSecret: ${setupData.secret || 'N/A'}\nNhập mã 6 số để xác nhận MFA:`
-                );
-                if (!codeInput) return;
-                await apiCall('/mfa/confirm', {
-                    method: 'POST',
-                    body: JSON.stringify({ code: codeInput.trim() })
-                });
-                mfaEnabled = true;
-                updateMfaStatusUI(true);
-                alert('Kích hoạt MFA thành công.');
-            } catch (err) {
-                alert(`Kích hoạt MFA thất bại: ${err.message}`);
-            }
-        });
-    }
-
-    const disableMfaBtn = document.getElementById('disableMfaBtn');
-    if (disableMfaBtn) {
-        disableMfaBtn.addEventListener('click', async () => {
-            try {
-                const password = prompt('Nhập mật khẩu hiện tại để tắt MFA:');
-                if (!password) return;
-                const code = prompt('Nhập mã xác thực 6 số từ app Authenticator:');
-                if (!code) return;
-                await apiCall('/mfa/disable', {
-                    method: 'POST',
-                    body: JSON.stringify({ password, code: code.trim() })
-                });
-                mfaEnabled = false;
-                updateMfaStatusUI(false);
-                alert('Đã tắt MFA.');
-            } catch (err) {
-                alert(`Tắt MFA thất bại: ${err.message}`);
-            }
-        });
-    }
-
     const adBtn = document.getElementById('buyAdPackageBtn');
     if (adBtn) {
         adBtn.addEventListener('click', () => {
@@ -1250,6 +1208,117 @@ function showSection(sectionName, menuItem) {
     };
     const titleEl = document.getElementById('pageTitle');
     if (titleEl) titleEl.textContent = titles[sectionName] || 'Dashboard';
+}
+
+// ============================================================
+// Logic MFA (Đã đồng bộ từ Buyer)
+// ============================================================
+window.setupMFA = async function() {
+    try {
+        const result = await apiCall('/mfa/setup', { method: 'POST' });
+        if (result.success || result.data) {
+            const data = result.data || result;
+            const modalBody = document.getElementById('mfaModalBody');
+            modalBody.innerHTML = `
+                <div style="text-align:center">
+                    <p>Quét mã QR dưới đây bằng app Authenticator:</p>
+                    <img src="${data.qrCode}" style="margin:20px 0; border:1px solid #e2e8f0; border-radius: 8px;">
+                    <div class="form-group">
+                        <input type="text" id="mfaCode" class="form-control" placeholder="Nhập mã 6 số" maxlength="6" style="text-align:center; font-size:20px; letter-spacing: 4px;">
+                    </div>
+                    <button onclick="verifyMFA()" class="btn btn-primary" style="width:100%; margin-top: 15px;">Xác nhận kích hoạt</button>
+                </div>
+            `;
+            document.getElementById('mfaModal').style.display = 'flex';
+        }
+    } catch (err) { alert("Lỗi thiết lập MFA: " + err.message); }
+}
+
+window.verifyMFA = async function() {
+    const code = document.getElementById('mfaCode').value;
+    try {
+        await apiCall('/mfa/confirm', {
+            method: 'POST',
+            body: JSON.stringify({ code })
+        });
+        alert("Đã kích hoạt MFA thành công!");
+        location.reload();
+    } catch (err) { alert("Mã xác nhận không đúng: " + err.message); }
+}
+
+window.confirmDisableMFA = function() {
+    document.getElementById('disableMfaForm').reset();
+    const btn = document.getElementById('finalDisableMfaBtn');
+    btn.disabled = false;
+    btn.textContent = 'Xác nhận Tắt';
+    document.getElementById('disableMfaModal').style.display = 'flex';
+}
+
+window.closeMFAModal = function() { document.getElementById('mfaModal').style.display = 'none'; }
+window.closeDisableMfaModal = function() { document.getElementById('disableMfaModal').style.display = 'none'; }
+
+window.handleFinalDisableMFA = async function(event) {
+    event.preventDefault();
+    const password = document.getElementById('disableMfaPassword').value;
+    const code = document.getElementById('disableMfaCode').value;
+
+    if (!password || !code) return alert("Vui lòng nhập đầy đủ thông tin!");
+
+    const btn = document.getElementById('finalDisableMfaBtn');
+    btn.disabled = true;
+    btn.textContent = 'Đang xử lý...';
+
+    try {
+        await apiCall('/mfa/disable', {
+            method: 'POST',
+            body: JSON.stringify({ password, code })
+        });
+        alert("Đã tắt bảo mật 2 yếu tố (MFA) thành công!");
+        closeDisableMfaModal();
+        location.reload();
+    } catch (err) {
+        alert("Sai mật khẩu hoặc mã Authenticator!");
+        btn.disabled = false;
+        btn.textContent = 'Xác nhận Tắt';
+    }
+}
+
+// ============================================================
+// Logic Xuất CSV
+// ============================================================
+window.exportDataToCSV = function() {
+    if (!allOrders || allOrders.length === 0) {
+        return alert("Chưa có dữ liệu đơn hàng để xuất!");
+    }
+
+    // Tạo Header
+    let csvContent = "Mã Đơn,Người Mua,Sản phẩm,Tổng tiền,Trạng thái,Ngày tạo\n";
+
+    // Đổ dữ liệu
+    allOrders.forEach(o => {
+        const orderId = o.id || '';
+        const buyer = escapeHtml(o.buyer_username || o.buyerUsername || o.buyer?.username || '');
+        const product = escapeHtml(o.product_name || o.productName || o.product?.name || '');
+        const amount = o.total_amount || o.totalAmount || 0;
+        const status = o.status || '';
+        const date = o.created_at ? new Date(o.created_at).toLocaleString('vi-VN') : '';
+
+        // Xử lý chuỗi có dấu phẩy để không bị vỡ cột CSV
+        const safeBuyer = `"${buyer.replace(/"/g, '""')}"`;
+        const safeProduct = `"${product.replace(/"/g, '""')}"`;
+
+        csvContent += `${orderId},${safeBuyer},${safeProduct},${amount},${status},"${date}"\n`;
+    });
+
+    // Tạo blob và tải xuống
+    const blob = new Blob(["\uFEFF" + csvContent], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.setAttribute("href", url);
+    link.setAttribute("download", `Bao_Cao_Don_Hang_${new Date().getTime()}.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
 }
 
 // ============================================================
